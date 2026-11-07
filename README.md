@@ -1,6 +1,7 @@
-# Imran Ali (‘Ali’) – Portfolio & Lafz-e-Ali Website
+# Imran Ali (‘Ali’) – Portfolio & Lafz-e-Ali
 
-Personal portfolio and Urdu/Hindi poetry website for **Imran Ali**, 1st Year B.Tech student in Artificial Intelligence & Data Science at Presidency University, Bengaluru.
+**Live Website**: [https://ia3466999-ali.github.io/portfolio/](https://ia3466999-ali.github.io/portfolio/)  
+Personal portfolio and Urdu poetry platform for **Imran Ali**, 1st Year B.Tech in Artificial Intelligence & Data Science at Presidency University, Bengaluru.
 
 ---
 
@@ -73,4 +74,3 @@ All visual assets are included and optimized:
 - **Superlative Showcase**
 - **J.A.R.V.I.S. Desktop Voice Assistant**
 - **GLOF Early Warning System**
-*(LostNoMore removed)*
