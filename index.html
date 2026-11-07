@@ -1,0 +1,4066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imran Ali (‘Ali’) | AI &amp; Data Science Builder &amp; Urdu Poet</title>
+<meta name="description" content="Imran Ali (takhallus ‘Ali’) – B.Tech in Artificial Intelligence &amp; Data Science at Presidency University, Bengaluru. Explore deployed engineering projects, original Urdu/Hindi shayari, campus moments, and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   THEME VARIABLES & VISUAL IDENTITY
+   ========================================================================== */
+:root {
+  --bg: #05080f;
+  --bg-alt: #090e17;
+  --panel: #0d1422;
+  --panel-hover: #121c2e;
+  --panel-card: rgba(13, 20, 34, 0.72);
+  --line: #192436;
+  --line-strong: #23344d;
+  --tx: #f8fafc;
+  --tx-sec: #cbd5e1;
+  --mu: #8696ab;
+  --cy: #38d5f0;
+  --cy-glow: rgba(56, 213, 240, 0.28);
+  --rose: #f43f5e;
+  --rose-glow: rgba(244, 63, 94, 0.25);
+  --amber: #f59e0b;
+  --emerald: #10b981;
+  --indigo: #818cf8;
+  --purple: #a855f7;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Outfit', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-urdu: 'Noto Nastaliq Urdu', 'Amiri', 'Traditional Arabic', serif;
+  --radius: 22px;
+  --radius-sm: 14px;
+  --shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 36px -4px var(--cy-glow);
+  --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: dark;
+}
+
+[data-theme="parchment"] {
+  --bg: #f9f5ed;
+  --bg-alt: #f0ebd9;
+  --panel: #ffffff;
+  --panel-hover: #fcf9f2;
+  --panel-card: rgba(255, 255, 255, 0.92);
+  --line: #e4d8c2;
+  --line-strong: #cdbc9d;
+  --tx: #1c1917;
+  --tx-sec: #44403c;
+  --mu: #78716c;
+  --cy: #0284c7;
+  --cy-glow: rgba(2, 132, 199, 0.18);
+  --rose: #be123c;
+  --rose-glow: rgba(190, 18, 60, 0.16);
+  --amber: #b45309;
+  --emerald: #047857;
+  --indigo: #4338ca;
+  --purple: #7e22ce;
+  --shadow: 0 16px 36px -10px rgba(90, 75, 50, 0.14);
+  --shadow-glow: 0 0 24px -2px rgba(2, 132, 199, 0.12);
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font: 16px/1.65 var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--cy); outline-offset: 3px; }
+
+.w { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--cy); }
+
+/* Ambient Aurora Glow Backdrop */
+.aurora-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 750px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.aurora-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.16;
+  animation: float-aurora 14s infinite alternate ease-in-out;
+}
+.aurora-blob-1 {
+  width: 520px;
+  height: 520px;
+  top: -120px;
+  left: 5%;
+  background: radial-gradient(circle, var(--cy), var(--indigo));
+}
+.aurora-blob-2 {
+  width: 480px;
+  height: 480px;
+  top: 60px;
+  right: 5%;
+  background: radial-gradient(circle, var(--purple), var(--rose));
+  animation-delay: -6s;
+}
+@keyframes float-aurora {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(60px) scale(1.08); }
+}
+
+/* ==========================================================================
+   HEADER & NAVIGATION
+   ========================================================================== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 8, 15, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+  transition: var(--transition);
+}
+[data-theme="parchment"] header {
+  background: rgba(249, 245, 237, 0.88);
+}
+header .w {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 72px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--cy), var(--indigo));
+  display: grid;
+  place-items: center;
+  font: 700 20px var(--font-serif);
+  color: #031218;
+  box-shadow: 0 4px 16px var(--cy-glow);
+  position: relative;
+  overflow: hidden;
+}
+.brand-mark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent);
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+.brand-title {
+  font: 700 20px var(--font-serif);
+  letter-spacing: -0.01em;
+}
+.brand-sub {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mu);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+nav.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+nav.nav-desktop a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--mu);
+  transition: color 0.2s;
+  position: relative;
+  padding: 8px 0;
+}
+nav.nav-desktop a:hover, nav.nav-desktop a.active {
+  color: var(--cy);
+}
+nav.nav-desktop a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cy), var(--indigo));
+  border-radius: 2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--tx-sec);
+  transition: var(--transition);
+}
+.btn-icon:hover {
+  border-color: var(--cy);
+  color: var(--cy);
+  transform: translateY(-1px);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  padding: 8px;
+  border-radius: 10px;
+  color: var(--tx);
+  cursor: pointer;
+}
+
+/* Mobile Nav Drawer */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 26px;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 99;
+  box-shadow: var(--shadow);
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--tx-sec);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ==========================================================================
+   BUTTONS & BADGES
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font: 600 14px var(--font-sans);
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--tx);
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn:hover {
+  border-color: var(--cy);
+  color: var(--cy);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+.btn.p {
+  background: linear-gradient(135deg, var(--cy), #0ea5e9);
+  border-color: var(--cy);
+  color: #03131a;
+  box-shadow: 0 6px 20px var(--cy-glow);
+  font-weight: 700;
+}
+.btn.p:hover {
+  background: linear-gradient(135deg, #70e5f7, var(--cy));
+  color: #020c10;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px var(--cy-glow);
+}
+.btn.rose {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--rose-glow);
+}
+.btn.rose:hover {
+  background: #fb7185;
+  transform: translateY(-2px);
+}
+.btn.sm {
+  padding: 7px 16px;
+  font-size: 13px;
+}
+.btn.ghost {
+  background: transparent;
+  border-color: var(--line);
+}
+.btn.ghost:hover {
+  background: var(--panel-hover);
+  border-color: var(--line-strong);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(56, 213, 240, 0.1);
+  color: var(--cy);
+  border: 1px solid rgba(56, 213, 240, 0.25);
+}
+.badge.rose {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--rose);
+  border-color: rgba(244, 63, 94, 0.25);
+}
+.badge.amber {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--amber);
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.badge.emerald {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--emerald);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+.badge.indigo {
+  background: rgba(129, 140, 248, 0.1);
+  color: var(--indigo);
+  border-color: rgba(129, 140, 248, 0.25);
+}
+
+/* ==========================================================================
+   HERO & FRONT VIEW SECTION (VISUALLY UPGRADED)
+   ========================================================================== */
+.hero-wrap {
+  position: relative;
+  padding-top: 40px;
+  overflow: hidden;
+}
+#heroCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.65;
+}
+.hero {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.25fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+  padding: 40px 0 30px;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 18px;
+  border-radius: 999px;
+  background: rgba(13, 20, 34, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line-strong);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tx-sec);
+  margin-bottom: 24px;
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 10px var(--emerald);
+  animation: pulse-ring 2s infinite ease-in-out;
+}
+@keyframes pulse-ring {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+h1.hero-title {
+  font: 700 clamp(48px, 7.5vw, 82px)/1.02 var(--font-serif);
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+h1.hero-title .glow {
+  background: linear-gradient(135deg, #ffffff 20%, var(--cy) 70%, var(--indigo) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+[data-theme="parchment"] h1.hero-title .glow {
+  background: linear-gradient(135deg, #1c1917 20%, var(--rose) 70%, var(--amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-type-wrap {
+  font: italic 400 clamp(20px, 3.2vw, 26px)/1.35 var(--font-serif);
+  color: var(--cy);
+  min-height: 38px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+[data-theme="parchment"] .hero-type-wrap { color: var(--rose); }
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--cy);
+  animation: blink 0.9s infinite;
+  vertical-align: middle;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.hero-bio {
+  color: var(--tx-sec);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 32px;
+}
+.hero-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  max-width: 520px;
+}
+.stat-item h4 {
+  font: 700 26px var(--font-serif);
+  color: var(--tx);
+  letter-spacing: -0.02em;
+}
+.stat-item p {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mu);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+}
+
+/* Front View Featured Couplet Strip */
+.hero-quote-strip {
+  position: relative;
+  z-index: 2;
+  margin-top: 36px;
+  padding: 18px 26px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, rgba(13, 20, 34, 0.8) 0%, rgba(20, 31, 51, 0.6) 100%);
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+[data-theme="parchment"] .hero-quote-strip {
+  background: linear-gradient(135deg, #ffffff 0%, #f7f2e6 100%);
+  border-color: #d8caba;
+}
+.quote-icon {
+  font-size: 30px;
+  line-height: 1;
+  color: var(--rose);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+.quote-text {
+  font: italic 500 15px/1.6 var(--font-serif);
+  color: var(--tx-sec);
+  flex: 1;
+}
+[data-theme="parchment"] .quote-text { color: #2d261e; }
+.quote-author {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--rose);
+  white-space: nowrap;
+}
+
+/* Hero Portrait 3D Card Visual */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.portrait-aura {
+  position: absolute;
+  width: 380px;
+  height: 480px;
+  border-radius: 200px 200px 40px 40px;
+  background: linear-gradient(135deg, var(--cy-glow), transparent, var(--rose-glow));
+  filter: blur(28px);
+  z-index: 1;
+}
+.portrait-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 4/5;
+  border-radius: 190px 190px 32px 32px;
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(180deg, var(--panel) 0%, #070b12 100%);
+  box-shadow: var(--shadow), var(--shadow-glow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+[data-theme="parchment"] .portrait-card {
+  background: linear-gradient(180deg, #ffffff 0%, #ebdec7 100%);
+}
+.portrait-avatar-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: radial-gradient(circle at center, rgba(56, 213, 240, 0.12) 0%, transparent 70%);
+}
+.monogram {
+  font: 700 92px var(--font-serif);
+  color: var(--cy);
+  opacity: 0.95;
+  letter-spacing: -0.04em;
+  text-shadow: 0 0 35px var(--cy-glow);
+}
+[data-theme="parchment"] .monogram { color: var(--rose); text-shadow: 0 0 25px var(--rose-glow); }
+.monogram-sub {
+  font: italic 500 18px var(--font-serif);
+  color: var(--mu);
+}
+.portrait-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+.portrait-card:hover .portrait-img {
+  transform: scale(1.04);
+}
+.portrait-overlay {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 22px;
+  background: linear-gradient(0deg, rgba(6, 9, 15, 0.96) 0%, transparent 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+[data-theme="parchment"] .portrait-overlay {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.96) 0%, transparent 100%);
+}
+.portrait-tag {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--tx);
+}
+.portrait-tag small {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mu);
+}
+
+/* Floating Skill Pill Badges around Portrait */
+.float-tag {
+  position: absolute;
+  z-index: 4;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(13, 20, 34, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--line-strong);
+  color: var(--tx);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: float-tag 6s infinite ease-in-out alternate;
+}
+.float-tag-1 { top: 30px; left: -20px; border-color: rgba(56, 213, 240, 0.4); color: var(--cy); }
+.float-tag-2 { bottom: 60px; right: -20px; border-color: rgba(244, 63, 94, 0.4); color: var(--rose); animation-delay: -3s; }
+@keyframes float-tag {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* ==========================================================================
+   SECTIONS GENERAL
+   ========================================================================== */
+section {
+  padding: 96px 0;
+  position: relative;
+}
+.sec-head {
+  margin-bottom: 44px;
+}
+.sec-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cy);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 8px;
+}
+h2.sec-title {
+  font: 700 clamp(32px, 4.8vw, 46px)/1.15 var(--font-serif);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.lead {
+  color: var(--mu);
+  font-size: 17px;
+  max-width: 660px;
+  line-height: 1.65;
+}
+
+/* ==========================================================================
+   VISUALS & CAMPUS SHOWCASE SECTION
+   ========================================================================== */
+#moments {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.moments-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 30px;
+}
+.moment-card {
+  position: relative;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+.moment-card:hover {
+  border-color: var(--cy);
+  transform: translateY(-4px);
+}
+.moment-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #0a0f18;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.moment-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.moment-card:hover .moment-media img {
+  transform: scale(1.04);
+}
+.moment-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 30px;
+  background: radial-gradient(circle at center, rgba(56, 213, 240, 0.08) 0%, transparent 70%);
+  width: 100%;
+  height: 100%;
+}
+.moment-placeholder-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--panel-hover);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--cy);
+}
+.moment-content {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.moment-badge-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.moment-title {
+  font: 700 22px var(--font-serif);
+  margin-bottom: 8px;
+}
+.moment-desc {
+  font-size: 14px;
+  color: var(--tx-sec);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.moment-loc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--mu);
+}
+
+.moments-side-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 30px;
+}
+.moment-card-compact {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+.moment-card-compact:hover {
+  border-color: var(--rose);
+  transform: translateY(-3px);
+}
+.moment-card-compact .moment-media {
+  aspect-ratio: auto;
+  height: 100%;
+}
+.moment-card-compact .moment-content {
+  padding: 20px;
+}
+#stageMedia {
+  position: relative;
+  background: #060911;
+  min-height: 230px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#stageImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%; /* Perfectly frames Imran on stage */
+  transition: transform 0.4s ease;
+}
+.moment-card-compact:hover #stageImg {
+  transform: scale(1.05);
+}
+#profileMedia {
+  position: relative;
+  background: #060911;
+  min-height: 230px;
+  overflow: hidden;
+}
+#profileImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.4s ease;
+}
+.moment-card-compact:hover #profileImg {
+  transform: scale(1.05);
+}
+#pimg {
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* ==========================================================================
+   PROJECTS SECTION - JAVASCRIPT ONE-BY-ONE SLIDER (COMPACT LENGTH)
+   ========================================================================== */
+#projects {
+  background: var(--bg);
+  position: relative;
+}
+.proj-carousel-container {
+  position: relative;
+  background: linear-gradient(135deg, var(--panel) 0%, #152238 100%);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+[data-theme="parchment"] .proj-carousel-container {
+  background: linear-gradient(135deg, #ffffff 0%, #f7f2e7 100%);
+  border-color: var(--line-strong);
+}
+
+/* Quick Jump Project Navigation Pills */
+.proj-tabs-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 16px 22px 14px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.22);
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+[data-theme="parchment"] .proj-tabs-bar {
+  background: rgba(0, 0, 0, 0.03);
+}
+.proj-pill-btn {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--tx-sec);
+  padding: 7px 15px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+.proj-pill-btn:hover {
+  border-color: var(--cy);
+  color: var(--tx);
+  transform: translateY(-1px);
+}
+.proj-pill-btn.active {
+  background: linear-gradient(135deg, var(--cy), #0ea5e9);
+  border-color: var(--cy);
+  color: #03131a;
+  box-shadow: 0 4px 14px var(--cy-glow);
+  font-weight: 700;
+}
+
+/* Active Slide Card Display */
+.proj-slide {
+  padding: 34px;
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: 34px;
+  align-items: stretch;
+  min-height: 400px;
+  animation: projSlideIn 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes projSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.proj-slide-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.proj-slide-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.proj-slide h3 {
+  font: 700 clamp(26px, 3.4vw, 34px)/1.15 var(--font-serif);
+  color: var(--tx);
+  margin-bottom: 6px;
+}
+.proj-slide-tagline {
+  font: italic 17px/1.4 var(--font-serif);
+  color: var(--cy);
+  margin-bottom: 14px;
+}
+[data-theme="parchment"] .proj-slide-tagline { color: var(--rose); }
+
+.proj-slide-desc {
+  font-size: 15px;
+  line-height: 1.68;
+  color: var(--tx-sec);
+  margin-bottom: 20px;
+}
+.proj-slide-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 22px;
+}
+.proj-badge-pill {
+  font: 500 11px var(--font-mono);
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--tx-sec);
+}
+
+.proj-slide-side {
+  background: var(--panel-hover);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+[data-theme="parchment"] .proj-slide-side {
+  background: #fdfbf7;
+}
+.code-window-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid var(--line);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  margin: -24px -24px 14px -24px;
+}
+[data-theme="parchment"] .code-window-topbar {
+  background: rgba(0, 0, 0, 0.05);
+}
+.code-window-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.w-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.w-dot.red { background: #ff5f56; }
+.w-dot.yellow { background: #ffbd2e; }
+.w-dot.green { background: #27c93f; }
+.code-window-file {
+  font: 500 12px var(--font-mono);
+  color: var(--tx-sec);
+}
+.code-window-tag {
+  font: 600 10.5px var(--font-mono);
+  color: var(--cy);
+  background: rgba(56, 213, 240, 0.12);
+  border: 1px solid rgba(56, 213, 240, 0.25);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+[data-theme="parchment"] .code-window-tag {
+  color: var(--rose);
+  background: rgba(190, 18, 60, 0.1);
+  border-color: rgba(190, 18, 60, 0.25);
+}
+.proj-side-title {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cy);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+[data-theme="parchment"] .proj-side-title { color: var(--rose); }
+
+.proj-highlights-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.proj-highlights-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--tx-sec);
+}
+.proj-highlights-list li::before {
+  content: '⚡';
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 11px;
+}
+.proj-highlights-list b {
+  color: var(--tx);
+  display: block;
+  font-size: 14px;
+  margin-bottom: 1px;
+}
+
+/* Projects Controls Bar (Prev / Next & Dots) */
+.proj-ctrl-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 26px;
+  background: rgba(0, 0, 0, 0.28);
+  border-top: 1px solid var(--line);
+}
+[data-theme="parchment"] .proj-ctrl-bar {
+  background: rgba(0, 0, 0, 0.04);
+}
+.carousel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--tx);
+  font: 600 13px var(--font-sans);
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+.carousel-btn:hover {
+  border-color: var(--cy);
+  color: var(--cy);
+  transform: translateY(-1px);
+}
+.btn-text-short { display: none; }
+.btn-text-full { display: inline; }
+.carousel-mobile-counter { display: none; }
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--line-strong);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+}
+.dot.active {
+  width: 24px;
+  border-radius: 6px;
+  background: var(--cy);
+  box-shadow: 0 0 12px var(--cy-glow);
+}
+.dot.rose-active {
+  background: var(--rose);
+  box-shadow: 0 0 12px var(--rose-glow);
+}
+
+/* ==========================================================================
+   LAFZ-E-ALI URDU SHAYARI - JAVASCRIPT ONE-BY-ONE CAROUSEL (URDU SCRIPT)
+   ========================================================================== */
+#poetry {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+[data-theme="parchment"] #poetry {
+  background: #fdfaf3;
+}
+.poetry-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rose);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.poetry-carousel-wrap {
+  position: relative;
+  background: linear-gradient(135deg, rgba(13, 20, 34, 0.88) 0%, rgba(20, 31, 51, 0.72) 100%);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+[data-theme="parchment"] .poetry-carousel-wrap {
+  background: linear-gradient(135deg, #ffffff 0%, #fdf8ed 100%);
+  border-color: #cdbc9d;
+}
+
+.poetry-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 26px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.2);
+}
+[data-theme="parchment"] .poetry-top-bar {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.poetry-category-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cat-pill {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--tx-sec);
+  padding: 7px 15px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+.cat-pill:hover {
+  border-color: var(--rose);
+  color: var(--tx);
+  transform: translateY(-1px);
+}
+.cat-pill.active {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #ffffff;
+  box-shadow: 0 4px 14px var(--rose-glow);
+  font-weight: 700;
+}
+
+.poetry-counter-pill {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rose);
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+}
+
+/* The Active Verse Display Card */
+.poetry-card-active {
+  padding: 34px 34px 26px;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: verseSlideIn 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes verseSlideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.poetry-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.poetry-card-badge {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--rose);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.poetry-titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.poetry-urdu-title {
+  font-family: var(--font-urdu), 'Amiri', serif;
+  font-size: clamp(23px, 3.2vw, 30px);
+  font-weight: 700;
+  color: var(--tx);
+  direction: rtl;
+  text-align: right;
+  line-height: 1.5;
+}
+.poetry-roman-title {
+  font: italic 500 15px var(--font-serif);
+  color: var(--mu);
+  letter-spacing: 0.04em;
+}
+
+/* Authentic Nastaliq Urdu Text Box */
+.urdu-verse-box {
+  background: rgba(244, 63, 94, 0.04);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+  border-radius: 16px;
+  padding: 22px 26px;
+  margin-bottom: 16px;
+  position: relative;
+}
+[data-theme="parchment"] .urdu-verse-box {
+  background: rgba(190, 18, 60, 0.04);
+  border-color: rgba(190, 18, 60, 0.22);
+}
+.urdu-text {
+  font-family: var(--font-urdu), 'Noto Nastaliq Urdu', 'Amiri', serif;
+  direction: rtl;
+  text-align: right;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 2.2;
+  color: var(--tx);
+  font-weight: 600;
+  white-space: pre-line;
+}
+[data-theme="parchment"] .urdu-text {
+  color: #1c1917;
+}
+
+.roman-verse-sub {
+  font: italic 400 clamp(14px, 1.8vw, 16px)/1.75 var(--font-serif);
+  color: var(--tx-sec);
+  white-space: pre-line;
+  padding-left: 14px;
+  border-left: 2px solid var(--rose);
+  margin-bottom: 18px;
+}
+[data-theme="parchment"] .roman-verse-sub {
+  color: #37332f;
+}
+
+.stage-cue-banner {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--amber);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Poetry Actions Bar */
+.poetry-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.poetry-action-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.v-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--tx-sec);
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+.v-btn:hover {
+  color: var(--tx);
+  border-color: var(--rose);
+  transform: translateY(-1px);
+}
+.v-btn.liked {
+  color: var(--rose);
+  border-color: var(--rose);
+}
+.v-btn svg { width: 15px; height: 15px; }
+
+.poetry-ctrl-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 26px;
+  background: rgba(0, 0, 0, 0.28);
+  border-top: 1px solid var(--line);
+}
+[data-theme="parchment"] .poetry-ctrl-bar {
+  background: rgba(0, 0, 0, 0.04);
+}
+.poetry-ctrl-bar .carousel-btn:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
+/* Collapsible Full Script Drawer for Stage / All Ash'aar */
+.poetry-all-drawer {
+  margin-top: 24px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(244, 63, 94, 0.03);
+}
+.poetry-all-drawer p {
+  font-size: 14px;
+  color: var(--tx-sec);
+  margin: 0;
+}
+.poetry-full-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(12px);
+  padding: 24px;
+  align-items: center;
+  justify-content: center;
+}
+.poetry-full-modal.open {
+  display: flex;
+}
+.poetry-full-dialog {
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  max-width: 820px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.poetry-full-head {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.poetry-full-body {
+  padding: 24px;
+  overflow-y: auto;
+  display: grid;
+  gap: 20px;
+}
+
+/* ==========================================================================
+   ABOUT & JOURNEY SECTION
+   ========================================================================== */
+#about {
+  background: var(--bg);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: start;
+}
+.about-text p {
+  color: var(--tx-sec);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.skills-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px;
+}
+.skills-box h4 {
+  font: 700 20px var(--font-serif);
+  margin-bottom: 18px;
+}
+.skill-category {
+  margin-bottom: 20px;
+}
+.skill-category h5 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mu);
+  margin-bottom: 8px;
+}
+.skill-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skill-pill {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--tx);
+}
+
+/* ==========================================================================
+   CONTACT SECTION (LIVE SHEET ATTACHED)
+   ========================================================================== */
+#contact {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--line);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 50px;
+}
+.contact-info p {
+  color: var(--tx-sec);
+  font-size: 16px;
+  line-height: 1.65;
+  margin-bottom: 26px;
+}
+.contact-details {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.c-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--cy);
+  flex-shrink: 0;
+}
+.c-text b {
+  display: block;
+  font-size: 13px;
+  color: var(--mu);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.c-text span, .c-text a {
+  font-size: 15px;
+  color: var(--tx);
+  word-break: break-all;
+}
+
+/* Submission Form */
+.form-box {
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 34px;
+  box-shadow: var(--shadow);
+}
+.form-grid {
+  display: grid;
+  gap: 18px;
+}
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+label.field {
+  display: grid;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--tx-sec);
+}
+input, select, textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(5, 8, 15, 0.6);
+  color: var(--tx);
+  transition: var(--transition);
+}
+[data-theme="parchment"] input, [data-theme="parchment"] select, [data-theme="parchment"] textarea {
+  background: #ffffff;
+  border-color: #d1c5ad;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--cy);
+  background: rgba(5, 8, 15, 0.85);
+  box-shadow: 0 0 0 3px var(--cy-glow);
+  outline: none;
+}
+textarea { resize: vertical; min-height: 110px; }
+.honeypot { position: absolute; left: -9999px; }
+
+/* Polite & Clean Submission Confirmation Message */
+.form-status {
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  display: none;
+}
+.form-status.success {
+  display: block;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: var(--tx);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 44px 0;
+  background: var(--bg);
+  color: var(--mu);
+  font-size: 14px;
+}
+.footer-w {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-quote {
+  font: italic 14px var(--font-serif);
+  color: var(--tx-sec);
+}
+.footer-links {
+  display: flex;
+  gap: 22px;
+}
+.footer-links a:hover { color: var(--cy); }
+
+/* Toast Notifications */
+.toast {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  z-index: 9999;
+  background: var(--panel);
+  border: 1px solid var(--cy);
+  color: var(--tx);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), var(--shadow-glow);
+  display: none;
+  align-items: center;
+  gap: 10px;
+  animation: slide-up 0.25s ease;
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (OPTIMIZED FOR MOBILE & TABLET)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .hero, .about-grid, .contact-grid, .moments-grid, .proj-slide {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .hero { padding: 24px 0 20px; }
+  .proj-slide { padding: 24px 20px; min-height: auto; }
+  .poetry-card-active { padding: 24px 20px 20px; min-height: auto; }
+  .portrait-card { max-width: 260px; margin: 0 auto; }
+  .float-tag { display: none; }
+  nav.nav-desktop { display: none; }
+  .menu-toggle { display: block; }
+}
+
+@media (max-width: 680px) {
+  /* Trim secondary verbose content on mobile so page length is drastically reduced */
+  .proj-slide-side {
+    display: none !important;
+  }
+  /* Show moments side grid as a sleek 2-column layout (Laptop & Stage side-by-side) with NO ghost row */
+  .moments-side-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto !important;
+    gap: 12px !important;
+    margin: 0 !important;
+  }
+  .moments-grid {
+    gap: 14px !important;
+    margin-bottom: 0 !important;
+  }
+  .moment-card-compact {
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 !important;
+  }
+  .moment-card-compact .moment-media {
+    height: 125px !important;
+    min-height: 125px !important;
+    max-height: 125px !important;
+  }
+  .moment-card-compact .moment-content {
+    padding: 10px 12px !important;
+  }
+  .moment-card-compact .moment-content p {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Page Spacing & Typography */
+  .w { padding: 0 16px; }
+  section { padding: 26px 0 20px !important; }
+  .sec-head { margin-bottom: 14px !important; }
+  .sec-head .lead { display: none !important; /* Remove multi-line intro paragraphs under titles on phone view */ }
+  h2.sec-title { font-size: 23px; line-height: 1.2; margin-bottom: 6px; }
+
+  /* Header on Mobile */
+  header .w { height: 58px; }
+  .brand-mark { width: 34px; height: 34px; font-size: 16px; border-radius: 10px; }
+  .brand-title { font-size: 16px; }
+  .brand-sub { font-size: 9.5px; }
+  .mobile-nav { top: 58px; padding: 16px 18px; gap: 10px; }
+  .mobile-nav a { font-size: 14.5px; padding: 6px 0; }
+
+  /* Hero Section on Mobile (me.jpg perfectly sized in TOP RIGHT CORNER) */
+  .hero-wrap { padding-top: 12px; }
+  .hero {
+    position: relative !important;
+    display: block !important;
+    padding: 6px 0 12px !important;
+    gap: 0 !important;
+  }
+  .hero-intro-header {
+    min-height: clamp(114px, 30vw, 130px) !important;
+    padding-right: clamp(120px, 32vw, 138px) !important;
+    margin-bottom: 6px !important;
+  }
+  .hero-tag {
+    font-size: 10px !important;
+    padding: 3px 9px !important;
+    margin-bottom: 6px !important;
+    white-space: normal !important;
+    line-height: 1.35 !important;
+    display: inline-flex !important;
+  }
+  h1.hero-title {
+    font-size: clamp(23px, 6vw, 28px) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 6px !important;
+    word-break: break-word !important;
+  }
+  .hero-type-wrap {
+    font-size: 13.5px !important;
+    min-height: 20px !important;
+    margin-bottom: 8px !important;
+  }
+
+  /* me.jpg Portrait in Top Right Corner on Mobile */
+  .hero-visual {
+    position: absolute !important;
+    top: 4px !important;
+    right: 0 !important;
+    z-index: 5 !important;
+    margin: 0 !important;
+    width: clamp(108px, 29vw, 126px) !important;
+    height: clamp(108px, 29vw, 126px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .portrait-aura {
+    width: 125% !important;
+    height: 125% !important;
+    filter: blur(18px) !important;
+    opacity: 0.8 !important;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, rgba(6, 182, 212, 0.25) 50%, transparent 75%) !important;
+  }
+  .portrait-card {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 22px !important;
+    border: 2px solid rgba(16, 185, 129, 0.6) !important;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 8px 24px rgba(0, 0, 0, 0.65) !important;
+    overflow: hidden !important;
+    position: relative !important;
+    background: #060911 !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+  #pimg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 18% !important;
+    border-radius: 20px !important;
+    display: block !important;
+  }
+  .portrait-avatar-placeholder {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 20px !important;
+  }
+  .portrait-avatar-placeholder .monogram {
+    font-size: 32px !important;
+  }
+  .portrait-avatar-placeholder .monogram-sub {
+    font-size: 9.5px !important;
+  }
+  .portrait-overlay {
+    position: absolute !important;
+    inset: auto 0 0 0 !important;
+    background: linear-gradient(to top, rgba(3, 10, 18, 0.85) 0%, transparent 100%) !important;
+    padding: 3px 6px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .portrait-overlay .portrait-tag {
+    display: none !important;
+  }
+  .portrait-overlay .badge {
+    font-size: 9px !important;
+    padding: 2px 7px !important;
+    border-radius: 999px !important;
+  }
+
+  .hero-bio {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 14px !important;
+    width: 100% !important;
+    clear: both !important;
+  }
+  
+  .hero-acts { gap: 8px; margin-bottom: 16px; }
+  .hero-acts .btn {
+    padding: 9px 14px;
+    font-size: 12.5px;
+    flex: 1 1 calc(50% - 8px);
+    text-align: center;
+  }
+  .hero-acts .btn:last-child {
+    flex: 1 1 100%;
+  }
+
+  /* Compact 3-Column Stats Row on Mobile */
+  .hero-stats {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px;
+    padding-top: 10px;
+    margin-bottom: 4px;
+  }
+  .stat-item h4 { font-size: 19px; }
+  .stat-item p { font-size: 9.5px; letter-spacing: 0.02em; }
+
+  /* Featured Couplet Quote Strip on Mobile (Roman English Only) */
+  .hero-quote-strip {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 12px 14px;
+    margin-top: 14px;
+    border-radius: 12px;
+  }
+  .quote-icon {
+    display: none;
+  }
+  .hero-quote-urdu {
+    display: none !important; /* Hide Urdu couplet in mobile hero */
+  }
+  .hero-quote-roman {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    color: var(--tx) !important;
+    font-style: italic !important;
+  }
+  .quote-author {
+    text-align: right;
+  }
+
+  /* =========================================================================
+     CAROUSEL CONTROLS BAR (FIXES NEXT BUTTON VISIBILITY ON ALL PHONES)
+     ========================================================================= */
+  .btn-text-short { display: inline !important; }
+  .btn-text-full { display: none !important; }
+  .carousel-dots { display: none !important; /* Hides overflowing dots that pushed Next off-screen */ }
+
+  .carousel-mobile-counter {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    font: 700 12px var(--font-mono);
+    color: var(--tx-sec);
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--line);
+    flex-shrink: 0;
+  }
+
+  .proj-ctrl-bar, .poetry-ctrl-bar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+
+  .poetry-ctrl-bar .carousel-btn,
+  .proj-ctrl-bar .carousel-btn {
+    flex: 0 0 auto !important;
+    min-width: 82px !important;
+    padding: 7px 12px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+  }
+
+  /* Highlight Next Buttons prominently so visitors see and tap them instantly */
+  #nextPoetryBtn {
+    background: linear-gradient(135deg, var(--rose), #e11d48) !important;
+    border-color: var(--rose) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px var(--rose-glow) !important;
+  }
+  #nextProjBtn {
+    background: linear-gradient(135deg, var(--cy), #0ea5e9) !important;
+    border-color: var(--cy) !important;
+    color: #03131a !important;
+    box-shadow: 0 4px 12px var(--cy-glow) !important;
+  }
+
+  /* Projects Carousel on Mobile */
+  .proj-tabs-bar {
+    padding: 8px 12px 6px;
+    gap: 6px;
+    scrollbar-width: none;
+  }
+  .proj-tabs-bar::-webkit-scrollbar { display: none; }
+  .proj-pill-btn {
+    padding: 5px 10px;
+    font-size: 11.5px;
+  }
+  .proj-slide {
+    padding: 16px 14px 12px;
+    gap: 12px;
+  }
+  .proj-slide h3 {
+    font-size: 19px;
+    margin-bottom: 2px;
+  }
+  .proj-slide-tagline {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .proj-slide-desc {
+    font-size: 13px;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .proj-slide-tags {
+    gap: 4px;
+    margin-bottom: 12px;
+  }
+  .proj-badge-pill {
+    font-size: 10px;
+    padding: 3px 7px;
+  }
+
+  /* Poetry Carousel on Mobile - Compact & 100% Authentic Urdu Script */
+  .poetry-top-bar {
+    padding: 8px 12px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+  }
+  .poetry-top-bar::-webkit-scrollbar { display: none; }
+  .poetry-category-pills {
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+  .cat-pill {
+    padding: 4px 9px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .poetry-counter-pill {
+    font-size: 10.5px;
+    padding: 3px 8px;
+    flex-shrink: 0;
+  }
+  .poetry-card-active {
+    padding: 14px 14px 10px !important;
+    min-height: auto !important;
+  }
+  .poetry-titles {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-bottom: 6px !important;
+  }
+  .poetry-urdu-title {
+    display: none !important; /* Hide Urdu title on mobile */
+  }
+  .poetry-urdu-attr {
+    display: none !important; /* Hide Urdu kalam credit on mobile */
+  }
+  .poetry-roman-title {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--tx) !important;
+    display: block !important;
+  }
+  .stage-cue-banner {
+    display: none !important;
+  }
+  .urdu-verse-box {
+    display: none !important; /* Hide Urdu Nastaliq verse box on mobile */
+  }
+  .roman-verse-sub {
+    display: block !important; /* Show ONLY Roman English verse */
+    font-family: var(--font-serif), 'Playfair Display', Georgia, serif !important;
+    font-size: 15.5px !important;
+    line-height: 1.85 !important;
+    color: var(--tx) !important;
+    font-style: italic !important;
+    background: rgba(244, 63, 94, 0.05) !important;
+    border: 1px solid rgba(244, 63, 94, 0.22) !important;
+    border-left: 3px solid var(--rose) !important;
+    border-radius: 12px !important;
+    padding: 16px 16px !important;
+    margin: 8px 0 12px !important;
+    white-space: pre-line !important;
+  }
+  [data-theme="parchment"] .roman-verse-sub {
+    background: rgba(190, 18, 60, 0.04) !important;
+    border-color: rgba(190, 18, 60, 0.25) !important;
+    border-left-color: #be123c !important;
+    color: #1c1917 !important;
+  }
+  .poetry-card-actions {
+    padding-top: 10px;
+    gap: 6px;
+  }
+  .poetry-action-group {
+    gap: 6px;
+  }
+  .poetry-action-group .copy-urdu-btn {
+    display: none !important; /* Hide Copy Urdu on mobile */
+  }
+  .poetry-action-group .copy-roman-btn {
+    display: inline-flex !important; /* Show Copy Roman on mobile */
+    background: rgba(244, 63, 94, 0.12) !important;
+    border-color: rgba(244, 63, 94, 0.3) !important;
+    color: var(--rose) !important;
+  }
+  .v-btn {
+    padding: 6px 10px;
+    font-size: 11.5px;
+  }
+
+  /* Full Script Drawer on Mobile: Sleek compact button */
+  .poetry-all-drawer {
+    display: flex !important;
+    justify-content: center !important;
+    padding: 8px 12px !important;
+    margin-top: 10px !important;
+    border: none !important;
+    background: transparent !important;
+  }
+  .poetry-all-drawer > div {
+    display: none !important; /* Hide long description */
+  }
+  .poetry-all-drawer button {
+    width: 100% !important;
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+    border-radius: 999px !important;
+  }
+
+  /* Full Script Modal on Mobile */
+  .poetry-full-modal {
+    padding: 12px;
+  }
+  .poetry-full-dialog {
+    max-height: 92vh;
+    border-radius: 16px;
+  }
+  .poetry-full-head {
+    padding: 12px 14px;
+  }
+  .poetry-full-body {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  /* Campus & Life Moments on Mobile: Clean campus card + 2-col side moments (Zero Ghost Space) */
+  .moments-grid {
+    gap: 14px !important;
+    margin-bottom: 0 !important;
+  }
+  .moments-side-grid {
+    grid-template-rows: auto !important;
+    margin-bottom: 0 !important;
+  }
+  .moment-media {
+    aspect-ratio: 16/9;
+    max-height: 170px !important;
+  }
+  #campusMedia {
+    height: 170px !important;
+    max-height: 170px !important;
+  }
+  #stageMedia, #profileMedia {
+    height: 125px !important;
+    min-height: 125px !important;
+    max-height: 125px !important;
+  }
+  #stageImg {
+    object-position: center 18% !important; /* Perfectly frame Imran and microphone */
+  }
+  .moment-placeholder p {
+    display: none !important;
+  }
+  .moment-content {
+    padding: 12px 14px !important;
+  }
+  .moment-title {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .moment-desc {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* Seamless transition into About Section (completely eliminates dead space before The Builder & Poet) */
+  #moments {
+    padding-bottom: 16px !important;
+  }
+  #about {
+    padding-top: 18px !important;
+  }
+
+  /* About & Skills on Mobile: Punchy and compact */
+  .about-extra-p {
+    display: none !important; /* Hide redundant paragraphs on phone view */
+  }
+  .about-text p {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 12px !important;
+  }
+  .skills-box {
+    padding: 16px 14px !important;
+    margin-top: 8px !important;
+    border-radius: 14px !important;
+  }
+  .skills-box h4 {
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+  }
+  .skill-category {
+    margin-bottom: 10px !important;
+  }
+  .skill-category h5 {
+    font-size: 11px !important;
+    margin-bottom: 5px !important;
+  }
+  .skill-pills {
+    gap: 5px !important;
+  }
+  .skill-pill {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    border-radius: 6px !important;
+  }
+
+  /* Contact Form on Mobile: Compact pills above form */
+  .contact-lead-p {
+    display: none !important;
+  }
+  .contact-info {
+    margin-bottom: 0 !important;
+  }
+  .contact-details {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+  .contact-item {
+    padding: 6px 12px !important;
+    background: var(--panel) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: 999px !important;
+    gap: 6px !important;
+    align-items: center !important;
+  }
+  .contact-item .c-icon, .contact-item .c-text b {
+    display: none !important;
+  }
+  .contact-item .c-text span, .contact-item .c-text a {
+    font-size: 12px !important;
+  }
+  .form-box {
+    padding: 18px 14px !important;
+    border-radius: 14px !important;
+  }
+  .form-row-2 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  /* Prevent iOS Safari auto-zoom on form focus */
+  input, select, textarea {
+    font-size: 16px !important;
+    padding: 10px 12px;
+  }
+
+  /* Footer on Mobile */
+  footer {
+    padding: 24px 0 !important;
+  }
+  .footer-w {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 12px !important;
+  }
+  .footer-links {
+    justify-content: center !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+    font-size: 12.5px !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Ambient Aurora Glow Behind Front View -->
+<div class="aurora-bg">
+  <div class="aurora-blob aurora-blob-1"></div>
+  <div class="aurora-blob aurora-blob-2"></div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="w">
+    <a href="#top" class="brand">
+      <div class="brand-mark">IA</div>
+      <div class="brand-text">
+        <span class="brand-title">Imran Ali</span>
+        <span class="brand-sub">AI Builder · Urdu Poet ‘Ali’</span>
+      </div>
+    </a>
+
+    <nav class="nav-desktop">
+      <a href="#projects">Projects</a>
+      <a href="#poetry">Lafz-e-Ali</a>
+      <a href="#moments">Campus &amp; Life</a>
+      <a href="#about">About &amp; Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Theme Switcher -->
+      <button class="btn-icon" id="themeBtn" aria-label="Toggle theme" title="Switch theme (Midnight / Parchment)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#projects" class="mob-link">Projects</a>
+    <a href="#poetry" class="mob-link">Lafz-e-Ali</a>
+    <a href="#moments" class="mob-link">Campus &amp; Life</a>
+    <a href="#about" class="mob-link">About &amp; Journey</a>
+    <a href="#contact" class="mob-link">Contact Imran</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO & FRONT VIEW SECTION (UPGRADED) -->
+  <section class="hero-wrap">
+    <canvas id="heroCanvas"></canvas>
+    <div class="w">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-intro-header">
+            <div class="hero-tag">
+              <span class="pulse-dot"></span>
+              Presidency University, Bengaluru · 1st Year B.Tech AI &amp; DS
+            </div>
+            <h1 class="hero-title">
+              Imran Ali <span class="glow">(‘Ali’)</span>
+            </h1>
+
+            <!-- Dynamic Typing Effect -->
+            <div class="hero-type-wrap">
+              <span id="typedText">Builds intelligent systems.</span>
+              <span class="cursor"></span>
+            </div>
+          </div>
+
+          <p class="hero-bio">
+            B.Tech in Artificial Intelligence &amp; Data Science at Presidency University. I architect full-stack software and telemetry systems, while penning and performing original Urdu/Hindi poetry on stage.
+          </p>
+
+          <div class="hero-acts">
+            <a class="btn p" href="#projects">Explore Projects ↗</a>
+            <a class="btn" href="#poetry">Read Lafz-e-Ali</a>
+            <a class="btn ghost" href="#contact">Send Message</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h4>5+</h4>
+              <p>Live Projects</p>
+            </div>
+            <div class="stat-item">
+              <h4>50+</h4>
+              <p>Shayari &amp; Nazms</p>
+            </div>
+            <div class="stat-item">
+              <h4>NSS</h4>
+              <p>Stage &amp; Social</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Aura Portrait Card -->
+        <div class="hero-visual">
+          <div class="portrait-aura"></div>
+
+          <!-- Floating Skill Badges -->
+          <div class="float-tag float-tag-1">
+            <span>⚡</span>
+            <span>AI &amp; Data Science</span>
+          </div>
+          <div class="float-tag float-tag-2">
+            <span>🎙️</span>
+            <span>Urdu Poet ‘Ali’</span>
+          </div>
+
+          <div class="portrait-card" id="tiltCard" aria-label="Portrait of Imran Ali">
+            <div class="portrait-avatar-placeholder" id="heroPlaceholder">
+              <div class="monogram">IA</div>
+              <div class="monogram-sub">Lafz-e-Ali</div>
+            </div>
+            <img id="pimg" class="portrait-img" alt="Imran Ali portrait" style="display:none;">
+            <div class="portrait-overlay">
+              <div class="portrait-tag">
+                Imran Ali
+                <small>1st Year B.Tech AI &amp; DS · Urdu Poet</small>
+              </div>
+              <span class="badge emerald">● Open to Work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Front View Featured Couplet Strip (with Authentic Urdu Script) -->
+      <div class="hero-quote-strip">
+        <div class="quote-icon">“</div>
+        <div class="quote-text">
+          <div class="hero-quote-urdu" style="font-family: var(--font-urdu), serif; direction: rtl; text-align: right; font-size: clamp(18px, 2.4vw, 22px); line-height: 2.0; color: var(--tx); font-weight: 600; margin-bottom: 4px;">
+            میں خود کو تراش کے اپنا نیا عکس بناؤں گا، ہر طعنے کے بدلے اپنی جیت کی مٹھائی کھلاؤں گا...<br>
+            <strong>پاپا، آپ سے وعدہ ہے میرا، اب میں کامیاب ہو کر ہی گھر واپس آؤں گا۔</strong>
+          </div>
+          <div class="hero-quote-roman" style="font-size: 13px; font-style: italic; color: var(--mu);">
+            “Main khud ko taraash ke apna naya aks banaunga, har taane ke badle apni jeet ki mithai khilaunga... Papa, aapse waada hai mera, ab main kaamyaab hokar hi ghar wapas aaunga.”
+          </div>
+        </div>
+        <div class="quote-author">
+          <span style="display:block; font-family: var(--font-urdu), serif; font-size: 16px;">— عمران علی ’علی‘</span>
+          <small style="font-size: 11px; color: var(--mu);">Presidency Stage</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION (Dynamic One-by-One Carousel Showcase) -->
+  <section id="projects">
+    <div class="w">
+      <div class="sec-head">
+        <span class="sec-tag">Featured Engineering</span>
+        <h2 class="sec-title">Deployed Systems &amp; Live Projects</h2>
+        <p class="lead">From zero-waste banquet guest management to desktop voice AI and early disaster warning sensors. Cycling interactive showcase (1 of 6) taking minimal page length.</p>
+      </div>
+
+      <div class="proj-carousel-container" id="projectsCarousel">
+        <!-- Quick Jump Tabs Bar -->
+        <div class="proj-tabs-bar" id="projTabsBar" role="tablist">
+          <!-- Filled dynamically by JavaScript -->
+        </div>
+
+        <!-- Active Project Slide Container -->
+        <div id="projSlideContainer">
+          <!-- Filled dynamically by JavaScript -->
+        </div>
+
+        <!-- Carousel Navigation & Indicators -->
+        <div class="proj-ctrl-bar">
+          <button class="carousel-btn" id="prevProjBtn" aria-label="Previous Project">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            <span class="btn-text-full">Previous</span>
+            <span class="btn-text-short">‹ Prev</span>
+          </button>
+          <div class="carousel-dots" id="projDots">
+            <!-- Dots dynamically updated -->
+          </div>
+          <div class="carousel-mobile-counter" id="projMobileCounter">1 / 6</div>
+          <button class="carousel-btn" id="nextProjBtn" aria-label="Next Project">
+            <span class="btn-text-full">Next</span>
+            <span class="btn-text-short">Next ›</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAFZ-E-ALI URDU SHAYARI SECTION (Dynamic One-by-One in Urdu Script) -->
+  <section id="poetry">
+    <div class="w">
+      <div class="sec-head">
+        <span class="poetry-hero-badge">لَفْظِ عَلِی · Lafz-e-Ali</span>
+        <h2 class="sec-title">Original Urdu Shayari &amp; Stage Kalam (اردو شاعری)</h2>
+        <p class="lead">Authentic Urdu poetry penned by Imran Ali under the takhallus <b>‘Ali’</b> (عَلِی). Featuring classical Nastaliq Urdu script with Roman transliteration. One-by-one interactive reader.</p>
+      </div>
+
+      <div class="poetry-carousel-wrap" id="poetryCarousel">
+        <!-- Category Filter & Counter Bar -->
+        <div class="poetry-top-bar">
+          <div class="poetry-category-pills" id="poetryCatPills" role="tablist">
+            <!-- Filled dynamically by JavaScript -->
+          </div>
+          <div class="poetry-counter-pill" id="poetryCounterPill">
+            شعر 01 / 08
+          </div>
+        </div>
+
+        <!-- Active Verse Slide Display -->
+        <div id="poetrySlideContainer">
+          <!-- Filled dynamically by JavaScript -->
+        </div>
+
+        <!-- Navigation Controls Bar -->
+        <div class="poetry-ctrl-bar">
+          <button class="carousel-btn" id="prevPoetryBtn" aria-label="Previous Verse">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            <span class="btn-text-full">پچھلا کلام (Prev)</span>
+            <span class="btn-text-short">‹ پچھلا</span>
+          </button>
+          <div class="carousel-dots" id="poetryDots">
+            <!-- Dots dynamically updated -->
+          </div>
+          <div class="carousel-mobile-counter" id="poetryMobileCounter">1 / 15</div>
+          <button class="carousel-btn" id="nextPoetryBtn" aria-label="Next Verse">
+            <span class="btn-text-full">اگلا کلام (Next)</span>
+            <span class="btn-text-short">اگلا (Next) ›</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Action: Full Script Drawer Toggle for Stage Piece -->
+      <div class="poetry-all-drawer" id="poetryAllDrawer">
+        <div>
+          <p><b>🎙️ مکمل 7 اشعار کا اسٹیج کلام (Complete 7-Stanza Stage Recitation Script)</b></p>
+          <p style="font-size:12px; color:var(--mu); margin-top:2px;">Delivered live at Presidency University &amp; NSS events across Bengaluru.</p>
+        </div>
+        <button class="btn sm ghost" id="openFullScriptBtn">
+          <span>View / Copy Full Script 📜</span>
+        </button>
+      </div>
+
+      <!-- Full Script Modal Popup -->
+      <div class="poetry-full-modal" id="poetryFullModal" role="dialog" aria-hidden="true">
+        <div class="poetry-full-dialog">
+          <div class="poetry-full-head">
+            <div>
+              <h3 style="font: 700 20px var(--font-serif); margin-bottom: 2px;">مکمل اسٹیج کلام · Complete Stage Script</h3>
+              <p style="font-size: 13px; color: var(--mu);">Presidency University, NSS &amp; The Engineering Grind — Imran Ali (‘Ali’)</p>
+            </div>
+            <button class="btn-icon" id="closeFullScriptBtn" aria-label="Close dialog">✕</button>
+          </div>
+          <div class="poetry-full-body" id="fullScriptBody">
+            <!-- Populated by JavaScript -->
+          </div>
+          <div style="padding: 16px 24px; border-top: 1px solid var(--line); display: flex; justify-content: flex-end; gap: 12px; background: var(--panel-hover);">
+            <button class="btn sm" id="modalCopyFullScriptBtn">📋 Copy Complete Urdu Script</button>
+            <button class="btn sm ghost" id="modalCloseBtn">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMPUS & MOMENTS SECTION -->
+  <section id="moments">
+    <div class="w">
+      <div class="sec-head">
+        <span class="sec-tag">Campus Life &amp; Visuals</span>
+        <h2 class="sec-title">Presidency University &amp; Moments</h2>
+        <p class="lead">Where data structures meet poetic stanzas. Highlights of campus life at Presidency University, stage events, and personal portraits.</p>
+      </div>
+
+      <div class="moments-grid">
+        <!-- Featured Campus Card -->
+        <div class="moment-card">
+          <div class="moment-media" id="campusMedia">
+            <img id="campusImg" alt="Presidency University Campus, Bengaluru" style="display:none;">
+            <div class="moment-placeholder" id="campusPlaceholder">
+              <div class="moment-placeholder-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10h1"/><path d="M9 14h1"/><path d="M9 18h1"/><path d="M14 10h1"/><path d="M14 14h1"/><path d="M14 18h1"/></svg>
+              </div>
+              <h4 style="font: 700 20px var(--font-serif); margin-top:4px;">Presidency University Campus</h4>
+              <p style="font-size:13px; color:var(--mu); max-width:400px;">
+                Save your campus photo as <code>campus.jpg</code> in this folder to showcase the university grounds and faculty blocks here.
+              </p>
+            </div>
+          </div>
+          <div class="moment-content">
+            <div>
+              <div class="moment-badge-row">
+                <span class="badge cyan">Campus Grounds</span>
+                <span class="badge indigo">1st Year B.Tech AI &amp; DS</span>
+              </div>
+              <h3 class="moment-title">Presidency University, Bengaluru</h3>
+              <p class="moment-desc">
+                School of Computer Science &amp; Engineering. The hub where AI algorithms are written, student initiatives take root, and lifelong friendships are forged over canteen tea.
+              </p>
+            </div>
+            <div class="moment-loc">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Itgalpur, Rajanakunte, Yelahanka, Bengaluru, Karnataka</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Moments Grid (Personal Portrait & Stage Events) -->
+        <div class="moments-side-grid">
+          <!-- Card 2: Coding Laptop View -->
+          <div class="moment-card-compact">
+            <div class="moment-media" id="profileMedia">
+              <img id="profileImg" alt="Coding Laptop View &amp; AI Systems" style="display:none;">
+              <div class="moment-placeholder" id="profilePlaceholder">
+                <div class="moment-placeholder-icon" style="color:var(--cy);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <div style="font: 700 16px var(--font-serif); color:var(--tx);">Coding &amp; AI Systems</div>
+                <div style="font-size:11px; color:var(--mu);">laptop.jpg</div>
+              </div>
+            </div>
+            <div class="moment-content">
+              <div>
+                <span class="badge cyan" style="margin-bottom:8px;">Coding Setup &amp; AI</span>
+                <h4 style="font: 700 18px var(--font-serif); margin-bottom:6px;">Developer Workflow</h4>
+                <p style="font-size:13px; color:var(--tx-sec); line-height:1.5;">
+                  Python, FastAPI, and IoT telemetry architectures engineered during late-night coding sessions.
+                </p>
+              </div>
+              <div style="font-size:12px; color:var(--mu); margin-top:8px;">
+                B.Tech AI &amp; DS Stack
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Stage Recitations & NSS Events -->
+          <div class="moment-card-compact">
+            <div class="moment-media" id="stageMedia">
+              <img id="stageImg" alt="Stage recitations and NSS cultural events" style="display:none;">
+              <div class="moment-placeholder" id="stagePlaceholder">
+                <div class="moment-placeholder-icon" style="color:var(--amber);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                </div>
+                <div style="font: 700 16px var(--font-serif); color:var(--tx);">Stage &amp; NSS</div>
+                <div style="font-size:11px; color:var(--mu);">stage.jpg</div>
+              </div>
+            </div>
+            <div class="moment-content">
+              <div>
+                <span class="badge amber" style="margin-bottom:8px;">Stage Performer</span>
+                <h4 style="font: 700 18px var(--font-serif); margin-bottom:6px;">Cultural &amp; NSS Events</h4>
+                <p style="font-size:13px; color:var(--tx-sec); line-height:1.5;">
+                  Delivering live mushaira stanzas, connecting with fellow students, and volunteering in community youth drives.
+                </p>
+              </div>
+              <div style="font-size:12px; color:var(--mu); margin-top:8px;">
+                Presidency Univ Auditorium
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & JOURNEY SECTION -->
+  <section id="about">
+    <div class="w">
+      <div class="sec-head">
+        <span class="sec-tag">The Builder &amp; Poet</span>
+        <h2 class="sec-title">About Imran Ali</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I am a first-year undergraduate pursuing my B.Tech in <b>Artificial Intelligence &amp; Data Science</b> at Presidency University, Bengaluru.
+          </p>
+          <p class="about-extra-p">
+            My engineering work bridges analytical rigor and practical utility — whether building <b>EcoPluse</b> to combat event food waste, engineering glacier flood warning telemetry, or developing desktop voice interfaces.
+          </p>
+          <p class="about-extra-p">
+            Alongside code, I write classical and contemporary Urdu/Hindi poetry under the takhallus <b>‘Ali’</b>. As an active volunteer and stage presenter with the <b>National Service Scheme (NSS)</b>, I've brought verses of student struggle, youth ambition, and love to college and community audiences.
+          </p>
+          <div style="display:flex; gap:12px; margin-top:24px;">
+            <a class="btn" href="https://github.com/ia3466999-Ali" target="_blank" rel="noopener noreferrer">
+              GitHub Profile ↗
+            </a>
+            <a class="btn ghost" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="skills-box">
+          <h4>Technical &amp; Creative Toolbelt</h4>
+
+          <div class="skill-category">
+            <h5>AI &amp; Data Science</h5>
+            <div class="skill-pills">
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">Machine Learning</span>
+              <span class="skill-pill">SpeechRecognition</span>
+              <span class="skill-pill">LLM Integration</span>
+              <span class="skill-pill">Pillow Imaging</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h5>Full-Stack &amp; Systems</h5>
+            <div class="skill-pills">
+              <span class="skill-pill">JavaScript (ES6+)</span>
+              <span class="skill-pill">Supabase PostgreSQL</span>
+              <span class="skill-pill">HTML5 Canvas</span>
+              <span class="skill-pill">REST APIs</span>
+              <span class="skill-pill">ESP32 IoT</span>
+              <span class="skill-pill">Git &amp; GitHub</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h5>Creative &amp; Leadership</h5>
+            <div class="skill-pills">
+              <span class="skill-pill">Urdu Shayari (‘Ali’)</span>
+              <span class="skill-pill">Stage Recitation</span>
+              <span class="skill-pill">NSS Volunteering</span>
+              <span class="skill-pill">Public Speaking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION (LIVE GOOGLE SHEET ATTACHED) -->
+  <section id="contact">
+    <div class="w">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="sec-tag">Let's Connect · Raabta</span>
+          <h2 class="sec-title">Send a Message or Submit Your Shayari</h2>
+          <p class="contact-lead-p">
+            Open to AI and software internships, freelance projects, mushaira/stage invitations, or feedback on Lafz-e-Ali. Leave a message below and I will get back to you directly.
+          </p>
+
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="c-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div class="c-text">
+                <b>Email Directly</b>
+                <a href="mailto:ia3466999@gmail.com">ia3466999@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="c-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              </div>
+              <div class="c-text">
+                <b>GitHub</b>
+                <a href="https://github.com/ia3466999-Ali" target="_blank" rel="noopener noreferrer">github.com/ia3466999-Ali ↗</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="c-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="c-text">
+                <b>Campus</b>
+                <span>Presidency University, Rajanakunte, Bengaluru</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submission Form -->
+        <div class="form-box">
+          <form id="contactForm">
+            <div class="form-grid">
+              <div class="form-row-2">
+                <label class="field">
+                  Your Full Name *
+                  <input type="text" name="name" required maxlength="100" placeholder="e.g. Ayesha Khan" autocomplete="name">
+                </label>
+                <label class="field">
+                  Email Address *
+                  <input type="email" name="email" required maxlength="120" placeholder="ayesha@example.com" autocomplete="email">
+                </label>
+              </div>
+
+              <div class="form-row-2">
+                <label class="field">
+                  Phone / WhatsApp (Optional)
+                  <input type="tel" name="phone" maxlength="30" placeholder="+91 98765 43210" autocomplete="tel">
+                </label>
+                <label class="field">
+                  Purpose / Category *
+                  <select name="category" id="formCategory" required>
+                    <option value="Izhaar &amp; Love Poetry">💌 Submit Poetry / Izhaar Lines</option>
+                    <option value="Sad &amp; Dard Shayari">💔 Submit Sad / Dard Shayari</option>
+                    <option value="Mushaira / Stage Invite">🎙️ Poetry / Mushaira Invitation</option>
+                    <option value="Project Collaboration">🤝 Project Collaboration (AI / Web)</option>
+                    <option value="Internship / Hiring">💼 Internship / Job Opportunity</option>
+                    <option value="General Message" selected>💬 General Inquiry / Say Hello</option>
+                  </select>
+                </label>
+              </div>
+
+              <label class="field">
+                Subject or Title
+                <input type="text" name="subject" maxlength="140" placeholder="e.g. Collaboration on AI / Feedback on Lafz-e-Ali">
+              </label>
+
+              <label class="field">
+                Your Message or Shayari Verses *
+                <textarea name="message" required maxlength="3000" placeholder="Write your message or share your original lines here..."></textarea>
+              </label>
+
+              <!-- Anti-spam Honeypot -->
+              <input class="honeypot" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+              <div>
+                <button type="submit" class="btn p" id="submitBtn" style="width:100%; height:48px;">
+                  <span>Send Message</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+              </div>
+
+              <!-- Polite Confirmation Box (Shown immediately upon submission) -->
+              <div class="form-status" id="formStatus" role="status"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="w footer-w">
+    <div>
+      <div style="font: 700 18px var(--font-serif); color:var(--tx); margin-bottom:4px;">Imran Ali (‘Ali’)</div>
+      <div class="footer-quote">“Main khud ko taraash ke apna naya aks banaunga...”</div>
+    </div>
+
+    <div class="footer-links">
+      <a href="#projects">Projects</a>
+      <a href="#poetry">Lafz-e-Ali</a>
+      <a href="#moments">Campus &amp; Life</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div style="font-size:12px; color:var(--mu);">
+      &copy; 2026 Imran Ali · 1st Year B.Tech AI &amp; DS · Presidency University, Bengaluru
+    </div>
+  </div>
+</footer>
+
+<!-- Toast Alert -->
+<div class="toast" id="toastBox">
+  <span id="toastIcon">✓</span>
+  <span id="toastMsg">Action completed</span>
+</div>
+
+<!-- ==========================================================================
+   JAVASCRIPT LOGIC
+   ========================================================================== */
+-->
+<script>
+/**
+ * ----------------------------------------------------------------------------
+ * 1. CONFIGURATION & LIVE EXCEL ATTACHMENT
+ * ----------------------------------------------------------------------------
+ */
+const CONFIG = {
+  // ATTACHED LIVE EXCEL / GOOGLE SPREADSHEET:
+  SPREADSHEET_URL: 'https://docs.google.com/spreadsheets/d/1YSNR8o1CQ-6GOBOVjayhZ3qRc4tzw8zhD2_7ubQTCZw/edit?gid=0#gid=0',
+  SPREADSHEET_ID: '1YSNR8o1CQ-6GOBOVjayhZ3qRc4tzw8zhD2_7ubQTCZw',
+  // Active Web App URL:
+  WEBHOOK_URL: 'https://script.google.com/macros/s/AKfycbzWEAcneHKxxoCHQHeuv7LWVxQCnXepDfs91YmCJedbSSWLQ35kEYV9XqX4Shye3BWXGw/exec', 
+  EMAIL: 'ia3466999@gmail.com',
+  PHONE: '919142749581',
+  PORTRAIT: 'portrait.jpg',
+  CAMPUS: 'campus.jpg',
+  LAPTOP: 'laptop.jpg',
+  STAGE: 'stage.jpg',
+  // High-Aesthetic Stylish Fallback Visuals (Coding Laptop View, Campus & Stage)
+  DEFAULT_PORTRAIT_BG: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80',
+  DEFAULT_CAMPUS_BG: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80',
+  DEFAULT_CODING_BG: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1000&q=80',
+  DEFAULT_STAGE_BG: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=80',
+  SIG: '\n\n— Imran Ali (‘Ali’)'
+};
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/**
+ * ----------------------------------------------------------------------------
+ * 2. LIVE DEPLOYED PROJECTS DATABASE (6 Deployed Systems)
+ * ----------------------------------------------------------------------------
+ */
+const PROJECTS_DATA = [
+  {
+    id: 'ecopluse',
+    badge: 'Flagship Platform',
+    badgeColor: 'cyan',
+    status: 'Live on Render',
+    title: 'EcoPluse 2026',
+    tagline: 'Elevate every event. Master every plate.',
+    desc: 'A comprehensive banquet and wedding guest-management platform that eliminates massive food wastage by equipping hosts and caterers with real-time RSVPs, anti-double-scan admissions, and live kitchen meal counts.',
+    highlights: [
+      { title: 'Zero-Login Magic Links', detail: 'Tamper-proof access roles for Host dashboard, Entry Gate scanners & Kitchen monitors.' },
+      { title: 'Anti-Double-Scan Entry', detail: 'One-time QR pass admission; exact entry timestamp and party headcount logged.' },
+      { title: 'Live Kitchen Display System', detail: 'Real-time counters for Veg, Non-Veg, Jain dietary needs and allergy alerts.' },
+      { title: 'Automated WhatsApp Passes', detail: 'Python Pillow engine stamping custom guest names & QR passes on invites.' }
+    ],
+    tags: ['FastAPI / Python', 'Render Cloud', 'Live QR Scanning', 'Kitchen Telemetry', 'Zero-Waste'],
+    link: 'https://ecopluse-anzr.onrender.com',
+    linkText: 'Open Live Application ↗'
+  },
+  {
+    id: 'sister-bday',
+    badge: 'Creative Web',
+    badgeColor: 'rose',
+    status: 'Live on Netlify',
+    title: 'Birthday Tribute',
+    tagline: 'Celestial celebration canvas crafted for my elder sister.',
+    desc: 'An immersive digital tribute crafted for my sister featuring dynamic starry canvas animations, interactive botanical glow cards, personalized music playback, and heartfelt audio narration.',
+    highlights: [
+      { title: 'Particle Canvas', detail: 'Multi-layer celestial starfield and blooming flower particle animations.' },
+      { title: 'Audio API Integration', detail: 'Interactive music player with customized audio controls.' },
+      { title: 'Responsive Story Cards', detail: 'Fluid mobile-first celebration journey designed for touch devices.' }
+    ],
+    tags: ['HTML5 Canvas', 'Web Audio API', 'CSS Keyframes', 'Netlify Deploy'],
+    link: 'https://sis-birthday-wish-1.netlify.app',
+    linkText: 'Visit Live Tribute ↗'
+  },
+  {
+    id: 'project-mine',
+    badge: 'Web App',
+    badgeColor: 'indigo',
+    status: 'Live on Netlify',
+    title: 'Project Mine',
+    tagline: 'Modular state management & accessible dark UI.',
+    desc: 'A high-performance modern web app engineered to demonstrate modular vanilla JavaScript architecture, fluid card states, and ultra-smooth CSS grid transitions without framework bloat.',
+    highlights: [
+      { title: 'Zero Framework Overhead', detail: 'Pure vanilla JavaScript state management and DOM rendering.' },
+      { title: 'Adaptive Dark Palette', detail: 'Custom CSS variables with fluid high-accessibility contrast.' },
+      { title: 'Instant Load Time', detail: 'Sub-second first contentful paint with zero external runtime dependencies.' }
+    ],
+    tags: ['Vanilla JavaScript', 'State Management', 'CSS Grid', 'Netlify'],
+    link: 'https://project-mine-in.netlify.app',
+    linkText: 'Visit Live Project ↗'
+  },
+  {
+    id: 'superlative',
+    badge: 'Interactive UI',
+    badgeColor: 'amber',
+    status: 'Live on Netlify',
+    title: 'Superlative Showcase',
+    tagline: 'Celebration physics engine & micro-interactions.',
+    desc: 'A delight-driven celebration interface engineered with canvas confetti physics, multi-particle velocity simulation, and interactive accolade cards designed for high user engagement.',
+    highlights: [
+      { title: 'Confetti Physics Engine', detail: 'Realistic gravity, air drag, and velocity particle vectors.' },
+      { title: 'Haptic Micro-interactions', detail: 'Tactile hover and tap feedback tuned for high responsiveness.' },
+      { title: 'Engaging Celebration Flow', detail: 'Interactive celebration accolades and dynamic unlockable states.' }
+    ],
+    tags: ['Canvas Physics', 'Micro-interactions', 'CSS Variables', 'Netlify'],
+    link: 'https://superlative-semifreddo-daf6de.netlify.app',
+    linkText: 'Visit Live Showcase ↗'
+  },
+  {
+    id: 'jarvis',
+    badge: 'AI & Speech',
+    badgeColor: 'cyan',
+    status: 'Presidency R&D',
+    title: 'J.A.R.V.I.S. Voice Assistant',
+    tagline: 'Desktop voice intelligence & system automation.',
+    desc: 'A desktop AI voice assistant combining speech recognition, LLM intelligence, and system automation to handle window management, voice searches, file operations, and intelligent spoken queries.',
+    highlights: [
+      { title: 'Voice-to-Intent Engine', detail: 'SpeechRecognition with noise threshold filtering and fast transcription.' },
+      { title: 'LLM Response Synthesis', detail: 'Natural language understanding generating concise spoken answers.' },
+      { title: 'Desktop Task Automation', detail: 'PyAutoGUI automation for application switching and hotkey execution.' }
+    ],
+    tags: ['Python', 'SpeechRecognition', 'LLM API', 'PyAutoGUI', 'Desktop R&D'],
+    link: '#contact',
+    linkText: 'Request Demo / Code ↗'
+  },
+  {
+    id: 'glof',
+    badge: 'IoT & Telemetry',
+    badgeColor: 'emerald',
+    status: 'Disaster Tech',
+    title: 'GLOF Early Warning System',
+    tagline: 'Glacial Lake Outburst Flood telemetry relay.',
+    desc: 'An edge IoT early warning system designed for remote glacial lakes. Monitors sudden water-level shifts and seismic dam movements using radar sensors and transmits emergency telemetry packets via ESP32 satellite/GSM relays.',
+    highlights: [
+      { title: 'Radar Level Sensing', detail: 'Sub-centimeter precision water rise tracking in freezing high-altitude lakes.' },
+      { title: 'Fail-Safe Telemetry', detail: 'Low-power ESP32 sleep modes with solar charging and emergency burst transmission.' },
+      { title: 'Downstream Alert Mesh', detail: 'Automated sirens and emergency SMS alerts for downstream valley communities.' }
+    ],
+    tags: ['ESP32 Microcontroller', 'Radar Sensors', 'Telemetry Protocol', 'C++ / Arduino'],
+    link: '#contact',
+    linkText: 'Inquire About Research ↗'
+  }
+];
+
+/**
+ * ----------------------------------------------------------------------------
+ * 3. IMRAN ALI'S ORIGINAL URDU SHAYARI DATABASE (Urdu Script + Roman)
+ * ----------------------------------------------------------------------------
+ */
+const SHAYARI_DATA = [
+  // 1. LOVE & IZHAAR (Original Verses in Authentic Urdu + Roman)
+  {
+    cat: 'love',
+    catName: 'عشق و اظہار',
+    badge: '💌 عشق و اظہار · Love & Izhaar',
+    titleUrdu: 'نگاہیں اور محبت',
+    title: 'Ankahi Mohabbat',
+    urdu: `نگاہیں مل جائیں تو نگاہیں ہٹاتی نہیں،
+مجھ سے پہل کی جاتی نہیں، وہ اقرار کرنا چاہتی نہیں،
+فاصلے مٹانے کی کوئی وجہ نظر آتی نہیں،
+ہے محبت اسے بھی، پر جتاتی نہیں۔`,
+    roman: `Nigaahein mil jayein toh nigaahein hataati nahi,
+Mujhse pehel ki jaati nahi, woh iqraar karna chahti nahi,
+Faasle mitane ki koi wajah nazar aati nahi.
+Hai mohabbat use bhi, par jataati nahi.`,
+    mood: 'On silent glances and mutual unspoken love'
+  },
+  {
+    cat: 'love',
+    catName: 'عشق و اظہار',
+    badge: '💌 عشق و اظہار · Love & Izhaar',
+    titleUrdu: 'اظہارِ عشق',
+    title: 'Izhaar-e-Ishq',
+    urdu: `نہ جانے کب سے دفن تھا یہ راز، آج پردہ اٹھانے آیا ہوں،
+خود کو روک نہ سکا، تو دل کی بات بتانے آیا ہوں،
+زندگی بھر محبت جتانے کا حق مانگنے آیا ہوں،
+ہاں، آج میں اظہارِ عشق کرنے آیا ہوں۔`,
+    roman: `Na jane kab se dafan tha ye raaz, aaj parda uthane aaya hoon,
+Khud ko rok na saka, toh dil ki baat batane aaya hoon.
+Zindagi bhar mohabbat jatane ka haq maangne aaya hoon,
+Haan, aaj main izhaar-e-ishq karne aaya hoon.`,
+    mood: 'The courage to finally confess true feelings'
+  },
+  {
+    cat: 'love',
+    catName: 'عشق و اظہار',
+    badge: '💌 عشق و اظہار · Love & Izhaar',
+    titleUrdu: 'زلفیں اور ادائیں',
+    title: 'Zulfen & Adaayein',
+    urdu: `زلفیں کھلی رکھ کر مجھے یوں ستایا نہ کیجیے،
+اپنی اداؤں کا قہر اس قدر ڈھایا نہ کیجیے،
+مجھ جیسے ناچیز کی ایک بات مان لیجیے،
+میں الجھ رہا ہوں ان میں، انہیں سنوار لیجیے۔`,
+    roman: `Zulfen khuli rakh kar mujhe yun sataya na kijiye,
+Apni adaon ka qahar is qadar dhaya na kijiye.
+Mujh jaise nacheez ki ek baat maan lijiye,
+Main ulajh raha hoon inmein, inhein sanwaar lijiye.`,
+    mood: 'Admiration and gentle romance'
+  },
+
+  // 2. SAD, FIRAQ & DARD (Original Verses in Authentic Urdu + Roman)
+  {
+    cat: 'sad',
+    catName: 'فراق و درد',
+    badge: '💔 فراق و درد · Sad & Dard',
+    titleUrdu: 'سجدے اور لفظِ عشق',
+    title: 'Sajde & Lafz-e-Ishq',
+    urdu: `مت مانگ دعاؤں میں اسے اس قدر ٹوٹ کر ’علی‘،
+کہیں بھولاتے ہوئے یہ سجدے نہ کم پڑ جائیں،
+جس کے فراق میں بہا رہا ہے تو اتنے آنسو،
+کہیں لفظِ عشق سے ہی تجھے نفرت نہ ہو جائے۔`,
+    roman: `Mat maang duaon mein usay is qadar toot kar ‘Ali’,
+Kahin bhulate hue yeh sajde na kam pad jayein.
+Jiske firaq mein baha raha hai tu itne aansu,
+Kahin lafz-e-ishq se hi tujhe nafrat na ho jaye.`,
+    mood: 'Prayers, tears and the anguish of separation'
+  },
+  {
+    cat: 'sad',
+    catName: 'فراق و درد',
+    badge: '💔 فراق و درد · Sad & Dard',
+    titleUrdu: 'بھری محفل اور یادیں',
+    title: 'Bhari Mehfil & Yaadein',
+    urdu: `زندہ ہوں مگر اندر سے جینے کی چاہت نہیں،
+اس بھری محفل میں اب میرا کوئی اپنا نہیں،
+وہ اس جہاں سے گئی، میری یادوں سے نہیں،
+میں خود کو بھول سکتا ہوں، اس کی قبر نہیں۔`,
+    roman: `Zinda hu magar ander se jine ki chahat nahi,
+Is bhari mehfil me ab mera koi apna nahi.
+Wo is jahan se gayi, mere yaadon se nahi,
+Mai khud ko bhul sakta hoon, uski kabr nahi.`,
+    mood: 'Loss, solitude, and eternal memory'
+  },
+  {
+    cat: 'sad',
+    catName: 'فراق و درد',
+    badge: '💔 فراق و درد · Sad & Dard',
+    titleUrdu: 'ادھورا وعدہ اور جدائی',
+    title: 'Adhoora Waada & Judaai',
+    urdu: `شاید دونوں میں سے کسی کا وعدہ سچا نہ تھا،
+زندگی چلتی رہی، کسی کا سفر رکا نہ تھا،
+سچ کہوں تو جدائی کا غم اتنا بھی برا نہ تھا،
+وہ بھی خوش تھی وہاں، اور میں بھی مرا نہ تھا۔`,
+    roman: `Shayad dono mein se kisi ka waada saccha na tha,
+Zindagi chalti rahi, kisi ka safar ruka na tha.
+Sach kahun toh judaai ka gham itna bhi bura na tha,
+Woh bhi khush thi wahan, aur main bhi mara na tha.`,
+    mood: 'Acceptance after broken vows'
+  },
+  {
+    cat: 'sad',
+    catName: 'فراق و درد',
+    badge: '💔 فراق و درد · Sad & Dard',
+    titleUrdu: 'رخصتی اور ڈولی',
+    title: 'Rukhsati & Doli',
+    urdu: `محبت کی راکھ پہ اپنی ڈولی سجانے جا رہی ہوں،
+میں اپنے پاپا کے خواب پورے کرنے جا رہی ہوں،
+میری رخصتی کو میری خوشی مت سمجھنا،
+زندہ لاش بن کر کسی اور کا آنگن آباد کرنے جا رہی ہوں۔`,
+    roman: `Mohabbat ki asthi pe apni doli sajane ja rahi hoon..
+Main apne papa ke khwab pure karne ja rahi hoon
+Meri ruksati ko meri khusi mat samjhna.
+Jinda lash ban kar kisi aur ka aangan abad karne ja rahi hoon`,
+    mood: 'Sacrificing personal love for family dreams'
+  },
+  {
+    cat: 'sad',
+    catName: 'فراق و درد',
+    badge: '💔 فراق و درد · Sad & Dard',
+    titleUrdu: 'بے نام تعلق اور خاموشی',
+    title: 'Benaam Ta’alluq & Khamoshi',
+    urdu: `اب جو خاموش ہوں، تو شکایت کیسی،
+جب آپ نے ہی اس تعلق کو نام نہ دیا،
+حیران ہوں کہ کیوں نہ دکھی میری محبت،
+جس کی خاطر میں نے اپنا وجود تک قربان کر دیا۔`,
+    roman: `Ab jo khamosh hoon, toh shikayat kaisi,
+Jab aapne hi is ta’alluq ko naam na diya.
+Hairaan hoon ke kyun na dikhi meri mohabbat,
+Jiski khatir main apna wajood tak qurban kar diya.`,
+    mood: 'Unspoken sacrifices and silence'
+  }
+];
+
+// STAGE PIECE (7 Original Stanzas in Authentic Urdu Script + Performance Cues)
+const STAGE_STANZAS = [
+  {
+    cat: 'stage',
+    num: 'بند 1',
+    numEn: 'Stanza 1',
+    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    titleUrdu: 'آمد',
+    title: 'The Arrival',
+    cue: '🎙️ پراعتماد، دھیمی اور سنجیدہ آواز (Confident stance, warm grounded tone)',
+    urdu: `آشیانے سے دور آیا ہوں، پر دعائیں ساتھ لایا ہوں،
+خواب جو بنے تھے، انہیں مکمل کرنے آیا ہوں۔
+کوشش پوری ہے میری، اور عزم بھی حسین ہے،
+ابو اب آپ کے بیٹے کو، خود پر کامل یقین ہے۔`,
+    roman: `Aashiyane se door aaya hoon, par duaayein sath laya hoon,
+Khwaab jo bune the, unhe muqammal karne aaya hoon.
+Koshish poori hai meri, aur azm bhi haseen hai,
+Abbu ab aapke بیٹے کو, khud par kaamil yakeen hai.`
+  },
+  {
+    cat: 'stage',
+    num: 'بند 2',
+    numEn: 'Stanza 2',
+    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    titleUrdu: 'دوستی اور این ایس ایس کلب',
+    title: 'The friendship and the club',
+    cue: '🎙️ کیمپس کے دوستوں کی طرف دیکھ کر (Looking at NSS friends with warmth)',
+    urdu: `کل تک جو اجنبی تھے، وہ اب یار کہلائیں گے،
+چند ملاقاتوں کی قربت میں، بھائی بن جائیں گے۔
+رنجشیں ہوں گی درمیاں، پر پھر یکجاں ہو جائیں گے،
+پریزیڈنسی کے یہ حسین دن، تاحیات یاد آئیں گے۔`,
+    roman: `Kal tak jo ajnabi the, wo ab yaar kehlayenge,
+Chand mulaqaton ki qurbat mein, bhai ban jayenge.
+Ranjishein hongi darmiyaan, par phir yakjaan ho jayenge,
+Presidency ke ye haseen din, ta-umr yaad aayenge.`
+  },
+  {
+    cat: 'stage',
+    num: 'بند 3',
+    numEn: 'Stanza 3',
+    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    titleUrdu: 'کیمپس کا سبق',
+    title: 'The campus lessons',
+    cue: '🎙️ سنجیدہ اور شکر گزار انداز (Reflective and grateful cadence)',
+    urdu: `اسائنمنٹ کی فکر اور کیمپس کی یہ بھیڑ،
+یہیں سے جگے گی، کچھ پانے کی امید۔
+منزل تک پہنچنے کا وسیلہ بنا دیا،
+پریزیڈنسی نے ہمیں جینے کا سلیقہ سکھا دیا۔`,
+    roman: `Assignment ki fikar aur campus ki ye bheed,
+Yahin se jagegi, kuch paane ki umeed.
+Manzil tak pahunchne ka wasila bana diya,
+Presidency ne humein jeene ka saleeqa sikha diya.`
+  },
+  {
+    cat: 'stage',
+    num: 'بند 4',
+    numEn: 'Stanza 4',
+    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    titleUrdu: 'نئی نسل کی حقیقت',
+    title: 'The Gen Z reality',
+    cue: '🎙️ ہلکی طنزیہ مسکراہٹ کے ساتھ (Sarcastic smirk, raw authenticity)',
+    urdu: `درد کو میمز اور اسٹرگل کو سارکازم میں چھپاتے ہیں،
+ہم راتوں کو جاگ کر اپنی آنے والی صبح سجاتے ہیں۔
+الجھتے ہوئے لگتے ہیں، پر اپنے خوابوں کی قیمت چکاتے ہیں،
+شاید اسی لیے دنیا ہمیں ’Gen Z‘ بلاتے ہیں۔`,
+    roman: `Dard ko memes aur struggle ko sarcasm mein chhupate hain,
+Hum raaton ko jaag kar apni aane wali subah sajate hain.
+Uljhe hue lagte hain, par apne sapno ki keemat chukate hain,
+Shayad isiliye duniya hamein ‘Gen Z’ bulate hain.`
+  },
+  {
+    cat: 'stage',
+    num: 'بند 5',
+    numEn: 'Stanza 5',
+    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    titleUrdu: 'انجینئرنگ کی جدوجہد',
+    title: 'The engineering grind',
+    cue: '🎙️ راتوں کی محنت اور مشقت (Grit and late-night dedication)',
+    urdu: `دنیا گھومتی ہے باہر، ہماری بند کمرے میں آزمائشیں ہوتی ہیں،
+نیند کو قربان کر کے، اپنے کل کی تصویر سجانی ہوتی ہے۔
+ایسے ہی نہیں کہلاتے ہم ’انجینئر‘،
+ہمیں اپنے خوابوں کے لیے خود کی جوانی جلانی ہوتی ہے۔`,
+    roman: `Duniya ghoomti hai bahar, hamari band kamre mein aazmaishein hoti hain,
+Neend ko qurbaan karke, apne kal ki tasveer sajani hoti hai.
+Aise hi nahi kehlate hum ‘Engineer’,
+Hamein apne sapno ke liye khud ki jawani jalani hoti hai.`
+  },
+  {
+    cat: 'stage',
+    num: 'بند 6',
+    numEn: 'Stanza 6',
+    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    titleUrdu: 'پاپا سے وعدہ',
+    title: 'The vow',
+    cue: '🎙️ جذباتی اور اٹل عزم (Deep emotional conviction & promise to father)',
+    urdu: `میں خود کو تراش کے اپنا نیا عکس بناؤں گا،
+ہر طعنے کے بدلے، اپنی جیت کی مٹھائی کھلاؤں گا...
+پاپا، آپ سے وعدہ ہے میرا،
+اب میں کامیاب ہو کر ہی گھر واپس آؤں گا۔`,
+    roman: `Main khud ko tarash ke apna naya aks banaunga,
+Har taane ke badle, apni jeet ki mithai khilaunga.
+Papa, aapse waada hai mera,
+Ab main kaamyaab hokar hi ghar wapas aaunga.`
+  },
+  {
+    cat: 'stage',
+    num: 'بند 7',
+    numEn: 'Stanza 7',
+    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    titleUrdu: 'آخری للکار',
+    title: 'The mic drop',
+    cue: '🎙️ پرجوش، بلند اور فاتحانہ للکار (Loud, victorious, aggressive mic-drop)',
+    urdu: `میں ہارنا بھول چکا ہوں، اب ہار سے رشتہ جوڑ نہیں سکتا،
+جسے جیت کی لت لگ جائے، وہ میدان چھوڑ نہیں سکتا،
+چاہے طوفان بھی آ جائے، میں خود سے کیا وعدہ توڑ نہیں سکتا۔`,
+    roman: `Main harna bhool chuka hoon, ab haar se rista jod nahi sakta,
+Jise jeet ki lat lag jaye, wo maidan chhod nahi sakta.
+Chahe toofan bhi aa jaye, mai khud se kiya wada tod nahi sakta.`
+  }
+];
+
+const POETRY_CATEGORIES = [
+  { id: 'all', name: 'تمام اشعار (All 15)', icon: '✨' },
+  { id: 'love', name: 'عشق و اظہار (Love)', icon: '💌' },
+  { id: 'sad', name: 'فراق و درد (Dard)', icon: '💔' },
+  { id: 'stage', name: 'اسٹیج کلام (Campus Stage)', icon: '🎙️' }
+];
+
+/**
+ * ----------------------------------------------------------------------------
+ * 4. TOAST & NOTIFICATION HELPERS
+ * ----------------------------------------------------------------------------
+ */
+let toastTimer;
+function showToast(msg, icon = '✓') {
+  const t = $('#toastBox');
+  if (!t) return;
+  $('#toastMsg').textContent = msg;
+  $('#toastIcon').textContent = icon;
+  t.style.display = 'flex';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.style.display = 'none'; }, 2600);
+}
+
+function copyToClipboard(text, successMsg = 'Copied to clipboard!') {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => showToast(successMsg, '📋')).catch(() => fallbackCopy(text, successMsg));
+  } else {
+    fallbackCopy(text, successMsg);
+  }
+}
+
+function fallbackCopy(text, successMsg) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  showToast(successMsg, '📋');
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 5. DYNAMIC TYPING EFFECT IN FRONT VIEW
+ * ----------------------------------------------------------------------------
+ */
+const typeWords = [
+  "Architecting AI systems & full-stack platforms.",
+  "Writing authentic Urdu shayari & ghazals as ‘Ali’.",
+  "B.Tech in Artificial Intelligence & Data Science @ Presidency Univ.",
+  "Leading NSS initiatives & campus stage recitations.",
+  "Building EcoPluse 2026 to eliminate banquet food waste."
+];
+let wordIdx = 0, charIdx = 0, isDeleting = false;
+const typeEl = $('#typedText');
+
+function typeLoop() {
+  if (!typeEl) return;
+  const currentWord = typeWords[wordIdx];
+  if (isDeleting) {
+    typeEl.textContent = currentWord.substring(0, charIdx - 1);
+    charIdx--;
+  } else {
+    typeEl.textContent = currentWord.substring(0, charIdx + 1);
+    charIdx++;
+  }
+
+  let speed = isDeleting ? 28 : 60;
+
+  if (!isDeleting && charIdx === currentWord.length) {
+    speed = 2200; // Pause at end of word
+    isDeleting = true;
+  } else if (isDeleting && charIdx === 0) {
+    isDeleting = false;
+    wordIdx = (wordIdx + 1) % typeWords.length;
+    speed = 450;
+  }
+
+  setTimeout(typeLoop, speed);
+}
+typeLoop();
+
+/**
+ * ----------------------------------------------------------------------------
+ * 6. CONSTELLATION & PARTICLE CANVAS WITH MOUSE INTERACTION
+ * ----------------------------------------------------------------------------
+ */
+const canvas = document.getElementById('heroCanvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let w, h;
+  let mouse = { x: null, y: null };
+
+  function resizeCanvas() {
+    w = canvas.width = canvas.parentElement.offsetWidth;
+    h = canvas.height = canvas.parentElement.offsetHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  const heroWrap = document.querySelector('.hero-wrap');
+  if (heroWrap) {
+    heroWrap.addEventListener('mousemove', (e) => {
+      const rect = heroWrap.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+    });
+    heroWrap.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+  }
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * w;
+      this.y = Math.random() * h;
+      this.vx = (Math.random() - 0.5) * 0.45;
+      this.vy = (Math.random() - 0.5) * 0.45;
+      this.radius = Math.random() * 1.8 + 0.6;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > w) this.vx = -this.vx;
+      if (this.y < 0 || this.y > h) this.vy = -this.vy;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(56, 213, 240, 0.45)';
+      ctx.fill();
+    }
+  }
+
+  const particleCount = Math.min(42, Math.floor(window.innerWidth / 30));
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(56, 213, 240, ${0.18 * (1 - dist / 110)})`;
+          ctx.lineWidth = 0.8;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = particles[i].x - mouse.x;
+        const dy = particles[i].y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(56, 213, 240, ${0.25 * (1 - dist / 120)})`;
+          ctx.lineWidth = 1;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 7. 3D CARD TILT MICRO-INTERACTION IN FRONT VIEW
+ * ----------------------------------------------------------------------------
+ */
+const tiltCard = document.getElementById('tiltCard');
+if (tiltCard && window.innerWidth > 900) {
+  tiltCard.addEventListener('mousemove', (e) => {
+    const rect = tiltCard.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    tiltCard.style.transform = `perspective(1000px) rotateY(${x * 0.04}deg) rotateX(${-y * 0.04}deg) translateY(-4px)`;
+  });
+  tiltCard.addEventListener('mouseleave', () => {
+    tiltCard.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0)';
+  });
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 8. JAVASCRIPT PROJECTS CAROUSEL (ONE-BY-ONE COMPACT SHOWCASE)
+ * ----------------------------------------------------------------------------
+ */
+let currentProjectIdx = 0;
+let projectTimer = null;
+
+function renderProjectsCarousel() {
+  const tabsBar = $('#projTabsBar');
+  const slideContainer = $('#projSlideContainer');
+  const dotsContainer = $('#projDots');
+  if (!slideContainer) return;
+
+  const p = PROJECTS_DATA[currentProjectIdx];
+
+  // 1. Render Top Pills
+  tabsBar.innerHTML = PROJECTS_DATA.map((proj, idx) => `
+    <button class="proj-pill-btn ${idx === currentProjectIdx ? 'active' : ''}" data-idx="${idx}">
+      <span>${idx === 0 ? '⭐' : '📦'}</span>
+      <span>${esc(proj.title)}</span>
+    </button>
+  `).join('');
+
+  // 2. Render Active Slide
+  slideContainer.innerHTML = `
+    <div class="proj-slide">
+      <div class="proj-slide-main">
+        <div>
+          <div class="proj-slide-meta">
+            <span class="badge ${esc(p.badgeColor)}">${esc(p.badge)}</span>
+            <span class="badge emerald">● ${esc(p.status)}</span>
+            <span class="badge" style="color:var(--mu);">Project ${currentProjectIdx + 1} of ${PROJECTS_DATA.length}</span>
+          </div>
+          <h3>${esc(p.title)}</h3>
+          <div class="proj-slide-tagline">${esc(p.tagline)}</div>
+          <p class="proj-slide-desc">${esc(p.desc)}</p>
+          <div class="proj-slide-tags">
+            ${p.tags.map(t => `<span class="proj-badge-pill">${esc(t)}</span>`).join('')}
+          </div>
+        </div>
+        <div style="padding-top:14px;">
+          <a class="btn p" href="${esc(p.link)}" target="${p.link.startsWith('#') ? '_self' : '_blank'}" rel="noopener noreferrer">
+            <span>${esc(p.linkText)}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="proj-slide-side">
+        <div>
+          <div class="code-window-topbar">
+            <div class="code-window-dots">
+              <span class="w-dot red"></span>
+              <span class="w-dot yellow"></span>
+              <span class="w-dot green"></span>
+            </div>
+            <span class="code-window-file">💻 ${esc(p.id)}_core.py</span>
+            <span class="code-window-tag">Python 3.11</span>
+          </div>
+          <div class="proj-side-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            System &amp; Architecture Specs
+          </div>
+          <ul class="proj-highlights-list">
+            ${p.highlights.map(h => `
+              <li>
+                <b>${esc(h.title)}</b>
+                ${esc(h.detail)}
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--mu); border-top:1px solid var(--line); padding-top:12px;">
+          <span>⚡ Live Telemetry Active</span>
+          <span style="color:var(--cy); font-weight:600;">Tap Next &rarr;</span>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // 3. Render Dots & Mobile Counter
+  dotsContainer.innerHTML = PROJECTS_DATA.map((_, idx) => `
+    <button class="dot ${idx === currentProjectIdx ? 'active' : ''}" data-idx="${idx}" aria-label="Go to project ${idx + 1}"></button>
+  `).join('');
+  const projMobCounter = $('#projMobileCounter');
+  if (projMobCounter) {
+    projMobCounter.textContent = `${currentProjectIdx + 1} / ${PROJECTS_DATA.length}`;
+  }
+}
+
+function nextProject() {
+  currentProjectIdx = (currentProjectIdx + 1) % PROJECTS_DATA.length;
+  renderProjectsCarousel();
+}
+
+function prevProject() {
+  currentProjectIdx = (currentProjectIdx - 1 + PROJECTS_DATA.length) % PROJECTS_DATA.length;
+  renderProjectsCarousel();
+}
+
+function startProjectAutoplay() {
+  clearInterval(projectTimer);
+  projectTimer = setInterval(nextProject, 7000);
+}
+
+function stopProjectAutoplay() {
+  clearInterval(projectTimer);
+}
+
+function initProjectsCarousel() {
+  const container = $('#projectsCarousel');
+  if (!container) return;
+
+  renderProjectsCarousel();
+  startProjectAutoplay();
+
+  // Mouse & focus pause
+  container.addEventListener('mouseenter', stopProjectAutoplay);
+  container.addEventListener('mouseleave', startProjectAutoplay);
+
+  // Prev / Next Buttons
+  $('#prevProjBtn').addEventListener('click', () => {
+    prevProject();
+    stopProjectAutoplay();
+  });
+  $('#nextProjBtn').addEventListener('click', () => {
+    nextProject();
+    stopProjectAutoplay();
+  });
+
+  // Tab & Dot click delegation
+  container.addEventListener('click', (e) => {
+    const pill = e.target.closest('.proj-pill-btn');
+    if (pill) {
+      currentProjectIdx = parseInt(pill.dataset.idx, 10);
+      renderProjectsCarousel();
+      stopProjectAutoplay();
+      return;
+    }
+    const dot = e.target.closest('.dot');
+    if (dot && dot.closest('#projDots')) {
+      currentProjectIdx = parseInt(dot.dataset.idx, 10);
+      renderProjectsCarousel();
+      stopProjectAutoplay();
+    }
+  });
+
+  // Touch Swipe for Mobile / Phone View
+  let touchStartX = 0;
+  container.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    stopProjectAutoplay();
+  }, { passive: true });
+
+  container.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) nextProject();
+      else prevProject();
+    }
+  }, { passive: true });
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 9. JAVASCRIPT URDU SHAYARI CAROUSEL (ONE-BY-ONE IN AUTHENTIC URDU SCRIPT)
+ * ----------------------------------------------------------------------------
+ */
+let currentPoetryCat = 'all';
+let currentPoetryIdx = 0;
+let poetryTimer = null;
+const likesStore = JSON.parse(localStorage.getItem('imran_likes') || '{}');
+
+function getActivePoetryList() {
+  if (currentPoetryCat === 'love') {
+    return SHAYARI_DATA.filter(v => v.cat === 'love');
+  } else if (currentPoetryCat === 'sad') {
+    return SHAYARI_DATA.filter(v => v.cat === 'sad');
+  } else if (currentPoetryCat === 'stage') {
+    return STAGE_STANZAS;
+  }
+  // 'all' combines both
+  return [...SHAYARI_DATA, ...STAGE_STANZAS];
+}
+
+function renderPoetryCarousel() {
+  const pillsContainer = $('#poetryCatPills');
+  const slideContainer = $('#poetrySlideContainer');
+  const counterPill = $('#poetryCounterPill');
+  const dotsContainer = $('#poetryDots');
+  if (!slideContainer) return;
+
+  const list = getActivePoetryList();
+  if (currentPoetryIdx >= list.length) currentPoetryIdx = 0;
+  const item = list[currentPoetryIdx];
+
+  // 1. Render Category Selector Pills
+  pillsContainer.innerHTML = POETRY_CATEGORIES.map(c => `
+    <button class="cat-pill ${c.id === currentPoetryCat ? 'active' : ''}" data-cat="${c.id}">
+      <span>${c.icon}</span>
+      <span>${esc(c.name)}</span>
+    </button>
+  `).join('');
+
+  // 2. Render Counter
+  const isStageItem = (item.cat === 'stage');
+  const typeLabel = isStageItem ? 'بند' : 'شعر';
+  counterPill.textContent = `${typeLabel} ${currentPoetryIdx + 1} / ${list.length}`;
+
+  // 3. Render Active Verse in Authentic Nastaliq Urdu Script
+  const origIndex = (isStageItem ? 'stage_' : 'shayari_') + currentPoetryIdx;
+  const likeCount = likesStore[origIndex] || 0;
+  const isLiked = likeCount > 0;
+  const shareText = `*${item.titleUrdu}* (${item.title})\n\n${item.urdu}\n\n— عمران علی ’علی‘ (Imran Ali)\nhttps://ia3466999-ali.github.io`;
+  const encodedWhatsApp = encodeURIComponent(shareText);
+
+  slideContainer.innerHTML = `
+    <div class="poetry-card-active">
+      <div>
+        <div class="poetry-card-header">
+          <span class="poetry-card-badge">${esc(item.badge || '🎙️ اسٹیج کلام')}</span>
+          <span class="poetry-urdu-attr" style="font-size:12px; color:var(--mu); font-family:var(--font-urdu), serif; direction:rtl;">
+            کلام: عمران علی ’علی‘
+          </span>
+        </div>
+
+        <div class="poetry-titles">
+          <span class="poetry-roman-title">${esc(item.num ? item.num + ' · ' : '')}${esc(item.title)}</span>
+          <h3 class="poetry-urdu-title">${esc(item.titleUrdu || item.title)}</h3>
+        </div>
+
+        ${item.cue ? `
+          <div class="stage-cue-banner">
+            <span>🎭</span>
+            <span>${esc(item.cue)}</span>
+          </div>
+        ` : ''}
+
+        <!-- Authentic Nastaliq Urdu Text Box -->
+        <div class="urdu-verse-box">
+          <div class="urdu-text" dir="rtl">${esc(item.urdu)}</div>
+        </div>
+
+        <!-- Roman Script Transliteration for Easy Recitation -->
+        <div class="roman-verse-sub">
+          ${esc(item.roman)}
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="poetry-card-actions">
+        <div class="poetry-action-group">
+          <button class="v-btn copy-urdu-btn" data-key="${origIndex}" title="Copy Urdu text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            <span>Copy Urdu 📋</span>
+          </button>
+
+          <button class="v-btn copy-roman-btn" data-key="${origIndex}" title="Copy Roman Urdu text">
+            <span>Copy Roman</span>
+          </button>
+
+          <a class="v-btn" href="https://api.whatsapp.com/send?text=${encodedWhatsApp}" target="_blank" rel="noopener noreferrer" title="Share on WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.41a8.214 8.214 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.188 8.188 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.19-.09-1.11-.55-1.28-.61-.17-.07-.3-.09-.43.1-.12.19-.48.61-.59.73-.11.12-.22.14-.4.05-.19-.09-.79-.29-1.5-1.02-.55-.57-.93-1.27-1.04-1.49-.11-.22-.01-.34.08-.43.08-.08.19-.22.28-.33.09-.11.13-.19.19-.31.06-.13.03-.24-.01-.33-.05-.09-.43-1.03-.59-1.42-.15-.37-.31-.32-.43-.33h-.37c-.13 0-.33.05-.5.24s-.66.65-.66 1.58c0 .94.68 1.84.78 1.97.09.13 1.34 2.05 3.25 2.87.45.2.81.31 1.09.4.46.15.87.13 1.2.08.37-.05 1.11-.45 1.27-.89.16-.44.16-.81.11-.89-.05-.08-.18-.13-.37-.22"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+
+        <button class="v-btn like-btn ${isLiked ? 'liked' : ''}" data-key="${origIndex}" title="داد دیں / Appreciate verse">
+          <svg viewBox="0 0 24 24" fill="${isLiked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span class="like-num">${likeCount > 0 ? likeCount + ' داد' : 'داد / Like'}</span>
+        </button>
+      </div>
+    </div>
+  `;
+
+  // 4. Render Dots & Mobile Counter
+  dotsContainer.innerHTML = list.map((_, idx) => `
+    <button class="dot rose-dot ${idx === currentPoetryIdx ? 'active rose-active' : ''}" data-idx="${idx}" aria-label="Go to verse ${idx + 1}"></button>
+  `).join('');
+  const poetryMobCounter = $('#poetryMobileCounter');
+  if (poetryMobCounter) {
+    poetryMobCounter.textContent = `${currentPoetryIdx + 1} / ${list.length}`;
+  }
+}
+
+function nextPoetry() {
+  const list = getActivePoetryList();
+  currentPoetryIdx = (currentPoetryIdx + 1) % list.length;
+  renderPoetryCarousel();
+}
+
+function prevPoetry() {
+  const list = getActivePoetryList();
+  currentPoetryIdx = (currentPoetryIdx - 1 + list.length) % list.length;
+  renderPoetryCarousel();
+}
+
+function startPoetryAutoplay() {
+  clearInterval(poetryTimer);
+  poetryTimer = setInterval(nextPoetry, 8000);
+}
+
+function stopPoetryAutoplay() {
+  clearInterval(poetryTimer);
+}
+
+function renderFullScriptModal() {
+  const modalBody = $('#fullScriptBody');
+  if (!modalBody) return;
+
+  modalBody.innerHTML = STAGE_STANZAS.map((s, idx) => `
+    <div style="background:var(--panel-hover); border:1px solid var(--line); border-radius:var(--radius-sm); padding:20px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span class="badge rose">${esc(s.num)} · ${esc(s.titleUrdu)}</span>
+        <span style="font-size:12px; color:var(--mu);">${esc(s.title)}</span>
+      </div>
+      ${s.cue ? `<div style="font-size:12px; color:var(--amber); font-style:italic; margin-bottom:10px;">${esc(s.cue)}</div>` : ''}
+      <div class="urdu-text" dir="rtl" style="font-size:22px; line-height:2.1; margin-bottom:12px;">${esc(s.urdu)}</div>
+      <div style="font:italic 14px var(--font-serif); color:var(--tx-sec); padding-left:12px; border-left:2px solid var(--rose); white-space:pre-line;">${esc(s.roman)}</div>
+    </div>
+  `).join('');
+}
+
+function initPoetryCarousel() {
+  const container = $('#poetryCarousel');
+  if (!container) return;
+
+  renderPoetryCarousel();
+  renderFullScriptModal();
+  startPoetryAutoplay();
+
+  // Mouse & focus pause
+  container.addEventListener('mouseenter', stopPoetryAutoplay);
+  container.addEventListener('mouseleave', startPoetryAutoplay);
+
+  // Prev / Next Buttons
+  $('#prevPoetryBtn').addEventListener('click', () => {
+    prevPoetry();
+    stopPoetryAutoplay();
+  });
+  $('#nextPoetryBtn').addEventListener('click', () => {
+    nextPoetry();
+    stopPoetryAutoplay();
+  });
+
+  // Category & Dot click delegation
+  container.addEventListener('click', (e) => {
+    const pill = e.target.closest('.cat-pill');
+    if (pill) {
+      currentPoetryCat = pill.dataset.cat;
+      currentPoetryIdx = 0;
+      renderPoetryCarousel();
+      stopPoetryAutoplay();
+      return;
+    }
+
+    const dot = e.target.closest('.dot');
+    if (dot && dot.closest('#poetryDots')) {
+      currentPoetryIdx = parseInt(dot.dataset.idx, 10);
+      renderPoetryCarousel();
+      stopPoetryAutoplay();
+      return;
+    }
+
+    const copyUrduBtn = e.target.closest('.copy-urdu-btn');
+    if (copyUrduBtn) {
+      const list = getActivePoetryList();
+      const item = list[currentPoetryIdx];
+      const copyText = `${item.titleUrdu} (${item.title})\n\n${item.urdu}\n\n— عمران علی ’علی‘\nhttps://ia3466999-ali.github.io`;
+      copyToClipboard(copyText, 'Urdu Shayari copied with attribution! 📜');
+      return;
+    }
+
+    const copyRomanBtn = e.target.closest('.copy-roman-btn');
+    if (copyRomanBtn) {
+      const list = getActivePoetryList();
+      const item = list[currentPoetryIdx];
+      const copyText = `${item.title}\n\n${item.roman}\n\n— Imran Ali (‘Ali’)\nhttps://ia3466999-ali.github.io`;
+      copyToClipboard(copyText, 'Roman Shayari copied! 📋');
+      return;
+    }
+
+    const likeBtn = e.target.closest('.like-btn');
+    if (likeBtn) {
+      const key = likeBtn.dataset.key;
+      likesStore[key] = (likesStore[key] || 0) + 1;
+      localStorage.setItem('imran_likes', JSON.stringify(likesStore));
+      likeBtn.classList.add('liked');
+      likeBtn.querySelector('.like-num').textContent = likesStore[key] + ' داد';
+      likeBtn.querySelector('svg').setAttribute('fill', 'currentColor');
+      showToast('داد اور محبت کا بے حد شکریہ! ❤️', '❤️');
+    }
+  });
+
+  // Touch Swipe for Mobile / Phone View
+  let touchStartX = 0;
+  container.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    stopPoetryAutoplay();
+  }, { passive: true });
+
+  container.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) nextPoetry();
+      else prevPoetry();
+    }
+  }, { passive: true });
+
+  // Full Script Modal Event Handlers
+  const modal = $('#poetryFullModal');
+  const openBtn = $('#openFullScriptBtn');
+  const closeBtn = $('#closeFullScriptBtn');
+  const modalClose = $('#modalCloseBtn');
+  const modalCopy = $('#modalCopyFullScriptBtn');
+
+  if (openBtn && modal) {
+    openBtn.addEventListener('click', () => {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+    });
+  }
+  const closeModalFunc = () => {
+    if (modal) {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+  };
+  if (closeBtn) closeBtn.addEventListener('click', closeModalFunc);
+  if (modalClose) modalClose.addEventListener('click', closeModalFunc);
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModalFunc();
+    });
+  }
+  if (modalCopy) {
+    modalCopy.addEventListener('click', () => {
+      const fullUrduScript = STAGE_STANZAS.map(s => 
+        `[${s.num}: ${s.titleUrdu} (${s.title})]${s.cue ? '\n' + s.cue : ''}\n${s.urdu}`
+      ).join('\n\n') + '\n\n— عمران علی ’علی‘ (Imran Ali)\nPresidency University Stage Kalam';
+      copyToClipboard(fullUrduScript, 'Complete 7-stanza Urdu stage script copied! 🎙️');
+    });
+  }
+}
+
+/**
+ * ----------------------------------------------------------------------------
+ * 8. CONTACT SUBMISSION ENGINE (Attached to Live Google Sheet / Excel)
+ * ----------------------------------------------------------------------------
+ */
+$('#contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form));
+  const submitBtn = $('#submitBtn');
+  const statusBox = $('#formStatus');
+
+  if (data.website) return; // Anti-spam check
+
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = `<span>Updating live sheet…</span>`;
+  statusBox.className = 'form-status';
+  statusBox.style.display = 'none';
+
+  // 1. Send directly to live Google Sheet / Excel webhook
+  const webhookUrl = CONFIG.WEBHOOK_URL;
+  if (webhookUrl) {
+    try {
+      await fetch(webhookUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.warn('Live sheet webhook update error:', err);
+    }
+  }
+
+  // 2. Also keep a local backup copy in browser
+  try {
+    const localList = JSON.parse(localStorage.getItem('imran_leads_backup') || '[]');
+    localList.unshift({
+      time: new Date().toLocaleString('en-IN'),
+      name: data.name,
+      email: data.email,
+      phone: data.phone || 'N/A',
+      category: data.category,
+      subject: data.subject || '',
+      message: data.message
+    });
+    localStorage.setItem('imran_leads_backup', JSON.stringify(localList));
+  } catch (e) {}
+
+  // 3. User Experience: Polite confirmation that Imran will contact them shortly
+  setTimeout(() => {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = `
+      <span>Send Message</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    `;
+
+    statusBox.className = 'form-status success';
+    statusBox.innerHTML = `
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <div style="width:28px; height:28px; border-radius:50%; background:var(--emerald); color:#031218; display:grid; place-items:center; font-weight:700; flex-shrink:0;">✓</div>
+        <div>
+          <h4 style="font-size:16px; font-weight:600; color:var(--emerald); margin-bottom:4px;">Message Sent Successfully!</h4>
+          <p style="font-size:14px; color:var(--tx-sec); line-height:1.6; margin:0;">
+            Thank you, <b>${esc(data.name)}</b>! Your message has been received. Imran Ali will review it and get in touch with you shortly.
+          </p>
+        </div>
+      </div>
+    `;
+    statusBox.style.display = 'block';
+    form.reset();
+  }, 400);
+});
+
+/**
+ * ----------------------------------------------------------------------------
+ * 9. IMAGE LOADING & FALLBACK HANDLERS
+ * ----------------------------------------------------------------------------
+ */
+function setupImage(imgEl, placeholderEl, candidateSources, fallbackSrc) {
+  if (!imgEl) return;
+  const sources = Array.isArray(candidateSources) ? candidateSources : [candidateSources];
+  let idx = 0;
+
+  function tryNext() {
+    if (idx >= sources.length) {
+      if (fallbackSrc) {
+        imgEl.src = fallbackSrc;
+        imgEl.style.display = 'block';
+        if (placeholderEl) placeholderEl.style.display = 'none';
+      } else {
+        imgEl.style.display = 'none';
+        if (placeholderEl) placeholderEl.style.display = 'flex';
+      }
+      return;
+    }
+    const currentSrc = sources[idx++];
+    if (!currentSrc) {
+      tryNext();
+      return;
+    }
+    const testImg = new Image();
+    testImg.onload = () => {
+      imgEl.src = currentSrc;
+      imgEl.style.display = 'block';
+      if (placeholderEl) placeholderEl.style.display = 'none';
+    };
+    testImg.onerror = () => {
+      tryNext();
+    };
+    testImg.src = currentSrc;
+  }
+
+  tryNext();
+}
+
+// Multi-candidate sources ensure photos load seamlessly under any extension variant
+setupImage($('#pimg'), $('#heroPlaceholder'), ['portrait.jpg', 'me.jpg.jpeg', 'me.jpg'], CONFIG.DEFAULT_PORTRAIT_BG);
+setupImage($('#campusImg'), $('#campusPlaceholder'), ['campus.jpg', 'campus.jpg.jpeg'], CONFIG.DEFAULT_CAMPUS_BG);
+setupImage($('#profileImg'), $('#profilePlaceholder'), ['laptop.jpg', 'laptop.jpeg'], CONFIG.DEFAULT_CODING_BG);
+setupImage($('#stageImg'), $('#stagePlaceholder'), ['stage.jpg', 'stage.jpg.jpeg'], CONFIG.DEFAULT_STAGE_BG);
+
+/**
+ * ----------------------------------------------------------------------------
+ * 10. THEME & NAVIGATION
+ * ----------------------------------------------------------------------------
+ */
+const themeBtn = $('#themeBtn');
+let currentTheme = localStorage.getItem('imran_theme') || 'midnight';
+
+function applyTheme(t) {
+  if (t === 'parchment') {
+    document.documentElement.setAttribute('data-theme', 'parchment');
+    themeBtn.title = 'Switch to Midnight Tech Theme';
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+    themeBtn.title = 'Switch to Parchment Poetry Theme';
+  }
+  localStorage.setItem('imran_theme', t);
+}
+applyTheme(currentTheme);
+
+themeBtn.addEventListener('click', () => {
+  currentTheme = currentTheme === 'midnight' ? 'parchment' : 'midnight';
+  applyTheme(currentTheme);
+  showToast(`Switched to ${currentTheme} theme`, '🎨');
+});
+
+const menuToggle = $('#menuToggle');
+const mobileNav = $('#mobileNav');
+menuToggle.addEventListener('click', () => {
+  mobileNav.classList.toggle('open');
+});
+$$('.mob-link').forEach(link => {
+  link.addEventListener('click', () => mobileNav.classList.remove('open'));
+});
+
+window.addEventListener('scroll', () => {
+  const sections = $$('section[id]');
+  const scrollY = window.pageYOffset;
+
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 120;
+    const height = sec.offsetHeight;
+    const id = sec.getAttribute('id');
+    const navLink = $(`nav.nav-desktop a[href="#${id}"]`);
+
+    if (navLink) {
+      if (scrollY >= top && scrollY < top + height) {
+        navLink.classList.add('active');
+      } else {
+        navLink.classList.remove('active');
+      }
+    }
+  });
+});
+
+/**
+ * ----------------------------------------------------------------------------
+ * 11. INITIALIZATION (Projects & Urdu Poetry One-by-One Carousels)
+ * ----------------------------------------------------------------------------
+ */
+initProjectsCarousel();
+initPoetryCarousel();
+</script>
+</body>
+</html>
