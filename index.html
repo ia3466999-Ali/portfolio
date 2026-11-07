@@ -2497,11 +2497,11 @@ footer {
           </div>
 
           <div class="portrait-card" id="tiltCard" aria-label="Portrait of Imran Ali">
-            <div class="portrait-avatar-placeholder" id="heroPlaceholder">
+            <div class="portrait-avatar-placeholder" id="heroPlaceholder" style="display:none;">
               <div class="monogram">IA</div>
               <div class="monogram-sub">Lafz-e-Ali</div>
             </div>
-            <img id="pimg" class="portrait-img" alt="Imran Ali portrait" style="display:none;">
+            <img id="pimg" class="portrait-img" src="portrait.jpg" alt="Imran Ali portrait" onerror="this.onerror=null;this.src='me.jpg';">
             <div class="portrait-overlay">
               <div class="portrait-tag">
                 Imran Ali
@@ -2664,8 +2664,8 @@ footer {
         <!-- Featured Campus Card -->
         <div class="moment-card">
           <div class="moment-media" id="campusMedia">
-            <img id="campusImg" alt="Presidency University Campus, Bengaluru" style="display:none;">
-            <div class="moment-placeholder" id="campusPlaceholder">
+            <img id="campusImg" src="campus.jpg" alt="Presidency University Campus, Bengaluru" onerror="this.style.display='none';var p=document.getElementById('campusPlaceholder');if(p)p.style.display='flex';">
+            <div class="moment-placeholder" id="campusPlaceholder" style="display:none;">
               <div class="moment-placeholder-icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 10h1"/><path d="M9 14h1"/><path d="M9 18h1"/><path d="M14 10h1"/><path d="M14 14h1"/><path d="M14 18h1"/></svg>
               </div>
@@ -2698,8 +2698,8 @@ footer {
           <!-- Card 2: Coding Laptop View -->
           <div class="moment-card-compact">
             <div class="moment-media" id="profileMedia">
-              <img id="profileImg" alt="Coding Laptop View &amp; AI Systems" style="display:none;">
-              <div class="moment-placeholder" id="profilePlaceholder">
+              <img id="profileImg" src="laptop.jpg" alt="Coding Laptop View &amp; AI Systems" onerror="this.style.display='none';var p=document.getElementById('profilePlaceholder');if(p)p.style.display='flex';">
+              <div class="moment-placeholder" id="profilePlaceholder" style="display:none;">
                 <div class="moment-placeholder-icon" style="color:var(--cy);">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
@@ -2724,8 +2724,8 @@ footer {
           <!-- Card 3: Stage Recitations & NSS Events -->
           <div class="moment-card-compact">
             <div class="moment-media" id="stageMedia">
-              <img id="stageImg" alt="Stage recitations and NSS cultural events" style="display:none;">
-              <div class="moment-placeholder" id="stagePlaceholder">
+              <img id="stageImg" src="stage.jpg" alt="Stage recitations and NSS cultural events" onerror="this.style.display='none';var p=document.getElementById('stagePlaceholder');if(p)p.style.display='flex';">
+              <div class="moment-placeholder" id="stagePlaceholder" style="display:none;">
                 <div class="moment-placeholder-icon" style="color:var(--amber);">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
                 </div>
@@ -4023,9 +4023,9 @@ function initPoetryCarousel() {
  * ----------------------------------------------------------------------------
  */
 // Quick Topic Chips Pre-fill handler
-  $('.quick-chip').forEach(chip => {
+  $$('.quick-chip').forEach(chip => {
     chip.addEventListener('click', () => {
-      $('.quick-chip').forEach(c => c.classList.remove('active'));
+      $$('.quick-chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       const catVal = chip.getAttribute('data-cat');
       const subVal = chip.getAttribute('data-sub');
@@ -4155,7 +4155,12 @@ function setupImage(imgEl, placeholderEl, candidateSources, fallbackSrc) {
     testImg.src = currentSrc;
   }
 
-  tryNext();
+  if (imgEl.complete && imgEl.naturalWidth > 0) {
+    imgEl.style.display = 'block';
+    if (placeholderEl) placeholderEl.style.display = 'none';
+  } else {
+    tryNext();
+  }
 }
 
 // Multi-candidate sources ensure photos load seamlessly under any extension variant
@@ -4175,20 +4180,28 @@ let currentTheme = localStorage.getItem('imran_theme') || 'midnight';
 function applyTheme(t) {
   if (t === 'parchment') {
     document.documentElement.setAttribute('data-theme', 'parchment');
-    themeBtn.title = 'Switch to Midnight Tech Theme';
+    if (themeBtn) {
+      themeBtn.setAttribute('title', 'Switch to Midnight Tech Theme');
+      themeBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    }
   } else {
     document.documentElement.removeAttribute('data-theme');
-    themeBtn.title = 'Switch to Parchment Poetry Theme';
+    if (themeBtn) {
+      themeBtn.setAttribute('title', 'Switch to Parchment Poetry Theme');
+      themeBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"/></svg>';
+    }
   }
   localStorage.setItem('imran_theme', t);
 }
 applyTheme(currentTheme);
 
-themeBtn.addEventListener('click', () => {
-  currentTheme = currentTheme === 'midnight' ? 'parchment' : 'midnight';
-  applyTheme(currentTheme);
-  showToast(`Switched to ${currentTheme} theme`, '🎨');
-});
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    currentTheme = (currentTheme === 'midnight') ? 'parchment' : 'midnight';
+    applyTheme(currentTheme);
+    showToast(`Switched to ${currentTheme === 'parchment' ? 'Parchment Poetry' : 'Midnight Tech'} theme`, '🎨');
+  });
+}
 
 const menuToggle = $('#menuToggle');
 const mobileNav = $('#mobileNav');
