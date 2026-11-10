@@ -1,5 +1,8 @@
 # Backup and temporary files
 *.bak
 *.bak2
+*.tmp
+*.log
 .DS_Store
 Thumbs.db
+Desktop.ini

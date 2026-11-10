@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Imran Ali (‘Ali’) | Portfolio</title>
-<meta name="description" content="Imran Ali (takhallus ‘Ali’) – B.Tech in Artificial Intelligence &amp; Data Science at Presidency University, Bengaluru. Explore deployed engineering projects, original Urdu/Hindi shayari, campus moments, and contact.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#030712">
+<title>Imran Ali (‘Ali’) | Portfolio &amp; Lafz-e-Ali</title>
+<meta name="description" content="Imran Ali (takhallus ‘Ali’) – B.Tech in Artificial Intelligence &amp; Data Science at Presidency University, Bengaluru (2026–2030). Deployed MERN stack web applications, original Urdu shayari, and campus moments.">
+<link rel="canonical" href="https://ia3466999-ali.github.io/portfolio/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2305080f'/><text x='50%' y='64%' font-size='56' font-family='serif' font-weight='bold' fill='%2338d5f0' text-anchor='middle'>ع</text></svg>">
+
+<!-- OpenGraph / Social Meta Tags -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ia3466999-ali.github.io/portfolio/">
+<meta property="og:title" content="Imran Ali (‘Ali’) | Portfolio &amp; Lafz-e-Ali">
+<meta property="og:description" content="B.Tech in Artificial Intelligence &amp; Data Science at Presidency University, Bengaluru (2026–2030). Full-stack software architectures &amp; authentic Urdu poetry.">
+<meta property="og:image" content="https://ia3466999-ali.github.io/portfolio/portrait.jpg">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Imran Ali (‘Ali’) | Portfolio">
+<meta name="twitter:description" content="Undergraduate Scholar in AI &amp; DS at Presidency University, MERN stack engineer &amp; Urdu poet.">
+<meta name="twitter:image" content="https://ia3466999-ali.github.io/portfolio/portrait.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -4101,7 +4120,7 @@ html, body {
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                 </div>
                 <div style="font: 700 16px var(--font-serif); color:var(--tx);">Coding &amp; AI Systems</div>
-                <div style="font-size:11px; color:var(--mu);">laptop.jpg</div>
+                <div style="font-size:11px; color:var(--mu);">coding-workflow.jpg</div>
               </div>
             </div>
             <div class="moment-content">
@@ -4588,12 +4607,12 @@ const CONFIG = {
   PHONE: '919142749581',
   PORTRAIT: 'portrait.jpg',
   CAMPUS: 'campus.jpg',
-  LAPTOP: 'laptop.jpg',
+  LAPTOP: 'coding-workflow.jpg',
   STAGE: 'stage.jpg',
-  // High-Aesthetic Stylish Fallback Visuals (Coding Laptop View, Campus & Stage)
+  // High-Aesthetic Stylish Fallback Visuals (Coding Setup, Campus & Stage)
   DEFAULT_PORTRAIT_BG: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80',
   DEFAULT_CAMPUS_BG: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80',
-  DEFAULT_CODING_BG: 'coding-workflow.jpg',
+  DEFAULT_CODING_BG: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=85',
   DEFAULT_STAGE_BG: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=80',
   SIG: '\n\n— Imran Ali (‘Ali’)'
 };
@@ -6362,7 +6381,21 @@ $('#contactForm').addEventListener('submit', async (e) => {
   const submitBtn = $('#submitBtn');
   const statusBox = $('#formStatus');
 
-  if (data.website) return; // Anti-spam check
+  if (data.website) return; // Anti-spam honeypot
+
+  // Client-side validation for stable submissions
+  if (!data.name || data.name.trim().length < 2) {
+    statusBox.className = 'form-status';
+    statusBox.style.display = 'block';
+    statusBox.innerHTML = '<p style="color:var(--rose); font-size:14px; margin:0;">⚠️ Please enter your name.</p>';
+    return;
+  }
+  if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
+    statusBox.className = 'form-status';
+    statusBox.style.display = 'block';
+    statusBox.innerHTML = '<p style="color:var(--rose); font-size:14px; margin:0;">⚠️ Please provide a valid email address.</p>';
+    return;
+  }
 
   submitBtn.disabled = true;
   submitBtn.innerHTML = `<span>Updating live sheet…</span>`;
@@ -6471,11 +6504,11 @@ function setupImage(imgEl, placeholderEl, candidateSources, fallbackSrc) {
   }
 }
 
-// Multi-candidate sources ensure photos load seamlessly under any extension variant
-setupImage($('#pimg'), $('#heroPlaceholder'), ['portrait.jpg', 'me.jpg.jpeg', 'me.jpg'], CONFIG.DEFAULT_PORTRAIT_BG);
-setupImage($('#campusImg'), $('#campusPlaceholder'), ['campus.jpg', 'campus.jpg.jpeg'], CONFIG.DEFAULT_CAMPUS_BG);
-setupImage($('#profileImg'), $('#profilePlaceholder'), ['laptop.jpg', 'laptop.jpeg'], CONFIG.DEFAULT_CODING_BG);
-setupImage($('#stageImg'), $('#stagePlaceholder'), ['stage.jpg', 'stage.jpg.jpeg'], CONFIG.DEFAULT_STAGE_BG);
+// Clean candidate sources ensure photos load seamlessly with fast fallback
+setupImage($('#pimg'), $('#heroPlaceholder'), ['portrait.jpg', 'me.jpg'], CONFIG.DEFAULT_PORTRAIT_BG);
+setupImage($('#campusImg'), $('#campusPlaceholder'), ['campus.jpg'], CONFIG.DEFAULT_CAMPUS_BG);
+setupImage($('#profileImg'), $('#profilePlaceholder'), ['coding-workflow.jpg', 'laptop.jpg'], CONFIG.DEFAULT_CODING_BG);
+setupImage($('#stageImg'), $('#stagePlaceholder'), ['stage.jpg'], CONFIG.DEFAULT_STAGE_BG);
 
 /**
  * ----------------------------------------------------------------------------

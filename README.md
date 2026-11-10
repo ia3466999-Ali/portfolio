@@ -40,13 +40,12 @@ All verses are now rendered in authentic **Nastaliq Urdu script (اردو رسم
 ---
 
 ## ⚡ JavaScript One-by-One Carousels (Compact Length)
-Both **Projects** and **Shayari** now transition **one-by-one** in both phone view and laptop view:
+Both **Projects** and **Shayari** transition **one-by-one** in both phone view and laptop view:
 - **Reduces website length by over 60%** (no endless vertical scrolling).
 - **Previous & Next buttons** with smooth animation.
 - **Interactive dot indicators and category pills** for instant jumping.
 - **Mobile Touch-Swipe gestures** enabled for smooth swiping on smartphones.
 - **Auto-advance timers** with automatic pause on hover or touch.
-- **Complete Stage Script Modal** available via the "View / Copy Full Script 📜" button.
 
 ---
 
@@ -54,16 +53,18 @@ Both **Projects** and **Shayari** now transition **one-by-one** in both phone vi
 All visual assets are included and optimized:
 - **`portrait.jpg` / `me.jpg`**: Imran Ali portrait (shows in Hero section & mobile top-right badge).
 - **`campus.jpg`**: Presidency University campus photo (CSE & university grounds).
-- **`laptop.jpg`**: Coding laptop view & developer workflow.
+- **`coding-workflow.jpg`**: Developer dark coding workstation & software systems.
 - **`stage.jpg`**: Stage performance recitation & NSS cultural events.
 
 ---
 
-## 📱 Mobile-First Optimizations
+## 📱 Mobile-First Optimizations & Security
+- **Crystal Clear 3-Line Mobile Menu**: Deep-space frosted dark card (`rgba(10, 16, 28, 0.99)`) with blurred backdrop overlay and high-contrast navigation pills.
+- **Dual Command Hub**: Interactive frosted pill cards for **Education & Tech Journey** (on-demand toggle) and **Connect & Message**.
 - **Top-Right Portrait Badge**: `me.jpg` is positioned in the top-right corner with a neon emerald cyber border and centered facial framing.
-- **Roman English Shayari on Mobile**: Urdu script is cleanly hidden on mobile view to maximize readability and reduce scrolling, while full Nastaliq Urdu + Roman are preserved on desktop.
-- **Zero Phantom Space**: Side moments grid formatted as a balanced 2-column showcase with no ghost rows or empty gaps before "The Builder & Poet".
-- **Compact One-by-One Sliders**: Full Next / Prev controls with swipe navigation and mobile pill counter.
+- **Roman English Shayari on Mobile**: Optimized typography with Nastaliq calligraphy preserved on desktop.
+- **Zero Phantom Space**: Side moments grid formatted as a balanced 2-column showcase with no ghost rows or empty gaps.
+- **Robust Security**: Honeypot anti-spam check, formula-injection sanitization, `X-Content-Type-Options: nosniff`, `referrerpolicy: strict-origin-when-cross-origin`, and `rel="noopener noreferrer"` on all external links.
 
 ---
 
