@@ -43,29 +43,7 @@
   color-scheme: dark;
 }
 
-[data-theme="parchment"] {
-  --bg: #f9f5ed;
-  --bg-alt: #f0ebd9;
-  --panel: #ffffff;
-  --panel-hover: #fcf9f2;
-  --panel-card: rgba(255, 255, 255, 0.92);
-  --line: #e4d8c2;
-  --line-strong: #cdbc9d;
-  --tx: #1c1917;
-  --tx-sec: #44403c;
-  --mu: #78716c;
-  --cy: #0284c7;
-  --cy-glow: rgba(2, 132, 199, 0.18);
-  --rose: #be123c;
-  --rose-glow: rgba(190, 18, 60, 0.16);
-  --amber: #b45309;
-  --emerald: #047857;
-  --indigo: #4338ca;
-  --purple: #7e22ce;
-  --shadow: 0 16px 36px -10px rgba(90, 75, 50, 0.14);
-  --shadow-glow: 0 0 24px -2px rgba(2, 132, 199, 0.12);
-  color-scheme: light;
-}
+/* light mode purged - pure dark only */
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -82,11 +60,7 @@ body {
   overflow-x: hidden;
   transition: background 0.35s ease, color 0.35s ease;
 }
-[data-theme="parchment"] body {
-  background-image: 
-    radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(2, 132, 199, 0.07), transparent);
-}
+/* light mode purged - pure dark only */
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button, input, select, textarea { font: inherit; color: inherit; }
@@ -218,19 +192,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
   opacity: 1;
   transition: opacity 0.3s ease;
 }
-[data-theme="parchment"] .proj-carousel-container::before,
-[data-theme="parchment"] .poetry-carousel-wrap::before,
-[data-theme="parchment"] .moment-card::before,
-[data-theme="parchment"] .moment-card-compact::before,
-[data-theme="parchment"] .skills-box::before {
-  background: radial-gradient(550px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(2, 132, 199, 0.08), transparent 45%);
-}
+/* light mode purged - pure dark only */
 .poetry-carousel-wrap::before {
   background: radial-gradient(550px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(244, 63, 94, 0.14), transparent 45%);
 }
-[data-theme="parchment"] .poetry-carousel-wrap::before {
-  background: radial-gradient(550px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(190, 18, 60, 0.09), transparent 45%);
-}
+/* light mode purged - pure dark only */
 
 /* Floating Hearts Micro-Animation on Like */
 .floating-heart {
@@ -333,24 +299,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   position: relative;
 }
 
-[data-theme="parchment"] .portrait-card,
-[data-theme="parchment"] .proj-carousel-container,
-[data-theme="parchment"] .poetry-carousel-wrap,
-[data-theme="parchment"] .urdu-verse-box,
-[data-theme="parchment"] .moment-card,
-[data-theme="parchment"] .moment-card-compact,
-[data-theme="parchment"] .form-box,
-[data-theme="parchment"] .skills-box {
-  border-top: 1.5px solid rgba(255, 255, 255, 0.95) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.75) !important;
-  border-right: 1px solid rgba(160, 140, 110, 0.35) !important;
-  border-bottom: 2px solid rgba(140, 120, 95, 0.45) !important;
-  box-shadow: 
-    0 14px 34px -8px rgba(90, 70, 45, 0.18),
-    0 26px 55px -12px rgba(90, 70, 45, 0.12),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -1px 2px 0 rgba(140, 120, 95, 0.15) !important;
-}
+/* light mode purged - pure dark only */
 
 /* Stable, Grounded 3D Portrait Card */
 .portrait-card {
@@ -589,9 +538,7 @@ header {
   border-bottom: 1px solid var(--line);
   transition: var(--transition);
 }
-[data-theme="parchment"] header {
-  background: rgba(249, 245, 237, 0.88);
-}
+/* light mode purged - pure dark only */
 header .w {
   display: flex;
   justify-content: space-between;
@@ -641,11 +588,7 @@ header .w {
   -webkit-text-fill-color: transparent;
   transition: opacity 0.2s ease;
 }
-[data-theme="parchment"] .brand-title {
-  background: linear-gradient(135deg, #0f172a 40%, #334155 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* light mode purged - pure dark only */
 
 nav.nav-desktop {
   display: flex;
@@ -909,23 +852,14 @@ h1.hero-title {
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
-[data-theme="parchment"] h1.hero-title {
-  background: linear-gradient(135deg, #1c1917 40%, #44403c 75%, #78716c 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* light mode purged - pure dark only */
 h1.hero-title .glow {
   background: linear-gradient(135deg, var(--cy) 0%, #818cf8 50%, var(--rose) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 20px rgba(56, 213, 240, 0.35));
 }
-[data-theme="parchment"] h1.hero-title .glow {
-  background: linear-gradient(135deg, var(--cy) 0%, var(--rose) 50%, var(--amber) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 16px rgba(190, 18, 60, 0.2));
-}
+/* light mode purged - pure dark only */
 .hero-type-wrap {
   font: italic 400 clamp(20px, 3.2vw, 26px)/1.35 var(--font-serif);
   color: var(--cy);
@@ -935,7 +869,7 @@ h1.hero-title .glow {
   align-items: center;
   gap: 4px;
 }
-[data-theme="parchment"] .hero-type-wrap { color: var(--rose); }
+/* light mode purged - pure dark only */
 .cursor {
   display: inline-block;
   width: 2.5px;
@@ -1023,10 +957,7 @@ h1.hero-title .glow {
   gap: 16px;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
 }
-[data-theme="parchment"] .hero-quote-strip {
-  background: linear-gradient(135deg, #ffffff 0%, #f7f2e6 100%);
-  border-color: #d8caba;
-}
+/* light mode purged - pure dark only */
 .quote-icon {
   font-size: 30px;
   line-height: 1;
@@ -1039,7 +970,7 @@ h1.hero-title .glow {
   color: var(--tx-sec);
   flex: 1;
 }
-[data-theme="parchment"] .quote-text { color: #2d261e; }
+/* light mode purged - pure dark only */
 .quote-author {
   font-size: 12px;
   font-weight: 700;
@@ -1085,9 +1016,7 @@ h1.hero-title .glow {
   box-shadow: 0 32px 70px -10px rgba(0, 0, 0, 0.9), 0 0 55px -4px var(--cy-glow);
   border-color: var(--cy);
 }
-[data-theme="parchment"] .portrait-card {
-  background: linear-gradient(180deg, #ffffff 0%, #ebdec7 100%);
-}
+/* light mode purged - pure dark only */
 .portrait-avatar-placeholder {
   position: absolute;
   inset: 0;
@@ -1105,7 +1034,7 @@ h1.hero-title .glow {
   letter-spacing: -0.04em;
   text-shadow: 0 0 35px var(--cy-glow);
 }
-[data-theme="parchment"] .monogram { color: var(--rose); text-shadow: 0 0 25px var(--rose-glow); }
+/* light mode purged - pure dark only */
 .monogram-sub {
   font: italic 500 18px var(--font-serif);
   color: var(--mu);
@@ -1132,9 +1061,7 @@ h1.hero-title .glow {
   justify-content: space-between;
   align-items: flex-end;
 }
-[data-theme="parchment"] .portrait-overlay {
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.96) 0%, transparent 100%);
-}
+/* light mode purged - pure dark only */
 .portrait-tag {
   font-size: 14px;
   font-weight: 700;
@@ -1390,10 +1317,7 @@ h2.sec-title {
   overflow: hidden;
   transition: var(--transition);
 }
-[data-theme="parchment"] .proj-carousel-container {
-  background: linear-gradient(135deg, #ffffff 0%, #f7f2e7 100%);
-  border-color: var(--line-strong);
-}
+/* light mode purged - pure dark only */
 
 /* Quick Jump Project Navigation Pills */
 .proj-tabs-bar {
@@ -1406,9 +1330,7 @@ h2.sec-title {
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
 }
-[data-theme="parchment"] .proj-tabs-bar {
-  background: rgba(0, 0, 0, 0.03);
-}
+/* light mode purged - pure dark only */
 .proj-pill-btn {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -1475,7 +1397,7 @@ h2.sec-title {
   color: var(--cy);
   margin-bottom: 14px;
 }
-[data-theme="parchment"] .proj-slide-tagline { color: var(--rose); }
+/* light mode purged - pure dark only */
 
 .proj-slide-desc {
   font-size: 15px;
@@ -1507,9 +1429,7 @@ h2.sec-title {
   flex-direction: column;
   justify-content: space-between;
 }
-[data-theme="parchment"] .proj-slide-side {
-  background: #fdfbf7;
-}
+/* light mode purged - pure dark only */
 .code-window-topbar {
   display: flex;
   align-items: center;
@@ -1520,9 +1440,7 @@ h2.sec-title {
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
   margin: -24px -24px 14px -24px;
 }
-[data-theme="parchment"] .code-window-topbar {
-  background: rgba(0, 0, 0, 0.05);
-}
+/* light mode purged - pure dark only */
 .code-window-dots {
   display: flex;
   align-items: center;
@@ -1549,11 +1467,7 @@ h2.sec-title {
   padding: 2px 7px;
   border-radius: 4px;
 }
-[data-theme="parchment"] .code-window-tag {
-  color: var(--rose);
-  background: rgba(190, 18, 60, 0.1);
-  border-color: rgba(190, 18, 60, 0.25);
-}
+/* light mode purged - pure dark only */
 .proj-side-title {
   font-size: 12px;
   font-weight: 700;
@@ -1565,7 +1479,7 @@ h2.sec-title {
   align-items: center;
   gap: 6px;
 }
-[data-theme="parchment"] .proj-side-title { color: var(--rose); }
+/* light mode purged - pure dark only */
 
 .proj-highlights-list {
   list-style: none;
@@ -1603,9 +1517,7 @@ h2.sec-title {
   background: rgba(0, 0, 0, 0.28);
   border-top: 1px solid var(--line);
 }
-[data-theme="parchment"] .proj-ctrl-bar {
-  background: rgba(0, 0, 0, 0.04);
-}
+/* light mode purged - pure dark only */
 .carousel-btn {
   display: inline-flex;
   align-items: center;
@@ -1663,9 +1575,7 @@ h2.sec-title {
   border-bottom: 1px solid var(--line);
   position: relative;
 }
-[data-theme="parchment"] #poetry {
-  background: #fdfaf3;
-}
+/* light mode purged - pure dark only */
 .poetry-hero-badge {
   display: inline-flex;
   align-items: center;
@@ -1689,10 +1599,7 @@ h2.sec-title {
   overflow: hidden;
   transition: var(--transition);
 }
-[data-theme="parchment"] .poetry-carousel-wrap {
-  background: linear-gradient(135deg, #ffffff 0%, #fdf8ed 100%);
-  border-color: #cdbc9d;
-}
+/* light mode purged - pure dark only */
 
 .poetry-top-bar {
   display: flex;
@@ -1704,9 +1611,7 @@ h2.sec-title {
   border-bottom: 1px solid var(--line);
   background: rgba(0, 0, 0, 0.2);
 }
-[data-theme="parchment"] .poetry-top-bar {
-  background: rgba(0, 0, 0, 0.03);
-}
+/* light mode purged - pure dark only */
 
 .poetry-category-pills {
   display: flex;
@@ -1828,10 +1733,7 @@ h2.sec-title {
   opacity: 0.06;
   pointer-events: none;
 }
-[data-theme="parchment"] .urdu-verse-box {
-  background: rgba(190, 18, 60, 0.04);
-  border-color: rgba(190, 18, 60, 0.22);
-}
+/* light mode purged - pure dark only */
 .urdu-text {
   font-family: var(--font-urdu), 'Noto Nastaliq Urdu', 'Amiri', serif;
   direction: rtl;
@@ -1842,9 +1744,7 @@ h2.sec-title {
   font-weight: 600;
   white-space: pre-line;
 }
-[data-theme="parchment"] .urdu-text {
-  color: #1c1917;
-}
+/* light mode purged - pure dark only */
 
 .roman-verse-sub {
   font: italic 400 clamp(14px, 1.8vw, 16px)/1.75 var(--font-serif);
@@ -1854,9 +1754,7 @@ h2.sec-title {
   border-left: 2px solid var(--rose);
   margin-bottom: 18px;
 }
-[data-theme="parchment"] .roman-verse-sub {
-  color: #37332f;
-}
+/* light mode purged - pure dark only */
 
 .stage-cue-banner {
   background: rgba(245, 158, 11, 0.1);
@@ -1931,9 +1829,7 @@ h2.sec-title {
   background: rgba(0, 0, 0, 0.28);
   border-top: 1px solid var(--line);
 }
-[data-theme="parchment"] .poetry-ctrl-bar {
-  background: rgba(0, 0, 0, 0.04);
-}
+/* light mode purged - pure dark only */
 .poetry-ctrl-bar .carousel-btn:hover {
   border-color: var(--rose);
   color: var(--rose);
@@ -2134,10 +2030,7 @@ input, select, textarea {
   color: var(--tx);
   transition: var(--transition);
 }
-[data-theme="parchment"] input, [data-theme="parchment"] select, [data-theme="parchment"] textarea {
-  background: #ffffff;
-  border-color: #d1c5ad;
-}
+/* light mode purged - pure dark only */
 input:focus, select:focus, textarea:focus {
   border-color: var(--cy);
   background: rgba(5, 8, 15, 0.85);
@@ -2598,12 +2491,7 @@ footer {
     margin: 8px 0 12px !important;
     white-space: pre-line !important;
   }
-  [data-theme="parchment"] .roman-verse-sub {
-    background: rgba(190, 18, 60, 0.04) !important;
-    border-color: rgba(190, 18, 60, 0.25) !important;
-    border-left-color: #be123c !important;
-    color: #1c1917 !important;
-  }
+  /* light mode purged - pure dark only */
   .poetry-card-actions {
     padding-top: 10px;
     gap: 6px;
@@ -2928,6 +2816,66 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
+
+/* ==========================================================================
+   HYPER-REALISTIC OPTICAL SPECULAR GLASS & PRISMATIC EDGES (DARK ONLY)
+   ========================================================================== */
+:root {
+  color-scheme: dark !important;
+}
+
+html, body {
+  background: #020409 !important;
+  color-scheme: dark !important;
+}
+
+/* Universal Specular Light Sheen & Prismatic Glass on all Cards */
+.proj-carousel-container,
+.poetry-carousel-wrap,
+.moment-card-compact,
+.skills-box,
+.form-box,
+.portrait-card,
+.hero-quote-strip {
+  position: relative;
+  background-image: 
+    radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08), rgba(56, 213, 240, 0.04) 25%, transparent 60%),
+    linear-gradient(145deg, rgba(11, 17, 30, 0.42) 0%, rgba(6, 10, 18, 0.52) 100%) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  border-left: 1px solid rgba(56, 213, 240, 0.2) !important;
+  box-shadow: 
+    0 24px 60px -15px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 0 20px 0 rgba(56, 213, 240, 0.03) !important;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  transform-style: preserve-3d;
+}
+
+.proj-carousel-container:hover,
+.poetry-carousel-wrap:hover,
+.moment-card-compact:hover,
+.skills-box:hover,
+.form-box:hover {
+  border-color: rgba(56, 213, 240, 0.4) !important;
+  border-top-color: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: 
+    0 30px 70px -12px rgba(0, 0, 0, 0.85),
+    0 0 35px -5px var(--cy-glow),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Layered 3D Depth inside Cards */
+.proj-title, .poetry-top-bar, .urdu-verse-box, .skills-head, .form-title {
+  transform: translateZ(16px);
+}
+
+.btn.p, .badge {
+  transform: translateZ(24px);
+}
+
 </style>
 </head>
 <body>
@@ -2960,10 +2908,7 @@ footer {
     </nav>
 
     <div class="header-actions">
-      <!-- Theme Switcher -->
-      <button class="btn-icon" id="themeBtn" aria-label="Toggle theme" title="Switch theme (Midnight / Parchment)">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"/></svg>
-      </button>
+      
 
       <!-- Mobile Menu Toggle -->
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
@@ -4008,6 +3953,11 @@ typeLoop();
  * 6. FULL-PAGE 3D REALISTIC COSMIC GALAXY ENGINE (PERSPECTIVE 3D)
  * ----------------------------------------------------------------------------
  */
+/**
+ * ----------------------------------------------------------------------------
+ * 6. PHOTOREALISTIC 3D DEEP-SPACE & BLACK HOLE GRAVITATIONAL ENGINE
+ * ----------------------------------------------------------------------------
+ */
 const canvas = document.getElementById('heroCanvas');
 if (canvas) {
   const ctx = canvas.getContext('2d');
@@ -4021,8 +3971,9 @@ if (canvas) {
   let scrollProg = 0;
   let scrollPanY = 0;
   let targetScrollPanY = 0;
+  let mouse = { x: -9999, y: -9999, active: false };
   let isPageVisible = !document.hidden;
-  const fov = 520;
+  const fov = 580;
 
   function resizeCanvas() {
     w = canvas.width = window.innerWidth;
@@ -4033,16 +3984,43 @@ if (canvas) {
   window.addEventListener('resize', resizeCanvas, { passive: true });
   resizeCanvas();
 
-  // Full-window pointer & touch interaction
+  // Full-window pointer & touch interaction with gravitational mass
   window.addEventListener('pointermove', (e) => {
-    targetRotY = (e.clientX - cx) * 0.00035;
-    targetRotX = -(e.clientY - cy) * 0.00035;
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    mouse.active = true;
+    targetRotY = (e.clientX - cx) * 0.00038;
+    targetRotX = -(e.clientY - cy) * 0.00038;
+
+    // Spawn subtle interactive stardust sparks on movement
+    if (Math.random() > 0.4 && stardustSparks.length < 35) {
+      stardustSparks.push({
+        x: e.clientX,
+        y: e.clientY,
+        vx: (Math.random() - 0.5) * 1.8,
+        vy: (Math.random() - 0.5) * 1.8,
+        size: Math.random() * 2.2 + 0.8,
+        alpha: 0.9,
+        color: Math.random() > 0.5 ? '56, 213, 240' : '168, 85, 247'
+      });
+    }
   }, { passive: true });
+
+  window.addEventListener('pointerleave', () => {
+    mouse.active = false;
+    mouse.x = -9999;
+    mouse.y = -9999;
+  });
 
   window.addEventListener('touchmove', (e) => {
     if (e.touches && e.touches[0]) {
-      targetRotY = (e.touches[0].clientX - cx) * 0.00025;
-      targetRotX = -(e.touches[0].clientY - cy) * 0.00025;
+      const tx = e.touches[0].clientX;
+      const ty = e.touches[0].clientY;
+      mouse.x = tx;
+      mouse.y = ty;
+      mouse.active = true;
+      targetRotY = (tx - cx) * 0.00028;
+      targetRotX = -(ty - cy) * 0.00028;
     }
   }, { passive: true });
 
@@ -4050,139 +4028,218 @@ if (canvas) {
   window.addEventListener('scroll', () => {
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     scrollProg = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-    targetScrollPanY = scrollProg * 260;
+    targetScrollPanY = scrollProg * 320;
   }, { passive: true });
 
   document.addEventListener('visibilitychange', () => {
     isPageVisible = !document.hidden;
-    if (isPageVisible) requestAnimationFrame(render3DGalaxy);
+    if (isPageVisible) requestAnimationFrame(renderRealisticUniverse);
   });
 
-  // --- GENERATE 3D REALISTIC SPIRAL GALAXY ---
+  // --- STELLAR POPULATION ARCHITECTURE ---
   const isMobile = window.innerWidth <= 768;
-  const starCount = isMobile ? 180 : 340;
+  const starCount = isMobile ? 380 : 750;
   const arms = 4;
-  const maxRadius = Math.max(w, h) * 0.65;
+  const maxRadius = Math.max(w, h) * 0.72;
   const stars = [];
+  const bokehDust = [];
+  const darkDustClouds = [];
+  const stardustSparks = [];
 
-  // 1. Four Logarithmic Spiral Arms
+  // 1. Four Logarithmic Spiral Arms with Planck Spectral Types
   for (let i = 0; i < starCount; i++) {
-    const r = Math.pow(Math.random(), 1.9) * maxRadius;
+    const r = Math.pow(Math.random(), 1.85) * maxRadius + 35;
     const armIndex = i % arms;
     const armOffset = (armIndex * 2 * Math.PI) / arms;
-    const spiralAngle = Math.log(r / 24 + 1) * 2.85 + armOffset;
+    const spiralAngle = Math.log(r / 28 + 1) * 2.9 + armOffset;
     const spread = (Math.random() - 0.5) * 0.32 * r;
-    const diskThickness = Math.max(8, 70 * Math.exp(-r / 180));
+    const diskThickness = Math.max(10, 85 * Math.exp(-r / 190));
     const y = (Math.random() - 0.5) * diskThickness;
 
     const x = Math.cos(spiralAngle) * r + (Math.random() - 0.5) * spread;
     const z = Math.sin(spiralAngle) * r + (Math.random() - 0.5) * spread;
 
-    // Stellar Population Color Grading
+    // Planckian Stellar Classification
     let color = '56, 213, 240';
     let baseRadius = Math.random() * 1.8 + 0.6;
-    let isForegroundSpike = false;
+    let isSpike = false;
+    let pulsar = false;
 
     if (r < maxRadius * 0.22) {
-      color = Math.random() > 0.4 ? '255, 255, 255' : '56, 213, 240';
-      baseRadius = Math.random() * 2.2 + 0.8;
-      if (Math.random() > 0.75) isForegroundSpike = true;
-    } else if (r < maxRadius * 0.6) {
-      const randType = Math.random();
-      if (randType > 0.6) color = '244, 63, 94'; // H-II Starburst Rose
-      else if (randType > 0.3) color = '168, 85, 247'; // Ionized Violet
-      else color = '96, 165, 250'; // Young Azure
+      // Hot Core / Young Giants (Class O/B & A)
+      if (Math.random() > 0.4) {
+        color = '255, 255, 255';
+        baseRadius = Math.random() * 2.4 + 1.0;
+        isSpike = Math.random() > 0.65;
+      } else {
+        color = '56, 213, 240';
+        baseRadius = Math.random() * 2.0 + 0.8;
+      }
+    } else if (r < maxRadius * 0.65) {
+      const type = Math.random();
+      if (type > 0.62) {
+        color = '244, 63, 94'; // H-II Starburst Rose
+      } else if (type > 0.32) {
+        color = '168, 85, 247'; // Ionized Violet
+      } else if (type > 0.12) {
+        color = '96, 165, 250'; // Azure Giant
+      } else {
+        color = '254, 240, 138'; // Solar Gold (Class G)
+        isSpike = Math.random() > 0.8;
+      }
     } else {
-      color = Math.random() > 0.5 ? '245, 158, 11' : '99, 102, 241'; // Amber dust & Halo
+      // Outer Arm / Ancient Halo (Class K/M & Amber Dust)
+      color = Math.random() > 0.5 ? '245, 158, 11' : '129, 140, 248';
+      baseRadius = Math.random() * 1.5 + 0.5;
     }
+
+    // Rare periodic pulsars
+    if (i < 5) pulsar = true;
 
     stars.push({
       x, y, z, r,
       baseRadius,
       color,
-      isForegroundSpike,
-      twinkleSpeed: Math.random() * 0.03 + 0.012,
+      isSpike,
+      pulsar,
+      orbitalSpeed: 0.0009 + (0.0008 / Math.sqrt(r / 60 + 1)),
+      twinkleSpeed: Math.random() * 0.035 + 0.015,
       twinklePhase: Math.random() * Math.PI * 2
     });
   }
 
-  // 2. Central Supermassive Bulge Stars (Spherical cluster)
-  for (let i = 0; i < (isMobile ? 25 : 45); i++) {
-    const rad = Math.pow(Math.random(), 0.8) * 85;
-    const theta = Math.random() * Math.PI * 2;
-    const phi = Math.acos(2 * Math.random() - 1);
-    const x = rad * Math.sin(phi) * Math.cos(theta);
-    const y = rad * Math.sin(phi) * Math.sin(theta) * 0.6;
-    const z = rad * Math.cos(phi);
-
-    stars.push({
-      x, y, z, r: rad,
-      baseRadius: Math.random() * 2.0 + 0.8,
-      color: Math.random() > 0.5 ? '255, 255, 255' : '56, 213, 240',
-      isForegroundSpike: Math.random() > 0.7,
-      twinkleSpeed: Math.random() * 0.04 + 0.015,
-      twinklePhase: Math.random() * Math.PI * 2
+  // 2. Foreground 3D Depth-of-Field (Bokeh) Orbs
+  const bokehCount = isMobile ? 18 : 36;
+  for (let i = 0; i < bokehCount; i++) {
+    bokehDust.push({
+      x: (Math.random() - 0.5) * w * 1.4,
+      y: (Math.random() - 0.5) * h * 1.4,
+      z: -(Math.random() * 320 + 120), // close to camera lens!
+      radius: Math.random() * 18 + 8,
+      color: Math.random() > 0.5 ? '56, 213, 240' : '168, 85, 247',
+      alpha: Math.random() * 0.12 + 0.05,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25
     });
   }
 
-  // 3. Volumetric 3D Deep Space Nebulae
+  // 3. Volumetric Interstellar Dark Matter Absorption Clouds (Silhouettes)
+  for (let i = 0; i < 7; i++) {
+    const ang = (i * Math.PI * 2) / 7 + 0.4;
+    const rad = (i + 1) * (maxRadius / 8);
+    darkDustClouds.push({
+      x: Math.cos(ang) * rad,
+      y: (Math.random() - 0.5) * 30,
+      z: Math.sin(ang) * rad,
+      radius: Math.random() * 110 + 90,
+      alpha: Math.random() * 0.55 + 0.35
+    });
+  }
+
+  // 4. Volumetric Radiant Nebulae (Glowing Star Nurseries)
   const nebulae = [
-    { x: 120, y: -20, z: 80, rad: 160, color: '56, 213, 240', alpha: 0.08 },
-    { x: -180, y: 30, z: -120, rad: 190, color: '244, 63, 94', alpha: 0.07 },
-    { x: 80, y: 15, z: -160, rad: 210, color: '168, 85, 247', alpha: 0.07 },
-    { x: -140, y: -25, z: 140, rad: 170, color: '56, 213, 240', alpha: 0.06 },
-    { x: 240, y: 10, z: -60, rad: 220, color: '245, 158, 11', alpha: 0.06 },
-    { x: -90, y: -10, z: -220, rad: 180, color: '168, 85, 247', alpha: 0.07 },
-    { x: 200, y: 25, z: 180, rad: 175, color: '244, 63, 94', alpha: 0.06 },
-    { x: -220, y: -18, z: 40, rad: 195, color: '56, 213, 240', alpha: 0.07 }
+    { x: 140, y: -25, z: 90, rad: 210, color: '56, 213, 240', alpha: 0.09 },
+    { x: -210, y: 35, z: -140, rad: 240, color: '244, 63, 94', alpha: 0.08 },
+    { x: 90, y: 20, z: -190, rad: 250, color: '168, 85, 247', alpha: 0.08 },
+    { x: -160, y: -30, z: 160, rad: 200, color: '56, 213, 240', alpha: 0.07 },
+    { x: 270, y: 15, z: -80, rad: 260, color: '245, 158, 11', alpha: 0.06 },
+    { x: -110, y: -15, z: -250, rad: 220, color: '168, 85, 247', alpha: 0.07 },
+    { x: 230, y: 30, z: 210, rad: 210, color: '244, 63, 94', alpha: 0.07 },
+    { x: -260, y: -22, z: 60, rad: 230, color: '56, 213, 240', alpha: 0.08 }
   ];
 
-  // --- HIGH-SPEED COSMIC METEORS SYSTEM ---
+  // 5. Supersonic Fragmenting Meteors
   const meteors = [];
+  const meteorFragments = [];
+
   function spawnMeteor() {
-    if (meteors.length >= 3 || Math.random() > 0.018) return;
+    if (meteors.length >= 3 || Math.random() > 0.016) return;
     meteors.push({
       x: Math.random() * w,
-      y: Math.random() * (h * 0.5),
-      vx: (Math.random() * 3 + 4.5),
-      vy: (Math.random() * 2 + 2.5),
-      length: Math.random() * 75 + 50,
+      y: Math.random() * (h * 0.45),
+      vx: (Math.random() * 3.5 + 5.5),
+      vy: (Math.random() * 2.2 + 3.0),
+      length: Math.random() * 85 + 60,
       alpha: 1.0,
       color: Math.random() > 0.5 ? '56, 213, 240' : '244, 63, 94'
     });
   }
 
-  // --- RENDER LOOP: 3D REALISTIC PERSPECTIVE GALAXY ENGINE ---
-  function render3DGalaxy() {
+  // --- RENDER LOOP: 3D PHOTOREALISTIC UNIVERSE & BLACK HOLE ---
+  function renderRealisticUniverse() {
     if (!isPageVisible) return;
     ctx.clearRect(0, 0, w, h);
 
-    galaxyAngle += 0.0013;
+    galaxyAngle += 0.0012;
     rotX += (targetRotX - rotX) * 0.05;
     rotY += (targetRotY - rotY) * 0.05;
     scrollPanY += (targetScrollPanY - scrollPanY) * 0.06;
 
-    // Camera 3D Inclination with Scroll & Parallax
-    const tiltX = 0.54 + rotX + (scrollProg * 0.22); // ~31 to 44 deg cosmic perspective
+    // 3D Camera Angles & Horizon Projection
+    const tiltX = 0.56 + rotX + (scrollProg * 0.24); // ~32 to 46 deg view
     const cosTilt = Math.cos(tiltX), sinTilt = Math.sin(tiltX);
     const camAngle = galaxyAngle + rotY + (scrollProg * 0.35);
     const cosRot = Math.cos(camAngle), sinRot = Math.sin(camAngle);
 
-    const projectedOriginY = cy + (scrollPanY * 0.15);
+    const projectedOriginY = cy + (scrollPanY * 0.16);
 
-    // 1. DRAW MULTI-TIER SUPERMASSIVE GALACTIC CORE GLOW
-    const coreGrad = ctx.createRadialGradient(cx, projectedOriginY, 0, cx, projectedOriginY, Math.min(320, w * 0.42));
-    coreGrad.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
-    coreGrad.addColorStop(0.12, 'rgba(56, 213, 240, 0.32)');
-    coreGrad.addColorStop(0.35, 'rgba(168, 85, 247, 0.16)');
-    coreGrad.addColorStop(0.65, 'rgba(244, 63, 94, 0.07)');
-    coreGrad.addColorStop(1, 'transparent');
-    ctx.fillStyle = coreGrad;
+    // --------------------------------------------------------------------------
+    // A. CENTRAL SUPERMASSIVE BLACK HOLE & RELATIVISTIC ACCRETION DISK
+    // --------------------------------------------------------------------------
+    const bhScale = Math.min(1.0, w / 1100);
+    const bhRadius = 24 * bhScale;
+    const photonRingRadius = bhRadius * 1.65;
+    const accretionOuterRadius = Math.min(360, w * 0.45);
+
+    // 1. Accretion Disc Broad Luminous Corona
+    const coronaGrad = ctx.createRadialGradient(cx, projectedOriginY, photonRingRadius, cx, projectedOriginY, accretionOuterRadius);
+    coronaGrad.addColorStop(0, 'rgba(255, 255, 255, 0.42)');
+    coronaGrad.addColorStop(0.12, 'rgba(56, 213, 240, 0.32)');
+    coronaGrad.addColorStop(0.35, 'rgba(168, 85, 247, 0.16)');
+    coronaGrad.addColorStop(0.68, 'rgba(244, 63, 94, 0.06)');
+    coronaGrad.addColorStop(1, 'transparent');
+    ctx.fillStyle = coronaGrad;
     ctx.beginPath();
-    ctx.arc(cx, projectedOriginY, Math.min(320, w * 0.42), 0, Math.PI * 2);
+    ctx.arc(cx, projectedOriginY, accretionOuterRadius, 0, Math.PI * 2);
     ctx.fill();
 
-    // 2. PROJECT AND RENDER 3D VOLUMETRIC NEBULA CLOUDS
+    // 2. Gravitational Lensing Arc (Light bent over the top of the event horizon)
+    ctx.save();
+    ctx.beginPath();
+    ctx.ellipse(cx, projectedOriginY - bhRadius * 0.35, photonRingRadius * 1.9, photonRingRadius * 1.15, 0, Math.PI, 2 * Math.PI);
+    ctx.strokeStyle = 'rgba(56, 213, 240, 0.4)';
+    ctx.lineWidth = 3.5 * bhScale;
+    ctx.stroke();
+
+    // 3. Relativistic Accretion Ring with Doppler Beaming (Left side blue-boosted)
+    const diskGrad = ctx.createLinearGradient(cx - photonRingRadius * 2.5, projectedOriginY, cx + photonRingRadius * 2.5, projectedOriginY);
+    diskGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)'); // Approaching side: Doppler boosted white-hot
+    diskGrad.addColorStop(0.2, 'rgba(56, 213, 240, 0.85)');
+    diskGrad.addColorStop(0.6, 'rgba(168, 85, 247, 0.45)');
+    diskGrad.addColorStop(1, 'rgba(244, 63, 94, 0.25)'); // Receding side: Doppler redshifted
+    ctx.beginPath();
+    ctx.ellipse(cx, projectedOriginY, photonRingRadius * 2.6, photonRingRadius * 0.75, 0.18, 0, Math.PI * 2);
+    ctx.strokeStyle = diskGrad;
+    ctx.lineWidth = 4 * bhScale;
+    ctx.stroke();
+    ctx.restore();
+
+    // 4. Absolute Dark Event Horizon (Black Hole Shadow)
+    ctx.beginPath();
+    ctx.arc(cx, projectedOriginY, bhRadius, 0, Math.PI * 2);
+    ctx.fillStyle = '#020409';
+    ctx.fill();
+
+    // 5. Einstein Photon Ring (Razor-sharp photon orbit boundary)
+    ctx.beginPath();
+    ctx.arc(cx, projectedOriginY, photonRingRadius, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+    ctx.lineWidth = 1.8 * bhScale;
+    ctx.stroke();
+
+    // --------------------------------------------------------------------------
+    // B. VOLUMETRIC RADIANT NEBULAE (3D GLOWING STAR NURSERIES)
+    // --------------------------------------------------------------------------
     for (let i = 0; i < nebulae.length; i++) {
       const neb = nebulae[i];
       const rx = neb.x * cosRot - neb.z * sinRot;
@@ -4190,7 +4247,7 @@ if (canvas) {
       const ry = neb.y * cosTilt - rz * sinTilt;
       const fz = rz * cosTilt + neb.y * sinTilt;
 
-      const depth = fz + 520;
+      const depth = fz + 540;
       if (depth > 40) {
         const scale = fov / depth;
         const px = cx + rx * scale;
@@ -4198,8 +4255,8 @@ if (canvas) {
         const pRad = neb.rad * scale;
 
         const nebGrad = ctx.createRadialGradient(px, py, 0, px, py, pRad);
-        nebGrad.addColorStop(0, `rgba(${neb.color}, ${neb.alpha * 1.5})`);
-        nebGrad.addColorStop(0.5, `rgba(${neb.color}, ${neb.alpha * 0.6})`);
+        nebGrad.addColorStop(0, `rgba(${neb.color}, ${neb.alpha * 1.6})`);
+        nebGrad.addColorStop(0.5, `rgba(${neb.color}, ${neb.alpha * 0.65})`);
         nebGrad.addColorStop(1, 'transparent');
 
         ctx.fillStyle = nebGrad;
@@ -4209,44 +4266,60 @@ if (canvas) {
       }
     }
 
-    // 3. PROJECT 3D STARS WITH PERSPECTIVE & DEPTH SORTING
+    // --------------------------------------------------------------------------
+    // C. 3D STARS WITH GRAVITATIONAL CURSOR LENSING & DEPTH SORTING
+    // --------------------------------------------------------------------------
     const projected = [];
     for (let i = 0; i < stars.length; i++) {
       const s = stars[i];
 
-      // Galactic orbital rotation
-      const rx = s.x * cosRot - s.z * sinRot;
-      const rz = s.z * cosRot + s.x * sinRot;
+      // Galactic differential orbital rotation
+      const curRotAngle = camAngle + (s.orbitalSpeed * (galaxyAngle * 35));
+      const cR = Math.cos(curRotAngle), sR = Math.sin(curRotAngle);
 
-      // Cosmic disc tilt
+      const rx = s.x * cR - s.z * sR;
+      const rz = s.z * cR + s.x * sR;
       const ry = s.y * cosTilt - rz * sinTilt;
       const fz = rz * cosTilt + s.y * sinTilt;
 
-      const depth = fz + 520;
+      const depth = fz + 540;
       if (depth > 30) {
         const scale = fov / depth;
-        const px = cx + rx * scale;
-        const py = projectedOriginY + ry * scale;
-        const pr = Math.max(0.4, s.baseRadius * scale);
+        let px = cx + rx * scale;
+        let py = projectedOriginY + ry * scale;
+        const pr = Math.max(0.45, s.baseRadius * scale);
 
-        // Natural astronomical twinkling
-        const twinkle = Math.sin(galaxyAngle * 35 * s.twinkleSpeed + s.twinklePhase) * 0.28 + 0.72;
-        const alpha = Math.min(0.92, Math.max(0.14, (1 - fz / (maxRadius * 1.3)) * 0.75 * twinkle));
+        // Interactive Gravitational Lens Disturbance around Cursor
+        if (mouse.active) {
+          const dx = px - mouse.x;
+          const dy = py - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist < 150 && dist > 5) {
+            const pull = (1 - dist / 150) * 14;
+            px += (dx / dist) * pull;
+            py += (dy / dist) * pull;
+          }
+        }
+
+        // Natural stellar scintillation
+        const twinkle = Math.sin(galaxyAngle * 30 * s.twinkleSpeed + s.twinklePhase) * 0.28 + 0.72;
+        const alpha = Math.min(0.95, Math.max(0.12, (1 - fz / (maxRadius * 1.35)) * 0.78 * twinkle));
 
         projected.push({
           px, py, pr, pz: fz,
           scale,
           alpha,
           color: s.color,
-          isForegroundSpike: s.isForegroundSpike
+          isSpike: s.isSpike,
+          pulsar: s.pulsar
         });
       }
     }
 
-    // Depth Sorting (Painter's algorithm: draw deep stars first)
+    // Sort by depth (painter's algorithm)
     projected.sort((a, b) => b.pz - a.pz);
 
-    // 4. DRAW 3D CONSTELLATION FILAMENTS / STAR DUST LINKS
+    // Constellation Filament Links
     for (let i = 0; i < projected.length; i += 2) {
       const p1 = projected[i];
       for (let j = i + 1; j < Math.min(i + 4, projected.length); j++) {
@@ -4255,11 +4328,11 @@ if (canvas) {
         const dy = p1.py - p2.py;
         const dist = Math.hypot(dx, dy);
 
-        if (dist < 52) {
-          const lineAlpha = (1 - dist / 52) * Math.min(p1.alpha, p2.alpha) * 0.24;
+        if (dist < 50) {
+          const lineAlpha = (1 - dist / 50) * Math.min(p1.alpha, p2.alpha) * 0.22;
           ctx.beginPath();
           ctx.strokeStyle = `rgba(56, 213, 240, ${lineAlpha})`;
-          ctx.lineWidth = 0.8;
+          ctx.lineWidth = 0.75;
           ctx.moveTo(p1.px, p1.py);
           ctx.lineTo(p2.px, p2.py);
           ctx.stroke();
@@ -4267,27 +4340,26 @@ if (canvas) {
       }
     }
 
-    // 5. DRAW 3D STARS WITH GLOWING HALOS & DIFFRACTION SPIKES
+    // Draw Stars
     for (let i = 0; i < projected.length; i++) {
       const p = projected[i];
 
-      // Star point
       ctx.beginPath();
       ctx.arc(p.px, p.py, p.pr, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
       ctx.fill();
 
-      // Atmospheric soft bloom for bright foreground stars
+      // Atmospheric soft bloom for bright stars
       if (p.pr > 1.2 && p.pz < 90) {
         ctx.beginPath();
-        ctx.arc(p.px, p.py, p.pr * 2.4, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color}, ${p.alpha * 0.26})`;
+        ctx.arc(p.px, p.py, p.pr * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color}, ${p.alpha * 0.25})`;
         ctx.fill();
 
-        // 4-Point Celestial Diffraction Spikes (Telescope optics)
-        if (p.isForegroundSpike && p.pr > 1.5) {
-          const spikeLen = p.pr * 4.2;
-          ctx.strokeStyle = `rgba(${p.color}, ${p.alpha * 0.4})`;
+        // 4-Point Optical Telescope Diffraction Spikes
+        if (p.isSpike && p.pr > 1.4) {
+          const spikeLen = p.pr * 4.4;
+          ctx.strokeStyle = `rgba(${p.color}, ${p.alpha * 0.42})`;
           ctx.lineWidth = 0.75;
           ctx.beginPath();
           ctx.moveTo(p.px - spikeLen, p.py);
@@ -4297,15 +4369,118 @@ if (canvas) {
           ctx.stroke();
         }
       }
+
+      // Pulsar Gravitational Wave Ripple
+      if (p.pulsar) {
+        const pulseR = ((galaxyAngle * 60 + i * 20) % 45);
+        const pulseAlpha = Math.max(0, (1 - pulseR / 45) * 0.35);
+        ctx.beginPath();
+        ctx.arc(p.px, p.py, pulseR, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${p.color}, ${pulseAlpha})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
     }
 
-    // 6. DRAW OCCASIONAL REALISTIC HIGH-SPEED METEORS
+    // --------------------------------------------------------------------------
+    // D. INTERSTELLAR DARK MATTER ABSORPTION SILHOUETTES
+    // --------------------------------------------------------------------------
+    for (let i = 0; i < darkDustClouds.length; i++) {
+      const d = darkDustClouds[i];
+      const rx = d.x * cosRot - d.z * sinRot;
+      const rz = d.z * cosRot + d.x * sinRot;
+      const ry = d.y * cosTilt - rz * sinTilt;
+      const fz = rz * cosTilt + d.y * sinTilt;
+
+      const depth = fz + 540;
+      if (depth > 50) {
+        const scale = fov / depth;
+        const px = cx + rx * scale;
+        const py = projectedOriginY + ry * scale;
+        const pRad = d.radius * scale;
+
+        const darkGrad = ctx.createRadialGradient(px, py, 0, px, py, pRad);
+        darkGrad.addColorStop(0, `rgba(3, 5, 12, ${d.alpha})`);
+        darkGrad.addColorStop(0.65, `rgba(3, 5, 12, ${d.alpha * 0.4})`);
+        darkGrad.addColorStop(1, 'transparent');
+
+        ctx.fillStyle = darkGrad;
+        ctx.beginPath();
+        ctx.arc(px, py, pRad, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // --------------------------------------------------------------------------
+    // E. FOREGROUND 3D CAMERA BOKEH DUST (DEPTH-OF-FIELD EFFECT)
+    // --------------------------------------------------------------------------
+    for (let i = 0; i < bokehDust.length; i++) {
+      const b = bokehDust[i];
+      b.x += b.vx;
+      b.y += b.vy;
+      if (b.x < -100) b.x = w + 100;
+      if (b.x > w + 100) b.x = -100;
+      if (b.y < -100) b.y = h + 100;
+      if (b.y > h + 100) b.y = -100;
+
+      // Parallax shift from mouse
+      const px = b.x + rotY * 180;
+      const py = b.y - rotX * 180;
+
+      const bokehGrad = ctx.createRadialGradient(px, py, 0, px, py, b.radius);
+      bokehGrad.addColorStop(0, `rgba(${b.color}, ${b.alpha})`);
+      bokehGrad.addColorStop(0.55, `rgba(${b.color}, ${b.alpha * 0.4})`);
+      bokehGrad.addColorStop(1, 'transparent');
+
+      ctx.fillStyle = bokehGrad;
+      ctx.beginPath();
+      ctx.arc(px, py, b.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // --------------------------------------------------------------------------
+    // F. REACTIVE STARDUST SPARKS (CURSOR TRAIL)
+    // --------------------------------------------------------------------------
+    for (let i = stardustSparks.length - 1; i >= 0; i--) {
+      const sp = stardustSparks[i];
+      sp.x += sp.vx;
+      sp.y += sp.vy;
+      sp.alpha -= 0.024;
+      sp.size = Math.max(0.1, sp.size * 0.96);
+
+      if (sp.alpha <= 0) {
+        stardustSparks.splice(i, 1);
+        continue;
+      }
+
+      ctx.beginPath();
+      ctx.arc(sp.x, sp.y, sp.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${sp.color}, ${sp.alpha})`;
+      ctx.fill();
+    }
+
+    // --------------------------------------------------------------------------
+    // G. SUPERSONIC FRAGMENTING METEORS & BURNING EMBERS
+    // --------------------------------------------------------------------------
     spawnMeteor();
     for (let i = meteors.length - 1; i >= 0; i--) {
       const m = meteors[i];
       m.x += m.vx;
       m.y += m.vy;
-      m.alpha -= 0.02;
+      m.alpha -= 0.018;
+
+      // Spawn burning ember disintegration fragment
+      if (Math.random() > 0.4 && meteorFragments.length < 50) {
+        meteorFragments.push({
+          x: m.x + (Math.random() - 0.5) * 4,
+          y: m.y + (Math.random() - 0.5) * 4,
+          vx: m.vx * 0.3 + (Math.random() - 0.5) * 1.5,
+          vy: m.vy * 0.3 + (Math.random() - 0.5) * 1.5,
+          alpha: m.alpha * 0.8,
+          size: Math.random() * 1.8 + 0.6,
+          color: m.color
+        });
+      }
 
       if (m.alpha <= 0 || m.x > w || m.y > h) {
         meteors.splice(i, 1);
@@ -4322,36 +4497,79 @@ if (canvas) {
 
       ctx.beginPath();
       ctx.strokeStyle = mGrad;
-      ctx.lineWidth = 1.8;
+      ctx.lineWidth = 2.0;
       ctx.moveTo(m.x, m.y);
       ctx.lineTo(tailX, tailY);
       ctx.stroke();
     }
 
-    requestAnimationFrame(render3DGalaxy);
+    // Render Meteor Embers
+    for (let i = meteorFragments.length - 1; i >= 0; i--) {
+      const mf = meteorFragments[i];
+      mf.x += mf.vx;
+      mf.y += mf.vy;
+      mf.alpha -= 0.035;
+
+      if (mf.alpha <= 0) {
+        meteorFragments.splice(i, 1);
+        continue;
+      }
+
+      ctx.beginPath();
+      ctx.arc(mf.x, mf.y, mf.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${mf.color}, ${mf.alpha})`;
+      ctx.fill();
+    }
+
+    requestAnimationFrame(renderRealisticUniverse);
   }
 
-  // Start continuous 60fps render
-  render3DGalaxy();
+  // Launch Engine
+  renderRealisticUniverse();
 }
 
 /**
  * ----------------------------------------------------------------------------
- * 7. 3D CARD TILT MICRO-INTERACTION IN FRONT VIEW
+ * 7. UNIVERSAL 3D CARD TILT & SPECULAR MOUSE SHEEN
  * ----------------------------------------------------------------------------
  */
-const tiltCard = document.getElementById('tiltCard');
-if (tiltCard && window.innerWidth > 900) {
-  tiltCard.addEventListener('mousemove', (e) => {
-    const rect = tiltCard.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    tiltCard.style.transform = `perspective(1000px) rotateY(${x * 0.04}deg) rotateX(${-y * 0.04}deg) translateY(-4px)`;
+const interactiveCards = document.querySelectorAll(
+  '.portrait-card, .proj-carousel-container, .poetry-carousel-wrap, .moment-card-compact, .skills-box, .form-box'
+);
+
+interactiveCards.forEach(card => {
+  let rafId = null;
+
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+
+    if (window.innerWidth > 768) {
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = -((y - centerY) / centerY) * 4.5;
+      const rotateY = ((x - centerX) / centerX) * 4.5;
+
+      if (!rafId) {
+        rafId = requestAnimationFrame(() => {
+          card.style.transform = `perspective(1100px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.008, 1.008, 1.008)`;
+          rafId = null;
+        });
+      }
+    }
+  }, { passive: true });
+
+  card.addEventListener('mouseleave', () => {
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+    card.style.transform = 'perspective(1100px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   });
-  tiltCard.addEventListener('mouseleave', () => {
-    tiltCard.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0)';
-  });
-}
+});
 
 /**
  * ----------------------------------------------------------------------------
@@ -4987,34 +5205,11 @@ setupImage($('#stageImg'), $('#stagePlaceholder'), ['stage.jpg', 'stage.jpg.jpeg
  * 10. THEME & NAVIGATION
  * ----------------------------------------------------------------------------
  */
-const themeBtn = $('#themeBtn');
-let currentTheme = localStorage.getItem('imran_theme') || 'midnight';
-
-function applyTheme(t) {
-  if (t === 'parchment') {
-    document.documentElement.setAttribute('data-theme', 'parchment');
-    if (themeBtn) {
-      themeBtn.setAttribute('title', 'Switch to Midnight Tech Theme');
-      themeBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
-    }
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-    if (themeBtn) {
-      themeBtn.setAttribute('title', 'Switch to Parchment Poetry Theme');
-      themeBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"/></svg>';
-    }
-  }
-  localStorage.setItem('imran_theme', t);
-}
-applyTheme(currentTheme);
-
-if (themeBtn) {
-  themeBtn.addEventListener('click', () => {
-    currentTheme = (currentTheme === 'midnight') ? 'parchment' : 'midnight';
-    applyTheme(currentTheme);
-    showToast(`Switched to ${currentTheme === 'parchment' ? 'Parchment Poetry' : 'Midnight Tech'} theme`, '🎨');
-  });
-}
+// Theme permanently locked to pure dark deep-space cosmic
+document.documentElement.removeAttribute('data-theme');
+try {
+  localStorage.removeItem('imran_theme');
+} catch (e) {}
 
 const menuToggle = $('#menuToggle');
 const mobileNav = $('#mobileNav');
