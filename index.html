@@ -2979,6 +2979,89 @@ html, body {
   }
 }
 
+
+/* ==========================================================================
+   MOBILE VIEW: CONTACT / MESSAGE SECTION ON-DEMAND ACCORDION
+   ========================================================================== */
+.mobile-contact-trigger-wrap {
+  display: none;
+}
+
+.mobile-close-contact-wrap {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* On mobile: contact section is hidden by default */
+  #contact:not(.mobile-visible) {
+    display: none !important;
+  }
+
+  /* When revealed by tapping on contact */
+  #contact.mobile-visible {
+    display: block !important;
+    animation: mobileContactSlideIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes mobileContactSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile trigger banner shown when contact is hidden */
+  .mobile-contact-trigger-wrap {
+    display: block !important;
+    padding: 24px 0 20px !important;
+    text-align: center !important;
+  }
+
+  .mobile-contact-trigger-btn {
+    width: 100% !important;
+    max-width: 440px !important;
+    min-height: 48px !important;
+    margin: 0 auto !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    box-shadow: 0 10px 28px -6px var(--cy-glow), 0 0 18px rgba(56, 213, 240, 0.25) !important;
+    touch-action: manipulation !important;
+  }
+
+  .mobile-close-contact-wrap {
+    display: flex !important;
+    justify-content: flex-end !important;
+    margin-bottom: 12px !important;
+  }
+
+  .mobile-close-contact-btn {
+    padding: 7px 15px !important;
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    border-radius: 999px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    color: var(--tx-sec) !important;
+    touch-action: manipulation !important;
+  }
+
+  .mobile-close-contact-btn:hover,
+  .mobile-close-contact-btn:active {
+    background: rgba(244, 63, 94, 0.22) !important;
+    border-color: var(--rose) !important;
+    color: #ffffff !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3430,6 +3513,12 @@ html, body {
   <!-- CONTACT SECTION (LIVE GOOGLE SHEET ATTACHED) -->
   <section id="contact">
     <div class="w">
+      <!-- Mobile Close Contact Button -->
+      <div class="mobile-close-contact-wrap" id="mobileCloseContactWrap">
+        <button type="button" class="btn ghost mobile-close-contact-btn" id="closeMobileContactBtn">
+          <span>✕ Close Message Section</span>
+        </button>
+      </div>
       <div class="contact-grid">
         <div class="contact-info">
           <span class="sec-tag">Let's Connect · Raabta</span>
@@ -3532,6 +3621,15 @@ html, body {
       </div>
     </div>
   </section>
+  <!-- Mobile Contact Trigger Banner (Visible on mobile only when contact is hidden) -->
+  <div class="mobile-contact-trigger-wrap" id="mobileContactTriggerWrap">
+    <div class="w">
+      <button type="button" class="btn p mobile-contact-trigger-btn" id="openMobileContactBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>💬 Tap to Send a Message / Contact Imran</span>
+      </button>
+    </div>
+  </div>
 </main>
 
 <!-- FOOTER -->
@@ -5659,6 +5757,58 @@ if (window.innerWidth > 900) {
 
 initProjectsCarousel();
 initPoetryCarousel();
+
+/**
+ * ----------------------------------------------------------------------------
+ * 13. MOBILE CONTACT SECTION ON-DEMAND TOGGLE
+ * ----------------------------------------------------------------------------
+ */
+function initMobileContactToggle() {
+  const contactSec = document.getElementById('contact');
+  const openBtn = document.getElementById('openMobileContactBtn');
+  const closeBtn = document.getElementById('closeMobileContactBtn');
+  const triggerWrap = document.getElementById('mobileContactTriggerWrap');
+
+  function openContact() {
+    if (!contactSec) return;
+    contactSec.classList.add('mobile-visible');
+    if (triggerWrap) triggerWrap.style.display = 'none';
+
+    setTimeout(() => {
+      contactSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const firstInput = contactSec.querySelector('input[name="name"]');
+      if (firstInput && window.innerWidth <= 768) {
+        setTimeout(() => firstInput.focus(), 400);
+      }
+    }, 40);
+  }
+
+  function closeContact() {
+    if (!contactSec) return;
+    contactSec.classList.remove('mobile-visible');
+    if (triggerWrap) triggerWrap.style.display = 'block';
+
+    if (triggerWrap) {
+      triggerWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  if (openBtn) openBtn.addEventListener('click', openContact);
+  if (closeBtn) closeBtn.addEventListener('click', closeContact);
+
+  // Hook all links pointing to #contact so tapping them opens contact on mobile
+  document.querySelectorAll('a[href="#contact"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const mobileNav = document.getElementById('mobileNav');
+        if (mobileNav) mobileNav.classList.remove('open');
+        openContact();
+      }
+    });
+  });
+}
+initMobileContactToggle();
 </script>
 </body>
 </html>
