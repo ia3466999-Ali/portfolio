@@ -292,10 +292,11 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 
 /* ==========================================================================
-   ADVANCED 3D DEPTH, PERSPECTIVE TRANSFORM & SPECULAR GLASS ARCHITECTURE
+   SUPREME 3D DEPTH, PERSPECTIVE TRANSFORM & VOLUMETRIC GLASS ARCHITECTURE
    ========================================================================== */
 
-/* 3D Preserved Space for Containers & Cards */
+/* 3D Preserved Perspective Context */
+.hero-wrap,
 .hero-visual,
 .portrait-card,
 .proj-carousel-container,
@@ -310,7 +311,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   perspective: 1200px;
 }
 
-/* 3D Glassmorphic Surface Bevels & Specular Rim Light */
+/* 3D Physical Extruded Depth & Volumetric Lighting */
 .portrait-card,
 .proj-carousel-container,
 .poetry-carousel-wrap,
@@ -319,15 +320,19 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .moment-card-compact,
 .form-box,
 .skills-box {
-  border-top: 1.5px solid rgba(255, 255, 255, 0.28) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.16) !important;
-  border-right: 1px solid rgba(0, 0, 0, 0.45) !important;
-  border-bottom: 2.5px solid rgba(0, 0, 0, 0.75) !important;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+  border-top: 2px solid rgba(255, 255, 255, 0.4) !important;
+  border-left: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+  border-right: 2px solid rgba(0, 0, 0, 0.6) !important;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.85) !important;
   box-shadow: 
-    0 14px 38px -10px rgba(0, 0, 0, 0.75),
-    0 32px 75px -15px rgba(0, 0, 0, 0.85),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -2px 4px 0 rgba(0, 0, 0, 0.45) !important;
+    -2px 2px 0 rgba(255, 255, 255, 0.25),
+    -4px 4px 0 rgba(56, 213, 240, 0.18),
+    -8px 8px 0 rgba(5, 8, 15, 0.85),
+    0 24px 60px -12px rgba(0, 0, 0, 0.9),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 5px 0 rgba(0, 0, 0, 0.6) !important;
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease !important;
   position: relative;
 }
@@ -340,128 +345,178 @@ button, input, select, textarea { font: inherit; color: inherit; }
 [data-theme="parchment"] .moment-card-compact,
 [data-theme="parchment"] .form-box,
 [data-theme="parchment"] .skills-box {
-  border-top: 1.5px solid rgba(255, 255, 255, 0.95) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.75) !important;
-  border-right: 1px solid rgba(180, 160, 130, 0.35) !important;
-  border-bottom: 2.5px solid rgba(160, 140, 110, 0.5) !important;
+  border-top: 2px solid rgba(255, 255, 255, 0.95) !important;
+  border-left: 1.5px solid rgba(255, 255, 255, 0.8) !important;
+  border-right: 2px solid rgba(160, 140, 110, 0.45) !important;
+  border-bottom: 4px solid rgba(140, 120, 95, 0.6) !important;
   box-shadow: 
-    0 14px 36px -10px rgba(90, 70, 45, 0.2),
-    0 28px 65px -15px rgba(90, 70, 45, 0.15),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
-    inset 0 -2px 3px 0 rgba(140, 120, 95, 0.18) !important;
+    -2px 2px 0 rgba(255, 255, 255, 0.9),
+    -4px 4px 0 rgba(210, 180, 140, 0.3),
+    -8px 8px 0 rgba(140, 120, 95, 0.2),
+    0 24px 60px -12px rgba(90, 70, 45, 0.2),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -2px 4px 0 rgba(140, 120, 95, 0.2) !important;
+}
+
+/* Continuous 3D Levitation & Ambient Breathing for Portrait Card */
+.portrait-card {
+  animation: levitate3D 6.5s ease-in-out infinite alternate !important;
+}
+@keyframes levitate3D {
+  0% {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-5deg) translateY(0px) translateZ(10px);
+    box-shadow: 
+      -2px 2px 0 rgba(255, 255, 255, 0.3),
+      -4px 4px 0 rgba(56, 213, 240, 0.2),
+      -8px 8px 0 rgba(5, 8, 15, 0.9),
+      0 20px 50px -10px rgba(0, 0, 0, 0.9),
+      0 0 35px var(--cy-glow) !important;
+  }
+  100% {
+    transform: perspective(1000px) rotateX(-4deg) rotateY(6deg) translateY(-16px) translateZ(30px);
+    box-shadow: 
+      -3px 3px 0 rgba(255, 255, 255, 0.45),
+      -6px 6px 0 rgba(244, 63, 94, 0.25),
+      -12px 12px 0 rgba(5, 8, 15, 0.95),
+      0 35px 75px -12px rgba(0, 0, 0, 0.95),
+      0 0 55px rgba(244, 63, 94, 0.35) !important;
+  }
 }
 
 /* 3D Depth Layer Elevation */
 .portrait-img {
-  transform: translateZ(16px);
+  transform: translateZ(20px);
   transform-style: preserve-3d;
   transition: transform 0.35s ease;
 }
 .portrait-overlay {
-  transform: translateZ(36px);
+  transform: translateZ(42px);
   transform-style: preserve-3d;
 }
 .float-tag-1 {
-  transform: translateZ(52px) translateY(0);
+  transform: translateZ(60px) translateY(0);
   transform-style: preserve-3d;
-  animation: floatTag1 6s ease-in-out infinite alternate;
+  animation: floatTag1 5s ease-in-out infinite alternate;
 }
 .float-tag-2 {
-  transform: translateZ(52px) translateY(0);
+  transform: translateZ(60px) translateY(0);
   transform-style: preserve-3d;
-  animation: floatTag2 6s ease-in-out infinite alternate 1.5s;
+  animation: floatTag2 5s ease-in-out infinite alternate 1.2s;
 }
 @keyframes floatTag1 {
-  0% { transform: translateZ(52px) translateY(0); }
-  100% { transform: translateZ(58px) translateY(-8px); }
+  0% { transform: translateZ(60px) translateY(0) rotate(-1deg); }
+  100% { transform: translateZ(72px) translateY(-12px) rotate(2deg); }
 }
 @keyframes floatTag2 {
-  0% { transform: translateZ(52px) translateY(0); }
-  100% { transform: translateZ(58px) translateY(8px); }
+  0% { transform: translateZ(60px) translateY(0) rotate(1deg); }
+  100% { transform: translateZ(72px) translateY(12px) rotate(-2deg); }
 }
 
 .urdu-text {
-  transform: translateZ(28px);
+  transform: translateZ(32px);
   transform-style: preserve-3d;
-  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.75), 0 0 20px rgba(244, 63, 94, 0.25);
+  text-shadow: 0 12px 28px rgba(0, 0, 0, 0.8), 0 0 25px rgba(244, 63, 94, 0.32);
 }
 .verse-ornament {
-  transform: translateZ(20px);
+  transform: translateZ(24px);
   transform-style: preserve-3d;
 }
 .roman-verse-sub {
-  transform: translateZ(16px);
+  transform: translateZ(18px);
   transform-style: preserve-3d;
 }
 
 .proj-slide h3,
 .proj-slide-meta {
-  transform: translateZ(26px);
+  transform: translateZ(30px);
   transform-style: preserve-3d;
 }
 .proj-slide-tags {
-  transform: translateZ(18px);
+  transform: translateZ(22px);
   transform-style: preserve-3d;
 }
 
 .stat-item {
   border-radius: var(--radius-sm);
-  padding: 12px 16px;
-  background: rgba(13, 20, 34, 0.55);
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.4);
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.6);
+  padding: 14px 18px;
+  background: rgba(13, 20, 34, 0.65);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.28);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 28px -6px rgba(0, 0, 0, 0.7);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transform-style: preserve-3d;
 }
 .stat-item:hover {
-  transform: perspective(600px) translateY(-3px) translateZ(8px);
-  box-shadow: 0 12px 30px -6px rgba(56, 213, 240, 0.2);
+  transform: perspective(600px) translateY(-5px) translateZ(14px);
+  box-shadow: 0 16px 36px -6px rgba(56, 213, 240, 0.35);
 }
 .stat-item h4 {
-  transform: translateZ(20px);
-  text-shadow: 0 4px 14px rgba(56, 213, 240, 0.35);
+  transform: translateZ(24px);
+  text-shadow: 0 6px 18px rgba(56, 213, 240, 0.45);
 }
 
-/* Tactile 3D Buttons */
+/* 3D Tactile Buttons */
 .btn.p {
   background: linear-gradient(135deg, #38d5f0, #2563eb) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.5) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
-  border-bottom: 3.5px solid #1e3a8a !important;
-  box-shadow: 0 6px 20px rgba(56, 213, 240, 0.45), 0 3px 0 #1e3a8a !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.35) !important;
+  border-bottom: 4px solid #1e3a8a !important;
+  box-shadow: 0 8px 24px rgba(56, 213, 240, 0.45), 0 4px 0 #1e3a8a !important;
   transform: translateY(0);
-  transition: transform 0.16s ease, box-shadow 0.16s ease !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
 .btn.p:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 10px 28px rgba(56, 213, 240, 0.6), 0 5px 0 #1e3a8a !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 14px 32px rgba(56, 213, 240, 0.65), 0 7px 0 #1e3a8a !important;
 }
 .btn.p:active {
-  transform: translateY(3px) !important;
+  transform: translateY(4px) !important;
   border-bottom-width: 1px !important;
   box-shadow: 0 2px 8px rgba(56, 213, 240, 0.3), 0 1px 0 #1e3a8a !important;
 }
 
 .hero-acts .btn:not(.p),
 .carousel-btn {
-  border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
-  border-left: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-bottom: 3px solid rgba(0, 0, 0, 0.6) !important;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 3px 0 rgba(0, 0, 0, 0.7) !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.75) !important;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5), 0 4px 0 rgba(0, 0, 0, 0.8) !important;
   transform: translateY(0);
-  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.2s ease !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease !important;
 }
 .hero-acts .btn:not(.p):hover,
 .carousel-btn:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), 0 5px 0 rgba(0, 0, 0, 0.8) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.6), 0 7px 0 rgba(0, 0, 0, 0.9) !important;
 }
 .hero-acts .btn:not(.p):active,
 .carousel-btn:active {
-  transform: translateY(3px) !important;
+  transform: translateY(4px) !important;
   border-bottom-width: 1px !important;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(0, 0, 0, 0.9) !important;
+}
+
+/* 3D Coin Spin on Brand Logo */
+.brand:hover .brand-mark {
+  animation: coinSpin3D 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+@keyframes coinSpin3D {
+  0% { transform: perspective(600px) rotateY(0deg) scale(1); }
+  50% { transform: perspective(600px) rotateY(180deg) scale(1.18); box-shadow: 0 0 30px var(--cy); }
+  100% { transform: perspective(600px) rotateY(360deg) scale(1.05); }
+}
+
+/* Scroll-Driven 3D Perspective Flip / Fold-In */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: perspective(1100px) rotateX(16deg) translateY(45px) scale(0.95);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-visible {
+  opacity: 1 !important;
+  transform: perspective(1100px) rotateX(0deg) translateY(0) scale(1) !important;
 }
 
 /* Floating 3D Background Geometric Polyhedra */
@@ -469,46 +524,65 @@ button, input, select, textarea { font: inherit; color: inherit; }
   position: absolute;
   pointer-events: none;
   z-index: 1;
-  border-radius: 20%;
+  border-radius: 24%;
   transform-style: preserve-3d;
-  opacity: 0.15;
+  opacity: 0.18;
 }
 .poly-1 {
-  width: 90px;
-  height: 90px;
-  top: 15%;
-  left: 8%;
-  border: 1.5px solid var(--cy);
-  background: radial-gradient(circle, rgba(56, 213, 240, 0.25), transparent 70%);
-  box-shadow: 0 0 35px var(--cy-glow);
-  animation: tumble3D 22s linear infinite;
+  width: 110px;
+  height: 110px;
+  top: 14%;
+  left: 6%;
+  border: 2px solid var(--cy);
+  background: radial-gradient(circle, rgba(56, 213, 240, 0.3), transparent 70%);
+  box-shadow: 0 0 40px var(--cy-glow);
+  animation: tumble3D 20s linear infinite;
 }
 .poly-2 {
-  width: 120px;
-  height: 120px;
-  top: 45%;
-  right: 7%;
-  border: 1.5px solid var(--rose);
-  background: radial-gradient(circle, rgba(244, 63, 94, 0.2), transparent 70%);
-  box-shadow: 0 0 40px var(--rose-glow);
-  animation: tumble3D 28s linear infinite reverse;
+  width: 135px;
+  height: 135px;
+  top: 42%;
+  right: 6%;
+  border: 2px solid var(--rose);
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.25), transparent 70%);
+  box-shadow: 0 0 45px var(--rose-glow);
+  animation: tumble3D 25s linear infinite reverse;
 }
 .poly-3 {
-  width: 70px;
-  height: 70px;
-  bottom: 12%;
-  left: 15%;
-  border: 1.5px solid var(--amber);
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.2), transparent 70%);
-  box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
-  animation: tumble3D 18s linear infinite;
+  width: 85px;
+  height: 85px;
+  bottom: 14%;
+  left: 12%;
+  border: 2px solid var(--amber);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25), transparent 70%);
+  box-shadow: 0 0 35px rgba(245, 158, 11, 0.4);
+  animation: tumble3D 16s linear infinite;
+}
+.poly-4 {
+  width: 95px;
+  height: 95px;
+  top: 65%;
+  left: 3%;
+  border: 2px solid #a855f7;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25), transparent 70%);
+  box-shadow: 0 0 35px rgba(168, 85, 247, 0.4);
+  animation: tumble3D 22s linear infinite reverse;
+}
+.poly-5 {
+  width: 125px;
+  height: 125px;
+  top: 80%;
+  right: 12%;
+  border: 2px solid var(--emerald);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.25), transparent 70%);
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.4);
+  animation: tumble3D 26s linear infinite;
 }
 @keyframes tumble3D {
   0% { transform: perspective(800px) rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
   50% { transform: perspective(800px) rotateX(180deg) rotateY(120deg) rotateZ(90deg); }
   100% { transform: perspective(800px) rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
 }
-
 
 /* Custom Sleek Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
@@ -2772,6 +2846,8 @@ footer {
   <div class="floating-3d-poly poly-1" aria-hidden="true"></div>
   <div class="floating-3d-poly poly-2" aria-hidden="true"></div>
   <div class="floating-3d-poly poly-3" aria-hidden="true"></div>
+  <div class="floating-3d-poly poly-4" aria-hidden="true"></div>
+  <div class="floating-3d-poly poly-5" aria-hidden="true"></div>
 </div>
 
 <!-- HEADER -->
@@ -3843,7 +3919,8 @@ if (canvas) {
   let mouse = { x: null, y: null };
   let rotX = 0, rotY = 0;
   let targetRotX = 0, targetRotY = 0;
-  const fov = 400;
+  let animTime = 0;
+  const fov = 420;
 
   function resizeCanvas() {
     w = canvas.width = canvas.parentElement.offsetWidth;
@@ -3862,8 +3939,8 @@ if (canvas) {
       const my = e.clientY - rect.top;
       mouse.x = mx;
       mouse.y = my;
-      targetRotY = (mx - cx) * 0.0006;
-      targetRotX = -(my - cy) * 0.0006;
+      targetRotY = (mx - cx) * 0.0009;
+      targetRotX = -(my - cy) * 0.0009;
     });
     heroWrap.addEventListener('mouseleave', () => {
       mouse.x = null;
@@ -3873,42 +3950,112 @@ if (canvas) {
     });
   }
 
-  // 3D Particles Matrix
-  const particles = [];
-  const count = Math.min(65, Math.max(35, Math.floor(window.innerWidth / 24)));
-  const rangeX = 550;
-  const rangeY = 400;
-  const rangeZ = 500;
+  // 1. ROTATING 3D WIREFRAME ICOSAHEDRON MESH
+  const phi = (1 + Math.sqrt(5)) / 2;
+  const meshScale = Math.min(110, Math.max(75, Math.floor(window.innerWidth / 14)));
+  const icoRawVertices = [
+    [-1,  phi, 0], [ 1,  phi, 0], [-1, -phi, 0], [ 1, -phi, 0],
+    [ 0, -1,  phi], [ 0,  1,  phi], [ 0, -1, -phi], [ 0,  1, -phi],
+    [ phi, 0, -1], [ phi, 0,  1], [-phi, 0, -1], [-phi, 0,  1]
+  ].map(([x, y, z]) => [x * meshScale, y * meshScale, z * meshScale]);
 
-  for (let i = 0; i < count; i++) {
+  const icoEdges = [];
+  for (let i = 0; i < icoRawVertices.length; i++) {
+    for (let j = i + 1; j < icoRawVertices.length; j++) {
+      const d = Math.hypot(
+        icoRawVertices[i][0] - icoRawVertices[j][0],
+        icoRawVertices[i][1] - icoRawVertices[j][1],
+        icoRawVertices[i][2] - icoRawVertices[j][2]
+      );
+      if (Math.abs(d - meshScale * 2) < 6) {
+        icoEdges.push([i, j]);
+      }
+    }
+  }
+
+  // 2. 3D STARFIELD PARTICLES
+  const particles = [];
+  const pCount = Math.min(55, Math.max(30, Math.floor(window.innerWidth / 28)));
+  const rangeX = 600, rangeY = 450, rangeZ = 500;
+  for (let i = 0; i < pCount; i++) {
     particles.push({
       x: (Math.random() - 0.5) * rangeX * 2,
       y: (Math.random() - 0.5) * rangeY * 2,
       z: (Math.random() - 0.5) * rangeZ * 2,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      vz: (Math.random() - 0.5) * 0.35,
-      baseRadius: Math.random() * 2.2 + 0.8,
-      color: Math.random() > 0.28 ? '38, 213, 240' : '244, 63, 94'
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      vz: (Math.random() - 0.5) * 0.4,
+      baseRadius: Math.random() * 2 + 0.8,
+      color: Math.random() > 0.3 ? '56, 213, 240' : '244, 63, 94'
     });
   }
 
-  function render3DGalaxy() {
+  function render3DCyberSpace() {
     ctx.clearRect(0, 0, w, h);
+    animTime += 0.018;
 
-    rotX += (targetRotX - rotX) * 0.05;
-    rotY += (targetRotY - rotY) * 0.05;
+    rotX += (targetRotX - rotX) * 0.06;
+    rotY += (targetRotY - rotY) * 0.06;
 
+    // --- A. DRAW 3D UNDULATING CYBER WAVE TERRAIN ---
+    const gridCols = Math.min(24, Math.floor(w / 45));
+    const gridRows = 12;
+    const waveSpacingX = (w * 1.3) / gridCols;
+    const waveSpacingZ = 45;
+    const waveStartX = -w * 0.65;
+    const wavePoints = [];
+
+    for (let r = 0; r < gridRows; r++) {
+      const row = [];
+      const z = 80 + r * waveSpacingZ;
+      for (let c = 0; c <= gridCols; c++) {
+        const x = waveStartX + c * waveSpacingX;
+        const waveY = Math.sin(x * 0.007 + animTime * 1.5) * Math.cos(z * 0.008 + animTime) * 32 + (h * 0.28);
+        const depth = z + 350;
+        const scale = fov / depth;
+        const px = cx + x * scale;
+        const py = cy + waveY * scale;
+        const alpha = Math.max(0.04, Math.min(0.35, (1 - r / gridRows) * 0.4));
+        row.push({ px, py, alpha });
+      }
+      wavePoints.push(row);
+    }
+
+    // Draw wave grid horizontal lines
+    for (let r = 0; r < wavePoints.length; r++) {
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(56, 213, 240, ${wavePoints[r][0].alpha})`;
+      ctx.lineWidth = 0.85;
+      for (let c = 0; c < wavePoints[r].length; c++) {
+        const pt = wavePoints[r][c];
+        if (c === 0) ctx.moveTo(pt.px, pt.py);
+        else ctx.lineTo(pt.px, pt.py);
+      }
+      ctx.stroke();
+    }
+    // Draw wave grid vertical connecting lines
+    for (let c = 0; c <= gridCols; c += 2) {
+      ctx.beginPath();
+      ctx.strokeStyle = 'rgba(56, 213, 240, 0.1)';
+      ctx.lineWidth = 0.7;
+      for (let r = 0; r < wavePoints.length; r++) {
+        const pt = wavePoints[r][c];
+        if (r === 0) ctx.moveTo(pt.px, pt.py);
+        else ctx.lineTo(pt.px, pt.py);
+      }
+      ctx.stroke();
+    }
+
+    // --- B. DRAW 3D STARFIELD PARTICLES WITH 3D DEPTH ---
     const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
     const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
 
-    const projected = [];
+    const projectedStars = [];
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
       p.z += p.vz;
-
       if (p.x < -rangeX) p.x = rangeX;
       if (p.x > rangeX) p.x = -rangeX;
       if (p.y < -rangeY) p.y = rangeY;
@@ -3916,7 +4063,6 @@ if (canvas) {
       if (p.z < -rangeZ) p.z = rangeZ;
       if (p.z > rangeZ) p.z = -rangeZ;
 
-      // 3D Perspective Rotation Matrix
       const x1 = p.x * cosY - p.z * sinY;
       const z1 = p.z * cosY + p.x * sinY;
       const y2 = p.y * cosX - z1 * sinX;
@@ -3927,66 +4073,76 @@ if (canvas) {
         const scale = fov / depth;
         const px = cx + x1 * scale;
         const py = cy + y2 * scale;
-        const pr = Math.max(0.4, p.baseRadius * scale);
-        const alpha = Math.min(0.85, Math.max(0.12, (1 - z2 / rangeZ) * 0.52));
-        projected.push({ px, py, pr, pz: z2, alpha, color: p.color, orig: p });
+        const pr = Math.max(0.5, p.baseRadius * scale);
+        const alpha = Math.min(0.85, Math.max(0.1, (1 - z2 / rangeZ) * 0.55));
+        projectedStars.push({ px, py, pr, pz: z2, alpha, color: p.color });
       }
     }
 
-    projected.sort((a, b) => b.pz - a.pz);
-
-    // 3D Constellation connecting lines
-    for (let i = 0; i < projected.length; i++) {
-      for (let j = i + 1; j < projected.length; j++) {
-        const p1 = projected[i];
-        const p2 = projected[j];
-        const dx = p1.orig.x - p2.orig.x;
-        const dy = p1.orig.y - p2.orig.y;
-        const dz = p1.orig.z - p2.orig.z;
-        const dist3D = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-        if (dist3D < 130) {
-          const lineAlpha = (1 - dist3D / 130) * Math.min(p1.alpha, p2.alpha) * 0.45;
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(56, 213, 240, ${lineAlpha})`;
-          ctx.lineWidth = 0.85 * ((p1.pr + p2.pr) / 3);
-          ctx.moveTo(p1.px, p1.py);
-          ctx.lineTo(p2.px, p2.py);
-          ctx.stroke();
-        }
-      }
-
-      if (mouse.x !== null && mouse.y !== null) {
-        const mdx = projected[i].px - mouse.x;
-        const mdy = projected[i].py - mouse.y;
-        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (mdist < 120) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(56, 213, 240, ${(1 - mdist / 120) * 0.32})`;
-          ctx.lineWidth = 1;
-          ctx.moveTo(projected[i].px, projected[i].py);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.stroke();
-        }
-      }
-
-      const p = projected[i];
+    for (let i = 0; i < projectedStars.length; i++) {
+      const p = projectedStars[i];
       ctx.beginPath();
       ctx.arc(p.px, p.py, p.pr, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
       ctx.fill();
-
-      if (p.pz < 0) {
-        ctx.beginPath();
-        ctx.arc(p.px, p.py, p.pr * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color}, ${p.alpha * 0.22})`;
-        ctx.fill();
-      }
     }
 
-    requestAnimationFrame(render3DGalaxy);
+    // --- C. DRAW 3D ROTATING WIREFRAME ICOSAHEDRON MESH ---
+    // Floating near center-right behind portrait
+    const meshOffsetX = Math.min(w * 0.28, 320);
+    const meshOffsetY = -h * 0.05;
+    const meshRotY = animTime * 0.6 + rotY * 2.5;
+    const meshRotX = animTime * 0.4 + rotX * 2.5;
+    const mCosY = Math.cos(meshRotY), mSinY = Math.sin(meshRotY);
+    const mCosX = Math.cos(meshRotX), mSinX = Math.sin(meshRotX);
+
+    const projIco = icoRawVertices.map(([vx, vy, vz]) => {
+      const x1 = vx * mCosY - vz * mSinY;
+      const z1 = vz * mCosY + vx * mSinY;
+      const y2 = vy * mCosX - z1 * mSinX;
+      const z2 = z1 * mCosX + vy * mSinX;
+      const depth = z2 + 500;
+      const scale = fov / depth;
+      return {
+        px: (cx + meshOffsetX) + x1 * scale,
+        py: (cy + meshOffsetY) + y2 * scale,
+        pz: z2,
+        scale
+      };
+    });
+
+    // Draw 3D Icosahedron Edges with Glowing Shader
+    for (let e = 0; e < icoEdges.length; e++) {
+      const [i, j] = icoEdges[e];
+      const p1 = projIco[i];
+      const p2 = projIco[j];
+      const avgZ = (p1.pz + p2.pz) / 2;
+      const edgeAlpha = Math.max(0.18, Math.min(0.75, (1 - avgZ / (meshScale * 2)) * 0.55));
+
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(56, 213, 240, ${edgeAlpha})`;
+      ctx.lineWidth = 1.3 * ((p1.scale + p2.scale) / 1.6);
+      ctx.moveTo(p1.px, p1.py);
+      ctx.lineTo(p2.px, p2.py);
+      ctx.stroke();
+    }
+
+    // Draw 3D Icosahedron Glowing Vertex Spheres
+    for (let i = 0; i < projIco.length; i++) {
+      const pt = projIco[i];
+      const nodeAlpha = Math.max(0.3, Math.min(0.9, (1 - pt.pz / (meshScale * 2)) * 0.7));
+      ctx.beginPath();
+      ctx.arc(pt.px, pt.py, 3.5 * pt.scale, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(244, 63, 94, ${nodeAlpha})`;
+      ctx.shadowColor = 'rgba(56, 213, 240, 0.8)';
+      ctx.shadowBlur = 10;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
+    requestAnimationFrame(render3DCyberSpace);
   }
-  render3DGalaxy();
+  render3DCyberSpace();
 }
 
 /**
@@ -4740,7 +4896,7 @@ window.addEventListener('scroll', () => {
   scrollBar.style.transform = `scaleX(${progress})`;
 }, { passive: true });
 
-// B. Universal 3D Parallax Tilt & Specular Light Engine across All Cards
+// B. High-Performance 3D Parallax Tilt & Specular Light Engine across All Cards
 const threeDCards = $$('.portrait-card, .proj-carousel-container, .poetry-carousel-wrap, .urdu-verse-box, .moment-card, .moment-card-compact, .skills-box, .form-box, .stat-item');
 threeDCards.forEach(card => {
   card.addEventListener('mousemove', (e) => {
@@ -4750,22 +4906,26 @@ threeDCards.forEach(card => {
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
 
-    if (window.innerWidth > 900) {
+    if (window.innerWidth > 768) {
       const cx = rect.width / 2;
       const cy = rect.height / 2;
       const normX = (x - cx) / cx;
       const normY = (y - cy) / cy;
-      const maxDeg = 6.5;
+      const maxDeg = 9.5;
       const rotX = -normY * maxDeg;
       const rotY = normX * maxDeg;
-      card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-4px) translateZ(8px)`;
+      card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-8px) translateZ(16px)`;
     }
   });
 
   card.addEventListener('mouseleave', () => {
     card.style.setProperty('--mouse-x', '-999px');
     card.style.setProperty('--mouse-y', '-999px');
-    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) translateZ(0)';
+    if (card.classList.contains('portrait-card')) {
+      card.style.transform = '';
+    } else {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) translateZ(0)';
+    }
   });
 });
 
