@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Imran Ali (‘Ali’) | AI &amp; Data Science Builder &amp; Urdu Poet</title>
+<title>Imran Ali (‘Ali’) | Portfolio</title>
 <meta name="description" content="Imran Ali (takhallus ‘Ali’) – B.Tech in Artificial Intelligence &amp; Data Science at Presidency University, Bengaluru. Explore deployed engineering projects, original Urdu/Hindi shayari, campus moments, and contact.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -312,7 +312,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.16;
+  opacity: 0.26;
   animation: float-aurora 14s infinite alternate ease-in-out;
 }
 .aurora-blob-1 {
@@ -358,43 +358,52 @@ header .w {
   height: 72px;
 }
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.brand:hover {
+  transform: translateY(-1px);
 }
 .brand-mark {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   background: linear-gradient(135deg, var(--cy), var(--indigo));
   display: grid;
   place-items: center;
-  font: 700 20px var(--font-serif);
+  font: 700 18px var(--font-serif);
   color: #031218;
-  box-shadow: 0 4px 16px var(--cy-glow);
+  box-shadow: 0 4px 18px var(--cy-glow);
   position: relative;
   overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.brand:hover .brand-mark {
+  box-shadow: 0 6px 24px var(--cy-glow), 0 0 16px rgba(129, 140, 248, 0.45);
+  transform: scale(1.05);
 }
 .brand-mark::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent);
-}
-.brand-text {
-  display: flex;
-  flex-direction: column;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), transparent);
 }
 .brand-title {
-  font: 700 20px var(--font-serif);
-  letter-spacing: -0.01em;
+  font: 700 21px/1.2 var(--font-serif);
+  letter-spacing: -0.02em;
+  color: var(--tx);
+  background: linear-gradient(135deg, #ffffff 40%, var(--tx-sec) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: opacity 0.2s ease;
 }
-.brand-sub {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--mu);
-  text-transform: uppercase;
-  letter-spacing: 0.09em;
+[data-theme="parchment"] .brand-title {
+  background: linear-gradient(135deg, #0f172a 40%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 nav.nav-desktop {
@@ -709,6 +718,31 @@ h1.hero-title .glow {
   flex-wrap: wrap;
   gap: 14px;
   margin-bottom: 36px;
+}
+.hero-acts .btn.p {
+  background: linear-gradient(135deg, #38d5f0, #2563eb);
+  box-shadow: 0 8px 24px -4px rgba(56, 213, 240, 0.45);
+  font-weight: 700;
+  border: none;
+  color: #03131a;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+.hero-acts .btn.p:hover {
+  box-shadow: 0 12px 32px -4px rgba(56, 213, 240, 0.65);
+  transform: translateY(-3px) scale(1.02);
+}
+.hero-acts .btn:not(.p) {
+  background: rgba(244, 63, 94, 0.08);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  color: var(--tx);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+.hero-acts .btn:not(.p):hover {
+  background: rgba(244, 63, 94, 0.16);
+  border-color: var(--rose);
+  color: #fff;
+  box-shadow: 0 8px 24px -4px rgba(244, 63, 94, 0.35);
+  transform: translateY(-3px) scale(1.02);
 }
 
 .hero-stats {
@@ -2521,12 +2555,9 @@ footer {
 <!-- HEADER -->
 <header>
   <div class="w">
-    <a href="#top" class="brand">
+    <a href="#top" class="brand" aria-label="Imran Ali Portfolio Home">
       <div class="brand-mark">IA</div>
-      <div class="brand-text">
-        <span class="brand-title">Imran Ali</span>
-        <span class="brand-sub">AI Builder · Urdu Poet ‘Ali’</span>
-      </div>
+      <span class="brand-title">Imran Ali</span>
     </a>
 
     <nav class="nav-desktop">
@@ -2618,8 +2649,8 @@ footer {
             <span>AI &amp; Data Science</span>
           </div>
           <div class="float-tag float-tag-2">
-            <span>🎙️</span>
-            <span>Urdu Poet ‘Ali’</span>
+            <span>📜</span>
+            <span>Urdu Shayari · ‘Ali’</span>
           </div>
 
           <div class="portrait-card" id="tiltCard" aria-label="Portrait of Imran Ali">
@@ -2631,7 +2662,7 @@ footer {
             <div class="portrait-overlay">
               <div class="portrait-tag">
                 Imran Ali
-                <small>1st Year B.Tech AI &amp; DS · Urdu Poet</small>
+                <small>1st Year B.Tech AI &amp; DS · Urdu Shayari</small>
               </div>
               <span class="badge emerald">● Open to Work</span>
             </div>
