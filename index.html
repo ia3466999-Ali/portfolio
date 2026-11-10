@@ -643,36 +643,204 @@ nav.nav-desktop a.active::after {
 
 .menu-toggle {
   display: none;
-  background: none;
-  border: 1px solid var(--line);
-  padding: 8px;
-  border-radius: 10px;
-  color: var(--tx);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 8px 10px;
+  border-radius: 12px;
+  color: #ffffff;
   cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-toggle:hover,
+.menu-toggle:active,
+.menu-toggle.active {
+  background: rgba(56, 213, 240, 0.18);
+  border-color: var(--cy);
+  color: var(--cy);
+  box-shadow: 0 0 16px var(--cy-glow);
 }
 
-/* Mobile Nav Drawer */
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 5, 12, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+.mobile-nav-overlay.open {
+  display: block;
+  opacity: 1;
+}
+
+/* Mobile Nav Drawer - 100% Solid Dark, Richly Frosted & Crystal Clear */
 .mobile-nav {
   display: none;
   position: fixed;
-  top: 72px;
-  left: 0;
-  right: 0;
-  background: var(--panel);
-  border-bottom: 1px solid var(--line);
-  padding: 22px 26px;
+  top: 68px;
+  left: 12px;
+  right: 12px;
+  max-width: 460px;
+  margin: 0 auto;
+  background: linear-gradient(175deg, rgba(10, 16, 28, 0.99) 0%, rgba(6, 9, 18, 0.99) 100%) !important;
+  backdrop-filter: blur(36px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(36px) saturate(200%) !important;
+  border: 1px solid rgba(56, 213, 240, 0.3) !important;
+  border-top: 2px solid rgba(56, 213, 240, 0.7) !important;
+  border-radius: 20px;
+  padding: 16px;
   flex-direction: column;
-  gap: 16px;
-  z-index: 99;
-  box-shadow: var(--shadow);
+  gap: 10px;
+  z-index: 9999 !important;
+  box-shadow: 0 28px 70px -10px rgba(0, 0, 0, 0.95), 0 0 45px -10px var(--cy-glow) !important;
+  transform: translateY(-12px);
+  opacity: 0;
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.26s ease;
 }
-.mobile-nav.open { display: flex; }
-.mobile-nav a {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--tx-sec);
-  padding: 8px 0;
-  border-bottom: 1px solid var(--line);
+.mobile-nav.open {
+  display: flex !important;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mob-nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 13px var(--font-sans);
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+.mob-nav-badge {
+  font: 800 10px var(--font-mono);
+  color: #03131a;
+  background: var(--cy);
+  padding: 2px 7px;
+  border-radius: 6px;
+  letter-spacing: 0.06em;
+}
+
+.mob-nav-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+}
+.mob-nav-close:hover,
+.mob-nav-close:active {
+  background: rgba(244, 63, 94, 0.25);
+  border-color: var(--rose);
+  color: #ffffff;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-nav .mob-link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 14px !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  text-decoration: none !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.mobile-nav .mob-link:hover,
+.mobile-nav .mob-link:active {
+  background: rgba(56, 213, 240, 0.12) !important;
+  border-color: rgba(56, 213, 240, 0.4) !important;
+  transform: translateX(3px);
+}
+
+.mobile-nav .mob-link-cta {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.18) 0%, rgba(244, 63, 94, 0.08) 100%) !important;
+  border-color: rgba(244, 63, 94, 0.38) !important;
+  border-left: 3.5px solid var(--rose) !important;
+}
+.mobile-nav .mob-link-cta:hover,
+.mobile-nav .mob-link-cta:active {
+  background: rgba(244, 63, 94, 0.26) !important;
+  border-color: var(--rose) !important;
+  box-shadow: 0 0 20px var(--rose-glow);
+}
+
+.mob-link-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mob-link-icon {
+  font-size: 19px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+}
+
+.mob-link-title {
+  font: 700 14.5px var(--font-sans);
+  color: #ffffff !important;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.mob-link-sub {
+  font: 500 11px var(--font-sans);
+  color: var(--mu) !important;
+  margin-top: 2px;
+}
+
+.mob-link-arrow {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cy);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+.mob-link-cta .mob-link-arrow {
+  color: var(--rose);
+}
+.mobile-nav .mob-link:hover .mob-link-arrow {
+  transform: translateX(3px);
 }
 
 /* ==========================================================================
@@ -1835,60 +2003,71 @@ h2.sec-title {
   color: var(--rose);
 }
 
-/* Collapsible Full Script Drawer for Stage / All Ash'aar */
-.poetry-all-drawer {
-  margin-top: 24px;
-  border: 1px dashed var(--line-strong);
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(244, 63, 94, 0.03);
+/* ==========================================================================
+   URDU SHAYARI (LAFZ-E-ALI) - MANAGED COMPACT SPACING & ELEVATED AESTHETIC
+   ========================================================================== */
+#poetry {
+  padding: 58px 0 50px !important;
 }
-.poetry-all-drawer p {
-  font-size: 14px;
-  color: var(--tx-sec);
-  margin: 0;
+
+#poetry .sec-head {
+  margin-bottom: 22px !important;
 }
-.poetry-full-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(12px);
-  padding: 24px;
-  align-items: center;
-  justify-content: center;
+
+#poetry .sec-title {
+  margin-bottom: 6px !important;
 }
-.poetry-full-modal.open {
-  display: flex;
+
+.poetry-carousel-wrap {
+  max-width: 880px !important;
+  margin: 0 auto !important;
 }
-.poetry-full-dialog {
-  background: var(--panel);
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius);
-  max-width: 820px;
-  width: 100%;
-  max-height: 85vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: var(--shadow);
+
+.poetry-top-bar {
+  padding: 12px 22px !important;
 }
-.poetry-full-head {
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+.poetry-card-active {
+  padding: 24px 26px 18px !important;
+  min-height: auto !important;
 }
-.poetry-full-body {
-  padding: 24px;
-  overflow-y: auto;
-  display: grid;
-  gap: 20px;
+
+.poetry-titles {
+  margin-bottom: 10px !important;
+  gap: 6px !important;
+}
+
+.urdu-verse-box {
+  padding: 18px 24px !important;
+  margin-bottom: 12px !important;
+}
+
+.urdu-text {
+  font-size: clamp(20px, 2.6vw, 25px) !important;
+  line-height: 2.0 !important;
+}
+
+.verse-ornament {
+  margin: 8px 0 10px !important;
+}
+
+.roman-verse-sub {
+  margin-bottom: 14px !important;
+  line-height: 1.65 !important;
+}
+
+.poetry-card-actions {
+  padding-top: 12px !important;
+  margin-top: 4px !important;
+}
+
+.poetry-ctrl-bar {
+  padding: 11px 22px !important;
+}
+
+.swipe-hint {
+  margin-top: 8px !important;
+  margin-bottom: 0 !important;
 }
 
 /* ==========================================================================
@@ -2170,8 +2349,7 @@ footer {
   .brand-mark { width: 34px; height: 34px; font-size: 16px; border-radius: 10px; }
   .brand-title { font-size: 16px; }
   .brand-sub { font-size: 9.5px; }
-  .mobile-nav { top: 58px; padding: 16px 18px; gap: 10px; }
-  .mobile-nav a { font-size: 14.5px; padding: 6px 0; }
+  .mobile-nav { top: 62px; left: 10px; right: 10px; padding: 14px 12px; gap: 8px; }
 
   /* Hero Section on Mobile (me.jpg perfectly sized in TOP RIGHT CORNER) */
   .hero-wrap { padding-top: 12px; }
@@ -2513,39 +2691,9 @@ footer {
     font-size: 11.5px;
   }
 
-  /* Full Script Drawer on Mobile: Sleek compact button */
-  .poetry-all-drawer {
-    display: flex !important;
-    justify-content: center !important;
-    padding: 8px 12px !important;
-    margin-top: 10px !important;
-    border: none !important;
-    background: transparent !important;
-  }
-  .poetry-all-drawer > div {
-    display: none !important; /* Hide long description */
-  }
-  .poetry-all-drawer button {
-    width: 100% !important;
-    padding: 8px 14px !important;
-    font-size: 12px !important;
-    border-radius: 999px !important;
-  }
-
-  /* Full Script Modal on Mobile */
-  .poetry-full-modal {
-    padding: 12px;
-  }
-  .poetry-full-dialog {
-    max-height: 92vh;
-    border-radius: 16px;
-  }
-  .poetry-full-head {
-    padding: 12px 14px;
-  }
-  .poetry-full-body {
-    padding: 12px 14px;
-    gap: 12px;
+  /* Managed Space in Shayari Section on Mobile */
+  #poetry {
+    padding: 20px 0 16px !important;
   }
 
   /* Campus & Life Moments on Mobile: Clean campus card + 2-col side moments (Zero Ghost Space) */
@@ -3634,19 +3782,76 @@ html, body {
       
 
       <!-- Mobile Menu Toggle -->
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Nav Drawer -->
-  <div class="mobile-nav" id="mobileNav">
-    <a href="#projects" class="mob-link">Projects</a>
-    <a href="#poetry" class="mob-link">Lafz-e-Ali</a>
-    <a href="#moments" class="mob-link">Campus &amp; Life</a>
-    <a href="#about" class="mob-link">About &amp; Journey</a>
-    <a href="#contact" class="mob-link">Contact Imran</a>
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+  <!-- Mobile Nav Drawer - Crystal Clear & Highly Readable -->
+  <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation Menu">
+    <div class="mobile-nav-header">
+      <div class="mob-nav-brand">
+        <span class="mob-nav-badge">ALI</span>
+        <span>Quick Navigation</span>
+      </div>
+      <button class="mob-nav-close" id="mobNavCloseBtn" aria-label="Close menu">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="#projects" class="mob-link">
+        <div class="mob-link-content">
+          <span class="mob-link-icon">⚡</span>
+          <div>
+            <div class="mob-link-title">Projects Showcase</div>
+            <div class="mob-link-sub">Interactive full-stack web applications</div>
+          </div>
+        </div>
+        <span class="mob-link-arrow">›</span>
+      </a>
+      <a href="#poetry" class="mob-link">
+        <div class="mob-link-content">
+          <span class="mob-link-icon">📜</span>
+          <div>
+            <div class="mob-link-title">Lafz-e-Ali · اردو شاعری</div>
+            <div class="mob-link-sub">Original Urdu ghazals &amp; stage poetry</div>
+          </div>
+        </div>
+        <span class="mob-link-arrow">›</span>
+      </a>
+      <a href="#moments" class="mob-link">
+        <div class="mob-link-content">
+          <span class="mob-link-icon">🏛️</span>
+          <div>
+            <div class="mob-link-title">Presidency University &amp; Moments</div>
+            <div class="mob-link-sub">Campus life, stage oratory &amp; visuals</div>
+          </div>
+        </div>
+        <span class="mob-link-arrow">›</span>
+      </a>
+      <a href="#about" class="mob-link">
+        <div class="mob-link-content">
+          <span class="mob-link-icon">🎓</span>
+          <div>
+            <div class="mob-link-title">About &amp; Journey</div>
+            <div class="mob-link-sub">B.Tech 2026–30 · MERN · Bihar Board · CBSE</div>
+          </div>
+        </div>
+        <span class="mob-link-arrow">›</span>
+      </a>
+      <a href="#contact" class="mob-link mob-link-cta">
+        <div class="mob-link-content">
+          <span class="mob-link-icon">💬</span>
+          <div>
+            <div class="mob-link-title">Connect &amp; Message</div>
+            <div class="mob-link-sub">Collaborate, mushaira or say hello</div>
+          </div>
+        </div>
+        <span class="mob-link-arrow">›</span>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -3838,37 +4043,6 @@ html, body {
         <div class="swipe-hint">
           <span>👆</span>
           <span>Swipe left / right to read next verse</span>
-        </div>
-      </div>
-
-      <!-- Quick Action: Full Script Drawer Toggle for Stage Piece -->
-      <div class="poetry-all-drawer" id="poetryAllDrawer">
-        <div>
-          <p><b>📜 تمام 15 اشعار کا مکمل دیوان (Complete Urdu Shayari Collection)</b></p>
-          <p style="font-size:12px; color:var(--mu); margin-top:2px;">Authentic Urdu poetry collection penned under the takhallus ‘Ali’ by Imran Ali.</p>
-        </div>
-        <button class="btn sm ghost" id="openFullScriptBtn">
-          <span>View / Copy All Shayari 📜</span>
-        </button>
-      </div>
-
-      <!-- Full Script Modal Popup -->
-      <div class="poetry-full-modal" id="poetryFullModal" role="dialog" aria-hidden="true">
-        <div class="poetry-full-dialog">
-          <div class="poetry-full-head">
-            <div>
-              <h3 style="font: 700 20px var(--font-serif); margin-bottom: 2px;">مکمل اردو شاعری · Complete Urdu Shayari Collection</h3>
-              <p style="font-size: 13px; color: var(--mu);">Authentic Urdu Poetry &amp; Ghazals — Imran Ali (‘Ali’)</p>
-            </div>
-            <button class="btn-icon" id="closeFullScriptBtn" aria-label="Close dialog">✕</button>
-          </div>
-          <div class="poetry-full-body" id="fullScriptBody">
-            <!-- Populated by JavaScript -->
-          </div>
-          <div style="padding: 16px 24px; border-top: 1px solid var(--line); display: flex; justify-content: flex-end; gap: 12px; background: var(--panel-hover);">
-            <button class="btn sm" id="modalCopyFullScriptBtn">📋 Copy Complete Urdu Shayari</button>
-            <button class="btn sm ghost" id="modalCloseBtn">Close</button>
-          </div>
         </div>
       </div>
     </div>
@@ -6061,29 +6235,11 @@ function stopPoetryAutoplay() {
   clearInterval(poetryTimer);
 }
 
-function renderFullScriptModal() {
-  const modalBody = $('#fullScriptBody');
-  if (!modalBody) return;
-
-  const allPoems = [...SHAYARI_DATA, ...STAGE_STANZAS];
-  modalBody.innerHTML = allPoems.map((s, idx) => `
-    <div style="background:var(--panel-hover); border:1px solid var(--line); border-radius:var(--radius-sm); padding:20px; margin-bottom:16px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <span class="badge rose">شعر ${idx + 1} · ${esc(s.titleUrdu)}</span>
-        <span style="font-size:12px; color:var(--mu);">${esc(s.title)}</span>
-      </div>
-      <div class="urdu-text" dir="rtl" style="font-size:22px; line-height:2.1; margin-bottom:12px;">${esc(s.urdu)}</div>
-      <div style="font:italic 14px var(--font-serif); color:var(--tx-sec); padding-left:12px; border-left:2px solid var(--rose); white-space:pre-line;">${esc(s.roman)}</div>
-    </div>
-  `).join('');
-}
-
 function initPoetryCarousel() {
   const container = $('#poetryCarousel');
   if (!container) return;
 
   renderPoetryCarousel();
-  renderFullScriptModal();
   startPoetryAutoplay();
 
   // Mouse & focus pause
@@ -6192,41 +6348,6 @@ function initPoetryCarousel() {
       poetrySlideContainer.style.transform = 'translateX(0)';
     }
   }, { passive: true });
-
-  // Full Script Modal Event Handlers
-  const modal = $('#poetryFullModal');
-  const openBtn = $('#openFullScriptBtn');
-  const closeBtn = $('#closeFullScriptBtn');
-  const modalClose = $('#modalCloseBtn');
-  const modalCopy = $('#modalCopyFullScriptBtn');
-
-  if (openBtn && modal) {
-    openBtn.addEventListener('click', () => {
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-    });
-  }
-  const closeModalFunc = () => {
-    if (modal) {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  };
-  if (closeBtn) closeBtn.addEventListener('click', closeModalFunc);
-  if (modalClose) modalClose.addEventListener('click', closeModalFunc);
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModalFunc();
-    });
-  }
-  if (modalCopy) {
-    modalCopy.addEventListener('click', () => {
-      const fullUrduScript = STAGE_STANZAS.map(s => 
-        `[${s.num}: ${s.titleUrdu} (${s.title})]${s.cue ? '\n' + s.cue : ''}\n${s.urdu}`
-      ).join('\n\n') + '\n\n— عمران علی ’علی‘ (Imran Ali)\nUrdu Shayari Collection — ‘Ali’';
-      copyToClipboard(fullUrduScript, 'Complete 7-stanza Urdu stage script copied! 🎙️');
-    });
-  }
 }
 
 /**
@@ -6369,11 +6490,47 @@ try {
 
 const menuToggle = $('#menuToggle');
 const mobileNav = $('#mobileNav');
-menuToggle.addEventListener('click', () => {
-  mobileNav.classList.toggle('open');
-});
+const mobileNavOverlay = $('#mobileNavOverlay');
+const mobNavCloseBtn = $('#mobNavCloseBtn');
+
+function openMobileNav() {
+  if (mobileNav) mobileNav.classList.add('open');
+  if (mobileNavOverlay) mobileNavOverlay.classList.add('open');
+  if (menuToggle) {
+    menuToggle.classList.add('active');
+    menuToggle.setAttribute('aria-expanded', 'true');
+  }
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileNav() {
+  if (mobileNav) mobileNav.classList.remove('open');
+  if (mobileNavOverlay) mobileNavOverlay.classList.remove('open');
+  if (menuToggle) {
+    menuToggle.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+  document.body.style.overflow = '';
+}
+
+if (menuToggle) {
+  menuToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (mobileNav && mobileNav.classList.contains('open')) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  });
+}
+
+if (mobNavCloseBtn) mobNavCloseBtn.addEventListener('click', closeMobileNav);
+if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeMobileNav);
+
 $$('.mob-link').forEach(link => {
-  link.addEventListener('click', () => mobileNav.classList.remove('open'));
+  link.addEventListener('click', () => {
+    closeMobileNav();
+  });
 });
 
 window.addEventListener('scroll', () => {
@@ -6600,8 +6757,12 @@ function initMobileContactToggle() {
     link.addEventListener('click', (e) => {
       if (window.innerWidth <= 768) {
         e.preventDefault();
-        const mobileNav = document.getElementById('mobileNav');
-        if (mobileNav) mobileNav.classList.remove('open');
+        if (typeof closeMobileNav === 'function') {
+          closeMobileNav();
+        } else {
+          const mobileNav = document.getElementById('mobileNav');
+          if (mobileNav) mobileNav.classList.remove('open');
+        }
         openContact();
       }
     });
