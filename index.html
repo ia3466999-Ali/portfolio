@@ -3447,6 +3447,158 @@ html, body {
   }
 }
 
+
+/* ==========================================================================
+   EDUCATION & SKILLS DETAIL HIDDEN IN WINDOW VIEW AND MOBILE VIEW BY DEFAULT
+   ========================================================================== */
+.about-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px !important;
+}
+
+.about-text {
+  max-width: 880px !important;
+}
+
+/* Hidden by default in BOTH desktop/window view and mobile view */
+#skillsBox:not(.edu-visible) {
+  display: none !important;
+}
+
+/* Revealed on-demand when user clicks Education & Tech Journey */
+#skillsBox.edu-visible {
+  display: block !important;
+  margin-top: 24px !important;
+  width: 100% !important;
+  animation: eduSlideDown 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+
+@keyframes eduSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dual Command Hub Styling */
+.dual-command-hub {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  gap: 16px !important;
+  margin-top: 26px !important;
+  max-width: 720px !important;
+}
+
+.command-pill-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(13, 20, 36, 0.6) 0%, rgba(9, 14, 25, 0.75) 100%) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  box-shadow: 0 10px 30px -8px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1) !important;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.command-pill-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8), inset 0 1px 1px 0 rgba(255, 255, 255, 0.22) !important;
+}
+
+.command-pill-card:active {
+  transform: scale(0.97);
+}
+
+.command-pill-card.cyan {
+  border-left: 3px solid var(--cy) !important;
+}
+.command-pill-card.cyan:hover {
+  border-color: rgba(56, 213, 240, 0.55) !important;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8), 0 0 24px -4px var(--cy-glow) !important;
+}
+
+.command-pill-card.rose {
+  border-left: 3px solid var(--rose) !important;
+}
+.command-pill-card.rose:hover {
+  border-color: rgba(244, 63, 94, 0.55) !important;
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.8), 0 0 24px -4px var(--rose-glow) !important;
+}
+
+.command-pill-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 22px;
+  flex-shrink: 0;
+  transition: transform 0.28s ease;
+}
+
+.command-pill-card:hover .command-pill-badge {
+  transform: scale(1.12) rotate(6deg);
+}
+
+.command-pill-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.command-pill-title {
+  font: 700 15px var(--font-sans);
+  color: #ffffff !important;
+  letter-spacing: -0.01em;
+}
+
+.command-pill-sub {
+  font: 500 11.5px var(--font-sans);
+  color: var(--mu) !important;
+}
+
+.command-pill-arrow {
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform 0.28s ease;
+  margin-left: 6px;
+  flex-shrink: 0;
+}
+
+.command-pill-card.cyan .command-pill-arrow { color: var(--cy) !important; }
+.command-pill-card.rose .command-pill-arrow { color: var(--rose) !important; }
+
+.command-pill-card:hover .command-pill-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 600px) {
+  .dual-command-hub {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    max-width: 100% !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3769,7 +3921,7 @@ html, body {
           <!-- Card 2: Coding Laptop View -->
           <div class="moment-card-compact">
             <div class="moment-media" id="profileMedia">
-              <img id="profileImg" src="laptop.jpg" alt="Coding Laptop View &amp; AI Systems" onerror="this.style.display='none';var p=document.getElementById('profilePlaceholder');if(p)p.style.display='flex';">
+              <img id="profileImg" src="coding-workflow.jpg" alt="Developer Coding Workflow &amp; Software Systems" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&amp;fit=crop&amp;w=1200&amp;q=85';">
               <div class="moment-placeholder" id="profilePlaceholder" style="display:none;">
                 <div class="moment-placeholder-icon" style="color:var(--cy);">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -3855,14 +4007,24 @@ html, body {
           </div>
 
           <!-- TWO PRIMARY ON-DEMAND ACTION BUTTONS -->
-          <div class="two-primary-actions-wrap" style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
-            <button type="button" class="btn p action-toggle-btn" id="openEducationBtn">
-              <span class="btn-icon-wrap">🎓</span>
-              <span>View Education &amp; Skills Details</span>
+          <!-- DUAL INTERACTIVE COMMAND HUB (EDUCATION & CONTACT) -->
+          <div class="dual-command-hub">
+            <button type="button" class="command-pill-card cyan" id="openEducationBtn" aria-label="View Education &amp; Tech Journey">
+              <span class="command-pill-badge">🎓</span>
+              <div class="command-pill-content">
+                <span class="command-pill-title">Education &amp; Tech Journey</span>
+                <span class="command-pill-sub">B.Tech 2026–30 · MERN · Bihar Board · CBSE</span>
+              </div>
+              <span class="command-pill-arrow">↓</span>
             </button>
-            <button type="button" class="btn rose action-toggle-btn" id="openContactActionBtn">
-              <span class="btn-icon-wrap">💬</span>
-              <span>Send Message / Contact</span>
+
+            <button type="button" class="command-pill-card rose" id="openContactActionBtn" aria-label="Send a Message or Connect">
+              <span class="command-pill-badge">💬</span>
+              <div class="command-pill-content">
+                <span class="command-pill-title">Let's Connect &amp; Message</span>
+                <span class="command-pill-sub">Mushaira · Collab · Say Hello</span>
+              </div>
+              <span class="command-pill-arrow">→</span>
             </button>
           </div>
         </div>
@@ -4199,15 +4361,7 @@ html, body {
       </div>
     </div>
   </section>
-  <!-- Mobile Contact Trigger Banner (Visible on mobile only when contact is hidden) -->
-  <div class="mobile-contact-trigger-wrap" id="mobileContactTriggerWrap">
-    <div class="w">
-      <button type="button" class="btn p mobile-contact-trigger-btn" id="openMobileContactBtn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        <span>💬 Tap to Send a Message / Contact Imran</span>
-      </button>
-    </div>
-  </div>
+  
 </main>
 
 <!-- FOOTER -->
@@ -4265,7 +4419,7 @@ const CONFIG = {
   // High-Aesthetic Stylish Fallback Visuals (Coding Laptop View, Campus & Stage)
   DEFAULT_PORTRAIT_BG: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80',
   DEFAULT_CAMPUS_BG: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1000&q=80',
-  DEFAULT_CODING_BG: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1000&q=80',
+  DEFAULT_CODING_BG: 'coding-workflow.jpg',
   DEFAULT_STAGE_BG: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1000&q=80',
   SIG: '\n\n— Imran Ali (‘Ali’)'
 };
@@ -4284,7 +4438,7 @@ const PROJECTS_DATA = [
     id: 'ecopluse',
     badge: 'Flagship Platform',
     badgeColor: 'cyan',
-    status: 'Live on Render',
+    status: 'Live Web App',
     title: 'EcoPluse 2026',
     tagline: 'Elevate every event. Master every plate.',
     desc: 'A comprehensive banquet and wedding guest-management platform that eliminates massive food wastage by equipping hosts and caterers with real-time RSVPs, anti-double-scan admissions, and live kitchen meal counts.',
@@ -4294,7 +4448,7 @@ const PROJECTS_DATA = [
       { title: 'Live Kitchen Display System', detail: 'Real-time counters for Veg, Non-Veg, Jain dietary needs and allergy alerts.' },
       { title: 'Automated WhatsApp Passes', detail: 'Python Pillow engine stamping custom guest names & QR passes on invites.' }
     ],
-    tags: ['FastAPI / Python', 'Render Cloud', 'Live QR Scanning', 'Kitchen Telemetry', 'Zero-Waste'],
+    tags: ['FastAPI / Python', 'Full-Stack Architecture', 'Live QR Scanning', 'Kitchen Telemetry', 'Zero-Waste'],
     link: 'https://ecopluse-anzr.onrender.com',
     linkText: 'Open Live Application ↗'
   },
@@ -4302,7 +4456,7 @@ const PROJECTS_DATA = [
     id: 'sister-bday',
     badge: 'Creative Web',
     badgeColor: 'rose',
-    status: 'Live on Netlify',
+    status: 'Live Application',
     title: 'Birthday Tribute',
     tagline: 'Celestial celebration canvas crafted for my elder sister.',
     desc: 'An immersive digital tribute crafted for my sister featuring dynamic starry canvas animations, interactive botanical glow cards, personalized music playback, and heartfelt audio narration.',
@@ -4311,7 +4465,7 @@ const PROJECTS_DATA = [
       { title: 'Audio API Integration', detail: 'Interactive music player with customized audio controls.' },
       { title: 'Responsive Story Cards', detail: 'Fluid mobile-first celebration journey designed for touch devices.' }
     ],
-    tags: ['HTML5 Canvas', 'Web Audio API', 'CSS Keyframes', 'Netlify Deploy'],
+    tags: ['HTML5 Canvas', 'Web Audio API', 'CSS Keyframes', 'Web Audio & Canvas'],
     link: 'https://sis-birthday-wish-1.netlify.app',
     linkText: 'Visit Live Tribute ↗'
   },
@@ -4319,7 +4473,7 @@ const PROJECTS_DATA = [
     id: 'project-mine',
     badge: 'Web App',
     badgeColor: 'indigo',
-    status: 'Live on Netlify',
+    status: 'Live Application',
     title: 'Project Mine',
     tagline: 'Modular state management & accessible dark UI.',
     desc: 'A high-performance modern web app engineered to demonstrate modular vanilla JavaScript architecture, fluid card states, and ultra-smooth CSS grid transitions without framework bloat.',
@@ -4328,7 +4482,7 @@ const PROJECTS_DATA = [
       { title: 'Adaptive Dark Palette', detail: 'Custom CSS variables with fluid high-accessibility contrast.' },
       { title: 'Instant Load Time', detail: 'Sub-second first contentful paint with zero external runtime dependencies.' }
     ],
-    tags: ['Vanilla JavaScript', 'State Management', 'CSS Grid', 'Netlify'],
+    tags: ['Vanilla JavaScript', 'State Management', 'CSS Grid', 'Modular Architecture'],
     link: 'https://project-mine-in.netlify.app',
     linkText: 'Visit Live Project ↗'
   },
@@ -4336,7 +4490,7 @@ const PROJECTS_DATA = [
     id: 'superlative',
     badge: 'Interactive UI',
     badgeColor: 'amber',
-    status: 'Live on Netlify',
+    status: 'Live Application',
     title: 'Superlative Showcase',
     tagline: 'Celebration physics engine & micro-interactions.',
     desc: 'A delight-driven celebration interface engineered with canvas confetti physics, multi-particle velocity simulation, and interactive accolade cards designed for high user engagement.',
@@ -4345,7 +4499,7 @@ const PROJECTS_DATA = [
       { title: 'Haptic Micro-interactions', detail: 'Tactile hover and tap feedback tuned for high responsiveness.' },
       { title: 'Engaging Celebration Flow', detail: 'Interactive celebration accolades and dynamic unlockable states.' }
     ],
-    tags: ['Canvas Physics', 'Micro-interactions', 'CSS Variables', 'Netlify'],
+    tags: ['Canvas Physics', 'Micro-interactions', 'CSS Variables', 'Particle Animation'],
     link: 'https://superlative-semifreddo-daf6de.netlify.app',
     linkText: 'Visit Live Showcase ↗'
   },
@@ -5606,7 +5760,7 @@ function renderProjectsCarousel(direction = 'none') {
           <div class="proj-slide-meta">
             <span class="badge ${esc(p.badgeColor)}">${esc(p.badge)}</span>
             <span class="badge emerald">● ${esc(p.status)}</span>
-            <span class="badge" style="color:var(--mu);">Project ${currentProjectIdx + 1} of ${PROJECTS_DATA.length}</span>
+            
           </div>
           <h3>${esc(p.title)}</h3>
           <div class="proj-slide-tagline">${esc(p.tagline)}</div>
@@ -6414,20 +6568,18 @@ initPoetryCarousel();
  */
 function initMobileContactToggle() {
   const contactSec = document.getElementById('contact');
-  const openBtn = document.getElementById('openMobileContactBtn');
   const closeBtn = document.getElementById('closeMobileContactBtn');
-  const triggerWrap = document.getElementById('mobileContactTriggerWrap');
+  const openContactActionBtn = document.getElementById('openContactActionBtn');
 
   function openContact() {
     if (!contactSec) return;
     contactSec.classList.add('mobile-visible');
-    if (triggerWrap) triggerWrap.style.display = 'none';
 
     setTimeout(() => {
       contactSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
       const firstInput = contactSec.querySelector('input[name="name"]');
-      if (firstInput && window.innerWidth <= 768) {
-        setTimeout(() => firstInput.focus(), 400);
+      if (firstInput) {
+        setTimeout(() => firstInput.focus(), 350);
       }
     }, 40);
   }
@@ -6435,14 +6587,12 @@ function initMobileContactToggle() {
   function closeContact() {
     if (!contactSec) return;
     contactSec.classList.remove('mobile-visible');
-    if (triggerWrap) triggerWrap.style.display = 'block';
-
-    if (triggerWrap) {
-      triggerWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (openContactActionBtn) {
+      openContactActionBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }
 
-  if (openBtn) openBtn.addEventListener('click', openContact);
+  if (openContactActionBtn) openContactActionBtn.addEventListener('click', openContact);
   if (closeBtn) closeBtn.addEventListener('click', closeContact);
 
   // Hook all links pointing to #contact so tapping them opens contact on mobile
@@ -6558,14 +6708,13 @@ initCardDoubleTapGestures();
 
 /**
  * ----------------------------------------------------------------------------
- * 16. ON-DEMAND EDUCATION & CONTACT ACTION BUTTONS
+ * 16. ON-DEMAND EDUCATION DETAILS TOGGLE
  * ----------------------------------------------------------------------------
  */
 function initOnDemandEducationToggle() {
   const openEduBtn = document.getElementById('openEducationBtn');
   const closeEduBtn = document.getElementById('closeEducationBtn');
   const skillsBox = document.getElementById('skillsBox');
-  const openContactActionBtn = document.getElementById('openContactActionBtn');
 
   function openEducationDetails() {
     if (!skillsBox) return;
@@ -6573,14 +6722,10 @@ function initOnDemandEducationToggle() {
 
     setTimeout(() => {
       skillsBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // trigger progress meters if function exists
-      if (typeof triggerSkillMeters === 'function') {
-        triggerSkillMeters();
-      } else {
-        document.querySelectorAll('.skill-meter-fill').forEach(fill => {
-          fill.style.width = fill.getAttribute('data-width') || '85%';
-        });
-      }
+      // trigger progress meters
+      document.querySelectorAll('.skill-meter-fill').forEach(fill => {
+        fill.style.width = fill.getAttribute('data-width') || '85%';
+      });
     }, 40);
   }
 
@@ -6592,23 +6737,6 @@ function initOnDemandEducationToggle() {
 
   if (openEduBtn) openEduBtn.addEventListener('click', openEducationDetails);
   if (closeEduBtn) closeEduBtn.addEventListener('click', closeEducationDetails);
-
-  if (openContactActionBtn) {
-    openContactActionBtn.addEventListener('click', () => {
-      const contactSec = document.getElementById('contact');
-      if (contactSec) {
-        contactSec.classList.add('mobile-visible');
-        const triggerWrap = document.getElementById('mobileContactTriggerWrap');
-        if (triggerWrap) triggerWrap.style.display = 'none';
-
-        setTimeout(() => {
-          contactSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          const firstInput = contactSec.querySelector('input[name="name"]');
-          if (firstInput) setTimeout(() => firstInput.focus(), 350);
-        }, 40);
-      }
-    });
-  }
 }
 initOnDemandEducationToggle();
 </script>
