@@ -4417,6 +4417,83 @@ if (canvas) {
     ctx.lineWidth = 1.8 * bhScale;
     ctx.stroke();
 
+// --------------------------------------------------------------------------
+    // A2. 3D GRAVITATIONAL SPACETIME METRIC WAVES (UNDULATING 3D HORIZON & RIPPLES)
+    // --------------------------------------------------------------------------
+    const waveTime = galaxyAngle * 45;
+    const waveCount = isMobile ? 7 : 12;
+    const waveSegments = isMobile ? 18 : 30;
+    const waveWidth = w * (isMobile ? 1.4 : 1.6);
+    const zSpacing = (isMobile ? 450 : 650) / waveCount;
+
+    ctx.save();
+    for (let k = 0; k < waveCount; k++) {
+      const zBase = -80 + (k * zSpacing);
+      const points = [];
+
+      for (let s = 0; s <= waveSegments; s++) {
+        const xBase = -waveWidth * 0.5 + (s / waveSegments) * waveWidth;
+        const distFromCenter = Math.hypot(xBase, zBase);
+
+        // Undulating 3D wave height: combination of radial ripple + transverse harmonic wave
+        const radialRipple = Math.sin(distFromCenter * 0.015 - waveTime * 1.8) * 16;
+        const harmonicWave = Math.cos(xBase * 0.007 + waveTime * 1.2 + k * 0.5) * 12;
+        const damping = Math.max(0.2, 1 - distFromCenter / (maxRadius * 0.95));
+        const yBase = 65 + (radialRipple + harmonicWave) * damping;
+
+        // 3D rotation with camera angles
+        const rx = xBase * cosRot - zBase * sinRot;
+        const rz = zBase * cosRot + xBase * sinRot;
+        const ry = yBase * cosTilt - rz * sinTilt;
+        const fz = rz * cosTilt + yBase * sinTilt;
+
+        const depth = fz + 540;
+        if (depth > 40) {
+          const scale = fov / depth;
+          const px = cx + rx * scale;
+          const py = projectedOriginY + ry * scale;
+          const alpha = Math.min(0.35, Math.max(0.04, (1 - fz / 750) * (isMobile ? 0.22 : 0.26)));
+          points.push({ px, py, alpha, depth });
+        }
+      }
+
+      if (points.length > 2) {
+        ctx.beginPath();
+        ctx.moveTo(points[0].px, points[0].py);
+        for (let p = 1; p < points.length; p++) {
+          ctx.lineTo(points[p].px, points[p].py);
+        }
+
+        // Cosmic gradient: crests in electric cyan, troughs in ionized violet
+        const avgAlpha = points[Math.floor(points.length / 2)].alpha;
+        const lineGrad = ctx.createLinearGradient(points[0].px, points[0].py, points[points.length - 1].px, points[points.length - 1].py);
+        lineGrad.addColorStop(0, 'transparent');
+        lineGrad.addColorStop(0.25, `rgba(168, 85, 247, ${avgAlpha * 0.7})`);
+        lineGrad.addColorStop(0.5, `rgba(56, 213, 240, ${avgAlpha * 1.2})`);
+        lineGrad.addColorStop(0.75, `rgba(96, 165, 250, ${avgAlpha * 0.7})`);
+        lineGrad.addColorStop(1, 'transparent');
+
+        ctx.strokeStyle = lineGrad;
+        ctx.lineWidth = isMobile ? 1.0 : 1.35;
+        ctx.stroke();
+      }
+    }
+
+    // Concentric Gravitational Wave Ripples expanding from Event Horizon
+    const rippleCount = isMobile ? 3 : 5;
+    for (let r = 0; r < rippleCount; r++) {
+      const ripPhase = ((waveTime * 0.8 + r * (300 / rippleCount)) % 300);
+      const ripRadius = (photonRingRadius * 1.8) + ripPhase;
+      const ripAlpha = Math.max(0, (1 - ripPhase / 300) * (isMobile ? 0.22 : 0.28));
+
+      ctx.beginPath();
+      ctx.ellipse(cx, projectedOriginY, ripRadius * 1.7, ripRadius * 0.52, 0.16, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(56, 213, 240, ${ripAlpha})`;
+      ctx.lineWidth = isMobile ? 1.1 : 1.5;
+      ctx.stroke();
+    }
+    ctx.restore();
+
     // --------------------------------------------------------------------------
     // B. VOLUMETRIC RADIANT NEBULAE (3D GLOWING STAR NURSERIES)
     // --------------------------------------------------------------------------
