@@ -13,11 +13,11 @@
    THEME VARIABLES & VISUAL IDENTITY
    ========================================================================== */
 :root {
-  --bg: #05080f;
-  --bg-alt: #090e17;
-  --panel: #0d1422;
-  --panel-hover: #121c2e;
-  --panel-card: rgba(13, 20, 34, 0.72);
+  --bg: transparent;
+  --bg-alt: transparent;
+  --panel: rgba(13, 20, 34, 0.48);
+  --panel-hover: rgba(18, 28, 48, 0.58);
+  --panel-card: rgba(13, 20, 34, 0.42);
   --line: #192436;
   --line-strong: #23344d;
   --tx: #f8fafc;
@@ -519,14 +519,15 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* Ambient Aurora Glow Backdrop */
 .aurora-bg {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  height: 750px;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  opacity: 0.35;
 }
 .aurora-blob {
   position: absolute;
@@ -854,13 +855,14 @@ nav.nav-desktop a.active::after {
   overflow: hidden;
 }
 #heroCanvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.65;
+  z-index: 0;
+  opacity: 0.96;
 }
 .hero {
   position: relative;
@@ -2781,10 +2783,158 @@ footer {
     font-size: 12.5px !important;
   }
 }
+
+/* ==========================================================================
+   TRANSPARENT FROSTED GLASS & FULL-PAGE 3D GALAXY INTEGRATION
+   ========================================================================== */
+body {
+  background: #03050c !important;
+  min-height: 100vh;
+  position: relative;
+}
+
+section,
+.hero-wrap,
+#projects,
+#poetry,
+#moments,
+#about,
+#contact {
+  background: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+
+#projects,
+#poetry,
+#moments,
+#about,
+#contact {
+  border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Frosted Glassmorphism for Containers & Cards */
+.proj-carousel-container {
+  background: linear-gradient(145deg, rgba(13, 20, 34, 0.44) 0%, rgba(9, 14, 23, 0.52) 100%) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid rgba(56, 213, 240, 0.22) !important;
+  box-shadow: 0 24px 55px -15px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+.proj-slide-side {
+  background: rgba(15, 24, 40, 0.42) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+}
+
+.proj-tabs-bar {
+  background: rgba(0, 0, 0, 0.28) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.proj-ctrl-bar {
+  background: rgba(0, 0, 0, 0.24) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.poetry-carousel-wrap {
+  background: linear-gradient(145deg, rgba(18, 16, 28, 0.46) 0%, rgba(13, 20, 34, 0.52) 100%) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid rgba(244, 63, 94, 0.24) !important;
+  box-shadow: 0 24px 55px -15px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+.urdu-verse-box {
+  background: radial-gradient(ellipse at 50% 0%, rgba(244, 63, 94, 0.14) 0%, rgba(13, 20, 34, 0.38) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(244, 63, 94, 0.28) !important;
+  border-top: 2px solid rgba(244, 63, 94, 0.6) !important;
+  box-shadow: 0 14px 34px -8px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.poetry-top-bar {
+  background: rgba(0, 0, 0, 0.28) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.poetry-ctrl-bar {
+  background: rgba(0, 0, 0, 0.24) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.07) !important;
+}
+
+.moment-card-compact {
+  background: rgba(13, 20, 34, 0.46) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 18px 45px -12px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.moment-card-compact:hover {
+  background: rgba(18, 28, 48, 0.58) !important;
+  border-color: rgba(56, 213, 240, 0.38) !important;
+  box-shadow: 0 24px 55px -10px rgba(0, 0, 0, 0.75), 0 0 30px -4px var(--cy-glow), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18) !important;
+}
+
+.skills-box {
+  background: rgba(13, 20, 34, 0.46) !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 18px 45px -12px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.form-box {
+  background: rgba(13, 20, 34, 0.5) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 24px 55px -15px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  background: rgba(7, 12, 22, 0.48) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: var(--tx) !important;
+}
+
+.hero-quote-strip {
+  background: linear-gradient(135deg, rgba(13, 20, 34, 0.46) 0%, rgba(20, 31, 51, 0.36) 100%) !important;
+  backdrop-filter: blur(18px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.11) !important;
+}
+
+header {
+  background: rgba(5, 8, 15, 0.48) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+}
+
+footer {
+  background: rgba(5, 8, 15, 0.38) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
 </style>
 </head>
 <body>
   <div id="scrollProgressBar" class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Full-Page 3D Realistic Cosmic Galaxy Background Canvas -->
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
 
 <!-- Ambient Aurora Glow Behind Front View -->
 <div class="aurora-bg">
@@ -2835,7 +2985,6 @@ footer {
 <main id="top">
   <!-- HERO & FRONT VIEW SECTION (UPGRADED) -->
   <section class="hero-wrap">
-    <canvas id="heroCanvas"></canvas>
     <div class="w">
       <div class="hero">
         <div class="hero-content">
@@ -3854,172 +4003,250 @@ typeLoop();
  * 6. CONSTELLATION & PARTICLE CANVAS WITH MOUSE INTERACTION
  * ----------------------------------------------------------------------------
  */
+/**
+ * ----------------------------------------------------------------------------
+ * 6. FULL-PAGE 3D REALISTIC COSMIC GALAXY ENGINE (PERSPECTIVE 3D)
+ * ----------------------------------------------------------------------------
+ */
 const canvas = document.getElementById('heroCanvas');
 if (canvas) {
   const ctx = canvas.getContext('2d');
-  let w, h;
-  let cx, cy;
-  let mouse = { x: null, y: null };
+  let w = window.innerWidth;
+  let h = window.innerHeight;
+  let cx = w * 0.5;
+  let cy = h * 0.5;
   let rotX = 0, rotY = 0;
   let targetRotX = 0, targetRotY = 0;
-  let isHeroVisible = true;
   let galaxyAngle = 0;
-  const fov = 400;
+  let scrollProg = 0;
+  let scrollPanY = 0;
+  let targetScrollPanY = 0;
+  let isPageVisible = !document.hidden;
+  const fov = 520;
 
   function resizeCanvas() {
-    w = canvas.width = canvas.parentElement.offsetWidth;
-    h = canvas.height = canvas.parentElement.offsetHeight;
-    cx = w * 0.52;
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    cx = w * 0.5;
     cy = h * 0.48;
   }
   window.addEventListener('resize', resizeCanvas, { passive: true });
   resizeCanvas();
 
-  const heroWrap = document.querySelector('.hero-wrap');
-  if (heroWrap) {
-    heroWrap.addEventListener('mousemove', (e) => {
-      const rect = heroWrap.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      mouse.x = mx;
-      mouse.y = my;
-      targetRotY = (mx - cx) * 0.0006;
-      targetRotX = -(my - cy) * 0.0006;
-    }, { passive: true });
+  // Full-window pointer & touch interaction
+  window.addEventListener('pointermove', (e) => {
+    targetRotY = (e.clientX - cx) * 0.00035;
+    targetRotX = -(e.clientY - cy) * 0.00035;
+  }, { passive: true });
 
-    heroWrap.addEventListener('touchmove', (e) => {
-      if (e.touches && e.touches[0]) {
-        const rect = heroWrap.getBoundingClientRect();
-        const mx = e.touches[0].clientX - rect.left;
-        const my = e.touches[0].clientY - rect.top;
-        targetRotY = (mx - cx) * 0.0004;
-        targetRotX = -(my - cy) * 0.0004;
-      }
-    }, { passive: true });
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      targetRotY = (e.touches[0].clientX - cx) * 0.00025;
+      targetRotX = -(e.touches[0].clientY - cy) * 0.00025;
+    }
+  }, { passive: true });
 
-    heroWrap.addEventListener('mouseleave', () => {
-      mouse.x = null;
-      mouse.y = null;
-      targetRotX = 0;
-      targetRotY = 0;
-    });
+  // Smooth scroll depth & pitch flight
+  window.addEventListener('scroll', () => {
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    scrollProg = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+    targetScrollPanY = scrollProg * 260;
+  }, { passive: true });
 
-    const heroObs = new IntersectionObserver((entries) => {
-      isHeroVisible = entries[0].isIntersecting;
-      if (isHeroVisible) requestAnimationFrame(render3DGalaxy);
-    }, { threshold: 0.05 });
-    heroObs.observe(heroWrap);
-  }
+  document.addEventListener('visibilitychange', () => {
+    isPageVisible = !document.hidden;
+    if (isPageVisible) requestAnimationFrame(render3DGalaxy);
+  });
 
-  // --- GENERATE 3D SPIRAL GALAXY STARS ---
+  // --- GENERATE 3D REALISTIC SPIRAL GALAXY ---
   const isMobile = window.innerWidth <= 768;
-  const starCount = isMobile ? 150 : 230;
-  const arms = 3;
-  const maxRadius = Math.min(w * 0.45, 420);
+  const starCount = isMobile ? 180 : 340;
+  const arms = 4;
+  const maxRadius = Math.max(w, h) * 0.65;
   const stars = [];
 
+  // 1. Four Logarithmic Spiral Arms
   for (let i = 0; i < starCount; i++) {
-    const r = Math.pow(Math.random(), 2.1) * maxRadius;
+    const r = Math.pow(Math.random(), 1.9) * maxRadius;
     const armIndex = i % arms;
     const armOffset = (armIndex * 2 * Math.PI) / arms;
-    const spiralAngle = r * 0.016 + armOffset;
-    const spread = (Math.random() - 0.5) * 0.38 * r;
-    const diskThickness = Math.max(6, 60 * Math.exp(-r / 130));
+    const spiralAngle = Math.log(r / 24 + 1) * 2.85 + armOffset;
+    const spread = (Math.random() - 0.5) * 0.32 * r;
+    const diskThickness = Math.max(8, 70 * Math.exp(-r / 180));
     const y = (Math.random() - 0.5) * diskThickness;
 
     const x = Math.cos(spiralAngle) * r + (Math.random() - 0.5) * spread;
     const z = Math.sin(spiralAngle) * r + (Math.random() - 0.5) * spread;
 
-    // Stellar color gradient: core = bright cyan/white, arms = violet/rose, outer = amber/blue
+    // Stellar Population Color Grading
     let color = '56, 213, 240';
-    if (r < maxRadius * 0.25) {
+    let baseRadius = Math.random() * 1.8 + 0.6;
+    let isForegroundSpike = false;
+
+    if (r < maxRadius * 0.22) {
       color = Math.random() > 0.4 ? '255, 255, 255' : '56, 213, 240';
-    } else if (r < maxRadius * 0.65) {
-      color = Math.random() > 0.45 ? '168, 85, 247' : '244, 63, 94';
+      baseRadius = Math.random() * 2.2 + 0.8;
+      if (Math.random() > 0.75) isForegroundSpike = true;
+    } else if (r < maxRadius * 0.6) {
+      const randType = Math.random();
+      if (randType > 0.6) color = '244, 63, 94'; // H-II Starburst Rose
+      else if (randType > 0.3) color = '168, 85, 247'; // Ionized Violet
+      else color = '96, 165, 250'; // Young Azure
     } else {
-      color = Math.random() > 0.5 ? '245, 158, 11' : '99, 102, 241';
+      color = Math.random() > 0.5 ? '245, 158, 11' : '99, 102, 241'; // Amber dust & Halo
     }
 
     stars.push({
       x, y, z, r,
-      baseRadius: Math.random() * 1.8 + 0.6,
+      baseRadius,
       color,
-      twinkleSpeed: Math.random() * 0.03 + 0.01,
+      isForegroundSpike,
+      twinkleSpeed: Math.random() * 0.03 + 0.012,
       twinklePhase: Math.random() * Math.PI * 2
     });
   }
 
-  // --- METEOR / SHOOTING STAR SYSTEM ---
-  const meteors = [];
+  // 2. Central Supermassive Bulge Stars (Spherical cluster)
+  for (let i = 0; i < (isMobile ? 25 : 45); i++) {
+    const rad = Math.pow(Math.random(), 0.8) * 85;
+    const theta = Math.random() * Math.PI * 2;
+    const phi = Math.acos(2 * Math.random() - 1);
+    const x = rad * Math.sin(phi) * Math.cos(theta);
+    const y = rad * Math.sin(phi) * Math.sin(theta) * 0.6;
+    const z = rad * Math.cos(phi);
 
-  function spawnMeteor() {
-    if (meteors.length >= 2 || Math.random() > 0.015) return;
-    meteors.push({
-      x: Math.random() * w * 0.8,
-      y: Math.random() * h * 0.4,
-      vx: (Math.random() * 2 + 3.5),
-      vy: (Math.random() * 1.5 + 2.2),
-      length: Math.random() * 60 + 40,
-      alpha: 0.95
+    stars.push({
+      x, y, z, r: rad,
+      baseRadius: Math.random() * 2.0 + 0.8,
+      color: Math.random() > 0.5 ? '255, 255, 255' : '56, 213, 240',
+      isForegroundSpike: Math.random() > 0.7,
+      twinkleSpeed: Math.random() * 0.04 + 0.015,
+      twinklePhase: Math.random() * Math.PI * 2
     });
   }
 
-  // --- RENDER LOOP: 3D SPIRAL GALAXY IN DEEP BACKGROUND ---
+  // 3. Volumetric 3D Deep Space Nebulae
+  const nebulae = [
+    { x: 120, y: -20, z: 80, rad: 160, color: '56, 213, 240', alpha: 0.08 },
+    { x: -180, y: 30, z: -120, rad: 190, color: '244, 63, 94', alpha: 0.07 },
+    { x: 80, y: 15, z: -160, rad: 210, color: '168, 85, 247', alpha: 0.07 },
+    { x: -140, y: -25, z: 140, rad: 170, color: '56, 213, 240', alpha: 0.06 },
+    { x: 240, y: 10, z: -60, rad: 220, color: '245, 158, 11', alpha: 0.06 },
+    { x: -90, y: -10, z: -220, rad: 180, color: '168, 85, 247', alpha: 0.07 },
+    { x: 200, y: 25, z: 180, rad: 175, color: '244, 63, 94', alpha: 0.06 },
+    { x: -220, y: -18, z: 40, rad: 195, color: '56, 213, 240', alpha: 0.07 }
+  ];
+
+  // --- HIGH-SPEED COSMIC METEORS SYSTEM ---
+  const meteors = [];
+  function spawnMeteor() {
+    if (meteors.length >= 3 || Math.random() > 0.018) return;
+    meteors.push({
+      x: Math.random() * w,
+      y: Math.random() * (h * 0.5),
+      vx: (Math.random() * 3 + 4.5),
+      vy: (Math.random() * 2 + 2.5),
+      length: Math.random() * 75 + 50,
+      alpha: 1.0,
+      color: Math.random() > 0.5 ? '56, 213, 240' : '244, 63, 94'
+    });
+  }
+
+  // --- RENDER LOOP: 3D REALISTIC PERSPECTIVE GALAXY ENGINE ---
   function render3DGalaxy() {
-    if (!isHeroVisible) return;
+    if (!isPageVisible) return;
     ctx.clearRect(0, 0, w, h);
 
-    galaxyAngle += 0.0016;
+    galaxyAngle += 0.0013;
     rotX += (targetRotX - rotX) * 0.05;
     rotY += (targetRotY - rotY) * 0.05;
+    scrollPanY += (targetScrollPanY - scrollPanY) * 0.06;
 
-    // 1. DRAW GALACTIC CORE AMBIENT GLOW
-    const coreGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(180, w * 0.25));
-    coreGrad.addColorStop(0, 'rgba(56, 213, 240, 0.26)');
-    coreGrad.addColorStop(0.35, 'rgba(168, 85, 247, 0.14)');
-    coreGrad.addColorStop(0.7, 'rgba(244, 63, 94, 0.06)');
+    // Camera 3D Inclination with Scroll & Parallax
+    const tiltX = 0.54 + rotX + (scrollProg * 0.22); // ~31 to 44 deg cosmic perspective
+    const cosTilt = Math.cos(tiltX), sinTilt = Math.sin(tiltX);
+    const camAngle = galaxyAngle + rotY + (scrollProg * 0.35);
+    const cosRot = Math.cos(camAngle), sinRot = Math.sin(camAngle);
+
+    const projectedOriginY = cy + (scrollPanY * 0.15);
+
+    // 1. DRAW MULTI-TIER SUPERMASSIVE GALACTIC CORE GLOW
+    const coreGrad = ctx.createRadialGradient(cx, projectedOriginY, 0, cx, projectedOriginY, Math.min(320, w * 0.42));
+    coreGrad.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
+    coreGrad.addColorStop(0.12, 'rgba(56, 213, 240, 0.32)');
+    coreGrad.addColorStop(0.35, 'rgba(168, 85, 247, 0.16)');
+    coreGrad.addColorStop(0.65, 'rgba(244, 63, 94, 0.07)');
     coreGrad.addColorStop(1, 'transparent');
     ctx.fillStyle = coreGrad;
     ctx.beginPath();
-    ctx.arc(cx, cy, Math.min(180, w * 0.25), 0, Math.PI * 2);
+    ctx.arc(cx, projectedOriginY, Math.min(320, w * 0.42), 0, Math.PI * 2);
     ctx.fill();
 
-    // 2. PROJECT AND RENDER 3D ROTATING GALAXY STARS
-    const tiltX = 0.58 + rotX; // ~33 deg viewing incline
-    const cosTilt = Math.cos(tiltX), sinTilt = Math.sin(tiltX);
-    const cosRot = Math.cos(galaxyAngle + rotY), sinRot = Math.sin(galaxyAngle + rotY);
+    // 2. PROJECT AND RENDER 3D VOLUMETRIC NEBULA CLOUDS
+    for (let i = 0; i < nebulae.length; i++) {
+      const neb = nebulae[i];
+      const rx = neb.x * cosRot - neb.z * sinRot;
+      const rz = neb.z * cosRot + neb.x * sinRot;
+      const ry = neb.y * cosTilt - rz * sinTilt;
+      const fz = rz * cosTilt + neb.y * sinTilt;
 
+      const depth = fz + 520;
+      if (depth > 40) {
+        const scale = fov / depth;
+        const px = cx + rx * scale;
+        const py = projectedOriginY + ry * scale;
+        const pRad = neb.rad * scale;
+
+        const nebGrad = ctx.createRadialGradient(px, py, 0, px, py, pRad);
+        nebGrad.addColorStop(0, `rgba(${neb.color}, ${neb.alpha * 1.5})`);
+        nebGrad.addColorStop(0.5, `rgba(${neb.color}, ${neb.alpha * 0.6})`);
+        nebGrad.addColorStop(1, 'transparent');
+
+        ctx.fillStyle = nebGrad;
+        ctx.beginPath();
+        ctx.arc(px, py, pRad, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // 3. PROJECT 3D STARS WITH PERSPECTIVE & DEPTH SORTING
     const projected = [];
     for (let i = 0; i < stars.length; i++) {
       const s = stars[i];
 
-      // Rotate around galactic Y-axis
+      // Galactic orbital rotation
       const rx = s.x * cosRot - s.z * sinRot;
       const rz = s.z * cosRot + s.x * sinRot;
 
-      // Incline galaxy on X-axis (cosmic disc perspective)
+      // Cosmic disc tilt
       const ry = s.y * cosTilt - rz * sinTilt;
       const fz = rz * cosTilt + s.y * sinTilt;
 
-      const depth = fz + 480;
-      if (depth > 20) {
+      const depth = fz + 520;
+      if (depth > 30) {
         const scale = fov / depth;
         const px = cx + rx * scale;
-        const py = cy + ry * scale;
+        const py = projectedOriginY + ry * scale;
         const pr = Math.max(0.4, s.baseRadius * scale);
 
-        // Twinkle modulation
-        const twinkle = Math.sin(galaxyAngle * 40 * s.twinkleSpeed + s.twinklePhase) * 0.25 + 0.75;
-        const alpha = Math.min(0.85, Math.max(0.12, (1 - fz / (maxRadius * 1.2)) * 0.65 * twinkle));
+        // Natural astronomical twinkling
+        const twinkle = Math.sin(galaxyAngle * 35 * s.twinkleSpeed + s.twinklePhase) * 0.28 + 0.72;
+        const alpha = Math.min(0.92, Math.max(0.14, (1 - fz / (maxRadius * 1.3)) * 0.75 * twinkle));
 
-        projected.push({ px, py, pr, pz: fz, alpha, color: s.color, orig: s });
+        projected.push({
+          px, py, pr, pz: fz,
+          scale,
+          alpha,
+          color: s.color,
+          isForegroundSpike: s.isForegroundSpike
+        });
       }
     }
 
-    // Sort by depth (painter's algorithm)
+    // Depth Sorting (Painter's algorithm: draw deep stars first)
     projected.sort((a, b) => b.pz - a.pz);
 
-    // Draw delicate 3D star dust / constellation links
+    // 4. DRAW 3D CONSTELLATION FILAMENTS / STAR DUST LINKS
     for (let i = 0; i < projected.length; i += 2) {
       const p1 = projected[i];
       for (let j = i + 1; j < Math.min(i + 4, projected.length); j++) {
@@ -4028,11 +4255,11 @@ if (canvas) {
         const dy = p1.py - p2.py;
         const dist = Math.hypot(dx, dy);
 
-        if (dist < 48) {
-          const lineAlpha = (1 - dist / 48) * Math.min(p1.alpha, p2.alpha) * 0.28;
+        if (dist < 52) {
+          const lineAlpha = (1 - dist / 52) * Math.min(p1.alpha, p2.alpha) * 0.24;
           ctx.beginPath();
           ctx.strokeStyle = `rgba(56, 213, 240, ${lineAlpha})`;
-          ctx.lineWidth = 0.75;
+          ctx.lineWidth = 0.8;
           ctx.moveTo(p1.px, p1.py);
           ctx.lineTo(p2.px, p2.py);
           ctx.stroke();
@@ -4040,47 +4267,62 @@ if (canvas) {
       }
     }
 
-    // Draw 3D Stars with Glowing Halos
+    // 5. DRAW 3D STARS WITH GLOWING HALOS & DIFFRACTION SPIKES
     for (let i = 0; i < projected.length; i++) {
       const p = projected[i];
+
+      // Star point
       ctx.beginPath();
       ctx.arc(p.px, p.py, p.pr, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`;
       ctx.fill();
 
-      // Soft ambient halo around bright stars
-      if (p.pr > 1.2 && p.pz < 80) {
+      // Atmospheric soft bloom for bright foreground stars
+      if (p.pr > 1.2 && p.pz < 90) {
         ctx.beginPath();
-        ctx.arc(p.px, p.py, p.pr * 2.2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color}, ${p.alpha * 0.22})`;
+        ctx.arc(p.px, p.py, p.pr * 2.4, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p.color}, ${p.alpha * 0.26})`;
         ctx.fill();
+
+        // 4-Point Celestial Diffraction Spikes (Telescope optics)
+        if (p.isForegroundSpike && p.pr > 1.5) {
+          const spikeLen = p.pr * 4.2;
+          ctx.strokeStyle = `rgba(${p.color}, ${p.alpha * 0.4})`;
+          ctx.lineWidth = 0.75;
+          ctx.beginPath();
+          ctx.moveTo(p.px - spikeLen, p.py);
+          ctx.lineTo(p.px + spikeLen, p.py);
+          ctx.moveTo(p.px, p.py - spikeLen);
+          ctx.lineTo(p.px, p.py + spikeLen);
+          ctx.stroke();
+        }
       }
     }
 
-    // 3. DRAW OCCASIONAL METEORS / SHOOTING STARS
+    // 6. DRAW OCCASIONAL REALISTIC HIGH-SPEED METEORS
     spawnMeteor();
     for (let i = meteors.length - 1; i >= 0; i--) {
       const m = meteors[i];
       m.x += m.vx;
       m.y += m.vy;
-      m.alpha -= 0.022;
+      m.alpha -= 0.02;
 
       if (m.alpha <= 0 || m.x > w || m.y > h) {
         meteors.splice(i, 1);
         continue;
       }
 
-      const tailX = m.x - m.vx * (m.length / 5);
-      const tailY = m.y - m.vy * (m.length / 5);
+      const tailX = m.x - m.vx * (m.length / 5.5);
+      const tailY = m.y - m.vy * (m.length / 5.5);
 
       const mGrad = ctx.createLinearGradient(m.x, m.y, tailX, tailY);
       mGrad.addColorStop(0, `rgba(255, 255, 255, ${m.alpha})`);
-      mGrad.addColorStop(0.4, `rgba(56, 213, 240, ${m.alpha * 0.7})`);
+      mGrad.addColorStop(0.35, `rgba(${m.color}, ${m.alpha * 0.75})`);
       mGrad.addColorStop(1, 'transparent');
 
       ctx.beginPath();
       ctx.strokeStyle = mGrad;
-      ctx.lineWidth = 1.6;
+      ctx.lineWidth = 1.8;
       ctx.moveTo(m.x, m.y);
       ctx.lineTo(tailX, tailY);
       ctx.stroke();
@@ -4088,6 +4330,8 @@ if (canvas) {
 
     requestAnimationFrame(render3DGalaxy);
   }
+
+  // Start continuous 60fps render
   render3DGalaxy();
 }
 
