@@ -2876,6 +2876,109 @@ html, body {
   transform: translateZ(24px);
 }
 
+
+/* ==========================================================================
+   ENHANCED MOBILE PHOTOREALISTIC & TACTILE TOUCH POLISH
+   ========================================================================== */
+@media (max-width: 600px) {
+  /* Prevent horizontal micro-wobble */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100vw !important;
+  }
+
+  /* Refined Hero Portrait with Cosmic Pulsing Aura */
+  .portrait-card {
+    border: 2px solid rgba(56, 213, 240, 0.6) !important;
+    box-shadow: 0 0 24px rgba(56, 213, 240, 0.35), 0 10px 28px rgba(0, 0, 0, 0.75) !important;
+  }
+
+  .portrait-aura {
+    background: radial-gradient(circle, rgba(56, 213, 240, 0.45) 0%, rgba(168, 85, 247, 0.25) 50%, transparent 75%) !important;
+  }
+
+  /* Frosted Glass Cards on Mobile with Hardware Acceleration */
+  .proj-carousel-container,
+  .poetry-carousel-wrap,
+  .moment-card-compact,
+  .skills-box,
+  .form-box {
+    transform: translateZ(0) !important;
+    -webkit-transform: translateZ(0) !important;
+    backdrop-filter: blur(18px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+    border-radius: 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.28) !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Thumb-Friendly Carousel Navigation Buttons with Instant Tactile Feedback */
+  .poetry-ctrl-bar .carousel-btn,
+  .proj-ctrl-bar .carousel-btn {
+    min-width: 92px !important;
+    min-height: 42px !important;
+    padding: 8px 16px !important;
+    font-size: 13px !important;
+    letter-spacing: 0.02em !important;
+    border-radius: 999px !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+  }
+
+  .carousel-btn:active {
+    transform: scale(0.94) !important;
+  }
+
+  /* Mobile Contact Form Inputs: 48px Touch Target & Anti-Zoom */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 16px !important; /* Prevents iOS auto-zoom on tap */
+    padding: 12px 14px !important;
+    border-radius: 12px !important;
+    min-height: 46px !important;
+    background: rgba(8, 14, 25, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    touch-action: manipulation !important;
+  }
+
+  .form-group textarea {
+    min-height: 96px !important;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--cy) !important;
+    box-shadow: 0 0 16px -2px var(--cy-glow) !important;
+  }
+
+  /* Submit Button on Mobile */
+  .btn-submit {
+    min-height: 48px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    touch-action: manipulation !important;
+  }
+
+  /* Enhanced Campus Moments Card on Mobile */
+  .moment-card-compact {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .moment-compact-img {
+    height: 190px !important;
+    width: 100% !important;
+  }
+
+  .moment-compact-content {
+    padding: 16px 14px 18px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3958,6 +4061,11 @@ typeLoop();
  * 6. PHOTOREALISTIC 3D DEEP-SPACE & BLACK HOLE GRAVITATIONAL ENGINE
  * ----------------------------------------------------------------------------
  */
+/**
+ * ----------------------------------------------------------------------------
+ * 6. PHOTOREALISTIC 3D DEEP-SPACE & BLACK HOLE GRAVITATIONAL ENGINE (V2 - REALISTIC)
+ * ----------------------------------------------------------------------------
+ */
 const canvas = document.getElementById('heroCanvas');
 if (canvas) {
   const ctx = canvas.getContext('2d');
@@ -3973,34 +4081,36 @@ if (canvas) {
   let targetScrollPanY = 0;
   let mouse = { x: -9999, y: -9999, active: false };
   let isPageVisible = !document.hidden;
-  const fov = 580;
+  const isMobile = window.innerWidth <= 768;
+  const fov = isMobile ? 500 : 600;
 
   function resizeCanvas() {
     w = canvas.width = window.innerWidth;
     h = canvas.height = window.innerHeight;
     cx = w * 0.5;
-    cy = h * 0.48;
+    // On mobile, frame the black hole in upper hero view (~34% down), on desktop ~48%
+    cy = isMobile ? Math.min(h * 0.34, 270) : h * 0.48;
   }
   window.addEventListener('resize', resizeCanvas, { passive: true });
   resizeCanvas();
 
-  // Full-window pointer & touch interaction with gravitational mass
+  // Full-window pointer interaction with gravitational mass
   window.addEventListener('pointermove', (e) => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
     mouse.active = true;
-    targetRotY = (e.clientX - cx) * 0.00038;
-    targetRotX = -(e.clientY - cy) * 0.00038;
+    targetRotY = (e.clientX - cx) * 0.00035;
+    targetRotX = -(e.clientY - cy) * 0.00035;
 
-    // Spawn subtle interactive stardust sparks on movement
+    // Interactive cosmic stardust sparks on movement
     if (Math.random() > 0.4 && stardustSparks.length < 35) {
       stardustSparks.push({
         x: e.clientX,
         y: e.clientY,
-        vx: (Math.random() - 0.5) * 1.8,
-        vy: (Math.random() - 0.5) * 1.8,
-        size: Math.random() * 2.2 + 0.8,
-        alpha: 0.9,
+        vx: (Math.random() - 0.5) * 1.6,
+        vy: (Math.random() - 0.5) * 1.6,
+        size: Math.random() * 2.0 + 0.8,
+        alpha: 0.95,
         color: Math.random() > 0.5 ? '56, 213, 240' : '168, 85, 247'
       });
     }
@@ -4010,7 +4120,22 @@ if (canvas) {
     mouse.active = false;
     mouse.x = -9999;
     mouse.y = -9999;
+    targetRotX = 0;
+    targetRotY = 0;
   });
+
+  // Mobile Touch Gestures with Inertia
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches && e.touches[0]) {
+      const tx = e.touches[0].clientX;
+      const ty = e.touches[0].clientY;
+      mouse.x = tx;
+      mouse.y = ty;
+      mouse.active = true;
+      targetRotY = (tx - cx) * 0.0003;
+      targetRotX = -(ty - cy) * 0.0003;
+    }
+  }, { passive: true });
 
   window.addEventListener('touchmove', (e) => {
     if (e.touches && e.touches[0]) {
@@ -4019,16 +4144,43 @@ if (canvas) {
       mouse.x = tx;
       mouse.y = ty;
       mouse.active = true;
-      targetRotY = (tx - cx) * 0.00028;
-      targetRotX = -(ty - cy) * 0.00028;
+      targetRotY = (tx - cx) * 0.0003;
+      targetRotX = -(ty - cy) * 0.0003;
     }
   }, { passive: true });
+
+  window.addEventListener('touchend', () => {
+    mouse.active = false;
+    mouse.x = -9999;
+    mouse.y = -9999;
+    targetRotX = 0;
+    targetRotY = 0;
+  });
+
+  window.addEventListener('touchcancel', () => {
+    mouse.active = false;
+    mouse.x = -9999;
+    mouse.y = -9999;
+    targetRotX = 0;
+    targetRotY = 0;
+  });
+
+  // Mobile Gyroscope / Device Orientation Support (Real 3D Galaxy Tilt in Hands)
+  if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission !== 'function') {
+    window.addEventListener('deviceorientation', (e) => {
+      if (e.gamma !== null && e.beta !== null) {
+        // gamma: left-to-right [-90, 90], beta: front-to-back [-180, 180]
+        targetRotY = Math.max(-0.25, Math.min(0.25, e.gamma * 0.005));
+        targetRotX = Math.max(-0.25, Math.min(0.25, (e.beta - 45) * 0.005));
+      }
+    }, { passive: true });
+  }
 
   // Smooth scroll depth & pitch flight
   window.addEventListener('scroll', () => {
     const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     scrollProg = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-    targetScrollPanY = scrollProg * 320;
+    targetScrollPanY = scrollProg * (isMobile ? 180 : 320);
   }, { passive: true });
 
   document.addEventListener('visibilitychange', () => {
@@ -4036,65 +4188,64 @@ if (canvas) {
     if (isPageVisible) requestAnimationFrame(renderRealisticUniverse);
   });
 
-  // --- STELLAR POPULATION ARCHITECTURE ---
-  const isMobile = window.innerWidth <= 768;
-  const starCount = isMobile ? 380 : 750;
+  // --- ASTROPHYSICAL STELLAR ARCHITECTURE ---
+  const starCount = isMobile ? 320 : 750;
   const arms = 4;
-  const maxRadius = Math.max(w, h) * 0.72;
+  const maxRadius = Math.max(w, h) * (isMobile ? 0.78 : 0.72);
   const stars = [];
   const bokehDust = [];
   const darkDustClouds = [];
   const stardustSparks = [];
 
-  // 1. Four Logarithmic Spiral Arms with Planck Spectral Types
+  // 1. Logarithmic Spiral Density Wave Arms with Planck Blackbody Stellar Radiation
   for (let i = 0; i < starCount; i++) {
-    const r = Math.pow(Math.random(), 1.85) * maxRadius + 35;
+    const r = Math.pow(Math.random(), 1.8) * maxRadius + (isMobile ? 24 : 35);
     const armIndex = i % arms;
     const armOffset = (armIndex * 2 * Math.PI) / arms;
-    const spiralAngle = Math.log(r / 28 + 1) * 2.9 + armOffset;
-    const spread = (Math.random() - 0.5) * 0.32 * r;
-    const diskThickness = Math.max(10, 85 * Math.exp(-r / 190));
+    // Logarithmic pitch angle ~12 deg
+    const spiralAngle = Math.log(r / 26 + 1) * 2.85 + armOffset;
+    const spread = (Math.random() - 0.5) * (isMobile ? 0.28 : 0.32) * r;
+    const diskThickness = Math.max(8, (isMobile ? 65 : 85) * Math.exp(-r / 180));
     const y = (Math.random() - 0.5) * diskThickness;
 
     const x = Math.cos(spiralAngle) * r + (Math.random() - 0.5) * spread;
     const z = Math.sin(spiralAngle) * r + (Math.random() - 0.5) * spread;
 
-    // Planckian Stellar Classification
+    // Planckian Stellar Radiation Classes
     let color = '56, 213, 240';
-    let baseRadius = Math.random() * 1.8 + 0.6;
+    let baseRadius = Math.random() * 1.7 + 0.5;
     let isSpike = false;
     let pulsar = false;
 
     if (r < maxRadius * 0.22) {
-      // Hot Core / Young Giants (Class O/B & A)
+      // Hot Inner Bulge & OB Giants
       if (Math.random() > 0.4) {
         color = '255, 255, 255';
-        baseRadius = Math.random() * 2.4 + 1.0;
-        isSpike = Math.random() > 0.65;
+        baseRadius = Math.random() * 2.2 + 0.9;
+        isSpike = !isMobile && Math.random() > 0.65;
       } else {
         color = '56, 213, 240';
-        baseRadius = Math.random() * 2.0 + 0.8;
+        baseRadius = Math.random() * 1.9 + 0.7;
       }
     } else if (r < maxRadius * 0.65) {
       const type = Math.random();
       if (type > 0.62) {
-        color = '244, 63, 94'; // H-II Starburst Rose
+        color = '244, 63, 94'; // Ionized H-II Starburst Rose
       } else if (type > 0.32) {
         color = '168, 85, 247'; // Ionized Violet
       } else if (type > 0.12) {
-        color = '96, 165, 250'; // Azure Giant
+        color = '96, 165, 250'; // Young Azure Giant
       } else {
         color = '254, 240, 138'; // Solar Gold (Class G)
-        isSpike = Math.random() > 0.8;
+        isSpike = !isMobile && Math.random() > 0.8;
       }
     } else {
-      // Outer Arm / Ancient Halo (Class K/M & Amber Dust)
+      // Outer Halo & Ancient Amber Stars
       color = Math.random() > 0.5 ? '245, 158, 11' : '129, 140, 248';
-      baseRadius = Math.random() * 1.5 + 0.5;
+      baseRadius = Math.random() * 1.4 + 0.45;
     }
 
-    // Rare periodic pulsars
-    if (i < 5) pulsar = true;
+    if (!isMobile && i < 4) pulsar = true;
 
     stars.push({
       x, y, z, r,
@@ -4102,42 +4253,49 @@ if (canvas) {
       color,
       isSpike,
       pulsar,
-      orbitalSpeed: 0.0009 + (0.0008 / Math.sqrt(r / 60 + 1)),
+      // Differential galactic rotation: v(r) ~ r / sqrt(r^2 + rc^2)
+      orbitalSpeed: 0.00085 + (0.00075 / Math.sqrt(r / 55 + 1)),
       twinkleSpeed: Math.random() * 0.035 + 0.015,
       twinklePhase: Math.random() * Math.PI * 2
     });
   }
 
-  // 2. Foreground 3D Depth-of-Field (Bokeh) Orbs
-  const bokehCount = isMobile ? 18 : 36;
+  // 2. Foreground 3D Camera Depth-of-Field (Bokeh) Orbs
+  const bokehCount = isMobile ? 14 : 32;
   for (let i = 0; i < bokehCount; i++) {
     bokehDust.push({
-      x: (Math.random() - 0.5) * w * 1.4,
-      y: (Math.random() - 0.5) * h * 1.4,
-      z: -(Math.random() * 320 + 120), // close to camera lens!
-      radius: Math.random() * 18 + 8,
+      x: (Math.random() - 0.5) * w * 1.3,
+      y: (Math.random() - 0.5) * h * 1.3,
+      z: -(Math.random() * 280 + 100), // close to camera sensor
+      radius: Math.random() * (isMobile ? 12 : 18) + 6,
       color: Math.random() > 0.5 ? '56, 213, 240' : '168, 85, 247',
-      alpha: Math.random() * 0.12 + 0.05,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: (Math.random() - 0.5) * 0.25
+      alpha: Math.random() * 0.12 + 0.04,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: (Math.random() - 0.5) * 0.2
     });
   }
 
-  // 3. Volumetric Interstellar Dark Matter Absorption Clouds (Silhouettes)
-  for (let i = 0; i < 7; i++) {
-    const ang = (i * Math.PI * 2) / 7 + 0.4;
-    const rad = (i + 1) * (maxRadius / 8);
+  // 3. Interstellar Dark Matter Absorption Clouds (The Great Rift Silhouettes)
+  const dustCloudCount = isMobile ? 4 : 7;
+  for (let i = 0; i < dustCloudCount; i++) {
+    const ang = (i * Math.PI * 2) / dustCloudCount + 0.35;
+    const rad = (i + 1) * (maxRadius / (dustCloudCount + 1));
     darkDustClouds.push({
       x: Math.cos(ang) * rad,
-      y: (Math.random() - 0.5) * 30,
+      y: (Math.random() - 0.5) * 25,
       z: Math.sin(ang) * rad,
-      radius: Math.random() * 110 + 90,
-      alpha: Math.random() * 0.55 + 0.35
+      radius: Math.random() * (isMobile ? 75 : 105) + 65,
+      alpha: Math.random() * 0.45 + 0.3
     });
   }
 
   // 4. Volumetric Radiant Nebulae (Glowing Star Nurseries)
-  const nebulae = [
+  const nebulae = isMobile ? [
+    { x: 100, y: -20, z: 70, rad: 160, color: '56, 213, 240', alpha: 0.08 },
+    { x: -140, y: 25, z: -100, rad: 180, color: '244, 63, 94', alpha: 0.07 },
+    { x: 70, y: 15, z: -130, rad: 170, color: '168, 85, 247', alpha: 0.07 },
+    { x: -110, y: -20, z: 120, rad: 150, color: '56, 213, 240', alpha: 0.06 }
+  ] : [
     { x: 140, y: -25, z: 90, rad: 210, color: '56, 213, 240', alpha: 0.09 },
     { x: -210, y: 35, z: -140, rad: 240, color: '244, 63, 94', alpha: 0.08 },
     { x: 90, y: 20, z: -190, rad: 250, color: '168, 85, 247', alpha: 0.08 },
@@ -4148,52 +4306,52 @@ if (canvas) {
     { x: -260, y: -22, z: 60, rad: 230, color: '56, 213, 240', alpha: 0.08 }
   ];
 
-  // 5. Supersonic Fragmenting Meteors
+  // 5. Supersonic Fragmenting Meteors & Burning Embers
   const meteors = [];
   const meteorFragments = [];
 
   function spawnMeteor() {
-    if (meteors.length >= 3 || Math.random() > 0.016) return;
+    if (meteors.length >= (isMobile ? 2 : 3) || Math.random() > 0.016) return;
     meteors.push({
       x: Math.random() * w,
-      y: Math.random() * (h * 0.45),
-      vx: (Math.random() * 3.5 + 5.5),
-      vy: (Math.random() * 2.2 + 3.0),
-      length: Math.random() * 85 + 60,
+      y: Math.random() * (h * 0.4),
+      vx: (Math.random() * 3 + (isMobile ? 4.5 : 5.5)),
+      vy: (Math.random() * 2 + (isMobile ? 2.5 : 3.0)),
+      length: Math.random() * (isMobile ? 55 : 80) + 45,
       alpha: 1.0,
       color: Math.random() > 0.5 ? '56, 213, 240' : '244, 63, 94'
     });
   }
 
-  // --- RENDER LOOP: 3D PHOTOREALISTIC UNIVERSE & BLACK HOLE ---
+  // --- RENDER LOOP: 3D PHOTOREALISTIC UNIVERSE & KERR BLACK HOLE ---
   function renderRealisticUniverse() {
     if (!isPageVisible) return;
     ctx.clearRect(0, 0, w, h);
 
-    galaxyAngle += 0.0012;
-    rotX += (targetRotX - rotX) * 0.05;
-    rotY += (targetRotY - rotY) * 0.05;
+    galaxyAngle += 0.0011;
+    rotX += (targetRotX - rotX) * 0.06;
+    rotY += (targetRotY - rotY) * 0.06;
     scrollPanY += (targetScrollPanY - scrollPanY) * 0.06;
 
-    // 3D Camera Angles & Horizon Projection
-    const tiltX = 0.56 + rotX + (scrollProg * 0.24); // ~32 to 46 deg view
+    // 3D Camera Angles & Perspective Projection
+    const tiltX = 0.54 + rotX + (scrollProg * 0.22); // ~31 to 44 deg cosmic perspective
     const cosTilt = Math.cos(tiltX), sinTilt = Math.sin(tiltX);
-    const camAngle = galaxyAngle + rotY + (scrollProg * 0.35);
+    const camAngle = galaxyAngle + rotY + (scrollProg * 0.32);
     const cosRot = Math.cos(camAngle), sinRot = Math.sin(camAngle);
 
-    const projectedOriginY = cy + (scrollPanY * 0.16);
+    const projectedOriginY = cy + (scrollPanY * 0.14);
 
     // --------------------------------------------------------------------------
-    // A. CENTRAL SUPERMASSIVE BLACK HOLE & RELATIVISTIC ACCRETION DISK
+    // A. CENTRAL SUPERMASSIVE BLACK HOLE & GENERAL RELATIVITY LENSING
     // --------------------------------------------------------------------------
-    const bhScale = Math.min(1.0, w / 1100);
+    const bhScale = isMobile ? Math.min(0.68, w / 580) : Math.min(1.0, w / 1100);
     const bhRadius = 24 * bhScale;
-    const photonRingRadius = bhRadius * 1.65;
-    const accretionOuterRadius = Math.min(360, w * 0.45);
+    const photonRingRadius = bhRadius * 1.62;
+    const accretionOuterRadius = Math.min(isMobile ? 220 : 360, w * (isMobile ? 0.6 : 0.44));
 
     // 1. Accretion Disc Broad Luminous Corona
     const coronaGrad = ctx.createRadialGradient(cx, projectedOriginY, photonRingRadius, cx, projectedOriginY, accretionOuterRadius);
-    coronaGrad.addColorStop(0, 'rgba(255, 255, 255, 0.42)');
+    coronaGrad.addColorStop(0, 'rgba(255, 255, 255, 0.45)');
     coronaGrad.addColorStop(0.12, 'rgba(56, 213, 240, 0.32)');
     coronaGrad.addColorStop(0.35, 'rgba(168, 85, 247, 0.16)');
     coronaGrad.addColorStop(0.68, 'rgba(244, 63, 94, 0.06)');
@@ -4203,37 +4361,59 @@ if (canvas) {
     ctx.arc(cx, projectedOriginY, accretionOuterRadius, 0, Math.PI * 2);
     ctx.fill();
 
-    // 2. Gravitational Lensing Arc (Light bent over the top of the event horizon)
+    // 2. Gravitational Lensing Halo Arcs (Einstein Deflection: Upper & Lower Wrapped Light)
     ctx.save();
+    // Upper Lensed Arc
     ctx.beginPath();
-    ctx.ellipse(cx, projectedOriginY - bhRadius * 0.35, photonRingRadius * 1.9, photonRingRadius * 1.15, 0, Math.PI, 2 * Math.PI);
-    ctx.strokeStyle = 'rgba(56, 213, 240, 0.4)';
-    ctx.lineWidth = 3.5 * bhScale;
+    ctx.ellipse(cx, projectedOriginY - bhRadius * 0.36, photonRingRadius * 1.95, photonRingRadius * 1.18, 0, Math.PI, 2 * Math.PI);
+    ctx.strokeStyle = 'rgba(56, 213, 240, 0.45)';
+    ctx.lineWidth = 3.2 * bhScale;
+    ctx.stroke();
+
+    // Lower Lensed Arc
+    ctx.beginPath();
+    ctx.ellipse(cx, projectedOriginY + bhRadius * 0.32, photonRingRadius * 1.85, photonRingRadius * 1.05, 0, 0, Math.PI);
+    ctx.strokeStyle = 'rgba(168, 85, 247, 0.28)';
+    ctx.lineWidth = 2.2 * bhScale;
     ctx.stroke();
 
     // 3. Relativistic Accretion Ring with Doppler Beaming (Left side blue-boosted)
-    const diskGrad = ctx.createLinearGradient(cx - photonRingRadius * 2.5, projectedOriginY, cx + photonRingRadius * 2.5, projectedOriginY);
+    const diskGrad = ctx.createLinearGradient(cx - photonRingRadius * 2.6, projectedOriginY, cx + photonRingRadius * 2.6, projectedOriginY);
     diskGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)'); // Approaching side: Doppler boosted white-hot
-    diskGrad.addColorStop(0.2, 'rgba(56, 213, 240, 0.85)');
-    diskGrad.addColorStop(0.6, 'rgba(168, 85, 247, 0.45)');
-    diskGrad.addColorStop(1, 'rgba(244, 63, 94, 0.25)'); // Receding side: Doppler redshifted
+    diskGrad.addColorStop(0.22, 'rgba(56, 213, 240, 0.88)');
+    diskGrad.addColorStop(0.62, 'rgba(168, 85, 247, 0.45)');
+    diskGrad.addColorStop(1, 'rgba(244, 63, 94, 0.22)'); // Receding side: Doppler redshifted
     ctx.beginPath();
-    ctx.ellipse(cx, projectedOriginY, photonRingRadius * 2.6, photonRingRadius * 0.75, 0.18, 0, Math.PI * 2);
+    ctx.ellipse(cx, projectedOriginY, photonRingRadius * 2.65, photonRingRadius * 0.72, 0.16, 0, Math.PI * 2);
     ctx.strokeStyle = diskGrad;
-    ctx.lineWidth = 4 * bhScale;
+    ctx.lineWidth = 4.2 * bhScale;
+    ctx.stroke();
+
+    // 4. Bipolar Relativistic Plasma Jets (Collimated particle streams along spin axis)
+    const jetGrad = ctx.createLinearGradient(cx, projectedOriginY - 140 * bhScale, cx, projectedOriginY + 140 * bhScale);
+    jetGrad.addColorStop(0, 'transparent');
+    jetGrad.addColorStop(0.35, 'rgba(56, 213, 240, 0.28)');
+    jetGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.55)');
+    jetGrad.addColorStop(0.65, 'rgba(56, 213, 240, 0.28)');
+    jetGrad.addColorStop(1, 'transparent');
+    ctx.strokeStyle = jetGrad;
+    ctx.lineWidth = 1.6 * bhScale;
+    ctx.beginPath();
+    ctx.moveTo(cx, projectedOriginY - 130 * bhScale);
+    ctx.lineTo(cx, projectedOriginY + 130 * bhScale);
     ctx.stroke();
     ctx.restore();
 
-    // 4. Absolute Dark Event Horizon (Black Hole Shadow)
+    // 5. Absolute Dark Event Horizon (Black Hole Shadow)
     ctx.beginPath();
     ctx.arc(cx, projectedOriginY, bhRadius, 0, Math.PI * 2);
     ctx.fillStyle = '#020409';
     ctx.fill();
 
-    // 5. Einstein Photon Ring (Razor-sharp photon orbit boundary)
+    // 6. Einstein Photon Ring (Razor-sharp photon orbit boundary)
     ctx.beginPath();
     ctx.arc(cx, projectedOriginY, photonRingRadius, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.88)';
     ctx.lineWidth = 1.8 * bhScale;
     ctx.stroke();
 
@@ -4294,8 +4474,8 @@ if (canvas) {
           const dx = px - mouse.x;
           const dy = py - mouse.y;
           const dist = Math.hypot(dx, dy);
-          if (dist < 150 && dist > 5) {
-            const pull = (1 - dist / 150) * 14;
+          if (dist < 140 && dist > 5) {
+            const pull = (1 - dist / 140) * 12;
             px += (dx / dist) * pull;
             py += (dy / dist) * pull;
           }
@@ -4316,20 +4496,20 @@ if (canvas) {
       }
     }
 
-    // Sort by depth (painter's algorithm)
+    // Depth Sorting
     projected.sort((a, b) => b.pz - a.pz);
 
     // Constellation Filament Links
-    for (let i = 0; i < projected.length; i += 2) {
+    for (let i = 0; i < projected.length; i += (isMobile ? 3 : 2)) {
       const p1 = projected[i];
-      for (let j = i + 1; j < Math.min(i + 4, projected.length); j++) {
+      for (let j = i + 1; j < Math.min(i + (isMobile ? 3 : 4), projected.length); j++) {
         const p2 = projected[j];
         const dx = p1.px - p2.px;
         const dy = p1.py - p2.py;
         const dist = Math.hypot(dx, dy);
 
-        if (dist < 50) {
-          const lineAlpha = (1 - dist / 50) * Math.min(p1.alpha, p2.alpha) * 0.22;
+        if (dist < (isMobile ? 40 : 50)) {
+          const lineAlpha = (1 - dist / (isMobile ? 40 : 50)) * Math.min(p1.alpha, p2.alpha) * 0.22;
           ctx.beginPath();
           ctx.strokeStyle = `rgba(56, 213, 240, ${lineAlpha})`;
           ctx.lineWidth = 0.75;
@@ -4356,7 +4536,7 @@ if (canvas) {
         ctx.fillStyle = `rgba(${p.color}, ${p.alpha * 0.25})`;
         ctx.fill();
 
-        // 4-Point Optical Telescope Diffraction Spikes
+        // 4-Point Optical Telescope Diffraction Spikes (Desktop only)
         if (p.isSpike && p.pr > 1.4) {
           const spikeLen = p.pr * 4.4;
           ctx.strokeStyle = `rgba(${p.color}, ${p.alpha * 0.42})`;
@@ -4400,8 +4580,8 @@ if (canvas) {
         const pRad = d.radius * scale;
 
         const darkGrad = ctx.createRadialGradient(px, py, 0, px, py, pRad);
-        darkGrad.addColorStop(0, `rgba(3, 5, 12, ${d.alpha})`);
-        darkGrad.addColorStop(0.65, `rgba(3, 5, 12, ${d.alpha * 0.4})`);
+        darkGrad.addColorStop(0, `rgba(2, 4, 9, ${d.alpha})`);
+        darkGrad.addColorStop(0.65, `rgba(2, 4, 9, ${d.alpha * 0.4})`);
         darkGrad.addColorStop(1, 'transparent');
 
         ctx.fillStyle = darkGrad;
@@ -4418,14 +4598,13 @@ if (canvas) {
       const b = bokehDust[i];
       b.x += b.vx;
       b.y += b.vy;
-      if (b.x < -100) b.x = w + 100;
-      if (b.x > w + 100) b.x = -100;
-      if (b.y < -100) b.y = h + 100;
-      if (b.y > h + 100) b.y = -100;
+      if (b.x < -80) b.x = w + 80;
+      if (b.x > w + 80) b.x = -80;
+      if (b.y < -80) b.y = h + 80;
+      if (b.y > h + 80) b.y = -80;
 
-      // Parallax shift from mouse
-      const px = b.x + rotY * 180;
-      const py = b.y - rotX * 180;
+      const px = b.x + rotY * 160;
+      const py = b.y - rotX * 160;
 
       const bokehGrad = ctx.createRadialGradient(px, py, 0, px, py, b.radius);
       bokehGrad.addColorStop(0, `rgba(${b.color}, ${b.alpha})`);
@@ -4469,8 +4648,7 @@ if (canvas) {
       m.y += m.vy;
       m.alpha -= 0.018;
 
-      // Spawn burning ember disintegration fragment
-      if (Math.random() > 0.4 && meteorFragments.length < 50) {
+      if (Math.random() > 0.4 && meteorFragments.length < (isMobile ? 25 : 50)) {
         meteorFragments.push({
           x: m.x + (Math.random() - 0.5) * 4,
           y: m.y + (Math.random() - 0.5) * 4,
@@ -4497,7 +4675,7 @@ if (canvas) {
 
       ctx.beginPath();
       ctx.strokeStyle = mGrad;
-      ctx.lineWidth = 2.0;
+      ctx.lineWidth = isMobile ? 1.5 : 2.0;
       ctx.moveTo(m.x, m.y);
       ctx.lineTo(tailX, tailY);
       ctx.stroke();
