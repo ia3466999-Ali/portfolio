@@ -98,20 +98,82 @@ button, input, select, textarea { font: inherit; color: inherit; }
    INTERACTIVE GESTURES & MODERN ANIMATIONS
    ========================================================================== */
 
-/* Directional Carousel Slide Transitions */
+/* ==========================================================================
+   FAST CAROUSEL TRANSITIONS & ULTRA-SNAPPY SWIPE
+   ========================================================================== */
 @keyframes slideInRight {
-  0% { opacity: 0; transform: translateX(36px) scale(0.98); }
-  100% { opacity: 1; transform: translateX(0) scale(1); }
+  0% { opacity: 0.25; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 @keyframes slideInLeft {
-  0% { opacity: 0; transform: translateX(-36px) scale(0.98); }
-  100% { opacity: 1; transform: translateX(0) scale(1); }
+  0% { opacity: 0.25; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
 }
 .slide-in-right {
-  animation: slideInRight 0.36s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation: slideInRight 0.18s cubic-bezier(0.12, 0.95, 0.24, 1) !important;
 }
 .slide-in-left {
-  animation: slideInLeft 0.36s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  animation: slideInLeft 0.18s cubic-bezier(0.12, 0.95, 0.24, 1) !important;
+}
+
+/* Top Scroll Reading Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #38d5f0, #a855f7, #f43f5e, #fbbf24);
+  transform-origin: left center;
+  transform: scaleX(0);
+  z-index: 99999;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(56, 213, 240, 0.5);
+  transition: transform 0.06s linear;
+}
+
+/* Aesthetic Verse Calligraphic Divider */
+.verse-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 14px 0 16px;
+  color: var(--rose);
+  font-size: 15px;
+  opacity: 0.75;
+}
+.verse-ornament .verse-star {
+  font-size: 12px;
+  color: var(--amber);
+  animation: starTwinkle 2s ease-in-out infinite alternate;
+}
+@keyframes starTwinkle {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 1; filter: drop-shadow(0 0 5px var(--amber)); }
+}
+
+/* Pulsing Emerald Radar Dot for Live Status */
+.badge.emerald {
+  position: relative;
+  overflow: visible;
+}
+.badge.emerald::after {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background: var(--emerald);
+  box-shadow: 0 0 8px var(--emerald);
+  animation: radarPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  vertical-align: middle;
+}
+@keyframes radarPing {
+  0% { transform: scale(0.9); opacity: 1; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(0.9); opacity: 0; }
 }
 
 /* Scroll-Driven Reveal Micro-Animations */
@@ -1108,7 +1170,7 @@ h2.sec-title {
   gap: 34px;
   align-items: stretch;
   min-height: 400px;
-  animation: projSlideIn 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: projSlideIn 0.18s cubic-bezier(0.12, 0.95, 0.24, 1);
 }
 @keyframes projSlideIn {
   from { opacity: 0; transform: translateY(8px); }
@@ -1420,7 +1482,7 @@ h2.sec-title {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  animation: verseSlideIn 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: verseSlideIn 0.18s cubic-bezier(0.12, 0.95, 0.24, 1);
 }
 @keyframes verseSlideIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -2448,6 +2510,7 @@ footer {
 </style>
 </head>
 <body>
+  <div id="scrollProgressBar" class="scroll-progress-bar" aria-hidden="true"></div>
 
 <!-- Ambient Aurora Glow Behind Front View -->
 <div class="aurora-bg">
@@ -2645,9 +2708,9 @@ footer {
   <section id="poetry">
     <div class="w">
       <div class="sec-head">
-        <span class="poetry-hero-badge"><span class="soundwave-bar"></span><span class="soundwave-bar"></span><span class="soundwave-bar"></span> لَفْظِ عَلِی · Lafz-e-Ali</span>
-        <h2 class="sec-title">Original Urdu Shayari &amp; Stage Kalam (اردو شاعری)</h2>
-        <p class="lead">Authentic Urdu poetry penned by Imran Ali under the takhallus <b>‘Ali’</b> (عَلِی). Featuring classical Nastaliq Urdu script with Roman transliteration. One-by-one interactive reader.</p>
+        <span class="poetry-hero-badge"><span class="soundwave-bar"></span><span class="soundwave-bar"></span><span class="soundwave-bar"></span> اردو شاعری · Urdu Shayari</span>
+        <h2 class="sec-title">Urdu Shayari (اردو شاعری)</h2>
+        <p class="lead">Authentic Urdu poetry penned by Imran Ali under the takhallus <b>‘Ali’</b> (عَلِی). Classical Nastaliq script with Roman transliteration. One-by-one interactive reader.</p>
       </div>
 
       <div class="poetry-carousel-wrap" id="poetryCarousel">
@@ -2670,7 +2733,7 @@ footer {
         <div class="poetry-ctrl-bar">
           <button class="carousel-btn" id="prevPoetryBtn" aria-label="Previous Verse">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-            <span class="btn-text-full">پچھلا کلام (Prev)</span>
+            <span class="btn-text-full">پچھلا شعر (Prev)</span>
             <span class="btn-text-short">‹ پچھلا</span>
           </button>
           <div class="carousel-dots" id="poetryDots">
@@ -2678,7 +2741,7 @@ footer {
           </div>
           <div class="carousel-mobile-counter" id="poetryMobileCounter">1 / 15</div>
           <button class="carousel-btn" id="nextPoetryBtn" aria-label="Next Verse">
-            <span class="btn-text-full">اگلا کلام (Next)</span>
+            <span class="btn-text-full">اگلا شعر (Next)</span>
             <span class="btn-text-short">اگلا (Next) ›</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
@@ -2692,11 +2755,11 @@ footer {
       <!-- Quick Action: Full Script Drawer Toggle for Stage Piece -->
       <div class="poetry-all-drawer" id="poetryAllDrawer">
         <div>
-          <p><b>🎙️ مکمل 7 اشعار کا اسٹیج کلام (Complete 7-Stanza Stage Recitation Script)</b></p>
-          <p style="font-size:12px; color:var(--mu); margin-top:2px;">Delivered live at Presidency University &amp; NSS events across Bengaluru.</p>
+          <p><b>📜 تمام 15 اشعار کا مکمل دیوان (Complete Urdu Shayari Collection)</b></p>
+          <p style="font-size:12px; color:var(--mu); margin-top:2px;">Authentic Urdu poetry collection penned under the takhallus ‘Ali’ by Imran Ali.</p>
         </div>
         <button class="btn sm ghost" id="openFullScriptBtn">
-          <span>View / Copy Full Script 📜</span>
+          <span>View / Copy All Shayari 📜</span>
         </button>
       </div>
 
@@ -2705,8 +2768,8 @@ footer {
         <div class="poetry-full-dialog">
           <div class="poetry-full-head">
             <div>
-              <h3 style="font: 700 20px var(--font-serif); margin-bottom: 2px;">مکمل اسٹیج کلام · Complete Stage Script</h3>
-              <p style="font-size: 13px; color: var(--mu);">Presidency University, NSS &amp; The Engineering Grind — Imran Ali (‘Ali’)</p>
+              <h3 style="font: 700 20px var(--font-serif); margin-bottom: 2px;">مکمل اردو شاعری · Complete Urdu Shayari Collection</h3>
+              <p style="font-size: 13px; color: var(--mu);">Authentic Urdu Poetry &amp; Ghazals — Imran Ali (‘Ali’)</p>
             </div>
             <button class="btn-icon" id="closeFullScriptBtn" aria-label="Close dialog">✕</button>
           </div>
@@ -2714,7 +2777,7 @@ footer {
             <!-- Populated by JavaScript -->
           </div>
           <div style="padding: 16px 24px; border-top: 1px solid var(--line); display: flex; justify-content: flex-end; gap: 12px; background: var(--panel-hover);">
-            <button class="btn sm" id="modalCopyFullScriptBtn">📋 Copy Complete Urdu Script</button>
+            <button class="btn sm" id="modalCopyFullScriptBtn">📋 Copy Complete Urdu Shayari</button>
             <button class="btn sm ghost" id="modalCloseBtn">Close</button>
           </div>
         </div>
@@ -3322,10 +3385,9 @@ const STAGE_STANZAS = [
     cat: 'stage',
     num: 'بند 1',
     numEn: 'Stanza 1',
-    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    badge: '📜 اردو شاعری · Urdu Shayari',
     titleUrdu: 'آمد',
     title: 'The Arrival',
-    cue: '🎙️ پراعتماد، دھیمی اور سنجیدہ آواز (Confident stance, warm grounded tone)',
     urdu: `آشیانے سے دور آیا ہوں، پر دعائیں ساتھ لایا ہوں،
 خواب جو بنے تھے، انہیں مکمل کرنے آیا ہوں۔
 کوشش پوری ہے میری، اور عزم بھی حسین ہے،
@@ -3339,10 +3401,9 @@ Abbu ab aapke بیٹے کو, khud par kaamil yakeen hai.`
     cat: 'stage',
     num: 'بند 2',
     numEn: 'Stanza 2',
-    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    badge: '📜 اردو شاعری · Urdu Shayari',
     titleUrdu: 'دوستی اور این ایس ایس کلب',
     title: 'The friendship and the club',
-    cue: '🎙️ کیمپس کے دوستوں کی طرف دیکھ کر (Looking at NSS friends with warmth)',
     urdu: `کل تک جو اجنبی تھے، وہ اب یار کہلائیں گے،
 چند ملاقاتوں کی قربت میں، بھائی بن جائیں گے۔
 رنجشیں ہوں گی درمیاں، پر پھر یکجاں ہو جائیں گے،
@@ -3356,10 +3417,9 @@ Presidency ke ye haseen din, ta-umr yaad aayenge.`
     cat: 'stage',
     num: 'بند 3',
     numEn: 'Stanza 3',
-    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    badge: '📜 اردو شاعری · Urdu Shayari',
     titleUrdu: 'کیمپس کا سبق',
     title: 'The campus lessons',
-    cue: '🎙️ سنجیدہ اور شکر گزار انداز (Reflective and grateful cadence)',
     urdu: `اسائنمنٹ کی فکر اور کیمپس کی یہ بھیڑ،
 یہیں سے جگے گی، کچھ پانے کی امید۔
 منزل تک پہنچنے کا وسیلہ بنا دیا،
@@ -3373,10 +3433,9 @@ Presidency ne humein jeene ka saleeqa sikha diya.`
     cat: 'stage',
     num: 'بند 4',
     numEn: 'Stanza 4',
-    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    badge: '📜 اردو شاعری · Urdu Shayari',
     titleUrdu: 'نئی نسل کی حقیقت',
     title: 'The Gen Z reality',
-    cue: '🎙️ ہلکی طنزیہ مسکراہٹ کے ساتھ (Sarcastic smirk, raw authenticity)',
     urdu: `درد کو میمز اور اسٹرگل کو سارکازم میں چھپاتے ہیں،
 ہم راتوں کو جاگ کر اپنی آنے والی صبح سجاتے ہیں۔
 الجھتے ہوئے لگتے ہیں، پر اپنے خوابوں کی قیمت چکاتے ہیں،
@@ -3390,10 +3449,9 @@ Shayad isiliye duniya hamein ‘Gen Z’ bulate hain.`
     cat: 'stage',
     num: 'بند 5',
     numEn: 'Stanza 5',
-    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    badge: '📜 اردو شاعری · Urdu Shayari',
     titleUrdu: 'انجینئرنگ کی جدوجہد',
     title: 'The engineering grind',
-    cue: '🎙️ راتوں کی محنت اور مشقت (Grit and late-night dedication)',
     urdu: `دنیا گھومتی ہے باہر، ہماری بند کمرے میں آزمائشیں ہوتی ہیں،
 نیند کو قربان کر کے، اپنے کل کی تصویر سجانی ہوتی ہے۔
 ایسے ہی نہیں کہلاتے ہم ’انجینئر‘،
@@ -3407,10 +3465,9 @@ Hamein apne sapno ke liye khud ki jawani jalani hoti hai.`
     cat: 'stage',
     num: 'بند 6',
     numEn: 'Stanza 6',
-    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    badge: '📜 اردو شاعری · Urdu Shayari',
     titleUrdu: 'پاپا سے وعدہ',
     title: 'The vow',
-    cue: '🎙️ جذباتی اور اٹل عزم (Deep emotional conviction & promise to father)',
     urdu: `میں خود کو تراش کے اپنا نیا عکس بناؤں گا،
 ہر طعنے کے بدلے، اپنی جیت کی مٹھائی کھلاؤں گا...
 پاپا، آپ سے وعدہ ہے میرا،
@@ -3424,10 +3481,9 @@ Ab main kaamyaab hokar hi ghar wapas aaunga.`
     cat: 'stage',
     num: 'بند 7',
     numEn: 'Stanza 7',
-    badge: '🎙️ اسٹیج کلام · Stage Piece',
+    badge: '📜 اردو شاعری · Urdu Shayari',
     titleUrdu: 'آخری للکار',
     title: 'The mic drop',
-    cue: '🎙️ پرجوش، بلند اور فاتحانہ للکار (Loud, victorious, aggressive mic-drop)',
     urdu: `میں ہارنا بھول چکا ہوں، اب ہار سے رشتہ جوڑ نہیں سکتا،
 جسے جیت کی لت لگ جائے، وہ میدان چھوڑ نہیں سکتا،
 چاہے طوفان بھی آ جائے، میں خود سے کیا وعدہ توڑ نہیں سکتا۔`,
@@ -3441,7 +3497,7 @@ const POETRY_CATEGORIES = [
   { id: 'all', name: 'تمام اشعار (All 15)', icon: '✨' },
   { id: 'love', name: 'عشق و اظہار (Love)', icon: '💌' },
   { id: 'sad', name: 'فراق و درد (Dard)', icon: '💔' },
-  { id: 'stage', name: 'اسٹیج کلام (Campus Stage)', icon: '🎙️' }
+  { id: 'stage', name: 'نظم و احساس (Nazm & Ehsaas)', icon: '📜' }
 ];
 
 /**
@@ -3806,23 +3862,26 @@ function initProjectsCarousel() {
     touchCurrentX = e.touches[0].clientX;
     const diffX = touchCurrentX - touchStartX;
     const diffY = e.touches[0].clientY - touchStartY;
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 8) {
-      slideContainer.style.transform = `translateX(${diffX * 0.35}px)`;
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 6) {
+      slideContainer.style.transform = `translateX(${diffX * 0.88}px)`;
       slideContainer.style.transition = 'none';
     }
   }, { passive: true });
 
-  container.addEventListener('touchend', (e) => {
+  container.addEventListener('touchend', () => {
     if (!isSwiping) return;
     isSwiping = false;
-    if (slideContainer) {
-      slideContainer.style.transition = 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)';
-      slideContainer.style.transform = 'translateX(0)';
-    }
     const diff = touchStartX - touchCurrentX;
-    if (Math.abs(diff) > 42) {
+    if (Math.abs(diff) > 20) {
+      if (slideContainer) {
+        slideContainer.style.transition = 'none';
+        slideContainer.style.transform = 'none';
+      }
       if (diff > 0) nextProject();
       else prevProject();
+    } else if (slideContainer) {
+      slideContainer.style.transition = 'transform 0.12s ease-out';
+      slideContainer.style.transform = 'translateX(0)';
     }
   }, { passive: true });
 }
@@ -3869,13 +3928,11 @@ function renderPoetryCarousel(direction = 'none') {
     </button>
   `).join('');
 
-  // 2. Render Counter
-  const isStageItem = (item.cat === 'stage');
-  const typeLabel = isStageItem ? 'بند' : 'شعر';
-  counterPill.textContent = `${typeLabel} ${currentPoetryIdx + 1} / ${list.length}`;
+  // 2. Render Counter (Pure Urdu Shayari)
+  const origIndex = (item.cat === 'stage' ? 'stage_' : 'shayari_') + currentPoetryIdx;
+  counterPill.textContent = `شعر ${currentPoetryIdx + 1} / ${list.length}`;
 
-  // 3. Render Active Verse in Authentic Nastaliq Urdu Script
-  const origIndex = (isStageItem ? 'stage_' : 'shayari_') + currentPoetryIdx;
+  // 3. Render Active Verse in Authentic Nastaliq Urdu Script with Calligraphic Ornament
   const likeCount = likesStore[origIndex] || 0;
   const isLiked = likeCount > 0;
   const shareText = `*${item.titleUrdu}* (${item.title})\n\n${item.urdu}\n\n— عمران علی ’علی‘ (Imran Ali)\nhttps://ia3466999-ali.github.io`;
@@ -3885,9 +3942,9 @@ function renderPoetryCarousel(direction = 'none') {
     <div class="poetry-card-active ${animClass}">
       <div>
         <div class="poetry-card-header">
-          <span class="poetry-card-badge">${esc(item.badge || '🎙️ اسٹیج کلام')}</span>
+          <span class="poetry-card-badge">${esc(item.badge || '📜 اردو شاعری · Urdu Shayari')}</span>
           <span class="poetry-urdu-attr" style="font-size:12px; color:var(--mu); font-family:var(--font-urdu), serif; direction:rtl;">
-            کلام: عمران علی ’علی‘
+            شاعری: عمران علی ’علی‘
           </span>
         </div>
 
@@ -3896,16 +3953,16 @@ function renderPoetryCarousel(direction = 'none') {
           <h3 class="poetry-urdu-title">${esc(item.titleUrdu || item.title)}</h3>
         </div>
 
-        ${item.cue ? `
-          <div class="stage-cue-banner">
-            <span>🎭</span>
-            <span>${esc(item.cue)}</span>
-          </div>
-        ` : ''}
-
-        <!-- Authentic Nastaliq Urdu Text Box -->
+        <!-- Authentic Nastaliq Urdu Text Box with Ambient Halo -->
         <div class="urdu-verse-box">
           <div class="urdu-text" dir="rtl">${esc(item.urdu)}</div>
+        </div>
+
+        <!-- Delicate Calligraphic Floral Divider -->
+        <div class="verse-ornament">
+          <span>❦</span>
+          <span class="verse-star">✦</span>
+          <span>❦</span>
         </div>
 
         <!-- Roman Script Transliteration for Easy Recitation -->
@@ -3975,13 +4032,13 @@ function renderFullScriptModal() {
   const modalBody = $('#fullScriptBody');
   if (!modalBody) return;
 
-  modalBody.innerHTML = STAGE_STANZAS.map((s, idx) => `
-    <div style="background:var(--panel-hover); border:1px solid var(--line); border-radius:var(--radius-sm); padding:20px;">
+  const allPoems = [...SHAYARI_DATA, ...STAGE_STANZAS];
+  modalBody.innerHTML = allPoems.map((s, idx) => `
+    <div style="background:var(--panel-hover); border:1px solid var(--line); border-radius:var(--radius-sm); padding:20px; margin-bottom:16px;">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <span class="badge rose">${esc(s.num)} · ${esc(s.titleUrdu)}</span>
+        <span class="badge rose">شعر ${idx + 1} · ${esc(s.titleUrdu)}</span>
         <span style="font-size:12px; color:var(--mu);">${esc(s.title)}</span>
       </div>
-      ${s.cue ? `<div style="font-size:12px; color:var(--amber); font-style:italic; margin-bottom:10px;">${esc(s.cue)}</div>` : ''}
       <div class="urdu-text" dir="rtl" style="font-size:22px; line-height:2.1; margin-bottom:12px;">${esc(s.urdu)}</div>
       <div style="font:italic 14px var(--font-serif); color:var(--tx-sec); padding-left:12px; border-left:2px solid var(--rose); white-space:pre-line;">${esc(s.roman)}</div>
     </div>
@@ -4080,23 +4137,26 @@ function initPoetryCarousel() {
     touchCurrentX = e.touches[0].clientX;
     const diffX = touchCurrentX - touchStartX;
     const diffY = e.touches[0].clientY - touchStartY;
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 8) {
-      poetrySlideContainer.style.transform = `translateX(${diffX * 0.35}px)`;
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 6) {
+      poetrySlideContainer.style.transform = `translateX(${diffX * 0.88}px)`;
       poetrySlideContainer.style.transition = 'none';
     }
   }, { passive: true });
 
-  container.addEventListener('touchend', (e) => {
+  container.addEventListener('touchend', () => {
     if (!isSwiping) return;
     isSwiping = false;
-    if (poetrySlideContainer) {
-      poetrySlideContainer.style.transition = 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)';
-      poetrySlideContainer.style.transform = 'translateX(0)';
-    }
     const diff = touchStartX - touchCurrentX;
-    if (Math.abs(diff) > 42) {
+    if (Math.abs(diff) > 20) {
+      if (poetrySlideContainer) {
+        poetrySlideContainer.style.transition = 'none';
+        poetrySlideContainer.style.transform = 'none';
+      }
       if (diff > 0) nextPoetry();
       else prevPoetry();
+    } else if (poetrySlideContainer) {
+      poetrySlideContainer.style.transition = 'transform 0.12s ease-out';
+      poetrySlideContainer.style.transform = 'translateX(0)';
     }
   }, { passive: true });
 
@@ -4130,7 +4190,7 @@ function initPoetryCarousel() {
     modalCopy.addEventListener('click', () => {
       const fullUrduScript = STAGE_STANZAS.map(s => 
         `[${s.num}: ${s.titleUrdu} (${s.title})]${s.cue ? '\n' + s.cue : ''}\n${s.urdu}`
-      ).join('\n\n') + '\n\n— عمران علی ’علی‘ (Imran Ali)\nPresidency University Stage Kalam';
+      ).join('\n\n') + '\n\n— عمران علی ’علی‘ (Imran Ali)\nUrdu Shayari Collection — ‘Ali’';
       copyToClipboard(fullUrduScript, 'Complete 7-stanza Urdu stage script copied! 🎙️');
     });
   }
@@ -4336,24 +4396,36 @@ window.addEventListener('scroll', () => {
  * 12. ADVANCED INTERACTIVE GESTURES & ANIMATION ENGINES
  * ----------------------------------------------------------------------------
  */
-// A. Floating Hearts Animation Generator
+// A. Floating Hearts & Sparkles Fountain with Tactile Button Bounce
 function spawnFloatingHearts(el) {
   if (!el) return;
+  el.style.transform = 'scale(1.18)';
+  setTimeout(() => el.style.transform = '', 180);
+
   const rect = el.getBoundingClientRect();
-  const hearts = ['❤️', '✨', '💖', '🌹'];
-  for (let i = 0; i < 4; i++) {
+  const icons = ['❤️', '✨', '💖', '🌹', '⭐', '💫'];
+  for (let i = 0; i < 6; i++) {
     setTimeout(() => {
       const h = document.createElement('div');
       h.className = 'floating-heart';
-      h.textContent = hearts[i % hearts.length];
-      const offsetX = (Math.random() - 0.5) * 44;
+      h.textContent = icons[i % icons.length];
+      const offsetX = (Math.random() - 0.5) * 54;
       h.style.left = `${rect.left + rect.width / 2 + offsetX}px`;
-      h.style.top = `${rect.top - 8}px`;
+      h.style.top = `${rect.top - 6}px`;
       document.body.appendChild(h);
       setTimeout(() => h.remove(), 1100);
-    }, i * 110);
+    }, i * 90);
   }
 }
+
+// Top Reading Progress Engine
+const scrollBar = $('#scrollProgressBar');
+window.addEventListener('scroll', () => {
+  if (!scrollBar) return;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = total > 0 ? (window.pageYOffset / total) : 0;
+  scrollBar.style.transform = `scaleX(${progress})`;
+}, { passive: true });
 
 // B. Interactive Cursor Spotlight Gesture on Cards
 const spotlightCards = $$('.proj-carousel-container, .poetry-carousel-wrap, .moment-card, .moment-card-compact, .skills-box');
