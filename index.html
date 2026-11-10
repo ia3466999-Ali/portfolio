@@ -3062,6 +3062,329 @@ html, body {
   }
 }
 
+
+/* ==========================================================================
+   ANIMATED TECHNICAL SKILLS, EDUCATION TIMELINE & GESTURES
+   ========================================================================== */
+.skills-head-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.skills-main-title {
+  font: 700 20px var(--font-serif);
+  color: var(--tx);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.skills-icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(56, 213, 240, 0.15);
+  border: 1px solid rgba(56, 213, 240, 0.35);
+  font-size: 15px;
+}
+
+/* Tab Bar */
+.skills-tab-bar {
+  display: flex;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.skill-tab-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--tx-sec);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.skill-tab-btn.active {
+  background: linear-gradient(135deg, rgba(56, 213, 240, 0.25), rgba(129, 140, 248, 0.25));
+  color: #ffffff;
+  border: 1px solid rgba(56, 213, 240, 0.4);
+  box-shadow: 0 0 14px -2px var(--cy-glow);
+}
+
+/* Tab Contents */
+.skills-tab-content {
+  display: none;
+  animation: skillTabFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.skills-tab-content.active {
+  display: block;
+}
+
+@keyframes skillTabFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Animated Skill Meters */
+.skill-meters-list {
+  display: grid;
+  gap: 18px;
+}
+
+.skill-meter-card {
+  background: rgba(8, 14, 25, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: all 0.25s ease;
+}
+
+.skill-meter-card:hover {
+  background: rgba(12, 20, 36, 0.65);
+  border-color: rgba(56, 213, 240, 0.3);
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.6), 0 0 16px -4px var(--cy-glow);
+  transform: translateY(-2px);
+}
+
+.skill-meter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.skill-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tx);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-percentage {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cy);
+}
+
+/* Animated Progress Track & Fill */
+.skill-meter-track {
+  width: 100%;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.skill-meter-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38d5f0, #818cf8, #f43f5e);
+  background-size: 200% 100%;
+  box-shadow: 0 0 10px rgba(56, 213, 240, 0.5);
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: meterShimmer 3s infinite linear;
+}
+
+.skill-meter-fill.skill-fill-rose {
+  background: linear-gradient(90deg, #f43f5e, #fb7185, #f59e0b);
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+}
+
+@keyframes meterShimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.skill-subtags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-subtags span {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--tx-sec);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.skill-subtags span:hover {
+  background: rgba(56, 213, 240, 0.12);
+  border-color: rgba(56, 213, 240, 0.3);
+  color: #ffffff;
+}
+
+/* Education Timeline */
+.education-timeline {
+  display: grid;
+  gap: 20px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 7px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--cy), #818cf8, var(--rose));
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(56, 213, 240, 0.4);
+}
+
+.edu-timeline-item {
+  position: relative;
+}
+
+.edu-node {
+  position: absolute;
+  left: -24px;
+  top: 14px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edu-node-core {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #38d5f0;
+  box-shadow: 0 0 10px #38d5f0;
+}
+
+.edu-node-pulse {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(56, 213, 240, 0.6);
+  animation: eduPulse 2.2s infinite ease-out;
+}
+
+@keyframes eduPulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.edu-card {
+  background: rgba(8, 14, 25, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 16px 18px;
+  transition: all 0.25s ease;
+}
+
+.edu-card:hover {
+  background: rgba(12, 20, 36, 0.7);
+  border-color: rgba(56, 213, 240, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px var(--cy-glow);
+  transform: translateY(-2px);
+}
+
+.edu-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.edu-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.edu-badge.cyan { background: rgba(56, 213, 240, 0.15); color: var(--cy); border: 1px solid rgba(56, 213, 240, 0.3); }
+.edu-badge.violet { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+.edu-badge.rose { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+
+.edu-status {
+  font-size: 11px;
+  color: var(--mu);
+  font-family: var(--font-mono);
+}
+
+.edu-degree {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--tx);
+  margin-bottom: 4px;
+}
+
+.edu-school {
+  font-size: 13.5px;
+  color: var(--cy);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.edu-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--tx-sec);
+  margin: 0;
+}
+
+/* Double-Tap Gesture Particle Burst */
+.gesture-burst-heart {
+  position: fixed;
+  font-size: 26px;
+  pointer-events: none;
+  z-index: 99999;
+  user-select: none;
+  animation: gestureHeartRise 0.9s cubic-bezier(0.12, 0.95, 0.24, 1) forwards;
+}
+
+@keyframes gestureHeartRise {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -80px) scale(1.4) rotate(12deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -130px) scale(1.8) rotate(-8deg);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3470,39 +3793,175 @@ html, body {
           </div>
         </div>
 
-        <div class="skills-box">
-          <h4>Technical &amp; Creative Toolbelt</h4>
-
-          <div class="skill-category">
-            <h5>AI &amp; Data Science</h5>
-            <div class="skill-pills">
-              <span class="skill-pill">Python</span>
-              <span class="skill-pill">Machine Learning</span>
-              <span class="skill-pill">SpeechRecognition</span>
-              <span class="skill-pill">LLM Integration</span>
-              <span class="skill-pill">Pillow Imaging</span>
+        <div class="skills-box" id="skillsBox">
+          <div class="skills-head-wrap">
+            <h4 class="skills-main-title">
+              <span class="skills-icon-badge">⚡</span>
+              Technical Proficiency &amp; Education
+            </h4>
+            <div class="skills-tab-bar">
+              <button type="button" class="skill-tab-btn active" data-tab="technical">Technical Skills</button>
+              <button type="button" class="skill-tab-btn" data-tab="education">Education &amp; Journey</button>
             </div>
           </div>
 
-          <div class="skill-category">
-            <h5>Full-Stack &amp; Systems</h5>
-            <div class="skill-pills">
-              <span class="skill-pill">JavaScript (ES6+)</span>
-              <span class="skill-pill">Supabase PostgreSQL</span>
-              <span class="skill-pill">HTML5 Canvas</span>
-              <span class="skill-pill">REST APIs</span>
-              <span class="skill-pill">ESP32 IoT</span>
-              <span class="skill-pill">Git &amp; GitHub</span>
+          <!-- TAB 1: TECHNICAL SKILLS & MASTERY METERS -->
+          <div class="skills-tab-content active" id="tabTechnical">
+            <div class="skill-meters-list">
+              <!-- Python & AI -->
+              <div class="skill-meter-card">
+                <div class="skill-meter-header">
+                  <span class="skill-name">
+                    <span class="skill-tech-icon">🐍</span> Python &amp; AI Engineering
+                  </span>
+                  <span class="skill-percentage" data-val="95">95%</span>
+                </div>
+                <div class="skill-meter-track">
+                  <div class="skill-meter-fill" data-width="95%"></div>
+                </div>
+                <div class="skill-subtags">
+                  <span>Gemini API</span>
+                  <span>PyTorch</span>
+                  <span>SpeechRecognition</span>
+                  <span>LLM Integration</span>
+                  <span>Pillow</span>
+                </div>
+              </div>
+
+              <!-- Full-Stack & Systems -->
+              <div class="skill-meter-card">
+                <div class="skill-meter-header">
+                  <span class="skill-name">
+                    <span class="skill-tech-icon">🌐</span> Full-Stack Web &amp; JavaScript
+                  </span>
+                  <span class="skill-percentage" data-val="92">92%</span>
+                </div>
+                <div class="skill-meter-track">
+                  <div class="skill-meter-fill" data-width="92%"></div>
+                </div>
+                <div class="skill-subtags">
+                  <span>JavaScript ES6+</span>
+                  <span>HTML5 Canvas 3D</span>
+                  <span>CSS Glassmorphism</span>
+                  <span>REST APIs</span>
+                  <span>Node.js</span>
+                </div>
+              </div>
+
+              <!-- Cloud & Databases -->
+              <div class="skill-meter-card">
+                <div class="skill-meter-header">
+                  <span class="skill-name">
+                    <span class="skill-tech-icon">☁️</span> Cloud, APIs &amp; Databases
+                  </span>
+                  <span class="skill-percentage" data-val="88">88%</span>
+                </div>
+                <div class="skill-meter-track">
+                  <div class="skill-meter-fill" data-width="88%"></div>
+                </div>
+                <div class="skill-subtags">
+                  <span>Supabase PostgreSQL</span>
+                  <span>Google Sheets API</span>
+                  <span>Webhooks</span>
+                  <span>Git &amp; GitHub</span>
+                </div>
+              </div>
+
+              <!-- IoT & Hardware Integration -->
+              <div class="skill-meter-card">
+                <div class="skill-meter-header">
+                  <span class="skill-name">
+                    <span class="skill-tech-icon">📡</span> IoT &amp; Telemetry Systems
+                  </span>
+                  <span class="skill-percentage" data-val="85">85%</span>
+                </div>
+                <div class="skill-meter-track">
+                  <div class="skill-meter-fill" data-width="85%"></div>
+                </div>
+                <div class="skill-subtags">
+                  <span>ESP32 Microcontroller</span>
+                  <span>Sensor Telemetry</span>
+                  <span>Glacier Warning AI</span>
+                </div>
+              </div>
+
+              <!-- Creative Urdu Poetry & Stage -->
+              <div class="skill-meter-card">
+                <div class="skill-meter-header">
+                  <span class="skill-name">
+                    <span class="skill-tech-icon">✍️</span> Urdu Shayari &amp; Stage Recitation (‘Ali’)
+                  </span>
+                  <span class="skill-percentage" data-val="98">98%</span>
+                </div>
+                <div class="skill-meter-track">
+                  <div class="skill-meter-fill skill-fill-rose" data-width="98%"></div>
+                </div>
+                <div class="skill-subtags">
+                  <span>Classical &amp; Contemporary Adab</span>
+                  <span>Stage Mushaira</span>
+                  <span>NSS Youth Orator</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="skill-category">
-            <h5>Creative &amp; Leadership</h5>
-            <div class="skill-pills">
-              <span class="skill-pill">Urdu Shayari (‘Ali’)</span>
-              <span class="skill-pill">Stage Recitation</span>
-              <span class="skill-pill">NSS Volunteering</span>
-              <span class="skill-pill">Public Speaking</span>
+          <!-- TAB 2: ANIMATED EDUCATION & ACADEMIC TIMELINE -->
+          <div class="skills-tab-content" id="tabEducation">
+            <div class="education-timeline">
+              <!-- B.Tech Degree -->
+              <div class="edu-timeline-item">
+                <div class="edu-node">
+                  <span class="edu-node-core"></span>
+                  <span class="edu-node-pulse"></span>
+                </div>
+                <div class="edu-card">
+                  <div class="edu-meta">
+                    <span class="edu-badge cyan">2024 – 2028 · Undergraduate</span>
+                    <span class="edu-status">Active Scholar</span>
+                  </div>
+                  <h5 class="edu-degree">B.Tech in Artificial Intelligence &amp; Data Science</h5>
+                  <div class="edu-school">Presidency University, Bengaluru</div>
+                  <p class="edu-desc">
+                    Specialized coursework in Deep Learning, Advanced Data Structures, Neural Network Architectures, Linear Algebra, and Full-Stack Software Engineering. Leading practical student innovations like EcoPluse.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Senior Secondary -->
+              <div class="edu-timeline-item">
+                <div class="edu-node">
+                  <span class="edu-node-core"></span>
+                </div>
+                <div class="edu-card">
+                  <div class="edu-meta">
+                    <span class="edu-badge violet">Senior Secondary / Pre-University</span>
+                    <span class="edu-status">Distinction</span>
+                  </div>
+                  <h5 class="edu-degree">Science &amp; Mathematics Discipline</h5>
+                  <div class="edu-school">Higher Secondary Education</div>
+                  <p class="edu-desc">
+                    Core subjects: Mathematics, Physics, Chemistry, and Computer Science. Built a strong foundational mastery in analytical reasoning and programming algorithms.
+                  </p>
+                </div>
+              </div>
+
+              <!-- NSS & Youth Leadership -->
+              <div class="edu-timeline-item">
+                <div class="edu-node">
+                  <span class="edu-node-core"></span>
+                </div>
+                <div class="edu-card">
+                  <div class="edu-meta">
+                    <span class="edu-badge rose">Extracurricular &amp; Leadership</span>
+                    <span class="edu-status">Active Volunteer</span>
+                  </div>
+                  <h5 class="edu-degree">National Service Scheme (NSS) &amp; Stage Orator</h5>
+                  <div class="edu-school">University Chapter &amp; Literary Stage</div>
+                  <p class="edu-desc">
+                    Presented original poetry stanzas at inter-collegiate youth events and community initiatives, promoting cultural synthesis and social awareness.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -4174,6 +4633,7 @@ if (canvas) {
   let rotX = 0, rotY = 0;
   let targetRotX = 0, targetRotY = 0;
   let galaxyAngle = 0;
+  let cometOrbitAngle = 0.5;
   let scrollProg = 0;
   let scrollPanY = 0;
   let targetScrollPanY = 0;
@@ -4516,6 +4976,76 @@ if (canvas) {
     ctx.stroke();
 
 // --------------------------------------------------------------------------
+    // A3. CELESTIAL COMET WITH DUAL TAILS & STELLAR CLUSTERS (ASTROPHYSICAL REALISM)
+    // --------------------------------------------------------------------------
+    // Comet Orbital Mechanics
+    cometOrbitAngle += 0.0018;
+    const cometR = maxRadius * 0.58;
+    const cometX = Math.cos(cometOrbitAngle) * cometR;
+    const cometZ = Math.sin(cometOrbitAngle) * (cometR * 0.65);
+    const cometY = Math.sin(cometOrbitAngle * 2) * 45 - 30;
+
+    // 3D camera projection of comet
+    const crx = cometX * cosRot - cometZ * sinRot;
+    const crz = cometZ * cosRot + cometX * sinRot;
+    const cry = cometY * cosTilt - crz * sinTilt;
+    const cfz = crz * cosTilt + cometY * sinTilt;
+
+    const cDepth = cfz + 540;
+    if (cDepth > 40) {
+      const cScale = fov / cDepth;
+      const cpx = cx + crx * cScale;
+      const cpy = projectedOriginY + cry * cScale;
+
+      // 1. Straight Blue Ion Tail (pointing away from central core cx, cy)
+      const antiCoreX = cpx - cx;
+      const antiCoreY = cpy - projectedOriginY;
+      const antiDist = Math.hypot(antiCoreX, antiCoreY) || 1;
+      const ionLen = (isMobile ? 55 : 85) * cScale;
+      const ionEndX = cpx + (antiCoreX / antiDist) * ionLen;
+      const ionEndY = cpy + (antiCoreY / antiDist) * ionLen;
+
+      const ionGrad = ctx.createLinearGradient(cpx, cpy, ionEndX, ionEndY);
+      ionGrad.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
+      ionGrad.addColorStop(0.3, 'rgba(56, 213, 240, 0.65)');
+      ionGrad.addColorStop(1, 'transparent');
+
+      ctx.beginPath();
+      ctx.strokeStyle = ionGrad;
+      ctx.lineWidth = 2.2 * cScale;
+      ctx.moveTo(cpx, cpy);
+      ctx.lineTo(ionEndX, ionEndY);
+      ctx.stroke();
+
+      // 2. Curved Golden Amber Dust Tail (lagging along comet orbital path)
+      const dustLen = (isMobile ? 45 : 70) * cScale;
+      const dustEndX = cpx - (Math.sin(cometOrbitAngle) * dustLen);
+      const dustEndY = cpy + (Math.cos(cometOrbitAngle) * dustLen * 0.6);
+
+      const dustGrad = ctx.createLinearGradient(cpx, cpy, dustEndX, dustEndY);
+      dustGrad.addColorStop(0, 'rgba(255, 240, 180, 0.7)');
+      dustGrad.addColorStop(0.4, 'rgba(245, 158, 11, 0.45)');
+      dustGrad.addColorStop(1, 'transparent');
+
+      ctx.beginPath();
+      ctx.strokeStyle = dustGrad;
+      ctx.lineWidth = 3.2 * cScale;
+      ctx.moveTo(cpx, cpy);
+      ctx.quadraticCurveTo(cpx + (ionEndX - cpx) * 0.5, cpy + (ionEndY - cpy) * 0.5, dustEndX, dustEndY);
+      ctx.stroke();
+
+      // 3. Comet Glowing Nucleus & Coma
+      const comaGrad = ctx.createRadialGradient(cpx, cpy, 0, cpx, cpy, 7 * cScale);
+      comaGrad.addColorStop(0, '#ffffff');
+      comaGrad.addColorStop(0.4, 'rgba(56, 213, 240, 0.8)');
+      comaGrad.addColorStop(1, 'transparent');
+      ctx.fillStyle = comaGrad;
+      ctx.beginPath();
+      ctx.arc(cpx, cpy, 7 * cScale, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // --------------------------------------------------------------------------
     // A2. 3D GRAVITATIONAL SPACETIME METRIC WAVES (UNDULATING 3D HORIZON & RIPPLES)
     // --------------------------------------------------------------------------
     const waveTime = galaxyAngle * 45;
@@ -5809,6 +6339,103 @@ function initMobileContactToggle() {
   });
 }
 initMobileContactToggle();
+
+/**
+ * ----------------------------------------------------------------------------
+ * 14. ANIMATED TECHNICAL SKILLS TABS & PROGRESS METERS OBSERVER
+ * ----------------------------------------------------------------------------
+ */
+function initSkillsAndEducationTabs() {
+  const tabBtns = document.querySelectorAll('.skill-tab-btn');
+  const tabTechnical = document.getElementById('tabTechnical');
+  const tabEducation = document.getElementById('tabEducation');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const targetTab = btn.getAttribute('data-tab');
+      if (targetTab === 'technical') {
+        if (tabTechnical) tabTechnical.classList.add('active');
+        if (tabEducation) tabEducation.classList.remove('active');
+        triggerSkillMeters();
+      } else {
+        if (tabTechnical) tabTechnical.classList.remove('active');
+        if (tabEducation) tabEducation.classList.add('active');
+      }
+    });
+  });
+
+  // Animated Progress Meter Trigger on Scroll
+  let animated = false;
+  function triggerSkillMeters() {
+    document.querySelectorAll('.skill-meter-fill').forEach(fill => {
+      const targetW = fill.getAttribute('data-width') || '85%';
+      fill.style.width = targetW;
+    });
+    animated = true;
+  }
+
+  const skillsBox = document.getElementById('skillsBox');
+  if (skillsBox) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          triggerSkillMeters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    observer.observe(skillsBox);
+  }
+}
+initSkillsAndEducationTabs();
+
+/**
+ * ----------------------------------------------------------------------------
+ * 15. INTERACTIVE DOUBLE-TAP / CLICK LIKE GESTURE ON POETRY & PROJECT CARDS
+ * ----------------------------------------------------------------------------
+ */
+function initCardDoubleTapGestures() {
+  const cards = document.querySelectorAll('.poetry-carousel-wrap, .proj-carousel-container');
+
+  cards.forEach(card => {
+    let lastTap = 0;
+
+    function triggerHeartBurst(clientX, clientY) {
+      const heart = document.createElement('div');
+      heart.className = 'gesture-burst-heart';
+      const symbols = ['❤️', '✨', '💖', '✦'];
+      heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      heart.style.left = clientX + 'px';
+      heart.style.top = clientY + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 900);
+
+      // Feedback toast
+      if (typeof showToast === 'function') {
+        showToast('Appreciated! Saved to favorites 💖', '✨');
+      }
+    }
+
+    card.addEventListener('touchend', (e) => {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+      if (tapLength < 320 && tapLength > 0) {
+        if (e.changedTouches && e.changedTouches[0]) {
+          triggerHeartBurst(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+        }
+      }
+      lastTap = currentTime;
+    });
+
+    card.addEventListener('dblclick', (e) => {
+      triggerHeartBurst(e.clientX, e.clientY);
+    });
+  });
+}
+initCardDoubleTapGestures();
 </script>
 </body>
 </html>
