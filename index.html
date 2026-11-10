@@ -94,6 +94,141 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .w { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
+/* ==========================================================================
+   INTERACTIVE GESTURES & MODERN ANIMATIONS
+   ========================================================================== */
+
+/* Directional Carousel Slide Transitions */
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(36px) scale(0.98); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-36px) scale(0.98); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+.slide-in-right {
+  animation: slideInRight 0.36s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.slide-in-left {
+  animation: slideInLeft 0.36s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Scroll-Driven Reveal Micro-Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Interactive Cursor Spotlight Glow for Glass Cards */
+.proj-carousel-container,
+.poetry-carousel-wrap,
+.moment-card,
+.moment-card-compact,
+.skills-box {
+  position: relative;
+}
+.proj-carousel-container::before,
+.poetry-carousel-wrap::before,
+.moment-card::before,
+.moment-card-compact::before,
+.skills-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(550px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(56, 213, 240, 0.12), transparent 45%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+[data-theme="parchment"] .proj-carousel-container::before,
+[data-theme="parchment"] .poetry-carousel-wrap::before,
+[data-theme="parchment"] .moment-card::before,
+[data-theme="parchment"] .moment-card-compact::before,
+[data-theme="parchment"] .skills-box::before {
+  background: radial-gradient(550px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(2, 132, 199, 0.08), transparent 45%);
+}
+.poetry-carousel-wrap::before {
+  background: radial-gradient(550px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(244, 63, 94, 0.14), transparent 45%);
+}
+[data-theme="parchment"] .poetry-carousel-wrap::before {
+  background: radial-gradient(550px circle at var(--mouse-x, -999px) var(--mouse-y, -999px), rgba(190, 18, 60, 0.09), transparent 45%);
+}
+
+/* Floating Hearts Micro-Animation on Like */
+.floating-heart {
+  position: fixed;
+  font-size: 22px;
+  pointer-events: none;
+  z-index: 9999;
+  user-select: none;
+  animation: floatHeartUp 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes floatHeartUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.7) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-45px) scale(1.3) rotate(14deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-90px) scale(1) rotate(-12deg);
+  }
+}
+
+/* Stage & Mushaira Soundwave Equalizer Micro-Animation */
+.soundwave-bar {
+  display: inline-block;
+  width: 2.5px;
+  height: 12px;
+  background: var(--rose);
+  border-radius: 2px;
+  margin: 0 1.5px;
+  animation: soundwaveAnim 1.2s ease-in-out infinite alternate;
+  vertical-align: middle;
+}
+.soundwave-bar:nth-child(2) { animation-delay: 0.3s; height: 16px; }
+.soundwave-bar:nth-child(3) { animation-delay: 0.6s; height: 10px; }
+@keyframes soundwaveAnim {
+  0% { transform: scaleY(0.4); opacity: 0.6; }
+  100% { transform: scaleY(1.2); opacity: 1; }
+}
+
+/* Mobile Touch Swipe Hint */
+.swipe-hint {
+  display: none;
+  font-size: 11.5px;
+  color: var(--mu);
+  text-align: center;
+  margin-top: 8px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  letter-spacing: 0.04em;
+}
+@media (max-width: 768px) {
+  .swipe-hint {
+    display: flex;
+  }
+}
+
 /* Custom Sleek Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -2396,11 +2531,11 @@ footer {
 
           <div class="hero-stats">
             <div class="stat-item">
-              <h4>5+</h4>
+              <h4 class="counter-num" data-target="5">5+</h4>
               <p>Live Projects</p>
             </div>
             <div class="stat-item">
-              <h4>50+</h4>
+              <h4 class="counter-num" data-target="50">50+</h4>
               <p>Shayari &amp; Nazms</p>
             </div>
             <div class="stat-item">
@@ -2498,6 +2633,10 @@ footer {
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
         </div>
+        <div class="swipe-hint">
+          <span>👆</span>
+          <span>Swipe left / right to explore projects</span>
+        </div>
       </div>
     </div>
   </section>
@@ -2506,7 +2645,7 @@ footer {
   <section id="poetry">
     <div class="w">
       <div class="sec-head">
-        <span class="poetry-hero-badge">لَفْظِ عَلِی · Lafz-e-Ali</span>
+        <span class="poetry-hero-badge"><span class="soundwave-bar"></span><span class="soundwave-bar"></span><span class="soundwave-bar"></span> لَفْظِ عَلِی · Lafz-e-Ali</span>
         <h2 class="sec-title">Original Urdu Shayari &amp; Stage Kalam (اردو شاعری)</h2>
         <p class="lead">Authentic Urdu poetry penned by Imran Ali under the takhallus <b>‘Ali’</b> (عَلِی). Featuring classical Nastaliq Urdu script with Roman transliteration. One-by-one interactive reader.</p>
       </div>
@@ -2543,6 +2682,10 @@ footer {
             <span class="btn-text-short">اگلا (Next) ›</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
+        </div>
+        <div class="swipe-hint">
+          <span>👆</span>
+          <span>Swipe left / right to read next verse</span>
         </div>
       </div>
 
@@ -3503,13 +3646,14 @@ if (tiltCard && window.innerWidth > 900) {
 let currentProjectIdx = 0;
 let projectTimer = null;
 
-function renderProjectsCarousel() {
+function renderProjectsCarousel(direction = 'none') {
   const tabsBar = $('#projTabsBar');
   const slideContainer = $('#projSlideContainer');
   const dotsContainer = $('#projDots');
   if (!slideContainer) return;
 
   const p = PROJECTS_DATA[currentProjectIdx];
+  const animClass = (direction === 'next') ? 'slide-in-right' : (direction === 'prev' ? 'slide-in-left' : '');
 
   // 1. Render Top Pills
   tabsBar.innerHTML = PROJECTS_DATA.map((proj, idx) => `
@@ -3521,7 +3665,7 @@ function renderProjectsCarousel() {
 
   // 2. Render Active Slide
   slideContainer.innerHTML = `
-    <div class="proj-slide">
+    <div class="proj-slide ${animClass}">
       <div class="proj-slide-main">
         <div>
           <div class="proj-slide-meta">
@@ -3587,12 +3731,12 @@ function renderProjectsCarousel() {
 
 function nextProject() {
   currentProjectIdx = (currentProjectIdx + 1) % PROJECTS_DATA.length;
-  renderProjectsCarousel();
+  renderProjectsCarousel('next');
 }
 
 function prevProject() {
   currentProjectIdx = (currentProjectIdx - 1 + PROJECTS_DATA.length) % PROJECTS_DATA.length;
-  renderProjectsCarousel();
+  renderProjectsCarousel('prev');
 }
 
 function startProjectAutoplay() {
@@ -3642,17 +3786,41 @@ function initProjectsCarousel() {
     }
   });
 
-  // Touch Swipe for Mobile / Phone View
+  // Touch Swipe with live elastic drag for Mobile / Phone View
+  const slideContainer = $('#projSlideContainer');
   let touchStartX = 0;
+  let touchStartY = 0;
+  let touchCurrentX = 0;
+  let isSwiping = false;
+
   container.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchCurrentX = touchStartX;
+    isSwiping = true;
     stopProjectAutoplay();
   }, { passive: true });
 
+  container.addEventListener('touchmove', (e) => {
+    if (!isSwiping || !slideContainer) return;
+    touchCurrentX = e.touches[0].clientX;
+    const diffX = touchCurrentX - touchStartX;
+    const diffY = e.touches[0].clientY - touchStartY;
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 8) {
+      slideContainer.style.transform = `translateX(${diffX * 0.35}px)`;
+      slideContainer.style.transition = 'none';
+    }
+  }, { passive: true });
+
   container.addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 45) {
+    if (!isSwiping) return;
+    isSwiping = false;
+    if (slideContainer) {
+      slideContainer.style.transition = 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)';
+      slideContainer.style.transform = 'translateX(0)';
+    }
+    const diff = touchStartX - touchCurrentX;
+    if (Math.abs(diff) > 42) {
       if (diff > 0) nextProject();
       else prevProject();
     }
@@ -3681,7 +3849,7 @@ function getActivePoetryList() {
   return [...SHAYARI_DATA, ...STAGE_STANZAS];
 }
 
-function renderPoetryCarousel() {
+function renderPoetryCarousel(direction = 'none') {
   const pillsContainer = $('#poetryCatPills');
   const slideContainer = $('#poetrySlideContainer');
   const counterPill = $('#poetryCounterPill');
@@ -3691,6 +3859,7 @@ function renderPoetryCarousel() {
   const list = getActivePoetryList();
   if (currentPoetryIdx >= list.length) currentPoetryIdx = 0;
   const item = list[currentPoetryIdx];
+  const animClass = (direction === 'next') ? 'slide-in-right' : (direction === 'prev' ? 'slide-in-left' : '');
 
   // 1. Render Category Selector Pills
   pillsContainer.innerHTML = POETRY_CATEGORIES.map(c => `
@@ -3713,7 +3882,7 @@ function renderPoetryCarousel() {
   const encodedWhatsApp = encodeURIComponent(shareText);
 
   slideContainer.innerHTML = `
-    <div class="poetry-card-active">
+    <div class="poetry-card-active ${animClass}">
       <div>
         <div class="poetry-card-header">
           <span class="poetry-card-badge">${esc(item.badge || '🎙️ اسٹیج کلام')}</span>
@@ -3784,13 +3953,13 @@ function renderPoetryCarousel() {
 function nextPoetry() {
   const list = getActivePoetryList();
   currentPoetryIdx = (currentPoetryIdx + 1) % list.length;
-  renderPoetryCarousel();
+  renderPoetryCarousel('next');
 }
 
 function prevPoetry() {
   const list = getActivePoetryList();
   currentPoetryIdx = (currentPoetryIdx - 1 + list.length) % list.length;
-  renderPoetryCarousel();
+  renderPoetryCarousel('prev');
 }
 
 function startPoetryAutoplay() {
@@ -3886,21 +4055,46 @@ function initPoetryCarousel() {
       likeBtn.classList.add('liked');
       likeBtn.querySelector('.like-num').textContent = likesStore[key] + ' داد';
       likeBtn.querySelector('svg').setAttribute('fill', 'currentColor');
+      spawnFloatingHearts(likeBtn);
       showToast('داد اور محبت کا بے حد شکریہ! ❤️', '❤️');
     }
   });
 
-  // Touch Swipe for Mobile / Phone View
+  // Touch Swipe with live elastic drag for Mobile / Phone View
+  const poetrySlideContainer = $('#poetrySlideContainer');
   let touchStartX = 0;
+  let touchStartY = 0;
+  let touchCurrentX = 0;
+  let isSwiping = false;
+
   container.addEventListener('touchstart', (e) => {
     touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchCurrentX = touchStartX;
+    isSwiping = true;
     stopPoetryAutoplay();
   }, { passive: true });
 
+  container.addEventListener('touchmove', (e) => {
+    if (!isSwiping || !poetrySlideContainer) return;
+    touchCurrentX = e.touches[0].clientX;
+    const diffX = touchCurrentX - touchStartX;
+    const diffY = e.touches[0].clientY - touchStartY;
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 8) {
+      poetrySlideContainer.style.transform = `translateX(${diffX * 0.35}px)`;
+      poetrySlideContainer.style.transition = 'none';
+    }
+  }, { passive: true });
+
   container.addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 45) {
+    if (!isSwiping) return;
+    isSwiping = false;
+    if (poetrySlideContainer) {
+      poetrySlideContainer.style.transition = 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)';
+      poetrySlideContainer.style.transform = 'translateX(0)';
+    }
+    const diff = touchStartX - touchCurrentX;
+    if (Math.abs(diff) > 42) {
       if (diff > 0) nextPoetry();
       else prevPoetry();
     }
@@ -4137,6 +4331,131 @@ window.addEventListener('scroll', () => {
  * 11. INITIALIZATION (Projects & Urdu Poetry One-by-One Carousels)
  * ----------------------------------------------------------------------------
  */
+/**
+ * ----------------------------------------------------------------------------
+ * 12. ADVANCED INTERACTIVE GESTURES & ANIMATION ENGINES
+ * ----------------------------------------------------------------------------
+ */
+// A. Floating Hearts Animation Generator
+function spawnFloatingHearts(el) {
+  if (!el) return;
+  const rect = el.getBoundingClientRect();
+  const hearts = ['❤️', '✨', '💖', '🌹'];
+  for (let i = 0; i < 4; i++) {
+    setTimeout(() => {
+      const h = document.createElement('div');
+      h.className = 'floating-heart';
+      h.textContent = hearts[i % hearts.length];
+      const offsetX = (Math.random() - 0.5) * 44;
+      h.style.left = `${rect.left + rect.width / 2 + offsetX}px`;
+      h.style.top = `${rect.top - 8}px`;
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1100);
+    }, i * 110);
+  }
+}
+
+// B. Interactive Cursor Spotlight Gesture on Cards
+const spotlightCards = $$('.proj-carousel-container, .poetry-carousel-wrap, .moment-card, .moment-card-compact, .skills-box');
+spotlightCards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty('--mouse-x', `${x}px`);
+    card.style.setProperty('--mouse-y', `${y}px`);
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.setProperty('--mouse-x', '-999px');
+    card.style.setProperty('--mouse-y', '-999px');
+  });
+});
+
+// C. Scroll-Driven Reveal Micro-Animations (Intersection Observer)
+const revealElements = $$('.sec-head, .proj-carousel-container, .poetry-carousel-wrap, .moment-card, .moment-card-compact, .skills-box, .about-text, .form-box');
+revealElements.forEach(el => el.classList.add('reveal-on-scroll'));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('reveal-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -25px 0px' });
+
+revealElements.forEach(el => revealObserver.observe(el));
+
+// D. Hero Animated Counter Engine
+function animateHeroCounters() {
+  $$('.counter-num').forEach(el => {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    if (isNaN(target)) return;
+    const suffix = '+';
+    const duration = 1400;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// Trigger counters when stats row enters viewport
+const statsRow = $('.hero-stats');
+if (statsRow) {
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateHeroCounters();
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  statsObserver.observe(statsRow);
+}
+
+// E. Keyboard Navigation Gesture (Left / Right Arrow Keys)
+window.addEventListener('keydown', (e) => {
+  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
+  const scrollY = window.pageYOffset + window.innerHeight / 2;
+  const projSec = $('#projects');
+  const poetrySec = $('#poetry');
+
+  if (projSec && scrollY >= projSec.offsetTop && scrollY < projSec.offsetTop + projSec.offsetHeight) {
+    if (e.key === 'ArrowRight') nextProject();
+    else if (e.key === 'ArrowLeft') prevProject();
+  } else if (poetrySec && scrollY >= poetrySec.offsetTop && scrollY < poetrySec.offsetTop + poetrySec.offsetHeight) {
+    if (e.key === 'ArrowRight') nextPoetry();
+    else if (e.key === 'ArrowLeft') prevPoetry();
+  }
+});
+
+// F. Magnetic Button Hover Gesture on Desktop
+if (window.innerWidth > 900) {
+  $$('.hero-acts .btn, .sec-head .btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width / 2) * 0.16;
+      const y = (e.clientY - r.top - r.height / 2) * 0.16;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+}
+
 initProjectsCarousel();
 initPoetryCarousel();
 </script>
