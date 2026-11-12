@@ -378,6 +378,55 @@ button, input, select, textarea { font: inherit; color: inherit; }
   transform-style: preserve-3d;
 }
 
+/* ==========================================================================
+   RESPONSIVE BILINGUAL DISPLAY UTILITIES (Urdu for Desktop, English for Mobile)
+   ========================================================================== */
+.desktop-only-txt,
+.desktop-only-inline,
+.desktop-only-inline-flex,
+.desktop-only-block,
+.desktop-only-flex,
+.cat-pill-desktop {
+  display: inherit;
+}
+.mobile-only-txt,
+.mobile-only-inline,
+.mobile-only-inline-flex,
+.mobile-only-block,
+.mobile-only-flex,
+.cat-pill-mobile {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .desktop-only-txt,
+  .desktop-only-inline,
+  .desktop-only-inline-flex,
+  .desktop-only-block,
+  .desktop-only-flex,
+  .cat-pill-desktop {
+    display: none !important;
+  }
+  .mobile-only-txt {
+    display: inline !important;
+  }
+  .mobile-only-inline {
+    display: inline !important;
+  }
+  .mobile-only-inline-flex {
+    display: inline-flex !important;
+  }
+  .mobile-only-block {
+    display: block !important;
+  }
+  .mobile-only-flex {
+    display: flex !important;
+  }
+  .cat-pill-mobile {
+    display: inline !important;
+  }
+}
+
 .proj-slide h3,
 .proj-slide-meta {
   transform: translateZ(24px);
@@ -2435,8 +2484,8 @@ footer {
     right: auto !important;
     z-index: 5 !important;
     margin: 8px auto 16px !important;
-    width: 144px !important;
-    height: 144px !important;
+    width: 148px !important;
+    height: 148px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -2450,13 +2499,13 @@ footer {
     background: radial-gradient(circle, rgba(56, 213, 240, 0.45) 0%, rgba(168, 85, 247, 0.3) 50%, transparent 75%) !important;
   }
   .portrait-card {
-    width: 144px !important;
-    height: 144px !important;
+    width: 148px !important;
+    height: 148px !important;
     max-width: none !important;
     aspect-ratio: 1 / 1 !important;
-    border-radius: 28px !important;
-    border: 2px solid rgba(56, 213, 240, 0.6) !important;
-    box-shadow: 0 0 32px rgba(56, 213, 240, 0.4), 0 14px 34px rgba(0, 0, 0, 0.8) !important;
+    border-radius: 36px !important;
+    border: 2.5px solid rgba(56, 213, 240, 0.75) !important;
+    box-shadow: 0 0 35px rgba(56, 213, 240, 0.45), 0 16px 36px rgba(0, 0, 0, 0.85) !important;
     overflow: hidden !important;
     position: relative !important;
     background: #060911 !important;
@@ -2470,13 +2519,18 @@ footer {
     height: 100% !important;
     object-fit: cover !important;
     object-position: 50% 41% !important; /* Perfectly centers Imran's face and portrait */
-    border-radius: 26px !important;
+    transform: scale(2.4) !important;
+    transform-origin: 50% 41% !important;
+    border-radius: 32px !important;
     display: block !important;
+  }
+  .portrait-card:hover #pimg {
+    transform: scale(2.4) !important;
   }
   .portrait-avatar-placeholder {
     width: 100% !important;
     height: 100% !important;
-    border-radius: 26px !important;
+    border-radius: 32px !important;
   }
   .portrait-avatar-placeholder .monogram {
     font-size: 36px !important;
@@ -2493,20 +2547,22 @@ footer {
     justify-content: center !important;
     align-items: center !important;
     z-index: 4 !important;
+    pointer-events: none !important;
   }
   .portrait-overlay .portrait-tag {
     display: none !important;
   }
   .portrait-overlay .badge {
-    font-size: 10px !important;
-    padding: 3px 9px !important;
+    font-size: 10.5px !important;
+    padding: 3px 10px !important;
     border-radius: 999px !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
-    background: rgba(3, 16, 24, 0.88) !important;
-    border: 1px solid rgba(16, 185, 129, 0.5) !important;
+    background: rgba(3, 16, 24, 0.9) !important;
+    border: 1px solid rgba(16, 185, 129, 0.6) !important;
     color: #10b981 !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.85) !important;
+    pointer-events: auto !important;
   }
 
   .hero-bio {
@@ -2671,7 +2727,7 @@ footer {
     padding: 3px 7px;
   }
 
-  /* Poetry Carousel on Mobile - Compact & 100% Authentic Urdu Script */
+  /* Poetry Carousel on Mobile - 100% English & Photorealistic Obsidian Glass */
   .poetry-top-bar {
     padding: 8px 12px;
     flex-wrap: nowrap;
@@ -2686,17 +2742,21 @@ footer {
     gap: 6px;
   }
   .cat-pill {
-    padding: 4px 9px;
-    font-size: 11px;
+    padding: 5px 10px;
+    font-size: 11.5px;
     white-space: nowrap;
+    border-radius: 999px;
+    touch-action: manipulation;
   }
   .poetry-counter-pill {
-    font-size: 10.5px;
-    padding: 3px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
     flex-shrink: 0;
   }
   .poetry-card-active {
-    padding: 14px 14px 10px !important;
+    padding: 16px 14px 12px !important;
     min-height: auto !important;
   }
   .poetry-titles {
@@ -2705,58 +2765,69 @@ footer {
     gap: 6px !important;
     margin-bottom: 6px !important;
   }
-  .poetry-urdu-title {
-    display: none !important; /* Hide Urdu title on mobile */
-  }
-  .poetry-urdu-attr {
-    display: none !important; /* Hide Urdu kalam credit on mobile */
+  .poetry-urdu-title,
+  .poetry-urdu-attr,
+  .urdu-verse-box,
+  .verse-ornament,
+  .stage-cue-banner,
+  .copy-urdu-btn {
+    display: none !important; /* Strictly no Urdu in mobile view */
   }
   .poetry-roman-title {
-    font-size: 16px !important;
+    font-size: 16.5px !important;
     font-weight: 700 !important;
     color: var(--tx) !important;
     display: block !important;
-  }
-  .stage-cue-banner {
-    display: none !important;
-  }
-  .urdu-verse-box {
-    display: none !important; /* Hide Urdu Nastaliq verse box on mobile */
+    letter-spacing: -0.01em !important;
   }
   .roman-verse-sub {
     display: block !important; /* Show ONLY Roman English verse */
-    font-family: var(--font-serif), 'Playfair Display', Georgia, serif !important;
-    font-size: 15.5px !important;
-    line-height: 1.85 !important;
-    color: var(--tx) !important;
+    font-family: var(--font-serif), Georgia, serif !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+    color: #f8fafc !important;
     font-style: italic !important;
-    background: rgba(244, 63, 94, 0.05) !important;
-    border: 1px solid rgba(244, 63, 94, 0.22) !important;
-    border-left: 3px solid var(--rose) !important;
-    border-radius: 12px !important;
-    padding: 16px 16px !important;
+    background: linear-gradient(145deg, rgba(244, 63, 94, 0.08) 0%, rgba(15, 23, 42, 0.5) 100%) !important;
+    border: 1px solid rgba(244, 63, 94, 0.25) !important;
+    border-left: 3.5px solid var(--rose) !important;
+    border-radius: 14px !important;
+    padding: 16px !important;
     margin: 8px 0 12px !important;
     white-space: pre-line !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6) !important;
   }
-  /* light mode purged - pure dark only */
   .poetry-card-actions {
-    padding-top: 10px;
-    gap: 6px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding-top: 8px !important;
+    gap: 6px !important;
   }
   .poetry-action-group {
-    gap: 6px;
-  }
-  .poetry-action-group .copy-urdu-btn {
-    display: none !important; /* Hide Copy Urdu on mobile */
+    display: flex !important;
+    gap: 6px !important;
   }
   .poetry-action-group .copy-roman-btn {
-    display: inline-flex !important; /* Show Copy Roman on mobile */
+    display: inline-flex !important;
     background: rgba(244, 63, 94, 0.12) !important;
-    border-color: rgba(244, 63, 94, 0.3) !important;
-    color: var(--rose) !important;
+    border-color: rgba(244, 63, 94, 0.35) !important;
+    color: #f43f5e !important;
+  }
+  .like-btn {
+    min-width: 86px !important;
+    padding: 7px 12px !important;
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    touch-action: manipulation !important;
+    border-radius: 999px !important;
+  }
+  .like-btn.liked {
+    background: rgba(244, 63, 94, 0.22) !important;
+    border-color: var(--rose) !important;
+    color: #f43f5e !important;
   }
   .v-btn {
-    padding: 6px 10px;
+    padding: 7px 11px;
     font-size: 11.5px;
   }
 
@@ -3141,8 +3212,9 @@ html, body {
 
   /* Refined Hero Portrait with Cosmic Pulsing Aura */
   .portrait-card {
-    border: 2px solid rgba(56, 213, 240, 0.6) !important;
-    box-shadow: 0 0 24px rgba(56, 213, 240, 0.35), 0 10px 28px rgba(0, 0, 0, 0.75) !important;
+    border: 2.5px solid rgba(56, 213, 240, 0.75) !important;
+    box-shadow: 0 0 35px rgba(56, 213, 240, 0.45), 0 16px 36px rgba(0, 0, 0, 0.85) !important;
+    border-radius: 36px !important;
   }
 
   .portrait-aura {
@@ -3919,8 +3991,8 @@ html, body {
         <div class="mob-link-content">
           <span class="mob-link-icon">📜</span>
           <div>
-            <div class="mob-link-title">Lafz-e-Ali · اردو شاعری</div>
-            <div class="mob-link-sub">Original Urdu ghazals &amp; stage poetry</div>
+            <div class="mob-link-title">Lafz-e-Ali · Poetry &amp; Verses</div>
+            <div class="mob-link-sub">Original ghazals, couplets &amp; stage poetry</div>
           </div>
         </div>
         <span class="mob-link-arrow">›</span>
@@ -4050,7 +4122,8 @@ html, body {
           </div>
         </div>
         <div class="quote-author">
-          <span style="display:block; font-family: var(--font-urdu), serif; font-size: 16px;">— عمران علی ’علی‘</span>
+          <span class="desktop-only-txt" style="display:block; font-family: var(--font-urdu), serif; font-size: 16px;">— عمران علی ’علی‘</span>
+          <span class="mobile-only-txt" style="display:block; font-size: 13px; font-weight: 600; color: var(--tx);">— Imran Ali (‘Ali’)</span>
           <small style="font-size: 11px; color: var(--mu);">Presidency Stage</small>
         </div>
       </div>
@@ -4106,8 +4179,14 @@ html, body {
   <section id="poetry">
     <div class="w">
       <div class="sec-head">
-        <span class="poetry-hero-badge"><span class="soundwave-bar"></span><span class="soundwave-bar"></span><span class="soundwave-bar"></span> اردو شاعری · Urdu Shayari</span>
-        <h2 class="sec-title">Urdu Shayari (اردو شاعری)</h2>
+        <span class="poetry-hero-badge">
+          <span class="soundwave-bar"></span><span class="soundwave-bar"></span><span class="soundwave-bar"></span>
+          <span class="desktop-only-txt">اردو شاعری · Urdu Shayari</span>
+          <span class="mobile-only-txt">Original Poetry · Lafz-e-Ali</span>
+        </span>
+        <h2 class="sec-title">
+          Urdu Shayari <span class="desktop-only-txt">(اردو شاعری)</span>
+        </h2>
         <p class="lead">Authentic Urdu poetry penned by Imran Ali under the takhallus <b>‘Ali’</b> (عَلِی). Classical Nastaliq script with Roman transliteration. One-by-one interactive reader.</p>
       </div>
 
@@ -4118,7 +4197,8 @@ html, body {
             <!-- Filled dynamically by JavaScript -->
           </div>
           <div class="poetry-counter-pill" id="poetryCounterPill">
-            شعر 01 / 08
+            <span class="desktop-only-txt">شعر 01 / 15</span>
+            <span class="mobile-only-txt">Verse 01 / 15</span>
           </div>
         </div>
 
@@ -4131,16 +4211,16 @@ html, body {
         <div class="poetry-ctrl-bar">
           <button class="carousel-btn" id="prevPoetryBtn" aria-label="Previous Verse">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-            <span class="btn-text-full">پچھلا شعر (Prev)</span>
-            <span class="btn-text-short">‹ پچھلا</span>
+            <span class="btn-text-full">Previous Verse (پچھلا شعر)</span>
+            <span class="btn-text-short">‹ Prev</span>
           </button>
           <div class="carousel-dots" id="poetryDots">
             <!-- Dots dynamically updated -->
           </div>
           <div class="carousel-mobile-counter" id="poetryMobileCounter">1 / 15</div>
           <button class="carousel-btn" id="nextPoetryBtn" aria-label="Next Verse">
-            <span class="btn-text-full">اگلا شعر (Next)</span>
-            <span class="btn-text-short">اگلا (Next) ›</span>
+            <span class="btn-text-full">Next Verse (اگلا شعر)</span>
+            <span class="btn-text-short">Next ›</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
           </button>
         </div>
@@ -5071,10 +5151,10 @@ Chahe toofan bhi aa jaye, mai khud se kiya wada tod nahi sakta.`
 ];
 
 const POETRY_CATEGORIES = [
-  { id: 'all', name: 'تمام اشعار (All 15)', icon: '✨' },
-  { id: 'love', name: 'عشق و اظہار (Love)', icon: '💌' },
-  { id: 'sad', name: 'فراق و درد (Dard)', icon: '💔' },
-  { id: 'stage', name: 'نظم و احساس (Nazm & Ehsaas)', icon: '📜' }
+  { id: 'all', name: 'تمام اشعار (All 15)', nameEn: 'All Verses (15)', icon: '✨' },
+  { id: 'love', name: 'عشق و اظہار (Love)', nameEn: 'Love & Romance (3)', icon: '💌' },
+  { id: 'sad', name: 'فراق و درد (Dard)', nameEn: 'Pathos & Pain (5)', icon: '💔' },
+  { id: 'stage', name: 'نظم و احساس (Nazm & Ehsaas)', nameEn: 'Stage Recitations (7)', icon: '📜' }
 ];
 
 /**
@@ -6218,7 +6298,76 @@ function initProjectsCarousel() {
 let currentPoetryCat = 'all';
 let currentPoetryIdx = 0;
 let poetryTimer = null;
-const likesStore = JSON.parse(localStorage.getItem('imran_likes') || '{}');
+
+// Assign permanent stable keys to each poem
+SHAYARI_DATA.forEach((s, idx) => { s.key = 'shayari_' + idx; });
+STAGE_STANZAS.forEach((s, idx) => { s.key = 'stage_' + idx; });
+
+// Authentic base appreciation counts for each original poem
+const BASE_LIKES = {
+  shayari_0: 74,
+  shayari_1: 62,
+  shayari_2: 89,
+  shayari_3: 68,
+  shayari_4: 95,
+  shayari_5: 81,
+  shayari_6: 87,
+  shayari_7: 64,
+  stage_0: 108,
+  stage_1: 85,
+  stage_2: 73,
+  stage_3: 92,
+  stage_4: 78,
+  stage_5: 66,
+  stage_6: 114
+};
+
+// Cross-device sheet likes storage & local user like state
+let sheetLikes = JSON.parse(localStorage.getItem('imran_sheet_likes') || '{}');
+let userLikedMap = JSON.parse(localStorage.getItem('imran_user_liked') || '{}');
+const legacyLikes = JSON.parse(localStorage.getItem('imran_likes') || '{}');
+for (const k in legacyLikes) {
+  if (!sheetLikes[k]) sheetLikes[k] = legacyLikes[k];
+}
+
+function getPoetryLikeCount(key) {
+  const base = BASE_LIKES[key] || 50;
+  const fromSheet = sheetLikes[key] || 0;
+  return base + fromSheet;
+}
+
+async function syncLikesFromGoogleSheet() {
+  if (!CONFIG.WEBHOOK_URL) return;
+  try {
+    const res = await fetch(CONFIG.WEBHOOK_URL + '?key=imran2026', { method: 'GET' });
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data && Array.isArray(data.rows)) {
+      const counts = {};
+      data.rows.forEach(r => {
+        // r[5] is Category, r[6] is Subject
+        if (r && r[5] === 'Shayari Like' && typeof r[6] === 'string' && r[6].startsWith('Like: ')) {
+          const k = r[6].replace('Like: ', '').trim();
+          counts[k] = (counts[k] || 0) + 1;
+        }
+      });
+      sheetLikes = counts;
+      localStorage.setItem('imran_sheet_likes', JSON.stringify(sheetLikes));
+
+      const btn = document.querySelector('.like-btn');
+      if (btn && btn.dataset.key) {
+        const curKey = btn.dataset.key;
+        const total = getPoetryLikeCount(curKey);
+        const deskSpan = btn.querySelector('.like-desktop-count');
+        const mobSpan = btn.querySelector('.like-mobile-count');
+        if (deskSpan) deskSpan.textContent = total + ' داد';
+        if (mobSpan) mobSpan.textContent = total + ' Likes';
+      }
+    }
+  } catch (err) {
+    // Graceful offline fallback
+  }
+}
 
 function getActivePoetryList() {
   if (currentPoetryCat === 'love') {
@@ -6242,48 +6391,62 @@ function renderPoetryCarousel(direction = 'none') {
   const list = getActivePoetryList();
   if (currentPoetryIdx >= list.length) currentPoetryIdx = 0;
   const item = list[currentPoetryIdx];
+  const itemKey = item.key;
   const animClass = (direction === 'next') ? 'slide-in-right' : (direction === 'prev' ? 'slide-in-left' : '');
 
-  // 1. Render Category Selector Pills
+  // 1. Render Category Selector Pills (Bilingual: Urdu for Desktop, English for Mobile)
   pillsContainer.innerHTML = POETRY_CATEGORIES.map(c => `
     <button class="cat-pill ${c.id === currentPoetryCat ? 'active' : ''}" data-cat="${c.id}">
       <span>${c.icon}</span>
-      <span>${esc(c.name)}</span>
+      <span class="cat-pill-desktop">${esc(c.name)}</span>
+      <span class="cat-pill-mobile">${esc(c.nameEn || c.name)}</span>
     </button>
   `).join('');
 
-  // 2. Render Counter (Pure Urdu Shayari)
-  const origIndex = (item.cat === 'stage' ? 'stage_' : 'shayari_') + currentPoetryIdx;
-  counterPill.textContent = `شعر ${currentPoetryIdx + 1} / ${list.length}`;
+  // 2. Render Counter (Responsive)
+  counterPill.innerHTML = `
+    <span class="desktop-only-txt">شعر ${currentPoetryIdx + 1} / ${list.length}</span>
+    <span class="mobile-only-txt">Verse ${currentPoetryIdx + 1} of ${list.length}</span>
+  `;
 
-  // 3. Render Active Verse in Authentic Nastaliq Urdu Script with Calligraphic Ornament
-  const likeCount = likesStore[origIndex] || 0;
-  const isLiked = likeCount > 0;
-  const shareText = `*${item.titleUrdu}* (${item.title})\n\n${item.urdu}\n\n— عمران علی ’علی‘ (Imran Ali)\nhttps://ia3466999-ali.github.io`;
+  // 3. Render Active Verse
+  const likeCount = getPoetryLikeCount(itemKey);
+  const isLiked = !!userLikedMap[itemKey];
+  const shareText = `*${item.titleUrdu || item.title}* (${item.title})\n\n${item.urdu}\n\n${item.roman}\n\n— عمران علی ’علی‘ (Imran Ali)\nhttps://ia3466999-ali.github.io/portfolio/`;
   const encodedWhatsApp = encodeURIComponent(shareText);
 
   slideContainer.innerHTML = `
     <div class="poetry-card-active ${animClass}">
       <div>
         <div class="poetry-card-header">
-          <span class="poetry-card-badge">${esc(item.badge || '📜 اردو شاعری · Urdu Shayari')}</span>
-          <span class="poetry-urdu-attr" style="font-size:12px; color:var(--mu); font-family:var(--font-urdu), serif; direction:rtl;">
+          <span class="poetry-card-badge">
+            <span class="desktop-only-txt">${esc(item.badge || '📜 اردو شاعری · Urdu Shayari')}</span>
+            <span class="mobile-only-txt">📜 Original Poetry · Lafz-e-Ali</span>
+          </span>
+          <span class="poetry-urdu-attr desktop-only-txt" style="font-size:12px; color:var(--mu); font-family:var(--font-urdu), serif; direction:rtl;">
             شاعری: عمران علی ’علی‘
+          </span>
+          <span class="poetry-en-attr mobile-only-txt" style="font-size:12px; color:var(--mu); font-style:italic;">
+            Pen Name: ‘Ali’
           </span>
         </div>
 
         <div class="poetry-titles">
-          <span class="poetry-roman-title">${esc(item.num ? item.num + ' · ' : '')}${esc(item.title)}</span>
-          <h3 class="poetry-urdu-title">${esc(item.titleUrdu || item.title)}</h3>
+          <span class="poetry-roman-title">
+            <span class="desktop-only-txt">${esc(item.num ? item.num + ' · ' : '')}</span>
+            <span class="mobile-only-txt">${esc(item.numEn ? item.numEn + ' · ' : '')}</span>
+            ${esc(item.title)}
+          </span>
+          <h3 class="poetry-urdu-title desktop-only-txt">${esc(item.titleUrdu || item.title)}</h3>
         </div>
 
-        <!-- Authentic Nastaliq Urdu Text Box with Ambient Halo -->
-        <div class="urdu-verse-box">
+        <!-- Authentic Nastaliq Urdu Text Box with Ambient Halo (Windows / Desktop Only) -->
+        <div class="urdu-verse-box desktop-only-block">
           <div class="urdu-text" dir="rtl">${esc(item.urdu)}</div>
         </div>
 
-        <!-- Delicate Calligraphic Floral Divider -->
-        <div class="verse-ornament">
+        <!-- Delicate Calligraphic Floral Divider (Desktop Only) -->
+        <div class="verse-ornament desktop-only-flex">
           <span>❦</span>
           <span class="verse-star">✦</span>
           <span>❦</span>
@@ -6298,13 +6461,14 @@ function renderPoetryCarousel(direction = 'none') {
       <!-- Action Buttons -->
       <div class="poetry-card-actions">
         <div class="poetry-action-group">
-          <button class="v-btn copy-urdu-btn" data-key="${origIndex}" title="Copy Urdu text">
+          <button class="v-btn copy-urdu-btn desktop-only-inline-flex" data-key="${itemKey}" title="Copy Urdu text">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
             <span>Copy Urdu 📋</span>
           </button>
 
-          <button class="v-btn copy-roman-btn" data-key="${origIndex}" title="Copy Roman Urdu text">
-            <span>Copy Roman</span>
+          <button class="v-btn copy-roman-btn" data-key="${itemKey}" title="Copy Verse text">
+            <span class="desktop-only-txt">Copy Roman</span>
+            <span class="mobile-only-txt">Copy Verse 📋</span>
           </button>
 
           <a class="v-btn" href="https://api.whatsapp.com/send?text=${encodedWhatsApp}" target="_blank" rel="noopener noreferrer" title="Share on WhatsApp">
@@ -6313,9 +6477,12 @@ function renderPoetryCarousel(direction = 'none') {
           </a>
         </div>
 
-        <button class="v-btn like-btn ${isLiked ? 'liked' : ''}" data-key="${origIndex}" title="داد دیں / Appreciate verse">
+        <button class="v-btn like-btn ${isLiked ? 'liked' : ''}" data-key="${itemKey}" title="داد دیں / Appreciate verse">
           <svg viewBox="0 0 24 24" fill="${isLiked ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-          <span class="like-num">${likeCount > 0 ? likeCount + ' داد' : 'داد / Like'}</span>
+          <span class="like-num">
+            <span class="desktop-only-txt like-desktop-count">${likeCount} داد</span>
+            <span class="mobile-only-txt like-mobile-count">${likeCount} Likes</span>
+          </span>
         </button>
       </div>
     </div>
@@ -6359,6 +6526,13 @@ function initPoetryCarousel() {
   renderPoetryCarousel();
   startPoetryAutoplay();
 
+  // Cross-device live appreciation sync from Google Sheet
+  syncLikesFromGoogleSheet();
+  setInterval(syncLikesFromGoogleSheet, 40000);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') syncLikesFromGoogleSheet();
+  });
+
   // Mouse & focus pause
   container.addEventListener('mouseenter', stopPoetryAutoplay);
   container.addEventListener('mouseleave', startPoetryAutoplay);
@@ -6396,7 +6570,7 @@ function initPoetryCarousel() {
     if (copyUrduBtn) {
       const list = getActivePoetryList();
       const item = list[currentPoetryIdx];
-      const copyText = `${item.titleUrdu} (${item.title})\n\n${item.urdu}\n\n— عمران علی ’علی‘\nhttps://ia3466999-ali.github.io`;
+      const copyText = `${item.titleUrdu} (${item.title})\n\n${item.urdu}\n\n— عمران علی ’علی‘\nhttps://ia3466999-ali.github.io/portfolio/`;
       copyToClipboard(copyText, 'Urdu Shayari copied with attribution! 📜');
       return;
     }
@@ -6405,21 +6579,56 @@ function initPoetryCarousel() {
     if (copyRomanBtn) {
       const list = getActivePoetryList();
       const item = list[currentPoetryIdx];
-      const copyText = `${item.title}\n\n${item.roman}\n\n— Imran Ali (‘Ali’)\nhttps://ia3466999-ali.github.io`;
-      copyToClipboard(copyText, 'Roman Shayari copied! 📋');
+      const copyText = `${item.title}\n\n${item.roman}\n\n— Imran Ali (‘Ali’)\nhttps://ia3466999-ali.github.io/portfolio/`;
+      copyToClipboard(copyText, window.innerWidth <= 600 ? 'Poetry verse copied! 📋' : 'Roman Shayari copied! 📋');
       return;
     }
 
     const likeBtn = e.target.closest('.like-btn');
     if (likeBtn) {
       const key = likeBtn.dataset.key;
-      likesStore[key] = (likesStore[key] || 0) + 1;
-      localStorage.setItem('imran_likes', JSON.stringify(likesStore));
+      const list = getActivePoetryList();
+      const item = list[currentPoetryIdx];
+
+      // Optimistic update
+      sheetLikes[key] = (sheetLikes[key] || 0) + 1;
+      userLikedMap[key] = true;
+      localStorage.setItem('imran_sheet_likes', JSON.stringify(sheetLikes));
+      localStorage.setItem('imran_user_liked', JSON.stringify(userLikedMap));
+
+      const newTotal = getPoetryLikeCount(key);
       likeBtn.classList.add('liked');
-      likeBtn.querySelector('.like-num').textContent = likesStore[key] + ' داد';
+      const deskSpan = likeBtn.querySelector('.like-desktop-count');
+      const mobSpan = likeBtn.querySelector('.like-mobile-count');
+      if (deskSpan) deskSpan.textContent = newTotal + ' داد';
+      if (mobSpan) mobSpan.textContent = newTotal + ' Likes';
       likeBtn.querySelector('svg').setAttribute('fill', 'currentColor');
       spawnFloatingHearts(likeBtn);
-      showToast('داد اور محبت کا بے حد شکریہ! ❤️', '❤️');
+
+      const toastMsg = window.innerWidth <= 600
+        ? 'Thank you so much for the love & appreciation! ❤️'
+        : 'داد اور محبت کا بے حد شکریہ! ❤️';
+      showToast(toastMsg, '❤️');
+
+      // Live Google Apps Script webhook sync for cross-device updates
+      if (CONFIG.WEBHOOK_URL) {
+        fetch(CONFIG.WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            category: 'Shayari Like',
+            name: 'Visitor / Appreciator',
+            email: 'reader@lafz-e-ali.in',
+            phone: 'N/A',
+            subject: 'Like: ' + key,
+            message: 'Appreciated verse: ' + (item ? (item.titleUrdu || item.title || key) : key)
+          })
+        }).then(() => {
+          setTimeout(syncLikesFromGoogleSheet, 1800);
+        }).catch(() => {});
+      }
+      return;
     }
   });
 
