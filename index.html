@@ -65,7 +65,16 @@
 /* light mode purged - pure dark only */
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+@media (hover: none) and (pointer: coarse) {
+  /* On touchscreens, avoid smooth-scroll fighting finger momentum scrolling */
+  html {
+    scroll-behavior: auto !important;
+  }
+}
 body {
   background: var(--bg);
   background-image: 
@@ -77,6 +86,7 @@ body {
   font: 16px/1.65 var(--font-sans);
   min-height: 100vh;
   overflow-x: hidden;
+  max-width: 100%;
   transition: background 0.35s ease, color 0.35s ease;
 }
 /* light mode purged - pure dark only */
@@ -2370,67 +2380,85 @@ footer {
   .brand-sub { font-size: 9.5px; }
   .mobile-nav { top: 62px; left: 10px; right: 10px; padding: 14px 12px; gap: 8px; }
 
-  /* Hero Section on Mobile (me.jpg perfectly sized in TOP RIGHT CORNER) */
-  .hero-wrap { padding-top: 12px; }
+  /* Hero Section on Mobile - Balanced, Centered & Realistic Obsidian Aesthetic */
+  .hero-wrap { padding-top: 14px; }
   .hero {
     position: relative !important;
-    display: block !important;
-    padding: 6px 0 12px !important;
-    gap: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 10px 0 20px !important;
+    gap: 14px !important;
+  }
+  .hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
   }
   .hero-intro-header {
-    min-height: clamp(114px, 30vw, 130px) !important;
-    padding-right: clamp(120px, 32vw, 138px) !important;
-    margin-bottom: 6px !important;
+    min-height: auto !important;
+    padding-right: 0 !important;
+    margin-bottom: 10px !important;
+    width: 100% !important;
+    text-align: center !important;
   }
   .hero-tag {
-    font-size: 10px !important;
-    padding: 3px 9px !important;
-    margin-bottom: 6px !important;
+    font-size: 11px !important;
+    padding: 5px 12px !important;
+    margin: 0 auto 10px !important;
     white-space: normal !important;
-    line-height: 1.35 !important;
+    line-height: 1.4 !important;
     display: inline-flex !important;
+    justify-content: center !important;
+    max-width: 95% !important;
   }
   h1.hero-title {
-    font-size: clamp(23px, 6vw, 28px) !important;
+    font-size: clamp(28px, 7.8vw, 36px) !important;
     line-height: 1.15 !important;
-    margin-bottom: 6px !important;
-    word-break: break-word !important;
+    margin-bottom: 8px !important;
+    word-break: normal !important;
+    text-align: center !important;
+    display: block !important;
   }
   .hero-type-wrap {
-    font-size: 13.5px !important;
-    min-height: 20px !important;
-    margin-bottom: 8px !important;
+    font-size: 14.5px !important;
+    min-height: 22px !important;
+    margin: 0 auto 10px !important;
+    justify-content: center !important;
+    text-align: center !important;
   }
 
-  /* me.jpg Portrait in Top Right Corner on Mobile */
+  /* Center Stage Portrait with Ambient Cosmic Glow */
   .hero-visual {
-    position: absolute !important;
-    top: 4px !important;
-    right: 0 !important;
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
     z-index: 5 !important;
-    margin: 0 !important;
-    width: clamp(108px, 29vw, 126px) !important;
-    height: clamp(108px, 29vw, 126px) !important;
+    margin: 6px auto 14px !important;
+    width: 124px !important;
+    height: 124px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    order: -1 !important; /* Positions portrait neatly right above headline */
   }
   .portrait-aura {
-    width: 125% !important;
-    height: 125% !important;
-    filter: blur(18px) !important;
-    opacity: 0.8 !important;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.45) 0%, rgba(6, 182, 212, 0.25) 50%, transparent 75%) !important;
+    width: 140% !important;
+    height: 140% !important;
+    filter: blur(20px) !important;
+    opacity: 0.85 !important;
+    background: radial-gradient(circle, rgba(56, 213, 240, 0.45) 0%, rgba(168, 85, 247, 0.3) 50%, transparent 75%) !important;
   }
   .portrait-card {
-    width: 100% !important;
-    height: 100% !important;
+    width: 124px !important;
+    height: 124px !important;
     max-width: none !important;
     aspect-ratio: 1 / 1 !important;
-    border-radius: 22px !important;
-    border: 2px solid rgba(16, 185, 129, 0.6) !important;
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 8px 24px rgba(0, 0, 0, 0.65) !important;
+    border-radius: 26px !important;
+    border: 2px solid rgba(56, 213, 240, 0.55) !important;
+    box-shadow: 0 0 28px rgba(56, 213, 240, 0.35), 0 12px 30px rgba(0, 0, 0, 0.75) !important;
     overflow: hidden !important;
     position: relative !important;
     background: #060911 !important;
@@ -2442,13 +2470,13 @@ footer {
     height: 100% !important;
     object-fit: cover !important;
     object-position: center 18% !important;
-    border-radius: 20px !important;
+    border-radius: 24px !important;
     display: block !important;
   }
   .portrait-avatar-placeholder {
     width: 100% !important;
     height: 100% !important;
-    border-radius: 20px !important;
+    border-radius: 24px !important;
   }
   .portrait-avatar-placeholder .monogram {
     font-size: 32px !important;
@@ -2459,8 +2487,8 @@ footer {
   .portrait-overlay {
     position: absolute !important;
     inset: auto 0 0 0 !important;
-    background: linear-gradient(to top, rgba(3, 10, 18, 0.85) 0%, transparent 100%) !important;
-    padding: 3px 6px !important;
+    background: linear-gradient(to top, rgba(3, 10, 18, 0.9) 0%, transparent 100%) !important;
+    padding: 3px 6px 4px !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -2469,36 +2497,51 @@ footer {
     display: none !important;
   }
   .portrait-overlay .badge {
-    font-size: 9px !important;
-    padding: 2px 7px !important;
+    font-size: 9.5px !important;
+    padding: 2.5px 8px !important;
     border-radius: 999px !important;
   }
 
   .hero-bio {
-    font-size: 13.5px !important;
-    line-height: 1.55 !important;
-    margin-bottom: 14px !important;
-    width: 100% !important;
-    clear: both !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    margin: 0 auto 16px !important;
+    max-width: 95% !important;
+    text-align: center !important;
+    color: rgba(226, 232, 240, 0.85) !important;
   }
   
-  .hero-acts { gap: 8px; margin-bottom: 16px; }
+  .hero-acts {
+    display: flex !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+  }
   .hero-acts .btn {
-    padding: 9px 14px;
-    font-size: 12.5px;
-    flex: 1 1 calc(50% - 4px);
-    text-align: center;
+    padding: 11px 14px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    flex: 1 1 50% !important;
+    min-height: 44px !important;
+    justify-content: center !important;
+    border-radius: 14px !important;
+    text-align: center !important;
   }
 
   /* Compact 3-Column Stats Row on Mobile */
   .hero-stats {
+    width: 100% !important;
     grid-template-columns: repeat(3, 1fr) !important;
-    gap: 6px;
-    padding-top: 10px;
-    margin-bottom: 4px;
+    gap: 8px !important;
+    padding: 12px 10px !important;
+    margin-bottom: 4px !important;
+    background: rgba(10, 16, 28, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.18) !important;
+    border-radius: 16px !important;
   }
-  .stat-item h4 { font-size: 19px; }
-  .stat-item p { font-size: 9.5px; letter-spacing: 0.02em; }
+  .stat-item h4 { font-size: 20px !important; }
+  .stat-item p { font-size: 10px !important; letter-spacing: 0.02em !important; }
 
   /* Featured Couplet Quote Strip on Mobile (Roman English Only) */
   .hero-quote-strip {
@@ -3048,10 +3091,34 @@ html, body {
    ENHANCED MOBILE PHOTOREALISTIC & TACTILE TOUCH POLISH
    ========================================================================== */
 @media (max-width: 600px) {
-  /* Prevent horizontal micro-wobble */
-  html, body {
+  /* Fluid Native Touch Scrolling Engine (No 100vw horizontal overflow bug) */
+  html {
     overflow-x: hidden !important;
-    width: 100vw !important;
+    max-width: 100% !important;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  /* Force vertical pan action so browser compositor handles page scroll instantly */
+  .proj-carousel-container,
+  .poetry-carousel-wrap,
+  .moment-card-compact,
+  .skills-box,
+  .form-box,
+  .hero,
+  .hero-wrap,
+  #moments,
+  #projects,
+  #poetry,
+  #contact,
+  #about {
+    touch-action: pan-y !important;
   }
 
   /* Refined Hero Portrait with Cosmic Pulsing Aura */
@@ -5109,8 +5176,14 @@ if (canvas) {
   const fov = isMobile ? 500 : 600;
 
   function resizeCanvas() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
+    const newW = window.innerWidth;
+    const newH = window.innerHeight;
+    // Prevent GPU buffer thrashing during mobile address bar expansion/collapse on scroll
+    if (Math.abs(newW - w) < 20 && Math.abs(newH - h) < 130 && canvas.width > 0 && canvas.height > 0) {
+      return;
+    }
+    w = canvas.width = newW;
+    h = canvas.height = newH;
     cx = w * 0.5;
     // On mobile, frame the black hole in upper hero view (~34% down), on desktop ~48%
     cy = isMobile ? Math.min(h * 0.34, 270) : h * 0.48;
@@ -6088,6 +6161,13 @@ function initProjectsCarousel() {
     touchCurrentX = e.touches[0].clientX;
     const diffX = touchCurrentX - touchStartX;
     const diffY = e.touches[0].clientY - touchStartY;
+    // If vertical intent is detected, immediately release swipe control to let page scroll freely
+    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 6) {
+      isSwiping = false;
+      slideContainer.style.transform = 'none';
+      slideContainer.style.transition = 'none';
+      return;
+    }
     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 6) {
       slideContainer.style.transform = `translateX(${diffX * 0.88}px)`;
       slideContainer.style.transition = 'none';
@@ -6098,7 +6178,7 @@ function initProjectsCarousel() {
     if (!isSwiping) return;
     isSwiping = false;
     const diff = touchStartX - touchCurrentX;
-    if (Math.abs(diff) > 20) {
+    if (Math.abs(diff) > 35) {
       if (slideContainer) {
         slideContainer.style.transition = 'none';
         slideContainer.style.transform = 'none';
@@ -6345,6 +6425,13 @@ function initPoetryCarousel() {
     touchCurrentX = e.touches[0].clientX;
     const diffX = touchCurrentX - touchStartX;
     const diffY = e.touches[0].clientY - touchStartY;
+    // If vertical intent is detected, release swipe control immediately to let page scroll freely
+    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 6) {
+      isSwiping = false;
+      poetrySlideContainer.style.transform = 'none';
+      poetrySlideContainer.style.transition = 'none';
+      return;
+    }
     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 6) {
       poetrySlideContainer.style.transform = `translateX(${diffX * 0.88}px)`;
       poetrySlideContainer.style.transition = 'none';
@@ -6355,7 +6442,7 @@ function initPoetryCarousel() {
     if (!isSwiping) return;
     isSwiping = false;
     const diff = touchStartX - touchCurrentX;
-    if (Math.abs(diff) > 20) {
+    if (Math.abs(diff) > 35) {
       if (poetrySlideContainer) {
         poetrySlideContainer.style.transition = 'none';
         poetrySlideContainer.style.transform = 'none';
@@ -6566,25 +6653,34 @@ $$('.mob-link').forEach(link => {
   });
 });
 
+let scrollSpyTicking = false;
 window.addEventListener('scroll', () => {
-  const sections = $$('section[id]');
-  const scrollY = window.pageYOffset;
+  if (scrollSpyTicking) return;
+  scrollSpyTicking = true;
+  requestAnimationFrame(() => {
+    // Only compute section offsets when desktop navbar is active and visible
+    if (window.innerWidth > 900) {
+      const sections = $$('section[id]');
+      const scrollY = window.pageYOffset;
 
-  sections.forEach(sec => {
-    const top = sec.offsetTop - 120;
-    const height = sec.offsetHeight;
-    const id = sec.getAttribute('id');
-    const navLink = $(`nav.nav-desktop a[href="#${id}"]`);
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 120;
+        const height = sec.offsetHeight;
+        const id = sec.getAttribute('id');
+        const navLink = $(`nav.nav-desktop a[href="#${id}"]`);
 
-    if (navLink) {
-      if (scrollY >= top && scrollY < top + height) {
-        navLink.classList.add('active');
-      } else {
-        navLink.classList.remove('active');
-      }
+        if (navLink) {
+          if (scrollY >= top && scrollY < top + height) {
+            navLink.classList.add('active');
+          } else {
+            navLink.classList.remove('active');
+          }
+        }
+      });
     }
+    scrollSpyTicking = false;
   });
-});
+}, { passive: true });
 
 /**
  * ----------------------------------------------------------------------------
