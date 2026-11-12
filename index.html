@@ -6298,12 +6298,14 @@ let poetryTimer = null;
 SHAYARI_DATA.forEach((s, idx) => { s.key = 'shayari_' + idx; });
 STAGE_STANZAS.forEach((s, idx) => { s.key = 'stage_' + idx; });
 
-// Dedicated separate local & cross-session database for Poetry Likes (zero interaction with contact Excel sheet)
+// Dedicated separate global cloud database for Poetry Likes (cross-device sync, zero interaction with contact Excel sheet)
 const PoetryLikesDB = {
+  API_BASE: 'https://countapi.mileshilliard.com/api/v1',
+  KEY_PREFIX: 'ia3466999_lafz_v1_',
   STORAGE_KEY: 'lafz_ali_poetry_likes_db',
   USER_LIKED_KEY: 'lafz_ali_user_liked_db',
 
-  getLikes: function() {
+  getLikesCache: function() {
     try {
       return JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '{}');
     } catch (e) {
@@ -6320,8 +6322,8 @@ const PoetryLikesDB = {
   },
 
   getLikeCount: function(key) {
-    const likes = this.getLikes();
-    return Math.max(0, Number(likes[key]) || 0);
+    const cache = this.getLikesCache();
+    return Math.max(0, Number(cache[key]) || 0);
   },
 
   isLikedByUser: function(key) {
@@ -6329,30 +6331,80 @@ const PoetryLikesDB = {
     return !!userMap[key];
   },
 
-  toggleLike: function(key) {
-    const likes = this.getLikes();
-    const userMap = this.getUserLiked();
-    const wasLiked = !!userMap[key];
-
-    if (wasLiked) {
-      // Unlike
-      userMap[key] = false;
-      likes[key] = Math.max(0, (Number(likes[key]) || 1) - 1);
-    } else {
-      // Like
-      userMap[key] = true;
-      likes[key] = (Number(likes[key]) || 0) + 1;
-    }
-
+  // Fetch live count from separate cloud database for any verse (cross-device sync)
+  fetchLiveCount: async function(key, onUpdate) {
     try {
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(likes));
+      const res = await fetch(`${this.API_BASE}/get/${this.KEY_PREFIX}${key}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data && typeof data.value !== 'undefined') {
+          const count = Math.max(0, parseInt(data.value, 10) || 0);
+          const cache = this.getLikesCache();
+          cache[key] = count;
+          try { localStorage.setItem(this.STORAGE_KEY, JSON.stringify(cache)); } catch (e) {}
+          if (typeof onUpdate === 'function') onUpdate(count);
+          return count;
+        }
+      }
+    } catch (e) {
+      // Offline fallback
+    }
+    return this.getLikeCount(key);
+  },
+
+  // Toggle like/unlike (Instagram & YouTube behavior synced across all devices)
+  toggleLike: async function(key, onUpdate) {
+    const userMap = this.getUserLiked();
+    const cache = this.getLikesCache();
+    const wasLiked = !!userMap[key];
+    const currentCount = Math.max(0, Number(cache[key]) || 0);
+
+    let newCount = wasLiked ? Math.max(0, currentCount - 1) : currentCount + 1;
+    userMap[key] = !wasLiked;
+    cache[key] = newCount;
+
+    // Optimistic immediate update locally
+    try {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(cache));
       localStorage.setItem(this.USER_LIKED_KEY, JSON.stringify(userMap));
     } catch (e) {}
 
-    return {
-      isLiked: !wasLiked,
-      count: likes[key]
-    };
+    if (typeof onUpdate === 'function') {
+      onUpdate({ isLiked: !wasLiked, count: newCount });
+    }
+
+    // Sync to separate global cloud database
+    try {
+      if (!wasLiked) {
+        const res = await fetch(`${this.API_BASE}/hit/${this.KEY_PREFIX}${key}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && typeof data.value !== 'undefined') {
+            const serverCount = Math.max(0, parseInt(data.value, 10) || 0);
+            cache[key] = serverCount;
+            try { localStorage.setItem(this.STORAGE_KEY, JSON.stringify(cache)); } catch (e) {}
+            if (typeof onUpdate === 'function') {
+              onUpdate({ isLiked: true, count: serverCount });
+            }
+          }
+        }
+      } else {
+        const res = await fetch(`${this.API_BASE}/set/${this.KEY_PREFIX}${key}?value=${newCount}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data && typeof data.value !== 'undefined') {
+            const serverCount = Math.max(0, parseInt(data.value, 10) || 0);
+            cache[key] = serverCount;
+            try { localStorage.setItem(this.STORAGE_KEY, JSON.stringify(cache)); } catch (e) {}
+            if (typeof onUpdate === 'function') {
+              onUpdate({ isLiked: false, count: serverCount });
+            }
+          }
+        }
+      }
+    } catch (err) {}
+
+    return { isLiked: !wasLiked, count: cache[key] || newCount };
   }
 };
 
@@ -6487,6 +6539,17 @@ function renderPoetryCarousel(direction = 'none') {
   if (poetryMobCounter) {
     poetryMobCounter.textContent = `${currentPoetryIdx + 1} / ${list.length}`;
   }
+
+  // Live cross-device synchronization from dedicated cloud DB
+  PoetryLikesDB.fetchLiveCount(itemKey, (liveCount) => {
+    const curBtn = document.querySelector(`.like-btn[data-key="${itemKey}"]`);
+    if (curBtn) {
+      const deskSpan = curBtn.querySelector('.like-desktop-count');
+      const mobSpan = curBtn.querySelector('.like-mobile-count');
+      if (deskSpan) deskSpan.textContent = liveCount + ' داد';
+      if (mobSpan) mobSpan.textContent = (liveCount === 1 ? '1 Like' : liveCount + ' Likes');
+    }
+  });
 }
 
 function nextPoetry() {
@@ -6516,6 +6579,23 @@ function initPoetryCarousel() {
 
   renderPoetryCarousel();
   startPoetryAutoplay();
+
+  // Periodic background sync across devices (every 12s) and on tab focus
+  const syncCurrentVerseLikes = () => {
+    const curBtn = document.querySelector('.like-btn');
+    if (curBtn && curBtn.dataset.key) {
+      PoetryLikesDB.fetchLiveCount(curBtn.dataset.key, (liveCount) => {
+        const deskSpan = curBtn.querySelector('.like-desktop-count');
+        const mobSpan = curBtn.querySelector('.like-mobile-count');
+        if (deskSpan) deskSpan.textContent = liveCount + ' داد';
+        if (mobSpan) mobSpan.textContent = (liveCount === 1 ? '1 Like' : liveCount + ' Likes');
+      });
+    }
+  };
+  setInterval(syncCurrentVerseLikes, 12000);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') syncCurrentVerseLikes();
+  });
 
 
   // Mouse & focus pause
@@ -6572,19 +6652,9 @@ function initPoetryCarousel() {
     const likeBtn = e.target.closest('.like-btn');
     if (likeBtn) {
       const key = likeBtn.dataset.key;
-      const res = PoetryLikesDB.toggleLike(key);
-      const newTotal = res.count;
-      const isLiked = res.isLiked;
+      const isCurrentlyLiked = PoetryLikesDB.isLikedByUser(key);
 
-      likeBtn.classList.toggle('liked', isLiked);
-      likeBtn.querySelector('svg').setAttribute('fill', isLiked ? 'currentColor' : 'none');
-
-      const deskSpan = likeBtn.querySelector('.like-desktop-count');
-      const mobSpan = likeBtn.querySelector('.like-mobile-count');
-      if (deskSpan) deskSpan.textContent = newTotal + ' داد';
-      if (mobSpan) mobSpan.textContent = (newTotal === 1 ? '1 Like' : newTotal + ' Likes');
-
-      if (isLiked) {
+      if (!isCurrentlyLiked) {
         spawnFloatingHearts(likeBtn);
         const toastMsg = window.innerWidth <= 600
           ? 'Thank you so much for the love & appreciation! ❤️'
@@ -6594,6 +6664,16 @@ function initPoetryCarousel() {
         const toastMsg = window.innerWidth <= 600 ? 'Like removed' : 'داد واپس لے لی گئی';
         showToast(toastMsg, '🤍');
       }
+
+      PoetryLikesDB.toggleLike(key, (res) => {
+        likeBtn.classList.toggle('liked', res.isLiked);
+        likeBtn.querySelector('svg').setAttribute('fill', res.isLiked ? 'currentColor' : 'none');
+        const deskSpan = likeBtn.querySelector('.like-desktop-count');
+        const mobSpan = likeBtn.querySelector('.like-mobile-count');
+        if (deskSpan) deskSpan.textContent = res.count + ' داد';
+        if (mobSpan) mobSpan.textContent = (res.count === 1 ? '1 Like' : res.count + ' Likes');
+      });
+
       return;
     }
   });
