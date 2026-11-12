@@ -887,6 +887,9 @@ nav.nav-desktop a.active::after {
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow);
 }
+.btn:active {
+  transform: scale(0.97);
+}
 .btn.p {
   position: relative;
   overflow: hidden;
@@ -1232,6 +1235,7 @@ h1.hero-title .glow {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 40%;
   z-index: 2;
   transition: transform 0.4s ease;
 }
@@ -1311,6 +1315,10 @@ h2.sec-title {
   font: 700 clamp(32px, 4.8vw, 46px)/1.15 var(--font-serif);
   letter-spacing: -0.02em;
   margin-bottom: 12px;
+  background: linear-gradient(135deg, #ffffff 40%, #cbd5e1 75%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 .lead {
   color: var(--mu);
@@ -2426,9 +2434,9 @@ footer {
     top: auto !important;
     right: auto !important;
     z-index: 5 !important;
-    margin: 6px auto 14px !important;
-    width: 124px !important;
-    height: 124px !important;
+    margin: 8px auto 16px !important;
+    width: 144px !important;
+    height: 144px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -2442,13 +2450,13 @@ footer {
     background: radial-gradient(circle, rgba(56, 213, 240, 0.45) 0%, rgba(168, 85, 247, 0.3) 50%, transparent 75%) !important;
   }
   .portrait-card {
-    width: 124px !important;
-    height: 124px !important;
+    width: 144px !important;
+    height: 144px !important;
     max-width: none !important;
     aspect-ratio: 1 / 1 !important;
-    border-radius: 26px !important;
-    border: 2px solid rgba(56, 213, 240, 0.55) !important;
-    box-shadow: 0 0 28px rgba(56, 213, 240, 0.35), 0 12px 30px rgba(0, 0, 0, 0.75) !important;
+    border-radius: 28px !important;
+    border: 2px solid rgba(56, 213, 240, 0.6) !important;
+    box-shadow: 0 0 32px rgba(56, 213, 240, 0.4), 0 14px 34px rgba(0, 0, 0, 0.8) !important;
     overflow: hidden !important;
     position: relative !important;
     background: #060911 !important;
@@ -2456,40 +2464,49 @@ footer {
     margin: 0 !important;
   }
   #pimg {
+    position: absolute !important;
+    inset: 0 !important;
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
-    object-position: center 18% !important;
-    border-radius: 24px !important;
+    object-position: 50% 41% !important; /* Perfectly centers Imran's face and portrait */
+    border-radius: 26px !important;
     display: block !important;
   }
   .portrait-avatar-placeholder {
     width: 100% !important;
     height: 100% !important;
-    border-radius: 24px !important;
+    border-radius: 26px !important;
   }
   .portrait-avatar-placeholder .monogram {
-    font-size: 32px !important;
+    font-size: 36px !important;
   }
   .portrait-avatar-placeholder .monogram-sub {
-    font-size: 9.5px !important;
+    font-size: 10px !important;
   }
   .portrait-overlay {
     position: absolute !important;
-    inset: auto 0 0 0 !important;
-    background: linear-gradient(to top, rgba(3, 10, 18, 0.9) 0%, transparent 100%) !important;
-    padding: 3px 6px 4px !important;
+    inset: auto 0 8px 0 !important;
+    background: transparent !important;
+    padding: 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    z-index: 4 !important;
   }
   .portrait-overlay .portrait-tag {
     display: none !important;
   }
   .portrait-overlay .badge {
-    font-size: 9.5px !important;
-    padding: 2.5px 8px !important;
+    font-size: 10px !important;
+    padding: 3px 9px !important;
     border-radius: 999px !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    background: rgba(3, 16, 24, 0.88) !important;
+    border: 1px solid rgba(16, 185, 129, 0.5) !important;
+    color: #10b981 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.75) !important;
   }
 
   .hero-bio {
@@ -2762,16 +2779,25 @@ footer {
     max-height: 170px !important;
   }
   #campusMedia {
-    height: 170px !important;
-    max-height: 170px !important;
+    height: 180px !important;
+    max-height: 180px !important;
+  }
+  #campusImg {
+    object-fit: cover !important;
+    object-position: center 60% !important; /* Perfectly frame students collaborating around circuit */
   }
   #stageMedia, #profileMedia {
-    height: 125px !important;
-    min-height: 125px !important;
-    max-height: 125px !important;
+    height: 130px !important;
+    min-height: 130px !important;
+    max-height: 130px !important;
   }
   #stageImg {
-    object-position: center 18% !important; /* Perfectly frame Imran and microphone */
+    object-fit: cover !important;
+    object-position: center 20% !important; /* Perfectly frame Imran and microphone */
+  }
+  #profileImg {
+    object-fit: cover !important;
+    object-position: center center !important;
   }
   .moment-placeholder p {
     display: none !important;
@@ -3032,6 +3058,7 @@ html, body {
 /* Universal Specular Light Sheen & Prismatic Glass on all Cards */
 .proj-carousel-container,
 .poetry-carousel-wrap,
+.moment-card,
 .moment-card-compact,
 .skills-box,
 .form-box,
@@ -3056,6 +3083,7 @@ html, body {
 
 .proj-carousel-container:hover,
 .poetry-carousel-wrap:hover,
+.moment-card:hover,
 .moment-card-compact:hover,
 .skills-box:hover,
 .form-box:hover {
