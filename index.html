@@ -6298,48 +6298,66 @@ let poetryTimer = null;
 SHAYARI_DATA.forEach((s, idx) => { s.key = 'shayari_' + idx; });
 STAGE_STANZAS.forEach((s, idx) => { s.key = 'stage_' + idx; });
 
-// Live cross-device sheet likes storage & local user like state (Instagram / YouTube toggle behavior)
-let sheetLikes = JSON.parse(localStorage.getItem('imran_sheet_likes') || '{}');
-let userLikedMap = JSON.parse(localStorage.getItem('imran_user_liked') || '{}');
+// Dedicated separate local & cross-session database for Poetry Likes (zero interaction with contact Excel sheet)
+const PoetryLikesDB = {
+  STORAGE_KEY: 'lafz_ali_poetry_likes_db',
+  USER_LIKED_KEY: 'lafz_ali_user_liked_db',
+
+  getLikes: function() {
+    try {
+      return JSON.parse(localStorage.getItem(this.STORAGE_KEY) || '{}');
+    } catch (e) {
+      return {};
+    }
+  },
+
+  getUserLiked: function() {
+    try {
+      return JSON.parse(localStorage.getItem(this.USER_LIKED_KEY) || '{}');
+    } catch (e) {
+      return {};
+    }
+  },
+
+  getLikeCount: function(key) {
+    const likes = this.getLikes();
+    return Math.max(0, Number(likes[key]) || 0);
+  },
+
+  isLikedByUser: function(key) {
+    const userMap = this.getUserLiked();
+    return !!userMap[key];
+  },
+
+  toggleLike: function(key) {
+    const likes = this.getLikes();
+    const userMap = this.getUserLiked();
+    const wasLiked = !!userMap[key];
+
+    if (wasLiked) {
+      // Unlike
+      userMap[key] = false;
+      likes[key] = Math.max(0, (Number(likes[key]) || 1) - 1);
+    } else {
+      // Like
+      userMap[key] = true;
+      likes[key] = (Number(likes[key]) || 0) + 1;
+    }
+
+    try {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(likes));
+      localStorage.setItem(this.USER_LIKED_KEY, JSON.stringify(userMap));
+    } catch (e) {}
+
+    return {
+      isLiked: !wasLiked,
+      count: likes[key]
+    };
+  }
+};
 
 function getPoetryLikeCount(key) {
-  return Math.max(0, Number(sheetLikes[key]) || 0);
-}
-
-async function syncLikesFromGoogleSheet() {
-  if (!CONFIG.WEBHOOK_URL) return;
-  try {
-    const res = await fetch(CONFIG.WEBHOOK_URL + '?key=imran2026', { method: 'GET' });
-    if (!res.ok) return;
-    const data = await res.json();
-    if (data && Array.isArray(data.rows)) {
-      const counts = {};
-      data.rows.forEach(r => {
-        // r[5] is Category, r[6] is Subject
-        if (r && r[5] === 'Shayari Like' && typeof r[6] === 'string' && r[6].startsWith('Like: ')) {
-          const k = r[6].replace('Like: ', '').trim();
-          counts[k] = (counts[k] || 0) + 1;
-        } else if (r && r[5] === 'Shayari Unlike' && typeof r[6] === 'string' && r[6].startsWith('Unlike: ')) {
-          const k = r[6].replace('Unlike: ', '').trim();
-          counts[k] = Math.max(0, (counts[k] || 0) - 1);
-        }
-      });
-      sheetLikes = counts;
-      localStorage.setItem('imran_sheet_likes', JSON.stringify(sheetLikes));
-
-      const btn = document.querySelector('.like-btn');
-      if (btn && btn.dataset.key) {
-        const curKey = btn.dataset.key;
-        const total = getPoetryLikeCount(curKey);
-        const deskSpan = btn.querySelector('.like-desktop-count');
-        const mobSpan = btn.querySelector('.like-mobile-count');
-        if (deskSpan) deskSpan.textContent = total + ' داد';
-        if (mobSpan) mobSpan.textContent = (total === 1 ? '1 Like' : total + ' Likes');
-      }
-    }
-  } catch (err) {
-    // Graceful offline fallback
-  }
+  return PoetryLikesDB.getLikeCount(key);
 }
 
 function getActivePoetryList() {
@@ -6383,8 +6401,8 @@ function renderPoetryCarousel(direction = 'none') {
   `;
 
   // 3. Render Active Verse
-  const likeCount = getPoetryLikeCount(itemKey);
-  const isLiked = !!userLikedMap[itemKey];
+  const likeCount = PoetryLikesDB.getLikeCount(itemKey);
+  const isLiked = PoetryLikesDB.isLikedByUser(itemKey);
   const shareText = `*${item.titleUrdu || item.title}* (${item.title})\n\n${item.urdu}\n\n${item.roman}\n\n— عمران علی ’علی‘ (Imran Ali)\nhttps://ia3466999-ali.github.io/portfolio/`;
   const encodedWhatsApp = encodeURIComponent(shareText);
 
@@ -6499,12 +6517,6 @@ function initPoetryCarousel() {
   renderPoetryCarousel();
   startPoetryAutoplay();
 
-  // Cross-device live appreciation sync from Google Sheet
-  syncLikesFromGoogleSheet();
-  setInterval(syncLikesFromGoogleSheet, 40000);
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible') syncLikesFromGoogleSheet();
-  });
 
   // Mouse & focus pause
   container.addEventListener('mouseenter', stopPoetryAutoplay);
@@ -6560,85 +6572,27 @@ function initPoetryCarousel() {
     const likeBtn = e.target.closest('.like-btn');
     if (likeBtn) {
       const key = likeBtn.dataset.key;
-      const list = getActivePoetryList();
-      const item = list[currentPoetryIdx];
-      const isCurrentlyLiked = !!userLikedMap[key];
+      const res = PoetryLikesDB.toggleLike(key);
+      const newTotal = res.count;
+      const isLiked = res.isLiked;
 
-      if (isCurrentlyLiked) {
-        // UNLIKE (Second tap removes like - exactly like Instagram / YouTube)
-        userLikedMap[key] = false;
-        sheetLikes[key] = Math.max(0, (Number(sheetLikes[key]) || 1) - 1);
-        localStorage.setItem('imran_sheet_likes', JSON.stringify(sheetLikes));
-        localStorage.setItem('imran_user_liked', JSON.stringify(userLikedMap));
+      likeBtn.classList.toggle('liked', isLiked);
+      likeBtn.querySelector('svg').setAttribute('fill', isLiked ? 'currentColor' : 'none');
 
-        const newTotal = getPoetryLikeCount(key);
-        likeBtn.classList.remove('liked');
-        likeBtn.querySelector('svg').setAttribute('fill', 'none');
-        const deskSpan = likeBtn.querySelector('.like-desktop-count');
-        const mobSpan = likeBtn.querySelector('.like-mobile-count');
-        if (deskSpan) deskSpan.textContent = newTotal + ' داد';
-        if (mobSpan) mobSpan.textContent = (newTotal === 1 ? '1 Like' : newTotal + ' Likes');
+      const deskSpan = likeBtn.querySelector('.like-desktop-count');
+      const mobSpan = likeBtn.querySelector('.like-mobile-count');
+      if (deskSpan) deskSpan.textContent = newTotal + ' داد';
+      if (mobSpan) mobSpan.textContent = (newTotal === 1 ? '1 Like' : newTotal + ' Likes');
 
-        const toastMsg = window.innerWidth <= 600 ? 'Like removed' : 'داد واپس لے لی گئی';
-        showToast(toastMsg, '🤍');
-
-        // Sync unlike to Google Sheet webhook
-        if (CONFIG.WEBHOOK_URL) {
-          fetch(CONFIG.WEBHOOK_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              category: 'Shayari Unlike',
-              name: 'Visitor / Appreciator',
-              email: 'reader@lafz-e-ali.in',
-              phone: 'N/A',
-              subject: 'Unlike: ' + key,
-              message: 'Removed like for: ' + (item ? (item.titleUrdu || item.title || key) : key)
-            })
-          }).then(() => {
-            setTimeout(syncLikesFromGoogleSheet, 1800);
-          }).catch(() => {});
-        }
-      } else {
-        // LIKE (First tap gives like - exactly like Instagram / YouTube)
-        userLikedMap[key] = true;
-        sheetLikes[key] = (Number(sheetLikes[key]) || 0) + 1;
-        localStorage.setItem('imran_sheet_likes', JSON.stringify(sheetLikes));
-        localStorage.setItem('imran_user_liked', JSON.stringify(userLikedMap));
-
-        const newTotal = getPoetryLikeCount(key);
-        likeBtn.classList.add('liked');
-        likeBtn.querySelector('svg').setAttribute('fill', 'currentColor');
-        const deskSpan = likeBtn.querySelector('.like-desktop-count');
-        const mobSpan = likeBtn.querySelector('.like-mobile-count');
-        if (deskSpan) deskSpan.textContent = newTotal + ' داد';
-        if (mobSpan) mobSpan.textContent = (newTotal === 1 ? '1 Like' : newTotal + ' Likes');
+      if (isLiked) {
         spawnFloatingHearts(likeBtn);
-
         const toastMsg = window.innerWidth <= 600
           ? 'Thank you so much for the love & appreciation! ❤️'
           : 'داد اور محبت کا بے حد شکریہ! ❤️';
         showToast(toastMsg, '❤️');
-
-        // Sync like to Google Sheet webhook
-        if (CONFIG.WEBHOOK_URL) {
-          fetch(CONFIG.WEBHOOK_URL, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              category: 'Shayari Like',
-              name: 'Visitor / Appreciator',
-              email: 'reader@lafz-e-ali.in',
-              phone: 'N/A',
-              subject: 'Like: ' + key,
-              message: 'Appreciated verse: ' + (item ? (item.titleUrdu || item.title || key) : key)
-            })
-          }).then(() => {
-            setTimeout(syncLikesFromGoogleSheet, 1800);
-          }).catch(() => {});
-        }
+      } else {
+        const toastMsg = window.innerWidth <= 600 ? 'Like removed' : 'داد واپس لے لی گئی';
+        showToast(toastMsg, '🤍');
       }
       return;
     }
