@@ -65,16 +65,7 @@
 /* light mode purged - pure dark only */
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-}
-@media (hover: none) and (pointer: coarse) {
-  /* On touchscreens, avoid smooth-scroll fighting finger momentum scrolling */
-  html {
-    scroll-behavior: auto !important;
-  }
-}
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body {
   background: var(--bg);
   background-image: 
@@ -86,7 +77,6 @@ body {
   font: 16px/1.65 var(--font-sans);
   min-height: 100vh;
   overflow-x: hidden;
-  max-width: 100%;
   transition: background 0.35s ease, color 0.35s ease;
 }
 /* light mode purged - pure dark only */
@@ -5178,8 +5168,8 @@ if (canvas) {
   function resizeCanvas() {
     const newW = window.innerWidth;
     const newH = window.innerHeight;
-    // Prevent GPU buffer thrashing during mobile address bar expansion/collapse on scroll
-    if (Math.abs(newW - w) < 20 && Math.abs(newH - h) < 130 && canvas.width > 0 && canvas.height > 0) {
+    // On mobile touch devices only: prevent GPU buffer thrashing during address bar expansion/collapse
+    if (isMobile && Math.abs(newW - w) < 20 && Math.abs(newH - h) < 130 && canvas.width > 0 && canvas.height > 0) {
       return;
     }
     w = canvas.width = newW;
@@ -6653,34 +6643,25 @@ $$('.mob-link').forEach(link => {
   });
 });
 
-let scrollSpyTicking = false;
 window.addEventListener('scroll', () => {
-  if (scrollSpyTicking) return;
-  scrollSpyTicking = true;
-  requestAnimationFrame(() => {
-    // Only compute section offsets when desktop navbar is active and visible
-    if (window.innerWidth > 900) {
-      const sections = $$('section[id]');
-      const scrollY = window.pageYOffset;
+  const sections = $$('section[id]');
+  const scrollY = window.pageYOffset;
 
-      sections.forEach(sec => {
-        const top = sec.offsetTop - 120;
-        const height = sec.offsetHeight;
-        const id = sec.getAttribute('id');
-        const navLink = $(`nav.nav-desktop a[href="#${id}"]`);
+  sections.forEach(sec => {
+    const top = sec.offsetTop - 120;
+    const height = sec.offsetHeight;
+    const id = sec.getAttribute('id');
+    const navLink = $(`nav.nav-desktop a[href="#${id}"]`);
 
-        if (navLink) {
-          if (scrollY >= top && scrollY < top + height) {
-            navLink.classList.add('active');
-          } else {
-            navLink.classList.remove('active');
-          }
-        }
-      });
+    if (navLink) {
+      if (scrollY >= top && scrollY < top + height) {
+        navLink.classList.add('active');
+      } else {
+        navLink.classList.remove('active');
+      }
     }
-    scrollSpyTicking = false;
   });
-}, { passive: true });
+});
 
 /**
  * ----------------------------------------------------------------------------
